@@ -50,6 +50,14 @@ namespace PHPSTORM_META {
   override(\array_filter(0), type(0));
   override(\array_reduce(0), elementType(0));
   override(\array_slice(0), type(0));
+  override(\array_diff(0), type(0));
+  override(\array_diff_assoc(0), type(0));
+  override(\array_diff_uassoc(0), type(0));
+  override(\array_diff_key(0), type(0));
+  override(\array_diff_ukey(0), type(0));
+  override(\array_udiff(0), type(0));
+  override(\array_udiff_assoc(0), type(0));
+  override(\array_udiff_uassoc(0), type(0));
 
   override(\current(0), elementType(0));
   override(\reset(0), elementType(0));
@@ -88,7 +96,7 @@ namespace PHPSTORM_META {
         return "argumentsSet " . $setName;
     }
 
-    expectedArguments(\count(), 1, COUNT_NORMAL, COUNT_RECURSIVE);
+    expectedArguments(\array_change_key_case(), 1, CASE_LOWER,CASE_UPPER);
     expectedArguments(\apc_bin_dumpfile(), 3, FILE_USE_INCLUDE_PATH, FILE_APPEND, LOCK_EX);
     expectedArguments(\apc_bin_load(), 3, APC_BIN_VERIFY_CRC32|APC_BIN_VERIFY_MD5);
     expectedArguments(\apc_bin_loadfile(), 3, APC_BIN_VERIFY_CRC32|APC_BIN_VERIFY_MD5);
@@ -104,6 +112,14 @@ namespace PHPSTORM_META {
     expectedArguments(\EventBase::loop(), 0, \EventBase::LOOP_ONCE, \EventBase::LOOP_NONBLOCK, \EventBase::NOLOCK, \EventBase::STARTUP_IOCP, \EventBase::NO_CACHE_TIME, \EventBase::EPOLL_USE_CHANGELIST);
 
 	expectedArguments(\extension_loaded(), 0, 'amqp', 'apache', 'apc', 'apd', 'bbcode', 'bcmath', 'bcompiler', 'bz2', 'cairo', 'calendar', 'chdb', 'classkit', 'com', 'crack', 'ctype', 'cubrid', 'curl', 'cyrus', 'dba', 'dbase', 'dbplus', 'dbx', 'dio', 'dom', 'dotnet', 'eio', 'enchant', 'ev', 'event', 'exif', 'expect', 'fam', 'fbsql', 'fdf', 'fileinfo', 'filepro', 'filter', 'fribidi', 'ftp', 'gearman', 'gender', 'geoip', 'gettext', 'gmagick', 'gmp', 'gnupg', 'gupnp', 'haru', 'htscanner', 'pecl_http', 'hyperwave', 'hwapi', 'interbase', 'ibm_db2', 'iconv', 'id3', 'informix', 'iisfunc', 'gd', 'imagick', 'imap', 'inclued', 'ingres', 'inotify', 'intl', 'java', 'json', 'judy', 'kadm5', 'ktaglib', 'lapack', 'ldap', 'libevent', 'libxml', 'lua', 'lzf', 'mailparse', 'maxdb', 'mbstring', 'mcrypt', 'mcve', 'memcache', 'memcached', 'memtrack', 'mhash', 'ming', 'mnogosearch', 'mongo', 'mqseries', 'msession', 'msql', 'mssql', 'mysql', 'mysqli', 'mysqlnd', 'mysqlnd_memcache', 'mysqlnd_ms', 'mysqlnd_mux', 'mysqlnd_qc', 'mysqlnd_uh', 'ncurses', 'net_gopher', 'newt', 'notes', 'nsapi', 'oauth', 'oci8', 'oggvorbis', 'openal', 'openssl', 'ovrimos', 'paradox', 'parsekit', 'pcntl', 'pcre', 'pdflib', 'pdo', 'pdo_4d', 'pdo_cubrid', 'pdo_dblib', 'pdo_firebird', 'pdo_ibm', 'pdo_informix', 'pdo_mysql', 'pdo_oci', 'pdo_odbc', 'pdo_pgsql', 'pdo_sqlite', 'pdo_sqlsrv', 'pdo_pgsql', 'phar', 'posix', 'printer', 'proctitle', 'ps', 'pspell', 'pthreads', 'qtdom', 'quickhash', 'radius', 'rar', 'readline', 'recode', 'rpmreader', 'rrd', 'runkit', 'sam', 'sca', 'scream', 'sca_sdo', 'sysvmsg', 'session', 'session_pgsql', 'shmop', 'simplexml', 'snmp', 'soap', 'sockets', 'solr', 'sphinx', 'spl_types', 'spplus', 'sqlite', 'sqlite3', 'sqlsrv', 'ssdeep', 'ssh2', 'stats', 'stomp', 'svm', 'svn', 'swf', 'swish', 'sybase', 'taint', 'tcpwrap', 'tidy', 'tokenizer', 'tokyo_tyrant', 'trader', 'odbc', 'v8js', 'varnish', 'vpopmail', 'w32api', 'wddx', 'weakref', 'win32ps', 'win32service', 'wincache', 'xattr', 'xdiff', 'xhprof', 'xml', 'xmlreader', 'xmlrpc', 'xmlwriter', 'xsl', 'xslt', 'yaf', 'yaml', 'yaz', 'zip', 'zlib');
+    
+    registerArgumentsSet('error_levels', E_ALL|E_ERROR|E_WARNING|E_PARSE|E_NOTICE|E_STRICT|E_RECOVERABLE_ERROR|E_DEPRECATED|E_CORE_ERROR|E_CORE_WARNING|E_COMPILE_ERROR|E_COMPILE_WARNING|E_USER_ERROR|E_USER_WARNING|E_USER_NOTICE|E_USER_DEPRECATED);
+    expectedArguments(\error_reporting(), 0, argumentsSet('error_levels'));
+    expectedReturnValues(\error_reporting(), argumentsSet('error_levels'));
+
+    registerArgumentsSet('user_error_levels', E_USER_NOTICE,E_USER_WARNING,E_USER_ERROR,E_USER_DEPRECATED);
+    expectedArguments(\trigger_error(), 1, argumentsSet('user_error_levels'));
+    expectedArguments(\user_error(), 1, argumentsSet('user_error_levels'));
 
     expectedArguments(\ftp_get(), 3, FTP_ASCII,FTP_BINARY);
     expectedArguments(\ftp_fget(), 3, FTP_ASCII,FTP_BINARY);
@@ -123,11 +139,39 @@ namespace PHPSTORM_META {
 	expectedArguments(\html_entity_decode(), 1, ENT_COMPAT | ENT_QUOTES | ENT_NOQUOTES | ENT_HTML401 | ENT_XML1 | ENT_XHTML | ENT_HTML5);
 	expectedArguments(\html_entity_decode(), 2, 'ISO-8859-1', 'ISO-8859-5', 'ISO-8859-15', 'UTF-8', 'cp866', 'cp1251', 'cp1252', 'KOI8-R', 'BIG5', 'GB2312', 'BIG5-HKSCS', 'Shift_JIS', 'EUC-JP', 'MacRoman');
     expectedArguments(\htmlspecialchars_decode(), 1, ENT_COMPAT | ENT_QUOTES | ENT_NOQUOTES | ENT_HTML401 | ENT_XML1 | ENT_XHTML | ENT_HTML5);
+	
+    expectedArguments(\parse_url(), 1, PHP_URL_SCHEME, PHP_URL_HOST, PHP_URL_PORT, PHP_URL_USER, PHP_URL_PASS, PHP_URL_PATH, PHP_URL_QUERY, PHP_URL_FRAGMENT);
 
     expectedArguments(\iconv_mime_decode(), 1, ICONV_MIME_DECODE_STRICT,ICONV_MIME_DECODE_CONTINUE_ON_ERROR);
     expectedArguments(\iconv_mime_decode_headers(), 1, ICONV_MIME_DECODE_STRICT,ICONV_MIME_DECODE_CONTINUE_ON_ERROR);
     expectedArguments(\Imagick::setImageAlphaChannel(), 0, \Imagick::ALPHACHANNEL_ACTIVATE,\Imagick::ALPHACHANNEL_BACKGROUND,\Imagick::ALPHACHANNEL_COPY,\Imagick::ALPHACHANNEL_DEACTIVATE,\Imagick::ALPHACHANNEL_EXTRACT,\Imagick::ALPHACHANNEL_FLATTEN,\Imagick::ALPHACHANNEL_DEACTIVATE,\Imagick::ALPHACHANNEL_OPAQUE,\Imagick::ALPHACHANNEL_REMOVE,\Imagick::ALPHACHANNEL_RESET,\Imagick::ALPHACHANNEL_SET,\Imagick::ALPHACHANNEL_SHAPE,\Imagick::ALPHACHANNEL_TRANSPARENT,\Imagick::ALPHACHANNEL_UNDEFINED); //todo introduce byPrefix
     expectedArguments(\Imagick::montageImage(), 3, \Imagick::MONTAGEMODE_FRAME,\Imagick::MONTAGEMODE_UNFRAME,\Imagick::MONTAGEMODE_CONCATENATE);
+
+    registerArgumentsSet('imagetypes',
+        IMAGETYPE_GIF,
+        IMAGETYPE_JPEG,
+        IMAGETYPE_PNG,
+        IMAGETYPE_SWF,
+        IMAGETYPE_PSD,
+        IMAGETYPE_BMP,
+        IMAGETYPE_TIFF_II,
+        IMAGETYPE_TIFF_MM,
+        IMAGETYPE_JPC,
+        IMAGETYPE_JP2,
+        IMAGETYPE_JPX,
+        IMAGETYPE_JB2,
+        IMAGETYPE_SWC,
+        IMAGETYPE_IFF,
+        IMAGETYPE_WBMP,
+        IMAGETYPE_XBM,
+        IMAGETYPE_ICO,
+        IMAGETYPE_WEBP
+    );
+    expectedArguments(\image_type_to_extension(), 0, argumentsSet('imagetypes'));
+    expectedArguments(\image_type_to_mime_type(), 0, argumentsSet('imagetypes'));
+    expectedReturnValues(\exif_imagetype(), argumentsSet('imagetypes'));
+    
+    expectedArguments(\exif_read_data(), 1, 'FILE', 'COMPUTED', 'ANY_TAG', 'IFD0', 'THUMBNAIL', 'COMMENT', 'EXIF');
 
     expectedArguments(\imap_close(), 1, CL_EXPUNGE);
     expectedArguments(\event_base_loop(), 1, EVLOOP_ONCE|EVLOOP_NONBLOCK);
@@ -143,14 +187,15 @@ namespace PHPSTORM_META {
     expectedArguments(\mysqli::commit(), 0, MYSQLI_TRANS_COR_AND_CHAIN|MYSQLI_TRANS_COR_AND_NO_CHAIN|MYSQLI_TRANS_COR_NO_RELEASE|MYSQLI_TRANS_COR_RELEASE);
     expectedArguments(\mysqli::real_connect(), 6, MYSQLI_CLIENT_COMPRESS|MYSQLI_CLIENT_FOUND_ROWS|MYSQLI_CLIENT_IGNORE_SPACE|MYSQLI_CLIENT_INTERACTIVE|MYSQLI_CLIENT_SSL|MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
     expectedArguments(\mysqli::rollback(), 0, MYSQLI_TRANS_COR_AND_CHAIN|MYSQLI_TRANS_COR_AND_NO_CHAIN|MYSQLI_TRANS_COR_NO_RELEASE|MYSQLI_TRANS_COR_RELEASE);
-    expectedArguments(\mysqli_stmt::attr_set(), 0, MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH,MYSQLI_STMT_ATTR_CURSOR_TYPE,MYSQLI_STMT_ATTR_PREFETCH_ROWS);
     expectedArguments(\mysqli_begin_transaction(), 1, MYSQLI_TRANS_START_READ_ONLY,MYSQLI_TRANS_START_READ_WRITE,MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
     expectedArguments(\mysqli_report(), 0, MYSQLI_REPORT_OFF,MYSQLI_REPORT_ERROR,MYSQLI_REPORT_STRICT,MYSQLI_REPORT_INDEX,MYSQLI_REPORT_ALL);
     expectedArguments(\mysqli_real_connect(), 7, MYSQLI_CLIENT_COMPRESS|MYSQLI_CLIENT_FOUND_ROWS|MYSQLI_CLIENT_IGNORE_SPACE|MYSQLI_CLIENT_INTERACTIVE|MYSQLI_CLIENT_SSL|MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
-    expectedArguments(\mysqli_stmt_attr_set(), 1, MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH,MYSQLI_STMT_ATTR_CURSOR_TYPE,MYSQLI_STMT_ATTR_PREFETCH_ROWS);
+    registerArgumentsSet("mysqliAttributesSet", MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH, MYSQLI_STMT_ATTR_CURSOR_TYPE, MYSQLI_STMT_ATTR_PREFETCH_ROWS);
+    expectedArguments(\mysqli_stmt::attr_set(), 0, argumentsSet("mysqliAttributesSet"));
+    expectedArguments(\mysqli_stmt_attr_set(), 1, argumentsSet("mysqliAttributesSet"));
 
 	expectedArguments(\ob_start(), 2, \PHP_OUTPUT_HANDLER_CLEANABLE | \PHP_OUTPUT_HANDLER_FLUSHABLE | PHP_OUTPUT_HANDLER_REMOVABLE, PHP_OUTPUT_HANDLER_STDFLAGS);
-	expectedArguments(\ob_implicit_flush(), 0, 1, 2);
+	expectedArguments(\ob_implicit_flush(), 0, 0, 1);
     expectedArguments(\OCI_Lob::flush(), 0, OCI_LOB_BUFFER_FREE);
     expectedArguments(\oci_execute(), 1, OCI_COMMIT_ON_SUCCESS,OCI_DESCRIBE_ONLY,OCI_NO_AUTO_COMMIT);
     expectedArguments(\odbc_binmode(), 1, ODBC_BINMODE_PASSTHRU,ODBC_BINMODE_RETURN,ODBC_BINMODE_CONVERT);
@@ -197,6 +242,7 @@ namespace PHPSTORM_META {
 
     registerArgumentsSet("splFileObjectFlags", \SplFileObject::DROP_NEW_LINE|\SplFileObject::READ_AHEAD|\SplFileObject::SKIP_EMPTY|\SplFileObject::READ_CSV);
     expectedArguments(\SplFileObject::setFlags(), 0, argumentsSet("splFileObjectFlags"));
+    expectedArguments(\SplFileObject::flock(), 0, LOCK_SH, LOCK_EX, LOCK_UN, LOCK_NB);
     expectedArguments(\SplDoublyLinkedList::setIteratorMode(), 0, \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP);
     expectedArguments(\SplQueue::setIteratorMode(), 0, \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP);
     expectedArguments(\SplStack::setIteratorMode(), 0, \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP);
@@ -211,7 +257,6 @@ namespace PHPSTORM_META {
     expectedArguments(\SQLite3Result::fetchArray(), 0, SQLITE3_ASSOC,SQLITE3_NUM,SQLITE3_BOTH);
 
     expectedArguments(\ssh2_fingerprint(), 1, SSH2_FINGERPRINT_MD5|SSH2_FINGERPRINT_SHA1|SSH2_FINGERPRINT_HEX|SSH2_FINGERPRINT_RAW);
-    expectedArguments(\htmlspecialchars(), 1, ENT_COMPAT|ENT_QUOTES|ENT_NOQUOTES|ENT_IGNORE|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML401|ENT_XML1|ENT_XHTML|ENT_HTML5);
     expectedArguments(\imagecropauto(), 1, IMG_CROP_BLACK,IMG_CROP_DEFAULT,IMG_CROP_SIDES,IMG_CROP_THRESHOLD,IMG_CROP_TRANSPARENT,IMG_CROP_WHITE);
     expectedArguments(\srand(), 1, MT_RAND_MT19937,MT_RAND_PHP);
     expectedArguments(\mt_srand(), 1, MT_RAND_MT19937,MT_RAND_PHP);
@@ -426,11 +471,6 @@ namespace PHPSTORM_META {
     expectedArguments(\mysqli::options(), 0, argumentsSet("mysqliOptions"));
     expectedArguments(\mysqli_options(), 1, argumentsSet("mysqliOptions"));
 
-    registerArgumentsSet("mysqliAttributesSet", MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH, MYSQLI_STMT_ATTR_CURSOR_TYPE, MYSQLI_STMT_ATTR_PREFETCH_ROWS);
-    expectedArguments(\mysqli_stmt::attr_set(), 0, argumentsSet("mysqliAttributesSet"));
-    expectedArguments(\mysqli_stmt_attr_set(), 1, argumentsSet("mysqliAttributesSet"));
-
-    expectedArguments(\oci_execute(), 1, OCI_COMMIT_ON_SUCCESS, OCI_DESCRIBE_ONLY, OCI_NO_AUTO_COMMIT);
     expectedArguments(\SolrClient::setServlet(), 0, \SolrClient::SEARCH_SERVLET_TYPE, \SolrClient::UPDATE_SERVLET_TYPE, \SolrClient::THREADS_SERVLET_TYPE, \SolrClient::PING_SERVLET_TYPE, \SolrClient::TERMS_SERVLET_TYPE);
     expectedArguments(\stream_socket_shutdown(), 1, STREAM_SHUT_RD, STREAM_SHUT_WR, STREAM_SHUT_RDWR);
 
@@ -445,6 +485,15 @@ namespace PHPSTORM_META {
 
     expectedArguments(\password_hash(), 1, PASSWORD_DEFAULT, PASSWORD_BCRYPT, PASSWORD_ARGON2I, PASSWORD_ARGON2ID);
     expectedArguments(\password_needs_rehash(), 1, PASSWORD_DEFAULT, PASSWORD_BCRYPT, PASSWORD_ARGON2I, PASSWORD_ARGON2ID);
+
+    registerArgumentsSet('pgResultTypes', PGSQL_ASSOC, PGSQL_NUM, PGSQL_BOTH);
+    expectedArguments(\pg_fetch_all(), 1, argumentsSet('pgResultTypes'));
+    expectedArguments(\pg_fetch_array(), 2, argumentsSet('pgResultTypes'));
+    expectedArguments(\pg_get_notify(), 1, argumentsSet('pgResultTypes'));
+    expectedArguments(\pg_select(), 3, PGSQL_CONV_FORCE_NULL | PGSQL_DML_NO_CONV | PGSQL_DML_EXEC | PGSQL_DML_ASYNC | PGSQL_DML_STRING);
+    expectedArguments(\pg_select(), 4, argumentsSet('pgResultTypes'));
+
+    expectedArguments(\checkdnsrr(), 1, 'A', 'MX', 'NS', 'SOA', 'PTR', 'CNAME', 'AAAA', 'A6', 'SRV', 'NAPTR', 'TXT', 'ANY');
 
 //  override( \ServiceLocatorInterface::get(0),
 //    map( [
