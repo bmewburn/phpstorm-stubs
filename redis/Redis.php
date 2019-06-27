@@ -266,7 +266,11 @@ class Redis
     public function popen( $host, $port = 6379, $timeout = 0.0, $persistent_id = null, $retry_interval = 0, $read_timeout = 0.0 ) {}
 
     /**
-     * Disconnects from the Redis instance, except when pconnect is used.
+     * Disconnects from the Redis instance.
+     *
+     * Note: Closing a persistent connection requires PhpRedis >= 4.2.0.
+     *
+     * @return bool TRUE on success, FALSE on error.
      */
     public function close( ) {}
 
@@ -3337,14 +3341,18 @@ class Redis
      * @param   string  $str_key
      * @param   string  $str_id
      * @param   array   $arr_message
+     * @param   int     $i_maxlen
+     * @param   bool    $boo_approximate
      * @return  string  The added message ID.
      * @link    https://redis.io/commands/xadd
      * @example
      * <pre>
      * $obj_redis->xAdd('mystream', "*", ['field' => 'value']);
+     * $obj_redis->xAdd('mystream', "*", ['field' => 'value'], 10);
+     * $obj_redis->xAdd('mystream', "*", ['field' => 'value'], 10, true);
      * </pre>
      */
-    public function xAdd($str_key, $str_id, $arr_message) {}
+    public function xAdd($str_key, $str_id, $arr_message, $i_maxlen = 0, $boo_approximate = false) {}
 
     /**
      * Claim ownership of one or more pending messages.
