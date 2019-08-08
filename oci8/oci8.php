@@ -590,10 +590,9 @@ function oci_field_type_raw ($statement, $field) {}
  * @param int $mode [optional] <p>
  * An optional second parameter can be one of the following constants:
  * <table>
- * Execution Modes
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>OCI_COMMIT_ON_SUCCESS</b></td>
@@ -747,11 +746,11 @@ function oci_fetch_assoc ($statement) {}
  * @param int $mode [optional] <p>
  * An optional second parameter can be any combination of the following
  * constants:
- * <table>
  * {@see oci_fetch_array} Modes
+ * <table>
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>OCI_BOTH</b></td>
@@ -863,11 +862,11 @@ function ocifetchinto ($statement_resource, &$result, $mode = null) {}
  * @param int $flags [optional] <p>
  * Parameter <i>flags</i> indicates the array
  * structure and whether associative arrays should be used.
- * <table>
  * {@see oci_fetch_all} Array Structure Modes
+ * <table>
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>OCI_FETCHSTATEMENT_BY_ROW</b></td>
@@ -883,11 +882,11 @@ function ocifetchinto ($statement_resource, &$result, $mode = null) {}
  * </p>
  * <p>
  * Arrays can be indexed by column heading or numerically.
- * <table>
  * {@see oci_fetch_all} Array Index Modes
+ * <table>
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>OCI_NUM</b></td>
@@ -1049,10 +1048,9 @@ function oci_server_version ($connection) {}
  * @return string|false The type of <i>statement</i> as one of the
  * following strings.
  * <table>
- * Statement type
  * <tr valign="top">
- * <td>Return String</td>
- * <td>Notes</td>
+ * <th>Return String</th>
+ * <th>Notes</th>
  * </tr>
  * <tr valign="top">
  * <td>ALTER</td>
@@ -1400,12 +1398,12 @@ function oci_pconnect ($username, $password, $connection_string = null, $charact
  * error information as an associative array.
  * </p>
  * <p>
- * <table>
  * {@see oci_error} Array Description
+ * <table>
  * <tr valign="top">
- * <td>Array key</td>
- * <td>Type</td>
- * <td>Description</td>
+ * <th>Array key</th>
+ * <th>Type</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>code</td>

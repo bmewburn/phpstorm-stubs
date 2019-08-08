@@ -105,7 +105,7 @@ function msg_send ($queue, $msgtype, $message, $serialize = true, $blocking = tr
  * low-level msgrcv system call. It defaults to 0, but you may specify one
  * or more of the following values (by adding or ORing them together).
  * <table>
- * Flag values for msg_receive
+ * <tr><th>Flag</th><th>Description</th></tr>
  * <tr valign="top">
  * <td><b>MSG_IPC_NOWAIT</b></td>
  * <td>If there are no messages of the
@@ -168,7 +168,7 @@ function msg_remove_queue ($queue) {}
  * @return array The return value is an array whose keys and values have the following
  * meanings:
  * <table>
- * Array structure for msg_stat_queue
+ * <tr><th>Value</th><th>Description</th></tr>
  * <tr valign="top">
  * <td>msg_perm.uid</td>
  * <td>

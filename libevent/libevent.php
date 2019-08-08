@@ -315,6 +315,10 @@ function event_add($event, $timeout = -1) {}
  *
  * <p>In case of matching event, these three arguments are passed to the callback function:
  * <table>
+ * <tr>
+ * 		<th>Argument</th>
+ * 		<th>Description</th>
+ * 	</tr>
  * 	<tr>
  * 		<td><b>$fd</b></td>
  * 		<td>Signal number or resource indicating the stream.</td>
@@ -627,6 +631,10 @@ function event_timer_new() {}
  *
  * <p>In case of matching event, these three arguments are passed to the callback function:
  * <table>
+ * <tr>
+ * 		<th>Argument</th>
+ * 		<th>Description</th>
+ * 	</tr>
  * 	<tr>
  * 		<td><b>$fd</b></td>
  * 		<td>null</td>

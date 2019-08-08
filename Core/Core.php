@@ -171,10 +171,9 @@ function each (array &$array) {}
  * meanings of these error levels are described in the
  * predefined constants.
  * <table>
- * error_reporting level constants and bit values
  * <tr valign="top">
- * <td>value</td>
- * <td>constant</td>
+ * <th>value</th>
+ * <th>constant</th>
  * </tr>
  * <tr valign="top">
  * <td>1</td>
@@ -898,7 +897,10 @@ function get_defined_constants ($categorize = false) {}
  * @param int $options [optional] <p>
  * As of 5.3.6, this parameter is a bitmask for the following options:
  * <table>
- * <b>debug_backtrace</b> options
+ * <tr>
+ * <th>Option</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>DEBUG_BACKTRACE_PROVIDE_OBJECT</td>
  * <td>
@@ -925,11 +927,10 @@ function get_defined_constants ($categorize = false) {}
  * </p>
  * <p>
  * <table>
- * Possible returned elements from <b>debug_backtrace</b>
  * <tr valign="top">
- * <td>&Name;</td>
- * <td>&Type;</td>
- * <td>Description</td>
+ * <th>Name</th>
+ * <th>Type</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>function</td>
@@ -998,7 +999,10 @@ function debug_backtrace ($options = DEBUG_BACKTRACE_PROVIDE_OBJECT, $limit = 0)
  * @param int $options [optional] <p>
  * As of 5.3.6, this parameter is a bitmask for the following options:
  * <table>
- * <b>debug_print_backtrace</b> options
+ * <tr>
+ * <th>Option</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>DEBUG_BACKTRACE_IGNORE_ARGS</td>
  * <td>

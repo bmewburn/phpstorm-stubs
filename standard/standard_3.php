@@ -534,12 +534,12 @@ function octdec ($octal_string) {}
  * @param int $number <p>
  * Decimal value to convert
  * </p>
- * <table>
  * Range of inputs on 32-bit machines
+ * <table>
  * <tr valign="top">
- * <td>positive number</td>
- * <td>negative number</td>
- * <td>return value</td>
+ * <th>positive number</th>
+ * <th>negative number</th>
+ * <th>return value</th>
  * </tr>
  * <tr valign="top">
  * <td>0</td>
@@ -588,12 +588,12 @@ function octdec ($octal_string) {}
  * <td>11111111111111111111111111111111 (32 1's)</td>
  * </tr>
  * </table>
- * <table>
  * Range of inputs on 64-bit machines
+ * <table>
  * <tr valign="top">
- * <td>positive number</td>
- * <td>negative number</td>
- * <td>return value</td>
+ * <th>positive number</th>
+ * <th>negative number</th>
+ * <th>return value</th>
  * </tr>
  * <tr valign="top">
  * <td>0</td>
@@ -1081,7 +1081,7 @@ function import_request_variables ($types, $prefix = null) {}
  * </p>
  * <p>
  * <table>
- * error_log log types
+ * <tr><th>value</th><th>description</th></tr>
  * <tr valign="top">
  * <td>0</td>
  * <td>

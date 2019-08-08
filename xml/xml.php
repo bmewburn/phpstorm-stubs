@@ -480,11 +480,10 @@ function xml_parser_free ($parser) {}
  * <p>
  * The following options are available:
  * <table>
- * XML parser options
  * <tr valign="top">
- * <td>Option constant</td>
- * <td>Data type</td>
- * <td>Description</td>
+ * <th>Option constant</th>
+ * <th>Data type</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>XML_OPTION_CASE_FOLDING</b></td>

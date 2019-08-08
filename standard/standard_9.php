@@ -822,12 +822,11 @@ class AssertionError extends Error {
  * @link https://php.net/manual/en/function.assert-options.php
  * @param int $what <p>
  * <table>
- * Assert Options
  * <tr valign="top">
- * <td>Option</td>
- * <td>INI Setting</td>
- * <td>Default value</td>
- * <td>Description</td>
+ * <th>Option</th>
+ * <th>INI Setting</th>
+ * <th>Default value</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>ASSERT_ACTIVE</td>

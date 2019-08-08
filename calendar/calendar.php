@@ -135,11 +135,11 @@ function frenchtojd ($month, $day, $year) {}
  * @param int $julianday <p>
  * A julian day number as integer
  * </p>
- * @param int $mode [optional] <table>
- * Calendar week modes
+ * @param int $mode [optional] Calendar week modes
+ * <table>
  * <tr valign="top">
- * <td>Mode</td>
- * <td>Meaning</td>
+ * <th>Mode</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>0 (Default)</td>

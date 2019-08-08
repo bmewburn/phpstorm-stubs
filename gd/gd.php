@@ -7,10 +7,9 @@
  * </p>
  * <p>
  * <table>
- * Elements of array returned by <b>gd_info</b>
  * <tr valign="top">
- * <td>Attribute</td>
- * <td>Meaning</td>
+ * <th>Attribute</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>GD Version</td>
@@ -1352,11 +1351,10 @@ function imageline ($image, $x1, $y1, $x2, $y2, $color) {}
  * </p>
  * <p>
  * <table>
- * Font file format
  * <tr valign="top">
- * <td>byte position</td>
- * <td>C data type</td>
- * <td>description</td>
+ * <th>byte position</th>
+ * <th>C data type</th>
+ * <th>description</th>
  * </tr>
  * <tr valign="top">
  * <td>byte 0-3</td>
@@ -1749,11 +1747,10 @@ function imagettftext ($image, $size, $angle, $x, $y, $color, $fontfile, $text) 
  * </p>
  * @param array $extrainfo [optional] <p>
  * <table>
- * Possible array indexes for extrainfo
  * <tr valign="top">
- * <td>Key</td>
- * <td>Type</td>
- * <td>Meaning</td>
+ * <th>Key</th>
+ * <th>Type</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>linespacing</td>
@@ -1864,11 +1861,10 @@ function imageftbbox ($size, $angle, $fontfile, $text, $extrainfo = null ) {}
  * </p>
  * @param array $extrainfo [optional] <p>
  * <table>
- * Possible array indexes for extrainfo
  * <tr valign="top">
- * <td>Key</td>
- * <td>Type</td>
- * <td>Meaning</td>
+ * <th>Key</th>
+ * <th>Type</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>linespacing</td>

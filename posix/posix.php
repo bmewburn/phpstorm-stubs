@@ -374,10 +374,9 @@ function posix_access ($file, $mode = POSIX_F_OK) {}
  * @param string $name <p>The name of the group</p>
  * @return array The array elements returned are:
  * <table>
- * The group information array
  * <tr valign="top">
- * <td>Element</td>
- * <td>Description</td>
+ * <th>Element</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>name</td>
@@ -424,10 +423,9 @@ function posix_getgrnam ($name) {}
  * </p>
  * @return array The array elements returned are:
  * <table>
- * The group information array
  * <tr valign="top">
- * <td>Element</td>
- * <td>Description</td>
+ * <th>Element</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>name</td>
@@ -475,10 +473,9 @@ function posix_getgrgid ($gid) {}
  * @return array On success an array with the following elements is returned, else
  * <b>FALSE</b> is returned:
  * <table>
- * The user information array
  * <tr valign="top">
- * <td>Element</td>
- * <td>Description</td>
+ * <th>Element</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>name</td>
@@ -552,10 +549,9 @@ function posix_getpwnam ($username) {}
  * </p>
  * @return array an associative array with the following elements:
  * <table>
- * The user information array
  * <tr valign="top">
- * <td>Element</td>
- * <td>Description</td>
+ * <th>Element</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>name</td>
@@ -627,10 +623,9 @@ function posix_getpwuid ($uid) {}
  * @return array an associative array of elements for each
  * limit that is defined. Each limit has a soft and a hard limit.
  * <table>
- * List of possible limits returned
  * <tr valign="top">
- * <td>Limit name</td>
- * <td>Limit description</td>
+ * <th>Limit name</th>
+ * <th>Limit description</th>
  * </tr>
  * <tr valign="top">
  * <td>core</td>

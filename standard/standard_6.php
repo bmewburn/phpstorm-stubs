@@ -426,7 +426,7 @@ function stream_socket_get_name ($handle, $want_peer) {}
  * The value of flags can be any combination
  * of the following:
  * <table>
- * Possible values for flags
+ * <tr><th>value</th><th>description</th></tr>
  * <tr valign="top">
  * <td>STREAM_OOB</td>
  * <td>
@@ -466,7 +466,7 @@ function stream_socket_recvfrom ($socket, $length, $flags = null, &$address = nu
  * The value of flags can be any combination
  * of the following:
  * <table>
- * possible values for flags
+ * <tr><th>value</th><th>description</th></tr>
  * <tr valign="top">
  * <td>STREAM_OOB</td>
  * <td>
@@ -1191,10 +1191,9 @@ function realpath ($path) {}
  * the following flags, joined with the
  * binary OR (|) operator.
  * <table>
- * A list of possible flags for fnmatch
  * <tr valign="top">
- * <td>Flag</td>
- * <td>Description</td>
+ * <th>Flag</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>FNM_NOESCAPE</td>

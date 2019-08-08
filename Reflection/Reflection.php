@@ -735,10 +735,9 @@ class ReflectionMethod extends ReflectionFunctionAbstract implements Reflector {
 	 * The actual meanings of these modifiers are described in the
 	 * predefined constants.
 	 * <table>
-	 * ReflectionMethod modifiers
 	 * <tr valign="top">
-	 * <td>value</td>
-	 * <td>constant</td>
+	 * <th>value</th>
+	 * <th>constant</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>1</td>
@@ -1919,7 +1918,6 @@ class ReflectionGenerator
 	 * the following flags.
 	 * </p>
 	 * <table>
-	 * <b>Available options</b>
 	 *
 	 * <thead>
 	 * <tr>

@@ -1042,11 +1042,11 @@ function getmxrr ($hostname, array &$mxhosts, array &$weight = null) {}
  * </p>
  * @return array This function returns an array of associative arrays. Each associative array contains
  * at minimum the following keys:
- * <table>
  * Basic DNS attributes
+ * <table>
  * <tr valign="top">
- * <td>Attribute</td>
- * <td>Meaning</td>
+ * <th>Attribute</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>host</td>
@@ -1079,11 +1079,11 @@ function getmxrr ($hostname, array &$mxhosts, array &$weight = null) {}
  * </table>
  * </p>
  * <p>
- * <table>
  * Other keys in associative arrays dependant on 'type'
+ * <table>
  * <tr valign="top">
- * <td>Type</td>
- * <td>Extra Columns</td>
+ * <th>Type</th>
+ * <th>Extra Columns</th>
  * </tr>
  * <tr valign="top">
  * <td>A</td>

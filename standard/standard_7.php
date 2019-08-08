@@ -77,10 +77,9 @@ function pfsockopen ($hostname, $port = null, &$errno = null, &$errstr = null, $
  * <p>
  * Currently implemented formats are:
  * <table>
- * pack format characters
  * <tr valign="top">
- * <td>Code</td>
- * <td>Description</td>
+ * <th>Code</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>a</td>
@@ -673,13 +672,13 @@ function is_link ($filename) {}
  * @param string $filename <p>
  * Path to the file.
  * </p>
- * @return array|false <table>
- * stat and fstat result
- * format
+ * @return array|false stat and fstat result format
+ * <table>
+ * 
  * <tr valign="top">
- * <td>Numeric</td>
- * <td>Associative (since PHP 4.0.6)</td>
- * <td>Description</td>
+ * <th>Numeric</th>
+ * <th>Associative (since PHP 4.0.6)</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>0</td>
@@ -1054,10 +1053,9 @@ function ezmlm_hash ($addr) {}
  * The option argument is used to indicate
  * what logging options will be used when generating a log message.
  * <table>
- * openlog Options
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>LOG_CONS</td>
@@ -1099,10 +1097,9 @@ function ezmlm_hash ($addr) {}
  * (in your machine's syslog configuration) how messages coming from
  * different facilities will be handled.
  * <table>
- * openlog Facilities
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>LOG_AUTH</td>

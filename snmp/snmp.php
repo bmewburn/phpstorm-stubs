@@ -86,10 +86,10 @@ class SNMP  {
 	const ERRNO_MULTIPLE_SET_QUERIES = 64;
 
 
-	/**
-	 * Creates SNMP instance representing session to remote SNMP agent
-	 * @link https://php.net/manual/en/snmp.construct.php
-	 * @param $version int <p>SNMP protocol version:
+    /**
+     * Creates SNMP instance representing session to remote SNMP agent
+     * @link https://php.net/manual/en/snmp.construct.php
+     * @param $version int <p>SNMP protocol version:
      * <b>SNMP::VERSION_1</b>,
      * <b>SNMP::VERSION_2C</b>,
      * <b>SNMP::VERSION_3</b>.</p>
@@ -100,6 +100,11 @@ class SNMP  {
      * of IPv6 addresses when specifying FQDN may be forced by enclosing FQDN
      * into square brackets. Here it is some examples:
      * <table>
+     * <thead>
+     * <tr>
+     * <th>type</th><th>example</th>
+     * </tr>
+     * </thead>
      * <tbody>
      * <tr><td>IPv4 with default port</td><td>127.0.0.1</td></tr>
      * <tr><td>IPv6 with default port</td><td>::1 or [::1]</td></tr>
@@ -111,11 +116,14 @@ class SNMP  {
      * <tr><td>FQDN with specific port, force usage of IPv6 address</td><td>[host.domain]:1161</td>
      * </tbody>
      * </table>
-	 * @param $community string <p>The purpuse of <i>community</i> is
+     * @param $community string <p>The purpuse of <i>community</i> is
      * <acronym title="Simple Network Management Protocol">SNMP</acronym> version specific:</p>
      * <table>
-	 * @since 5.4.0
-     *
+     * <thead>
+     * <tr>
+     * <th>value</th><th>description</th>
+     * </tr>
+     * </thead>
      * <tbody>
      * <tr><td>SNMP::VERSION_1</td><td><acronym title="Simple Network Management Protocol">SNMP</acronym> community</td></tr>
      * <tr><td>SNMP::VERSION_2C</td><td><acronym title="Simple Network Management Protocol">SNMP</acronym> community</td></tr>
@@ -123,8 +131,8 @@ class SNMP  {
      * <tr><td>SNMP::VERSION_3</td><td><acronym title="Simple Network Management Protocol">SNMP</acronym>v3 securityName</td></tr>
      * </tbody>
      * </table>
-	 * @param $timeout [optional] int The number of microseconds until the first timeout.
-	 * @param $retries [optional] int The number of retries in case timeout occurs.
+     * @param $timeout [optional] int The number of microseconds until the first timeout.
+     * @param $retries [optional] int The number of retries in case timeout occurs.
      */
 	public function __construct ($version, $hostname, $community, $timeout = 1000000, $retries = 5) {}
 
@@ -191,11 +199,11 @@ class SNMP  {
 	 */
 	public function walk ($object_id, $suffix_as_keys = FALSE, $max_repetitions, $non_repeaters) {}
 
-	/**
-	 * Set the value of an SNMP object
-	 * @link https://php.net/manual/en/snmp.set.php
-	 * @param $object_id string <p>The SNMP object id</p>
-	 * @since 5.4.0
+    /**
+     * Set the value of an SNMP object
+     * @link https://php.net/manual/en/snmp.set.php
+     * @param $object_id string <p>The SNMP object id</p>
+     * @since 5.4.0
      *
      * <p>When count of OIDs in object_id array is greater than
      * max_oids object property set method will have to use multiple queries
@@ -206,7 +214,11 @@ class SNMP  {
      * When count of OIDs in object_id array is greater than max_oids object property set method will have to use multiple queries to perform requested value updates. In this case type and value checks are made per-chunk so second or subsequent requests may fail due to wrong type or value for OID requested. To mark this a warning is raised when count of OIDs in object_id array is greater than max_oids.</p>
      * @param $type mixed <p>The MIB defines the type of each object id. It has to be specified as a single character from the below list.</p>
      * <table>
-     * <b>types</b>
+     * <thead>
+     * <tr>
+     * <th>value</th><th>description</th>
+     * </tr>
+     * </thead>
      * <tbody>
      * <tr><td>=</td><td>The type is taken from the MIB</td></tr>
      * <tr><td>i</td><td>INTEGER</td> </tr>
@@ -225,7 +237,11 @@ class SNMP  {
      * If <b>OPAQUE_SPECIAL_TYPES</b> was defined while compiling the SNMP library, the following are also valid:
      * </p>
      * <table>
-     * <b>types</b>
+     * <thead>
+     * <tr>
+     * <th>value</th><th>description</th>
+     * </tr>
+     * </thead>
      * <tbody>
      * <tr><td>U</td><td>unsigned int64</td></tr>
      * <tr><td>I</td><td>signed int64</td></tr>
@@ -258,10 +274,10 @@ class SNMP  {
      * <p>
      * See examples section for more details.
      * </p>
-	 * @param $value mixed <p>
+     * @param $value mixed <p>
      * The new value.</p>
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
-	 */
+     */
 	public function set ($object_id, $type, $value) {}
 
 	/**
@@ -515,13 +531,19 @@ function snmp_set_enum_print ($enum_print) {}
 /**
  * Set the OID output format
  * @link https://php.net/manual/en/function.snmp-set-oid-output-format.php
- * @param int $oid_format [optional] <table>
- * OID .1.3.6.1.2.1.1.3.0 representation for various <i>oid_format</i> values
+ * @param int $oid_format [optional] OID .1.3.6.1.2.1.1.3.0 representation for various <i>oid_format</i> values
+ * <table>
+ * <tr>
+ * <th>value</th><th>description</th>
+ * </tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_FULL</b></td><td>.iso.org.dod.internet.mgmt.mib-2.system.sysUpTime.sysUpTimeInstance</td></tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_NUMERIC</b></td><td>.1.3.6.1.2.1.1.3.0</td> </tr>
  * </table>
  * <p>Begining from PHP 5.4.0 four additional constants available:
  * <table>
+ * <tr>
+ * <th>value</th><th>description</th>
+ * </tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_MODULE</b></td><td>DISMAN-EVENT-MIB::sysUpTimeInstance</td></tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_SUFFIX</b></td><td>sysUpTimeInstance</td></tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_UCD</b></td><td>system.sysUpTime.sysUpTimeInstance</td></tr>
@@ -963,7 +985,9 @@ function snmp3_set ($host, $sec_name, $sec_level, $auth_protocol, $auth_passphra
  * Specify the method how the SNMP values will be returned
  * @link https://php.net/manual/en/function.snmp-set-valueretrieval.php
  * @param int $method <table>
- * types
+ * <tr>
+ * <th>value</th><th>description</th>
+ * </tr>
  * <tr valign="top">
  * <td>SNMP_VALUE_LIBRARY</td>
  * <td>The return values will be as returned by the Net-SNMP library.</td>

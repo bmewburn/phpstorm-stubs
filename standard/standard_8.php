@@ -6,12 +6,11 @@
  * @link https://php.net/manual/en/function.syslog.php
  * @param int $priority <p>
  * priority is a combination of the facility and
- * the level. Possible values are:
+ * the level. Possible values are (in descending order):
  * <table>
- * syslog Priorities (in descending order)
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>LOG_EMERG</td>

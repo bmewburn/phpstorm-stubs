@@ -62,10 +62,9 @@ function socket_select (array &$read, array &$write, array &$except, $tv_sec, $t
  * family to be used by the socket.
  * </p>
  * <table>
- * Available address/protocol families
  * <tr valign="top">
- * <td>Domain</td>
- * <td>Description</td>
+ * <th>Domain</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>AF_INET</b></td>
@@ -94,10 +93,9 @@ function socket_select (array &$read, array &$write, array &$except, $tv_sec, $t
  * to be used by the socket.
  * </p>
  * <table>
- * Available socket types
  * <tr valign="top">
- * <td>Type</td>
- * <td>Description</td>
+ * <th>Type</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>SOCK_STREAM</b></td>
@@ -148,10 +146,9 @@ function socket_select (array &$read, array &$write, array &$except, $tv_sec, $t
  * can also be used.
  * </p>
  * <table>
- * Common protocols
  * <tr valign="top">
- * <td>Name</td>
- * <td>Description</td>
+ * <th>Name</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>icmp</td>
@@ -573,10 +570,9 @@ function socket_bind ($socket, $address, $port = 0) {}
  * operator.
  * </p>
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
- * <td>Flag</td>
- * <td>Description</td>
+ * <th>Flag</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
@@ -636,7 +632,9 @@ function socket_recv ($socket, &$buf, $len, $flags) {}
  * the following flags, joined with the binary OR (|)
  * operator.
  * <table>
- * Possible values for <i>flags</i>
+ * <tr>
+ * <th>value</th><th>description</th>
+ * </tr>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
  * <td>
@@ -703,10 +701,9 @@ function socket_sendmsg ($socket, array $message, $flags ) {}
  * operator.
  * </p>
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
- * <td>Flag</td>
- * <td>Description</td>
+ * <th>Flag</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
@@ -788,7 +785,9 @@ function socket_recvmsg ($socket , $message, $flags) {}
  * the following flags, joined with the binary OR (|)
  * operator.
  * <table>
- * Possible values for <i>flags</i>
+ * <tr>
+ * <th>value</th><th>description</th>
+ * </tr>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
  * <td>
@@ -847,12 +846,12 @@ function socket_sendto ($socket, $buf, $len, $flags, $addr, $port = 0) {}
  * specifying the protocol number of that level. Protocol numbers can be
  * found by using the <b>getprotobyname</b> function.
  * </p>
- * @param int $optname <table>
- * Available Socket Options
+ * @param int $optname Available Socket Options
+ * <table>
  * <tr valign="top">
- * <td>Option</td>
- * <td>Description</td>
- * <td>Type</td>
+ * <th>Option</th>
+ * <th>Description</th>
+ * <th>Type</th>
  * </tr>
  * <tr valign="top">
  * <td><b>SO_DEBUG</b></td>
@@ -1237,7 +1236,7 @@ function socket_set_option ($socket, $level, $optname, $optval) {}
  * @param int $how [optional] <p>
  * The value of <i>how</i> can be one of the following:
  * <table>
- * possible values for <i>how</i>
+ * <tr><th>value</th><th>description</th></tr>
  * <tr valign="top">
  * <td>0</td>
  * <td>

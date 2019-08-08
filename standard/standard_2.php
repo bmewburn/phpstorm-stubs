@@ -10,10 +10,9 @@
  * Some of these constants may not be defined or hold no value for certain
  * locales.
  * <table>
- * nl_langinfo Constants
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * LC_TIME Category Constants</td>

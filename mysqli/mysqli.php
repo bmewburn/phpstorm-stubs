@@ -368,10 +368,9 @@ class mysqli  {
 	 * @param int $option <p>
 	 * The option that you want to set. It can be one of the following values:
 	 * <table>
-	 * Valid options
 	 * <tr valign="top">
-	 * <td>Name</td>
-	 * <td>Description</td>
+	 * <th>Name</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td><b>MYSQLI_OPT_CONNECT_TIMEOUT</b></td>
@@ -534,10 +533,9 @@ class mysqli  {
 	 * connection options:
 	 * </p>
 	 * <table>
-	 * Supported flags
 	 * <tr valign="top">
-	 * <td>Name</td>
-	 * <td>Description</td>
+	 * <th>Name</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td><b>MYSQLI_CLIENT_COMPRESS</b></td>
@@ -883,10 +881,9 @@ class mysqli_result implements Traversable  {
 	 * </p>
 	 * <p>
 	 * <table>
-	 * Object properties
 	 * <tr valign="top">
-	 * <td>Property</td>
-	 * <td>Description</td>
+	 * <th>Property</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>name</td>
@@ -953,10 +950,9 @@ class mysqli_result implements Traversable  {
 	 * </p>
 	 * <p>
 	 * <table>
-	 * Object properties
 	 * <tr valign="top">
-	 * <td>Property</td>
-	 * <td>Description</td>
+	 * <th>Property</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>name</td>
@@ -1020,10 +1016,9 @@ class mysqli_result implements Traversable  {
 	 * </p>
 	 * <p>
 	 * <table>
-	 * Object attributes
 	 * <tr valign="top">
-	 * <td>Attribute</td>
-	 * <td>Description</td>
+	 * <th>Attribute</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>name</td>
@@ -1245,10 +1240,9 @@ class mysqli_stmt  {
 	 * @param int $attr <p>
 	 * The attribute that you want to set. It can have one of the following values:
 	 * <table>
-	 * Attribute values
 	 * <tr valign="top">
-	 * <td>Character</td>
-	 * <td>Description</td>
+	 * <th>Character</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH</td>
@@ -1301,10 +1295,9 @@ class mysqli_stmt  {
 	 * A string that contains one or more characters which specify the types
 	 * for the corresponding bind variables:
 	 * <table>
-	 * Type specification chars
 	 * <tr valign="top">
-	 * <td>Character</td>
-	 * <td>Description</td>
+	 * <th>Character</th>
+	 * <th>Description</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>i</td>
@@ -2085,10 +2078,9 @@ function mysqli_prepare ($link, $query) {}
  * @link https://php.net/manual/en/function.mysqli-report.php
  * @param int $flags <p>
  * <table>
- * Supported flags
  * <tr valign="top">
- * <td>Name</td>
- * <td>Description</td>
+ * <th>Name</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td><b>MYSQLI_REPORT_OFF</b></td>
@@ -2301,10 +2293,9 @@ function mysqli_stmt_send_long_data ($stmt, $param_nr, $data) {}
  * A string that contains one or more characters which specify the types
  * for the corresponding bind variables:
  * <table>
- * Type specification chars
  * <tr valign="top">
- * <td>Character</td>
- * <td>Description</td>
+ * <th>Character</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>i</td>

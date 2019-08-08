@@ -21,7 +21,10 @@ function pcntl_fork () {}
  * @param int $pid <p>
  * The value of <i>pid</i> can be one of the following:
  * <table>
- * possible values for <i>pid</i>
+ * <tr>
+ * <th>Value</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>&lt; -1</td>
  * <td>
@@ -73,7 +76,10 @@ function pcntl_fork () {}
  * or more of the following two global constants
  * OR'ed together:
  * <table>
- * possible values for <i>options</i>
+ * <tr>
+ * <th>Value</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>WNOHANG</td>
  * <td>
@@ -120,7 +126,10 @@ function pcntl_waitpid ($pid, &$status, $options = 0) {}
  * </i> is the value of zero or more of the following two constants
  * OR'ed together:
  * <table>
- * Possible values for <i>options</i>
+ * <tr>
+ * <th>Value</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>WNOHANG</td>
  * <td>

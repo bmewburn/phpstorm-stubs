@@ -16,12 +16,10 @@
  * </p>
  * <p>
  * <table>
- * methods may be an associative array
- * with any or all of the following parameters.
  * <tr valign="top">
- * <td>Index</td>
- * <td>Meaning</td>
- * <td>Supported Values*</td>
+ * <th>Index</th>
+ * <th>Meaning</th>
+ * <th>Supported Values*</th>
  * </tr>
  * <tr valign="top">
  * <td>kex</td>
@@ -71,13 +69,10 @@
  * </p>
  * <p>
  * <table>
- * client_to_server and
- * server_to_client may be an associative array
- * with any or all of the following parameters.
  * <tr valign="top">
- * <td>Index</td>
- * <td>Meaning</td>
- * <td>Supported Values*</td>
+ * <th>Index</th>
+ * <th>Meaning</th>
+ * <th>Supported Values*</th>
  * </tr>
  * <tr valign="top">
  * <td>crypt</td>
@@ -131,11 +126,10 @@
  * callbacks may be an associative array with any
  * or all of the following parameters.
  * <table>
- * Callbacks parameters
  * <tr valign="top">
- * <td>Index</td>
- * <td>Meaning</td>
- * <td>Prototype</td>
+ * <th>Index</th>
+ * <th>Meaning</th>
+ * <th>Prototype</th>
  * </tr>
  * <tr valign="top">
  * <td>ignore</td>
@@ -661,10 +655,9 @@ function ssh2_publickey_remove ($pkey, $algoname, $blob) {}
  * </p>
  * <p>
  * <table>
- * Publickey elements
  * <tr valign="top">
- * <td>Array Key</td>
- * <td>Meaning</td>
+ * <th>Array Key</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>name</td>

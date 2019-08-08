@@ -37,17 +37,16 @@
  * only be done one after another. Also read during write is not allowed.
  * The dba extension uses locks to prevent this. See the following table:
  * <table>
- * DBA locking
  * <tr valign="top">
- * <td>already open</td>
- * <td><i>mode</i> = "rl"</td>
- * <td><i>mode</i> = "rlt"</td>
- * <td><i>mode</i> = "wl"</td>
- * <td><i>mode</i> = "wlt"</td>
- * <td><i>mode</i> = "rd"</td>
- * <td><i>mode</i> = "rdt"</td>
- * <td><i>mode</i> = "wd"</td>
- * <td><i>mode</i> = "wdt"</td>
+ * <th>State</th>
+ * <th><i>mode</i> = "rl"</th>
+ * <th><i>mode</i> = "rlt"</th>
+ * <th><i>mode</i> = "wl"</th>
+ * <th><i>mode</i> = "wlt"</th>
+ * <th><i>mode</i> = "rd"</th>
+ * <th><i>mode</i> = "rdt"</th>
+ * <th><i>mode</i> = "wd"</th>
+ * <th><i>mode</i> = "wdt"</th>
  * </tr>
  * <tr valign="top">
  * <td>not open</td>

@@ -221,13 +221,12 @@ function iconv_strrpos ($haystack, $needle, $charset = 'ini_get("iconv.internal_
  * The items supported by <b>iconv_mime_encode</b> are
  * listed below. Note that item names are treated case-sensitive.
  * <table>
- * Configuration items supported by <b>iconv_mime_encode</b>
  * <tr valign="top">
- * <td>Item</td>
- * <td>Type</td>
- * <td>Description</td>
- * <td>Default value</td>
- * <td>Example</td>
+ * <th>Item</th>
+ * <th>Type</th>
+ * <th>Description</th>
+ * <th>Default value</th>
+ * <th>Example</th>
  * </tr>
  * <tr valign="top">
  * <td>scheme</td>
@@ -318,11 +317,10 @@ function iconv_mime_encode ($field_name, $field_value, array $preferences = null
  * MIME header field. You can specify any combination
  * of the following bitmasks.
  * <table>
- * Bitmasks acceptable to <b>iconv_mime_decode</b>
  * <tr valign="top">
- * <td>Value</td>
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Value</th>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>1</td>
@@ -370,11 +368,10 @@ function iconv_mime_decode ($encoded_header, $mode = 0, $charset = 'ini_get("ico
  * MIME header field. You can specify any combination
  * of the following bitmasks.
  * <table>
- * Bitmasks acceptable to <b>iconv_mime_decode_headers</b>
  * <tr valign="top">
- * <td>Value</td>
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Value</th>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>1</td>

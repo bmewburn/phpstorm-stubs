@@ -598,11 +598,9 @@ function fread ($handle, $length) {}
  * The mode parameter specifies the type of access
  * you require to the stream. It may be any of the following:
  * <table>
- * A list of possible modes for fopen
- * using mode
  * <tr valign="top">
- * <td>mode</td>
- * <td>Description</td>
+ * <th>mode</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>'r'</td>
@@ -1084,10 +1082,9 @@ function file_get_contents ($filename, $use_include_path = false, $context = nul
  * </p>
  * <p>
  * <table>
- * Available flags
  * <tr valign="top">
- * <td>Flag</td>
- * <td>Description</td>
+ * <th>Flag</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>

@@ -490,7 +490,10 @@ function ftp_close ($ftp_stream) {}
  * @param int $option <p>
  * Currently, the following options are supported:
  * <table>
- * Supported runtime FTP options
+ * <tr>
+ * <th>Option</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td><b>FTP_TIMEOUT_SEC</b></td>
  * <td>
@@ -532,7 +535,10 @@ function ftp_set_option ($ftp_stream, $option, $value) {}
  * @param int $option <p>
  * Currently, the following options are supported:
  * <table>
- * Supported runtime FTP options
+ * <tr>
+ * <th>Option</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td><b>FTP_TIMEOUT_SEC</b></td>
  * <td>

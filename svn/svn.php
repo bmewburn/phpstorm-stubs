@@ -223,10 +223,9 @@ function svn_ls ($repos_url, $revision_no = SVN_REVISION_HEAD, $recurse = false,
  * in the first column, where possible values are:
  * </p>
  * <table>
- * Actions
  * <tr valign="top">
- * <td>Letter</td>
- * <td>Description</td>
+ * <th>Letter</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>M</td>

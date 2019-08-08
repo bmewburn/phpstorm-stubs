@@ -363,10 +363,9 @@ function imap_fetchheader ($imap_stream, $msg_number, $options = 0) {}
  * </p>
  * <p>
  * <table>
- * Returned Objects for <b>imap_fetchstructure</b>
  * <tr valign="top">
- * <td>type</td>
- * <td>Primary body type</td>
+ * <th>type</th>
+ * <th>Primary body type</th>
  * </tr>
  * <tr valign="top">
  * <td>encoding</td>
@@ -444,7 +443,7 @@ function imap_fetchheader ($imap_stream, $msg_number, $options = 0) {}
  * </p>
  * <p>
  * <table>
- * Primary body type (may vary with used library)
+ * <tr valign="top"><th>#</th><th>type (may vary with used library)</th></tr>
  * <tr valign="top"><td>0</td><td>text</td></tr>
  * <tr valign="top"><td>1</td><td>multipart</td></tr>
  * <tr valign="top"><td>2</td><td>message</td></tr>
@@ -457,7 +456,7 @@ function imap_fetchheader ($imap_stream, $msg_number, $options = 0) {}
  * </p>
  * <p>
  * <table>
- * Transfer encodings (may vary with used library)
+ * <tr valign="top"><th>#</th><th>encodings (may vary with used library)</th></tr>
  * <tr valign="top"><td>0</td><td>7BIT</td></tr>
  * <tr valign="top"><td>1</td><td>8BIT</td></tr>
  * <tr valign="top"><td>2</td><td>BINARY</td></tr>
@@ -855,7 +854,10 @@ function imap_status_current ($stream_id, $options) {}
  * @param resource $imap_stream 
  * @return object|false the information in an object with following properties:
  * <table>
- * Mailbox properties
+ * <tr valign="top">
+ * <th>Property</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>Date</td>
  * <td>date of last change (current datetime)</td>

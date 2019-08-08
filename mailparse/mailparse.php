@@ -163,6 +163,10 @@ function mailparse_msg_parse ($mimemail, $data) {}
  * </p>
  * <table>
  * <tr valign="top">
+ * <th>Key</th>
+ * <th>Description</th>
+ * </tr>
+ * <tr valign="top">
  * <td>display</td>
  * <td>The recipient name, for display purpose. If this part is not set for a recipient, this key will hold the same value as address.</td>
  * </tr>
@@ -206,6 +210,10 @@ function mailparse_stream_encode ($sourcefp, $destfp, $encoding) {}
  * Returns an array of associative arrays listing filename information.
  * </p>
  * <table>
+ * <tr valign="top">
+ * <th>Key</th>
+ * <th>Description</th>
+ * </tr>
  * <tr valign="top">
  * <td>filename</td>
  * <td>Path to the temporary file name created</td>

@@ -223,11 +223,11 @@ function time_sleep_until ($timestamp) {}
  * @return array|false an array or false on failure.
  * </p>
  * <p>
- * <table>
  * The following parameters are returned in the array
+ * <table>
  * <tr valign="top">
- * <td>parameters</td>
- * <td>Description</td>
+ * <th>parameters</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>"tm_sec"</td>
@@ -437,10 +437,9 @@ function htmlspecialchars ($string, $flags = ENT_COMPAT | ENT_HTML401, $encoding
  * be done with 'single' and "double" quotes. It takes on one of three
  * constants with the default being ENT_COMPAT:
  * <table>
- * Available quote_style constants
  * <tr valign="top">
- * <td>Constant Name</td>
- * <td>Description</td>
+ * <th>Constant Name</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>ENT_COMPAT</td>
@@ -485,10 +484,9 @@ function htmlentities ($string, $quote_style = null, $charset = null, $double_en
  * on one of three constants with the default being
  * ENT_COMPAT:
  * <table>
- * Available quote_style constants
  * <tr valign="top">
- * <td>Constant Name</td>
- * <td>Description</td>
+ * <th>Constant Name</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>ENT_COMPAT</td>
@@ -525,10 +523,9 @@ function html_entity_decode ($string, $quote_style = null, $charset = null) {}
  * @param int $quote_style [optional] <p>
  * The quote style. One of the following constants:
  * <table>
- * quote_style constants
  * <tr valign="top">
- * <td>Constant Name</td>
- * <td>Description</td>
+ * <th>Constant Name</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>ENT_COMPAT</td>
@@ -918,10 +915,9 @@ function getimagesize ($filename, array &$imageinfo = null) {}
  * </p>
  * @return string The returned values are as follows
  * <table>
- * Returned values Constants
  * <tr valign="top">
- * <td>imagetype</td>
- * <td>Returned value</td>
+ * <th>imagetype</th>
+ * <th>Returned value</th>
  * </tr>
  * <tr valign="top">
  * <td>IMAGETYPE_GIF</td>
@@ -1023,11 +1019,10 @@ function image_type_to_extension ($imagetype, $include_dot = null) {}
  * </p>
  * <p>
  * <table>
- * phpinfo options
  * <tr valign="top">
- * <td>Name (constant)</td>
- * <td>Value</td>
- * <td>Description</td>
+ * <th>Name (constant)</th>
+ * <th>Value</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>INFO_GENERAL</td>
@@ -1123,10 +1118,9 @@ function phpversion ($extension = null) {}
  * </p>
  * <p>
  * <table>
- * Pre-defined phpcredits flags
  * <tr valign="top">
- * <td>name</td>
- * <td>description</td>
+ * <th>name</th>
+ * <th>description</th>
  * </tr>
  * <tr valign="top">
  * <td>CREDITS_ALL</td>

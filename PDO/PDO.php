@@ -1475,10 +1475,9 @@ class PDOStatement implements Traversable {
 	 * the metadata for a single column:
 	 * </p>
 	 * <table>
-	 * Column metadata
 	 * <tr valign="top">
-	 * <td>Name</td>
-	 * <td>Value</td>
+	 * <th>Name</th>
+	 * <th>Value</th>
 	 * </tr>
 	 * <tr valign="top">
 	 * <td>native_type</td>

@@ -644,10 +644,9 @@ function mb_encoding_aliases ($encoding) {}
  * <p>
  * Specify with a combination of following options.
  * <table>
- * Applicable Conversion Options
  * <tr valign="top">
- * <td>Option</td>
- * <td>Meaning</td>
+ * <th>Option</th>
+ * <th>Meaning</th>
  * </tr>
  * <tr valign="top">
  * <td>r</td>

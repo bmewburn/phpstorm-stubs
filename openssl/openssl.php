@@ -288,10 +288,9 @@ function openssl_x509_parse($x509cert, $shortnames = true) { }
  * </p>
  * @param int $purpose <p>
  * <table>
- * <b>openssl_x509_checkpurpose</b> purposes
  * <tr valign="top">
- * <td>Constant</td>
- * <td>Description</td>
+ * <th>Constant</th>
+ * <th>Description</th>
  * </tr>
  * <tr valign="top">
  * <td>X509_PURPOSE_SSL_CLIENT</td>
@@ -465,12 +464,11 @@ function openssl_pkcs12_read($pkcs12, array &$certs, $pass) { }
  * behave as their equivalents in the openssl.conf, as
  * listed in the table below.
  * <table>
- * Configuration overrides
  * <tr valign="top">
- * <td><i>configargs</i> key</td>
- * <td>type</td>
- * <td>openssl.conf equivalent</td>
- * <td>description</td>
+ * <th><i>configargs</i> key</th>
+ * <th>type</th>
+ * <th>openssl.conf equivalent</th>
+ * <th>description</th>
  * </tr>
  * <tr valign="top">
  * <td>digest_alg</td>
