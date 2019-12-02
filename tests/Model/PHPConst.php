@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace StubTests\Model;
@@ -9,6 +10,7 @@ use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\NodeAbstract;
 use ReflectionClassConstant;
 use stdClass;
+use PhpParser\Node\Expr\UnaryMinus;
 
 class PHPConst extends BasePHPElement
 {
@@ -37,6 +39,7 @@ class PHPConst extends BasePHPElement
         $this->name = $this->getConstantFQN($node, $node->name->name);
         $this->value = $this->getConstValue($node);
         $this->collectLinks($node);
+        $this->collectSinceDeprecatedVersions($node);
         if ($node->getAttribute('parent') instanceof ClassConst) {
             $this->parentName = $this->getFQN($node->getAttribute('parent')->getAttribute('parent'));
         }
@@ -49,7 +52,11 @@ class PHPConst extends BasePHPElement
             return $node->value->value;
         }
         if (in_array('expr', $node->value->getSubNodeNames(), true)) {
-            return $node->value->expr->value;
+            if ($node->value instanceof UnaryMinus) {
+                return -$node->value->expr->value;
+            } else {
+                return $node->value->expr->value;
+            }
         }
         if (in_array('name', $node->value->getSubNodeNames(), true)) {
             return $node->value->name->parts[0];
