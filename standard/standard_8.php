@@ -707,6 +707,7 @@ function count ($var, $mode = COUNT_NORMAL) {}
  * @return mixed the value of the last element or false for empty array.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function end (array &$array) {}
 
@@ -721,6 +722,7 @@ function end (array &$array) {}
  * elements.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function prev (array &$array) {}
 
@@ -734,6 +736,7 @@ function prev (array &$array) {}
  * internal array pointer, or false if there are no more elements.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function next (array &$array) {}
 
@@ -747,6 +750,7 @@ function next (array &$array) {}
  * empty.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function reset (array &$array) {}
 
@@ -763,6 +767,7 @@ function reset (array &$array) {}
  * empty, current returns false.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function current (array $array) {}
 
@@ -1006,6 +1011,8 @@ function array_multisort (array &$array1, $array1_sort_order = null, $array1_sor
 
 /**
  * Push elements onto the end of array
+ * Since 7.3.0 this function can be called with only one parameter.
+ * For earlier versions at least two parameters are required.
  * @link https://php.net/manual/en/function.array-push.php
  * @param array $array <p>
  * The input array.
@@ -1014,7 +1021,8 @@ function array_multisort (array &$array1, $array1_sort_order = null, $array1_sor
  * The pushed variables.
  * </p>
  * @return int the number of elements in the array.
- * @since 7.3
+ * @since 4.0
+ * @since 5.0
  */
 function array_push (array &$array, ...$vars) {}
 
@@ -1029,6 +1037,7 @@ function array_push (array &$array, ...$vars) {}
  * &null; will be returned.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function array_pop (array &$array) {}
 
@@ -1042,6 +1051,7 @@ function array_pop (array &$array) {}
  * empty or is not an array.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function array_shift (array &$array) {}
 
@@ -1139,6 +1149,7 @@ function array_splice (array &$input, $offset, $length = null, $replacement = nu
  * @return array the slice.
  * @since 4.0
  * @since 5.0
+ * @meta
  */
 function array_slice (array $array, $offset, $length = null, $preserve_keys = false) {}
 
