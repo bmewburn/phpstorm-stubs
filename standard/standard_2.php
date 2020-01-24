@@ -141,8 +141,6 @@
  * Returns 0 if parentheses surround the quantity and CURRENCY_SYMBOL.
  * @return string|false the element as a string, or false if item
  * is not valid.
- * @since 4.1
- * @since 5.0
  */
 function nl_langinfo ($item) {}
 
@@ -153,8 +151,6 @@ function nl_langinfo ($item) {}
  * The input string.
  * </p>
  * @return string the soundex key as a string.
- * @since 4.0
- * @since 5.0
  */
 function soundex ($str) {}
 
@@ -185,8 +181,6 @@ function soundex ($str) {}
  * @return int This function returns the Levenshtein-Distance between the
  * two argument strings or -1, if one of the argument strings
  * is longer than the limit of 255 characters.
- * @since 4.0.1
- * @since 5.0
  */
 function levenshtein ($str1, $str2, $cost_ins = null, $cost_rep = null, $cost_del = null) {}
 
@@ -197,8 +191,6 @@ function levenshtein ($str1, $str2, $cost_ins = null, $cost_rep = null, $cost_de
  * The ascii code.
  * </p>
  * @return string the specified character.
- * @since 4.0
- * @since 5.0
  */
 function chr ($ascii) {}
 
@@ -209,8 +201,6 @@ function chr ($ascii) {}
  * A character.
  * </p>
  * @return int the ASCII value as an integer.
- * @since 4.0
- * @since 5.0
  */
 function ord ($string) {}
 
@@ -226,8 +216,6 @@ function ord ($string) {}
  * Since 7.2.0 this parameter is not optional.
  * </p>
  * @return void 
- * @since 4.0
- * @since 5.0
  */
 function parse_str ($str, array &$result = null) {}
 
@@ -248,7 +236,6 @@ function parse_str ($str, array &$result = null) {}
  * Defaults as a backslash (\)
  * </p>
  * @return array an indexed array containing the fields read.
- * @since 5.3
  */
 function str_getcsv ($input, $delimiter = ",", $enclosure = '"', $escape = "\\") {}
 
@@ -276,8 +263,6 @@ function str_getcsv ($input, $delimiter = ",", $enclosure = '"', $escape = "\\")
  * STR_PAD_RIGHT.
  * </p>
  * @return string the padded string.
- * @since 4.0.1
- * @since 5.0
  */
 function str_pad ($input, $pad_length, $pad_string = " ", $pad_type = STR_PAD_RIGHT) {}
 
@@ -288,8 +273,6 @@ function str_pad ($input, $pad_length, $pad_string = " ", $pad_type = STR_PAD_RI
  * @param string $str The input string.
  * @param string $character_mask [optional]
  * @return string the modified string.
- * @since 4.0
- * @since 5.0
  */
 function chop ($str, $character_mask = null) {}
 
@@ -299,8 +282,6 @@ function chop ($str, $character_mask = null) {}
  * Note: This function is case-sensitive. For case-insensitive searches, use stristr().
  * Note: If you only want to determine if a particular needle occurs within haystack,
  * use the faster and less memory intensive function strpos() instead.
- * @since 4.0
- * @since 5.0
  *
  * @param string $haystack The input string.
  * @param mixed $needle If needle is not a string, it is converted to an integer and applied as the ordinal value of a character.
@@ -333,8 +314,6 @@ function strchr ($haystack, $needle, $part = false) {}
  * @param mixed $_ [optional] 
  * @return string a string produced according to the formatting string
  * format.
- * @since 4.0
- * @since 5.0
  */
 function sprintf ($format, $args = null, $_ = null) {}
 
@@ -349,8 +328,6 @@ function sprintf ($format, $args = null, $_ = null) {}
  * </p>
  * @param mixed $_ [optional] 
  * @return int the length of the outputted string.
- * @since 4.0
- * @since 5.0
  */
 function printf ($format, $args = null, $_ = null) {}
 
@@ -364,8 +341,6 @@ function printf ($format, $args = null, $_ = null) {}
  * @param array $args <p>
  * </p>
  * @return int the length of the outputted string.
- * @since 4.1
- * @since 5.0
  */
 function vprintf ($format, array $args) {}
 
@@ -381,8 +356,6 @@ function vprintf ($format, array $args) {}
  * @return string Return array values as a formatted string according to
  * format (which is described in the documentation
  * for sprintf).
- * @since 4.1
- * @since 5.0
  */
 function vsprintf ($format, array $args) {}
 
@@ -398,7 +371,6 @@ function vsprintf ($format, array $args) {}
  * </p>
  * @param mixed $_ [optional] 
  * @return int the length of the string written.
- * @since 5.0
  */
 function fprintf ($handle, $format, $args = null, $_ = null) {}
 
@@ -414,7 +386,6 @@ function fprintf ($handle, $format, $args = null, $_ = null) {}
  * @param array $args <p>
  * </p>
  * @return int the length of the outputted string.
- * @since 5.0
  */
 function vfprintf ($handle, $format, array $args) {}
 
@@ -441,8 +412,6 @@ function vfprintf ($handle, $format, array $args) {}
  * will be returned as an array. Otherwise, if optional parameters are passed,
  * the function will return the number of assigned values. The optional
  * parameters must be passed by reference.
- * @since 4.0.1
- * @since 5.0
  */
 function sscanf ($str, $format, &...$_) {}
 
@@ -459,8 +428,6 @@ function sscanf ($str, $format, &...$_) {}
  * returned as an array. Otherwise, if optional parameters are passed, the
  * function will return the number of assigned values. The optional
  * parameters must be passed by reference.
- * @since 4.0.1
- * @since 5.0
  */
 function fscanf ($handle, $format, &$_ = null) {}
 
@@ -494,8 +461,6 @@ function fscanf ($handle, $format, &$_ = null) {}
  * <p>
  * If the component parameter is specified a
  * string is returned instead of an array.
- * @since 4.0
- * @since 5.0
  */
 function parse_url ($url, $component = -1) {}
 
@@ -514,8 +479,6 @@ function parse_url ($url, $component = -1) {}
  * differs from the RFC 1738 encoding (see
  * rawurlencode) in that for historical reasons, spaces
  * are encoded as plus (+) signs.
- * @since 4.0
- * @since 5.0
  */
 function urlencode ($str) {}
 
@@ -526,8 +489,6 @@ function urlencode ($str) {}
  * The string to be decoded.
  * </p>
  * @return string the decoded string.
- * @since 4.0
- * @since 5.0
  */
 function urldecode ($str) {}
 
@@ -544,8 +505,6 @@ function urldecode ($str) {}
  * protecting literal characters from being interpreted as special URL
  * delimiters, and for protecting URLs from being mangled by transmission
  * media with character conversions (like some email systems).
- * @since 4.0
- * @since 5.0
  */
 function rawurlencode ($str) {}
 
@@ -556,8 +515,6 @@ function rawurlencode ($str) {}
  * The URL to be decoded.
  * </p>
  * @return string the decoded URL, as a string.
- * @since 4.0
- * @since 5.0
  */
 function rawurldecode ($str) {}
 
@@ -593,7 +550,6 @@ function rawurldecode ($str) {}
  *  which implies that spaces are encoded as plus (+) signs.
  *  <p>If enc_type is PHP_QUERY_RFC3986, then encoding is performed according to » RFC 3986, and spaces will be percent encoded (%20).
  * @return string a URL-encoded string.
- * @since 5.0
  */
 function http_build_query ($query_data, $numeric_prefix = null, $arg_separator = null, $enc_type = PHP_QUERY_RFC1738){}
 
@@ -604,8 +560,6 @@ function http_build_query ($query_data, $numeric_prefix = null, $arg_separator =
  * The symbolic link path.
  * </p>
  * @return string|false the contents of the symbolic link path or false on error.
- * @since 4.0
- * @since 5.0
  */
 function readlink ($path) {}
 
@@ -618,8 +572,6 @@ function readlink ($path) {}
  * @return int linkinfo returns the st_dev field
  * of the Unix C stat structure returned by the lstat
  * system call. Returns 0 or false in case of error.
- * @since 4.0
- * @since 5.0
  */
 function linkinfo ($path) {}
 
@@ -633,8 +585,6 @@ function linkinfo ($path) {}
  * The link name.
  * </p>
  * @return bool true on success or false on failure.
- * @since 4.0
- * @since 5.0
  */
 function symlink ($target, $link) {}
 
@@ -644,8 +594,6 @@ function symlink ($target, $link) {}
  * @param string $target Target of the link.
  * @param string $link The link name.
  * @return bool true on success or false on failure.
- * @since 4.0
- * @since 5.0
  */
 function link (string $target , string $link):bool {}
 
@@ -657,8 +605,6 @@ function link (string $target , string $link):bool {}
  * </p>
  * @param resource $context [optional] &note.context-support;
  * @return bool true on success or false on failure.
- * @since 4.0
- * @since 5.0
  */
 function unlink ($filename, $context = null):bool {}
 
@@ -691,8 +637,6 @@ function unlink ($filename, $context = null):bool {}
  * <p>
  * To get the output of the executed command, be sure to set and use the
  * output parameter.
- * @since 4.0
- * @since 5.0
  */
 function exec ($command, array &$output = null, &$return_var = null) {}
 
@@ -709,8 +653,6 @@ function exec ($command, array &$output = null, &$return_var = null) {}
  * </p>
  * @return string|false the last line of the command output on success, and false
  * on failure.
- * @since 4.0
- * @since 5.0
  */
 function system ($command, &$return_var = null) {}
 
@@ -721,8 +663,6 @@ function system ($command, &$return_var = null) {}
  * The command that will be escaped.
  * </p>
  * @return string The escaped string.
- * @since 4.0
- * @since 5.0
  */
 function escapeshellcmd ($command) {}
 
@@ -733,8 +673,6 @@ function escapeshellcmd ($command) {}
  * The argument that will be escaped.
  * </p>
  * @return string The escaped string.
- * @since 4.0.3
- * @since 5.0
  */
 function escapeshellarg ($arg) {}
 
@@ -749,8 +687,6 @@ function escapeshellarg ($arg) {}
  * return status of the Unix command will be placed here.
  * </p>
  * @return void 
- * @since 4.0
- * @since 5.0
  */
 function passthru ($command, &$return_var = null) {}
 
@@ -761,8 +697,6 @@ function passthru ($command, &$return_var = null) {}
  * The command that will be executed.
  * </p>
  * @return string|null The output from the executed command or NULL if an error occurred or the command produces no output.
- * @since 4.0
- * @since 5.0
  */
 function shell_exec ($cmd) {}
 
@@ -826,8 +760,6 @@ function shell_exec ($cmd) {}
  * @return resource|false a resource representing the process, which should be freed using
  * proc_close when you are finished with it. On failure
  * returns false.
- * @since 4.3
- * @since 5.0
  */
 function proc_open ($cmd, array $descriptorspec, array &$pipes, $cwd = null, array $env = null, array $other_options = null) {}
 
@@ -839,8 +771,6 @@ function proc_open ($cmd, array $descriptorspec, array &$pipes, $cwd = null, arr
  * be closed.
  * </p>
  * @return int the termination status of the process that was run.
- * @since 4.3
- * @since 5.0
  */
 function proc_close ($process) {}
 
@@ -858,7 +788,6 @@ function proc_close ($process) {}
  * SIGTERM.
  * </p>
  * @return bool the termination status of the process that was run.
- * @since 5.0
  */
 function proc_terminate ($process, $signal = 15) {}
 
@@ -936,7 +865,6 @@ function proc_terminate ($process, $signal = 15) {}
  * execution (only meaningful if stopped is true).
  * </td>
  * </tr>
- * @since 5.0
  */
 function proc_get_status ($process) {}
 
@@ -950,7 +878,6 @@ function proc_get_status ($process) {}
  * @return bool true on success or false on failure.
  * If an error occurs, like the user lacks permission to change the priority, 
  * an error of level E_WARNING is also generated.
- * @since 5.0
  */
 function proc_nice ($increment) {}
 
@@ -961,8 +888,6 @@ function proc_nice ($increment) {}
  * @param int $max [optional]
  * @return int A pseudo random value between min
  * (or 0) and max (or getrandmax, inclusive).
- * @since 4.0
- * @since 5.0
  */
 function rand ($min = 0, $max = null) {}
 
@@ -979,8 +904,6 @@ function rand ($min = 0, $max = null) {}
  * Use one of the following constants to specify the implementation of the algorithm to use.
  * </p>
  * @return void 
- * @since 4.0
- * @since 5.0
  */
 function srand ($seed = null, $mode = MT_RAND_MT19937) {}
 
@@ -988,8 +911,6 @@ function srand ($seed = null, $mode = MT_RAND_MT19937) {}
  * Show largest possible random value
  * @link https://php.net/manual/en/function.getrandmax.php
  * @return int The largest possible random value returned by rand
- * @since 4.0
- * @since 5.0
  */
 function getrandmax () {}
 
@@ -1004,8 +925,6 @@ function getrandmax () {}
  * </p>
  * @return int A random integer value between min (or 0)
  * and max (or mt_getrandmax, inclusive)
- * @since 4.0
- * @since 5.0
  */
 function mt_rand ($min = 0, $max = null) {}
 
@@ -1019,8 +938,6 @@ function mt_rand ($min = 0, $max = null) {}
  * Use one of the following constants to specify the implementation of the algorithm to use.
  * </p>
  * @return void 
- * @since 4.0
- * @since 5.0
  */
 function mt_srand ($seed = null, $mode = MT_RAND_MT19937) {}
 
@@ -1028,8 +945,6 @@ function mt_srand ($seed = null, $mode = MT_RAND_MT19937) {}
  * Show largest possible random value
  * @link https://php.net/manual/en/function.mt-getrandmax.php
  * @return int the maximum random value returned by mt_rand
- * @since 4.0
- * @since 5.0
  */
 function mt_getrandmax () {}
 
@@ -1045,8 +960,6 @@ function mt_getrandmax () {}
  * </p>
  * @return int the port number, or false if service or
  * protocol is not found.
- * @since 4.0
- * @since 5.0
  */
 function getservbyname ($service, $protocol) {}
 
@@ -1061,8 +974,6 @@ function getservbyname ($service, $protocol) {}
  * or "udp" (in lowercase).
  * </p>
  * @return string the Internet service name as a string.
- * @since 4.0
- * @since 5.0
  */
 function getservbyport ($port, $protocol) {}
 
@@ -1073,8 +984,6 @@ function getservbyport ($port, $protocol) {}
  * The protocol name.
  * </p>
  * @return int the protocol number or -1 if the protocol is not found.
- * @since 4.0
- * @since 5.0
  */
 function getprotobyname ($name) {}
 
@@ -1085,8 +994,6 @@ function getprotobyname ($name) {}
  * The protocol number.
  * </p>
  * @return string the protocol name as a string.
- * @since 4.0
- * @since 5.0
  */
 function getprotobynumber ($number) {}
 
@@ -1094,8 +1001,6 @@ function getprotobynumber ($number) {}
  * Gets PHP script owner's UID
  * @link https://php.net/manual/en/function.getmyuid.php
  * @return int the user ID of the current script, or false on error.
- * @since 4.0
- * @since 5.0
  */
 function getmyuid () {}
 
@@ -1103,8 +1008,6 @@ function getmyuid () {}
  * Get PHP script owner's GID
  * @link https://php.net/manual/en/function.getmygid.php
  * @return int the group ID of the current script, or false on error.
- * @since 4.1
- * @since 5.0
  */
 function getmygid () {}
 
@@ -1112,8 +1015,6 @@ function getmygid () {}
  * Gets PHP's process ID
  * @link https://php.net/manual/en/function.getmypid.php
  * @return int the current PHP process ID, or false on error.
- * @since 4.0
- * @since 5.0
  */
 function getmypid () {}
 
@@ -1121,7 +1022,5 @@ function getmypid () {}
  * Gets the inode of the current script
  * @link https://php.net/manual/en/function.getmyinode.php
  * @return int the current script's inode as an integer, or false on error.
- * @since 4.0
- * @since 5.0
  */
 function getmyinode () {}
