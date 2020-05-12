@@ -268,17 +268,18 @@ function error_reporting ($level = null) {}
  * The name of the constant.
  * </p>
  * @param mixed $value <p>
- * The value of the constant; only scalar and null values are allowed. 
- * Scalar values are integer, 
- * float, string or boolean values. It is 
- * possible to define resource constants, however it is not recommended 
- * and may cause unpredictable behavior.
+ * The value of the constant.
+ * In PHP 5, value must be a scalar value (integer, float, string, boolean, or null).
+ * In PHP 7, array values are also accepted.
+ * It is possible to define resource constants,
+ * however it is not recommended and may cause unpredictable behavior.
  * </p>
  * @param bool $case_insensitive [optional] <p>
  * If set to true, the constant will be defined case-insensitive. 
  * The default behavior is case-sensitive; i.e. 
  * CONSTANT and Constant represent
  * different values.
+ * Defining case-insensitive constants is deprecated as of PHP 7.3.0.
  * </p>
  * <p>
  * Case-insensitive constants are stored as lower-case.
@@ -971,6 +972,15 @@ function gc_enable () {}
 function gc_disable () {}
 
 /**
+ * Gets information about the garbage collector
+ * @link https://php.net/manual/en/function.gc-status.php
+ * @return array associative array with the following elements:
+ * <ul>
+ * <li>"runs"</li>
+ * <li>"collected"</li>
+ * <li>"threshold"</li>
+ * <li>"roots"</li>
+ * </ul>
  * @since 7.3
  */
 function gc_status () {}
