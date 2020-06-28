@@ -1632,6 +1632,13 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      * @return array
      * @since 7.4
      */
+    public function __debugInfo(){}
+
+
+    /**
+     * @return array
+     * @since 7.4
+     */
     public function __serialize(): array {}
 
     /**
@@ -1897,6 +1904,13 @@ class ArrayIterator implements SeekableIterator, ArrayAccess, Serializable, Coun
      * @return array
      * @since 7.4
      */
+    public function __debugInfo(){}
+
+
+    /**
+     * @return array
+     * @since 7.4
+     */
     public function __serialize(): array {}
 
     /**
@@ -1932,15 +1946,3 @@ class RecursiveArrayIterator extends ArrayIterator implements RecursiveIterator 
      */
     public function getChildren() { }
 }
-
-/**
- * @since 7.1
- */
-define ("MT_RAND_MT19937", 0);
-
-/**
- * @since 7.1
- */
-define ("MT_RAND_PHP", 1);
-// End of SPL v.0.2
-?>

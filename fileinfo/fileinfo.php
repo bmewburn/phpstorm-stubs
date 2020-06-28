@@ -76,7 +76,7 @@ class finfo  {
  * A .mime and/or .mgc suffix is added if
  * needed.
  * </p>
- * @return resource a magic database resource on success or <b>FALSE</b> on failure.
+ * @return resource|false a magic database resource on success or <b>FALSE</b> on failure.
  */
 function finfo_open ($options = null, $magic_file = null) {}
 
@@ -144,14 +144,14 @@ function finfo_file ($finfo, $file_name, $options = null, $context = null) {}
  * </p>
  * @param resource $context [optional] <p>
  * </p>
- * @param string $string 
+ * @param string $string
  * @param int $options [optional] One or disjunction of more
  * <a href="https://php.net/manual/en/fileinfo.constants.php">Fileinfo</a> constants.
- * @param resource $context [optional] 
+ * @param resource $context [optional]
  * @return string a textual description of the <i>string</i>
  * argument, or <b>FALSE</b> if an error occurred.
  */
-function finfo_buffer ($finfo ,$string, $options = FILEINFO_NONE, $context = NULL) {}
+function finfo_buffer ($finfo ,$string, $options = FILEINFO_NONE, $context = null) {}
 
 /**
  * Detect MIME Content-type for a file
@@ -159,7 +159,7 @@ function finfo_buffer ($finfo ,$string, $options = FILEINFO_NONE, $context = NUL
  * @param string $filename <p>
  * Path to the tested file.
  * </p>
- * @return string the content type in MIME format, like 
+ * @return string the content type in MIME format, like
  * text/plain or application/octet-stream.
  */
 function mime_content_type ($filename) {}

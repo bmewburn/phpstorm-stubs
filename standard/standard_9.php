@@ -14,10 +14,10 @@ define ("ARRAY_FILTER_USE_KEY", 2);
 /**
  * Merge two or more arrays recursively
  * @link https://php.net/manual/en/function.array-merge-recursive.php
- * @param array $_ [optional] Variable list of arrays to recursively merge.
+ * @param array ...$arrays [optional] Variable list of arrays to recursively merge.
  * @return array An array of values resulted from merging the arguments together.
  */
-function array_merge_recursive(array $_ = null) { }
+function array_merge_recursive(array ...$arrays) { }
 
 
 /**
@@ -31,14 +31,12 @@ function array_merge_recursive(array $_ = null) { }
  * @param array $array <p>
  * The array in which elements are replaced.
  * </p>
- * @param array $array1 <p>
+ * @param array ...$arrays <p>
  * The array from which elements will be extracted.
  * </p>
- * @param array $array2 [optional]
- * @param array $_ [optional]
  * @return array or null if an error occurs.
  */
-function array_replace(array $array, array $array1, array $array2 = null, array $_ = null) { }
+function array_replace(array $array, array ...$arrays) { }
 
 /**
  * Replaces elements from passed arrays into the first array recursively
@@ -46,14 +44,12 @@ function array_replace(array $array, array $array1, array $array2 = null, array 
  * @param array $array <p>
  * The array in which elements are replaced.
  * </p>
- * @param array $array1 <p>
+ * @param array ...$arrays <p>
  * The array from which elements will be extracted.
  * </p>
- * @param array $array2 [optional]
- * @param array $_ [optional]
  * @return array an array, or &null; if an error occurs.
  */
-function array_replace_recursive(array $array, array $array1, array $array2 = null, array $_ = null) { }
+function array_replace_recursive(array $array, array ...$arrays) { }
 
 /**
  * Return all the keys of an array
@@ -126,7 +122,9 @@ function array_reverse(array $array, $preserve_keys = null) { }
  * The input array.
  * </p>
  * @param callback $function <p>
- * The callback function.
+ * The callback function. Signature is <pre>callback ( mixed $carry , mixed $item ) : mixed</pre>
+ * <blockquote>mixed <var>$carry</var> <p>The return value of the previous iteration; on the first iteration it holds the value of <var>$initial</var>.</p></blockquote>
+ * <blockquote>mixed <var>$item</var> <p>Holds the current iteration value of the <var>$input</var></p></blockquote>
  * </p>
  * @param mixed $initial [optional] <p>
  * If the optional initial is available, it will
@@ -138,6 +136,13 @@ function array_reverse(array $array, $preserve_keys = null) { }
  * <p>
  * If the array is empty and initial is not passed,
  * array_reduce returns null.
+ * </p>
+ * <br/>
+ * <p>
+ * Example use:
+ * <blockquote><pre>array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax . ", {$dx}"; }, '1')  // Returns '1, 2, 3, 4'</pre></blockquote>
+ * <blockquote><pre>array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax + (int)$dx; }, 1)  // Returns 10</pre></blockquote>
+ * <br/>
  * @meta
  */
 function array_reduce(array $input, $function, $initial = null) { }
@@ -734,9 +739,9 @@ function array_key_last(array $array) { }
 /**
  * &Alias; <function>current</function>
  * @link https://php.net/manual/en/function.pos.php
- * @param $arg
+ * @param array $arg
  */
-function pos(&$arg) { }
+function pos($arg) { }
 
 /**
  * &Alias; <function>count</function>

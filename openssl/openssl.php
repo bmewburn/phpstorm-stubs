@@ -608,7 +608,7 @@ function openssl_digest($data, $method, $raw_output = false) { }
  * The cipher method. For a list of available cipher methods, use {@see openssl_get_cipher_methods()}.
  * </p>
  * @param string $key <p>
- * The key. 
+ * The key.
  * </p>
  * @param int $options [optional] <p>
  * options is a bitwise disjunction of the flags OPENSSL_RAW_DATA and OPENSSL_ZERO_PADDING.
@@ -623,7 +623,7 @@ function openssl_digest($data, $method, $raw_output = false) { }
  * </p>
  * @return string|false the encrypted string on success or false on failure.
  */
-function openssl_encrypt($data, $method, $key, $options = 0, $iv = "", &$tag = NULL, $aad = "", $tag_length = 16) { }
+function openssl_encrypt($data, $method, $key, $options = 0, $iv = "", &$tag = null, $aad = "", $tag_length = 16) { }
 
 /**
  * Decrypts data
@@ -708,7 +708,7 @@ function openssl_verify($data, $signature, $pub_key_id, $signature_alg = OPENSSL
  * <i>sealed_data</i>, and the envelope keys in
  * <i>env_keys</i>.
  */
-function openssl_seal($data, &$sealed_data, array &$env_keys, array $pub_key_ids, $method = null, $iv = '') { }
+function openssl_seal($data, &$sealed_data, array &$env_keys, array $pub_key_ids, $method = null, &$iv = '') { }
 
 /**
  * Open sealed data
@@ -1153,38 +1153,3 @@ define('OPENSSL_DEFAULT_STREAM_CIPHERS', "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDS
 "ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:" .
 "DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:" .
 "AES256-GCM-SHA384:AES128:AES256:HIGH:!SSLv2:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!RC4:!ADH");
-
-define ('STREAM_CRYPTO_METHOD_SSLv2_CLIENT', 3);
-define ('STREAM_CRYPTO_METHOD_SSLv3_CLIENT', 5);
-define ('STREAM_CRYPTO_METHOD_SSLv23_CLIENT', 57);
-define ('STREAM_CRYPTO_METHOD_TLS_CLIENT', 121);
-define ('STREAM_CRYPTO_METHOD_SSLv2_SERVER', 2);
-define ('STREAM_CRYPTO_METHOD_SSLv3_SERVER', 4);
-define ('STREAM_CRYPTO_METHOD_SSLv23_SERVER', 120);
-define ('STREAM_CRYPTO_METHOD_TLS_SERVER', 120);
-
-define("STREAM_CRYPTO_METHOD_ANY_CLIENT", 127);
-define("STREAM_CRYPTO_METHOD_ANY_SERVER", 126);
-define("STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT", 9);
-define("STREAM_CRYPTO_METHOD_TLSv1_0_SERVER", 8);
-define("STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT", 17);
-define("STREAM_CRYPTO_METHOD_TLSv1_1_SERVER", 16);
-define("STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT", 33);
-define("STREAM_CRYPTO_METHOD_TLSv1_2_SERVER", 32);
-/**
- * @since 7.4
- */
-define("STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT", 65);
-/**
- * @since 7.4
- */
-define("STREAM_CRYPTO_METHOD_TLSv1_3_SERVER", 64);
-
-define("STREAM_CRYPTO_PROTO_SSLv3", 4);
-define("STREAM_CRYPTO_PROTO_TLSv1_0", 8);
-define("STREAM_CRYPTO_PROTO_TLSv1_1", 16);
-define("STREAM_CRYPTO_PROTO_TLSv1_2", 32);
-/**
- * @since 7.4
- */
-define("STREAM_CRYPTO_PROTO_TLSv1_3", 64);

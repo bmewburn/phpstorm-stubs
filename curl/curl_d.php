@@ -288,7 +288,7 @@ define ('CURLOPT_PASSWDFUNCTION', -1);
 /**
  * <b>TRUE</b> to follow any "<em>Location: </em>" header that the server sends as part of the HTTP header
  * (note this is recursive, PHP will follow as many "Location: " headers that it is sent, unless <b>CURLOPT_MAXREDIRS</b> is set).
- * This constant is not available when open_basedir 
+ * This constant is not available when open_basedir
  * or safe_mode are enabled.
  * @link https://www.php.net/manual/en/function.curl-setopt.php
  */
@@ -658,7 +658,6 @@ define ('CURLOPT_CONNECTTIMEOUT_MS', 156);
  * Alternate certificates to verify against can be specified with the <b>CURLOPT_CAINFO</b> option or
  * a certificate directory can be specified with the <b>CURLOPT_CAPATH</b> option.
  * @link https://www.php.net/manual/en/function.curl-setopt.php
- * @since 7.1
  */
 define ('CURLOPT_SSL_VERIFYPEER', 64);
 /**
@@ -1735,7 +1734,7 @@ define ('CURLOPT_FTP_SKIP_PASV_IP', 137);
  * <b>TRUE</b> to disable support for the @ prefix for uploading files in <b>CURLOPT_POSTFIELDS</b>,
  * which means that values starting with @ can be safely passed as fields.
  * @link https://www.php.net/manual/en/function.curl-setopt.php
- * @since 5.5.0
+ * @since 5.5
  * @deprecated 7.0 Use <b>CURLFile</b> for uploads instead.
  */
 define ('CURLOPT_SAFE_UPLOAD', -1);
@@ -3826,3 +3825,9 @@ define('CURLINFO_PROXY_SSL_VERIFYRESULT', 2097199);
  * @since 7.3
  */
 define('CURLOPT_HTTP09_ALLOWED', 285);
+
+/**
+ * @link https://www.php.net/manual/en/curl.constants.php
+ * @since 7.3.6
+ */
+define('CURL_VERSION_ALTSVC', 16777216);
