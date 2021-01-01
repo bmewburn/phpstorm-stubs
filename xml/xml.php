@@ -18,7 +18,7 @@
  * encodings are ISO-8859-1, UTF-8 and
  * US-ASCII.
  * </p>
- * @return resource|false a resource handle for the new XML parser.
+ * @return resource|false|XmlParser a resource handle for the new XML parser.
  */
 function xml_parser_create ($encoding = null) {}
 
@@ -41,7 +41,7 @@ function xml_parser_create ($encoding = null) {}
  * handler functions will consist of namespace and tag name separated by
  * the string specified in <i>separator</i>.
  * </p>
- * @return resource|false a resource handle for the new XML parser.
+ * @return resource|false|XmlParser a resource handle for the new XML parser.
  */
 function xml_parser_create_ns ($encoding = null, $separator = ':') {}
 
@@ -51,7 +51,7 @@ function xml_parser_create_ns ($encoding = null, $separator = ':') {}
  * @param resource $parser <p>
  * A reference to the XML parser to use inside the object.
  * </p>
- * @param object $object <p>
+ * @param object &$object <p>
  * The object where to use the XML parser.
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
@@ -345,10 +345,10 @@ function xml_parse ($parser, $data, $is_final = false) {}
  * @param string $data <p>
  * A string containing the XML data.
  * </p>
- * @param array $values <p>
+ * @param array &$values <p>
  * An array containing the values of the XML data
  * </p>
- * @param array $index [optional] <p>
+ * @param array &$index [optional] <p>
  * An array containing pointers to the location of the appropriate values in the $values.
  * </p>
  * @return int <b>xml_parse_into_struct</b> returns 0 for failure and 1 for
@@ -537,6 +537,8 @@ define ('XML_OPTION_SKIP_WHITE', 4);
  * @link https://php.net/manual/en/xml.constants.php
  */
 define ('XML_SAX_IMPL', "libxml");
+
+class XmlParser{}
 
 // End of xml v.
 ?>

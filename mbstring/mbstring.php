@@ -184,7 +184,7 @@ function mb_substitute_character ($substrchar = null) {}
  * @param string $encoded_string <p>
  * The URL encoded data.
  * </p>
- * @param array $result [optional] <p>
+ * @param array &$result [optional] <p>
  * An array containing decoded and character encoded converted values.
  * </p>
  * @return bool true on success or false on failure.
@@ -751,16 +751,17 @@ function mb_decode_mimeheader ($str) {}
  * from-coding. When from_encoding
  * is omitted, detect_order is used.
  * </p>
- * @param string|array|object $vars <p>
- * vars is the reference to the
- * variable being converted. String, Array and Object are accepted.
+ * @param string|array|object &$var var is the reference to the variable being converted.
+ * @param string|array|object &...$vars <p>
+ * vars is the other references to the
+ * variables being converted. String, Array and Object are accepted.
  * mb_convert_variables assumes all parameters
  * have the same encoding.
  * </p>
  * @return string|false The character encoding before conversion for success,
  * or false for failure.
  */
-function mb_convert_variables ($to_encoding, $from_encoding, &...$vars) {}
+function mb_convert_variables ($to, $from, &$var, &...$vars) {}
 
 /**
  * Encode character to HTML numeric string reference
@@ -794,7 +795,7 @@ function mb_encode_numericentity ($str, array $convmap, $encoding = null, $is_he
  * </p>
  * @return string|false|null The converted string.
  */
-function mb_decode_numericentity ($str, array $convmap, $encoding = null, $is_hex = false) {}
+function mb_decode_numericentity ($string, array $convmap, $encoding = null, $is_hex = false) {}
 
 /**
  * Send encoded mail
@@ -892,7 +893,7 @@ function mb_regex_set_options ($options = null) {}
  * @param string $string <p>
  * The search string.
  * </p>
- * @param string[] $regs [optional] <p>
+ * @param string[] &$regs [optional] <p>
  * Contains a substring of the matched string.
  * </p>
  * @return int
@@ -908,7 +909,7 @@ function mb_ereg ($pattern, $string, array &$regs = null) {}
  * @param string $string <p>
  * The string being searched.
  * </p>
- * @param string[] $regs [optional] <p>
+ * @param string[] &$regs [optional] <p>
  * Contains a substring of the matched string.
  * </p>
  * @return int
@@ -1135,22 +1136,25 @@ function mb_ereg_search_setpos ($position) {}
 /**
  * @param $encoding [optional]
  * @deprecated 7.3 use {@see mb_regex_encoding} instead
+ * @removed 8.0
  */
 function mbregex_encoding ($encoding) {}
 
 /**
- * @param $pattern
- * @param $string
- * @param $registers [optional]
+ * @param string $pattern
+ * @param string $string
+ * @param array &$registers [optional]
  * @deprecated 7.3 use {@see mb_ereg} instead
+ * @removed 8.0
  */
 function mbereg ($pattern, $string, &$registers) {}
 
 /**
- * @param $pattern
- * @param $string
- * @param $registers [optional]
+ * @param string $pattern
+ * @param string $string
+ * @param array &$registers [optional]
  * @deprecated 7.3 use {@see mb_eregi} instead
+ * @removed 8.0
  */
 function mberegi ($pattern, $string, &$registers) {}
 
@@ -1160,6 +1164,7 @@ function mberegi ($pattern, $string, &$registers) {}
  * @param $string
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_replace} instead
+ * @removed 8.0
  */
 function mbereg_replace ($pattern, $replacement, $string, $option) {}
 
@@ -1170,6 +1175,7 @@ function mbereg_replace ($pattern, $replacement, $string, $option) {}
  * @param string $option
  * @return string
  * @deprecated 7.3 use {@see mb_eregi_replace} instead
+ * @removed 8.0
  */
 function mberegi_replace ($pattern, $replacement, $string, string $option = "msri") {}
 
@@ -1178,6 +1184,7 @@ function mberegi_replace ($pattern, $replacement, $string, string $option = "msr
  * @param $string
  * @param $limit [optional]
  * @deprecated 7.3 use {@see mb_split} instead
+ * @removed 8.0
  */
 function mbsplit ($pattern, $string, $limit) {}
 
@@ -1186,6 +1193,7 @@ function mbsplit ($pattern, $string, $limit) {}
  * @param $string
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_match} instead
+ * @removed 8.0
  */
 function mbereg_match ($pattern, $string, $option) {}
 
@@ -1193,6 +1201,7 @@ function mbereg_match ($pattern, $string, $option) {}
  * @param $pattern [optional]
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_search} instead
+ * @removed 8.0
  */
 function mbereg_search ($pattern, $option) {}
 
@@ -1200,6 +1209,7 @@ function mbereg_search ($pattern, $option) {}
  * @param $pattern [optional]
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_search_pos} instead
+ * @removed 8.0
  */
 function mbereg_search_pos ($pattern, $option) {}
 
@@ -1207,6 +1217,7 @@ function mbereg_search_pos ($pattern, $option) {}
  * @param $pattern [optional]
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_search_regs} instead
+ * @removed 8.0
  */
 function mbereg_search_regs ($pattern, $option) {}
 
@@ -1215,16 +1226,19 @@ function mbereg_search_regs ($pattern, $option) {}
  * @param $pattern [optional]
  * @param $option [optional]
  * @deprecated 7.3 use {@see mb_ereg_search_init} instead
+ * @removed 8.0
  */
 function mbereg_search_init ($string, $pattern, $option) {}
 
 /**
  * @deprecated 7.3 use {@see mb_ereg_search_getregs} instead
+ * @removed 8.0
  */
 function mbereg_search_getregs () {}
 
 /**
  * @deprecated 7.3 use {@see mb_ereg_search_getpos} instead
+ * @removed 8.0
  */
 function mbereg_search_getpos () {}
 
@@ -1281,8 +1295,17 @@ function mbereg_search_setpos ($position) {}
  */
 function mb_str_split ($str, $split_length = 1, $encoding = null) {}
 
+/**
+ * @removed 8.0
+ */
 define ('MB_OVERLOAD_MAIL', 1);
+/**
+ * @removed 8.0
+ */
 define ('MB_OVERLOAD_STRING', 2);
+/**
+ * @removed 8.0
+ */
 define ('MB_OVERLOAD_REGEX', 4);
 define ('MB_CASE_UPPER', 0);
 define ('MB_CASE_LOWER', 1);
@@ -1311,7 +1334,7 @@ define('MB_CASE_FOLD_SIMPLE', 7);
 /**
  * @since 7.4
  */
-define('MB_ONIGURUMA_VERSION', '6.9.1');
+define('MB_ONIGURUMA_VERSION', '6.9.5');
 
 // End of mbstring v.
 ?>

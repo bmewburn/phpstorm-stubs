@@ -86,6 +86,7 @@ function exif_read_data ($stream, $sections = null, $arrays = false, $thumbnail 
  * @param $arrays [optional]
  * @param $thumbnail [optional]
  * @deprecated 7.2 Use {@see exif_read_data()} instead.
+ * @removed 8.0
  */
 function read_exif_data ($filename, $sections = null, $arrays = false, $thumbnail = false) {}
 
@@ -108,13 +109,13 @@ function exif_tagname ($index) {}
  * Since 7.2.0 this can either be a path to the file (stream wrappers are also supported as usual)
  * or a stream resource.
  * </p>
- * @param int $width [optional] <p>
+ * @param int &$width [optional] <p>
  * The return width of the returned thumbnail.
  * </p>
- * @param int $height [optional] <p>
+ * @param int &$height [optional] <p>
  * The returned height of the returned thumbnail.
  * </p>
- * @param int $imagetype [optional] <p>
+ * @param int &$imagetype [optional] <p>
  * The returned image type of the returned thumbnail. This is either
  * TIFF or JPEG.
  * </p>

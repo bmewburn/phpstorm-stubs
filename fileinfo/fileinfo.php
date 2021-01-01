@@ -5,10 +5,10 @@
 class finfo  {
 
 	/**
-	 * @param $options [optional]
-	 * @param $arg [optional]
+	 * @param int $options [optional]
+	 * @param string $arg [optional]
 	 */
-	public function finfo ($options, $arg) {}
+	public function __construct ($options, $arg) {}
 
 	/**
 	 * (PHP &gt;= 5.3.0, PECL fileinfo &gt;= 0.1.0)<br/>
@@ -148,7 +148,7 @@ function finfo_file ($finfo, $file_name, $options = null, $context = null) {}
  * @param int $options [optional] One or disjunction of more
  * <a href="https://php.net/manual/en/fileinfo.constants.php">Fileinfo</a> constants.
  * @param resource $context [optional]
- * @return string a textual description of the <i>string</i>
+ * @return string|false a textual description of the <i>string</i>
  * argument, or <b>FALSE</b> if an error occurred.
  */
 function finfo_buffer ($finfo ,$string, $options = FILEINFO_NONE, $context = null) {}

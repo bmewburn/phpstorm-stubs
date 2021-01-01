@@ -186,7 +186,7 @@ function unpack ($format, $data, $offset = 0) {}
  * another browser's info) by passing this parameter.
  * </p>
  * <p>
- * You can bypass this parameter with a &null; value.
+ * You can bypass this parameter with a null value.
  * </p>
  * @param bool $return_array [optional] <p>
  * If set to true, this function will return an array
@@ -338,6 +338,15 @@ function readdir ($dir_handle = null) {}
  * parameters, or <b>FALSE</b> in case of another error
  */
 function dir ($directory, $context = null) {}
+
+/**
+ * Alias of dir()
+ * @param resource $context
+ * @since 8.0
+ * @return Directory|false
+ * @see dir()
+ */
+function getdir(string $path, $context = null) {}
 
 /**
  * List files and directories inside the specified path
@@ -543,10 +552,10 @@ function is_writable ($filename) {}
 function is_writeable ($filename) {}
 
 /**
- * Tells whether a file exists and is readable
+ * Tells whether a file or a directory exists and is readable
  * @link https://php.net/manual/en/function.is-readable.php
  * @param string $filename <p>
- * Path to the file.
+ * Path to the file or directory.
  * </p>
  * @return bool true if the file or directory specified by
  * filename exists and is readable, false otherwise.
@@ -861,7 +870,8 @@ function disk_free_space ($directory) {}
  * Alias of disk_free_space()
  * @link https://php.net/manual/en/function.diskfreespace.php
  * @see disk_free_space
- * @param $directory
+ * @param string $directory
+ * @return float|false
  */
 function diskfreespace ($directory) {}
 
@@ -961,6 +971,7 @@ function mail ($to, $subject, $message, $additional_headers = null, $additional_
  * </p>
  * @return int The hash value of addr.
  * @deprecated 7.4
+ * @removed 8.0
  */
 function ezmlm_hash ($addr) {}
 

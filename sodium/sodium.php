@@ -73,9 +73,9 @@ const SODIUM_CRYPTO_PWHASH_OPSLIMIT_MODERATE = 3;
 const SODIUM_CRYPTO_PWHASH_MEMLIMIT_MODERATE = 268435456;
 const SODIUM_CRYPTO_PWHASH_OPSLIMIT_SENSITIVE = 4;
 const SODIUM_CRYPTO_PWHASH_MEMLIMIT_SENSITIVE = 1073741824;
-const SODIUM_LIBRARY_VERSION="1.0.17";
+const SODIUM_LIBRARY_VERSION="1.0.18";
 const SODIUM_LIBRARY_MAJOR_VERSION = 10;
-const SODIUM_LIBRARY_MINOR_VERSION = 2;
+const SODIUM_LIBRARY_MINOR_VERSION = 3;
 const SODIUM_CRYPTO_KDF_BYTES_MIN = 16;
 const SODIUM_CRYPTO_KDF_BYTES_MAX = 64;
 const SODIUM_CRYPTO_KDF_CONTEXTBYTES = 8;
@@ -735,18 +735,16 @@ function sodium_crypto_pwhash_str_verify(
  * @param string $salt
  * @param int $opslimit
  * @param int $memlimit
- * @param int $alg [optional]
  * @return string
  * @throws SodiumException
  * @since 7.2
  */
 function sodium_crypto_pwhash_scryptsalsa208sha256(
-    int $out_len,
-    string $passwd,
+    int $length,
+    string $passwdord,
     string $salt,
     int $opslimit,
-    int $memlimit,
-    int $alg
+    int $memlimit
 ): string {
     unset($out_len, $passwd, $salt, $opslimit, $memlimit);
     return '';
@@ -1276,14 +1274,13 @@ function sodium_version_string(): string {
 /**
  * Scalar multiplication of the base point and your key
  * @link https://www.php.net/manual/en/function.sodium-crypto-scalarmult-base
- * @param string $string_1
- * @param string $string_2
+ * @param string $key
  * @return string
  * @throws SodiumException
  * @since 7.2
  */
 function sodium_crypto_scalarmult_base(
-    string $string_1, string $string_2
+    string $key
 ): string {
     unset($sk);
 
@@ -1373,7 +1370,7 @@ function sodium_crypto_secretstream_xchacha20poly1305_keygen(): string {}
 function sodium_crypto_secretstream_xchacha20poly1305_init_push(string $key): array{}
 
 /**
- * @param string $state
+ * @param string &$state
  * @param string $msg
  * @param string $ad [optional]
  * @param int $tag [optional]

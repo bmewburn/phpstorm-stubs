@@ -305,8 +305,8 @@ function is_nan ($val) {}
 /**
  * Integer division
  * @link https://php.net/manual/en/function.intdiv.php
- * @param $dividend <p>Number to be divided.</p>
- * @param $divisor <p>Number which divides the <b><i>dividend</i></b></p>
+ * @param int $dividend <p>Number to be divided.</p>
+ * @param int $divisor <p>Number which divides the <b><i>dividend</i></b></p>
  * @return int <p>
  * If divisor is 0, a {@link DivisionByZeroError} exception is thrown.
  * If the <b><i>dividend</i></b> is <b>PHP_INT_MIN</b> and the <b><i>divisor</i></b> is -1,
@@ -637,6 +637,14 @@ function number_format ($number , $decimals = 0 , $dec_point = '.' , $thousands_
 function fmod ($x, $y) {}
 
 /**
+ * Performs a floating-point division under
+ * IEEE 754 semantics. Division by zero is considered well-defined and
+ * will return one of Inf, -Inf or NaN.
+ * @since 8.0
+ */
+function fdiv(float $dividend, float $divisor): float {}
+
+/**
  * Converts a packed internet address to a human readable representation
  * @link https://php.net/manual/en/function.inet-ntop.php
  * @param string $in_addr <p>
@@ -718,7 +726,7 @@ function putenv ($setting) {}
  * For example, an longopts element "opt" recognizes an
  * option --opt.
  * Prior to PHP5.3.0 this parameter was only available on few systems
- * @param int $optind If the optind parameter is present, then the index where argument parsing stopped will be written to this variable.
+ * @param int &$optind If the optind parameter is present, then the index where argument parsing stopped will be written to this variable.
  * @return string[]|false[]|false This function will return an array of option / argument pairs or false on
  * failure.
  */
@@ -837,6 +845,7 @@ function quoted_printable_encode ($str) {}
  * </p>
  * @return string the converted string.
  * @deprecated 7.4
+ * @removed 8.0
  */
 function convert_cyr_string ($str, $from, $to) {}
 
@@ -873,7 +882,7 @@ function get_cfg_var ($option) {}
  * &Alias; <function>set_magic_quotes_runtime</function>
  * @link https://php.net/manual/en/function.magic-quotes-runtime.php
  * @deprecated 5.3
- * @param $new_setting
+ * @param bool $new_setting
  * @removed 7.0
  */
 function magic_quotes_runtime ($new_setting) {}
@@ -896,6 +905,7 @@ function set_magic_quotes_runtime ($new_setting) {}
  * @link https://php.net/manual/en/function.get-magic-quotes-gpc.php
  * @return int 0 if magic quotes gpc are off, 1 otherwise.
  * @deprecated 7.4
+ * @removed 8.0
  */
 function get_magic_quotes_gpc () {}
 

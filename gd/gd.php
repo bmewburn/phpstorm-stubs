@@ -933,11 +933,11 @@ function imagecreatefromgd2part ($filename, $srcX, $srcY, $width, $height) {}
  * @link https://php.net/manual/en/function.imagepng.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * <p>
- * &null; is invalid if the quality and
+ * null is invalid if the quality and
  * filters arguments are not used.
  * </p>
  * @param int $quality [optional] <p>
@@ -959,7 +959,7 @@ function imagepng ($image, $filename = null, $quality = null, $filters = null) {
  * @link https://php.net/manual/en/function.imagewebp.php
  * @param resource $image
  * @param string $to [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @param int $quality [optional] <p>
@@ -975,7 +975,7 @@ function imagewebp ($image, $to = null, $quality = 80) {}
  * @link https://php.net/manual/en/function.imagegif.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @return bool true on success or false on failure.
@@ -987,12 +987,12 @@ function imagegif ($image, $filename = null) {}
  * @link https://php.net/manual/en/function.imagejpeg.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * <p>
  * To skip this argument in order to provide the
- * quality parameter, use &null;.
+ * quality parameter, use null.
  * </p>
  * @param int $quality [optional] <p>
  * quality is optional, and ranges from 0 (worst
@@ -1008,7 +1008,7 @@ function imagejpeg ($image, $filename = null, $quality = null) {}
  * @link https://php.net/manual/en/function.imagewbmp.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @param int $foreground [optional] <p>
@@ -1026,7 +1026,7 @@ function imagewbmp ($image, $filename = null, $foreground = null) {}
  * @link https://php.net/manual/en/function.imagegd.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @return bool true on success or false on failure.
@@ -1038,7 +1038,7 @@ function imagegd ($image, $filename = null) {}
  * @link https://php.net/manual/en/function.imagegd2.php
  * @param resource $image
  * @param string $filename [optional] <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @param int $chunk_size [optional] <p>
@@ -1101,7 +1101,7 @@ function imagefill ($image, $x, $y, $color) {}
  * An array containing the x and y
  * coordinates of the polygons vertices consecutively.
  * </p>
- * @param int $num_points <p>
+ * @param int $num_points [optional] <p>
  * Total number of vertices, which must be at least 3.
  * </p>
  * @param int $color <p>
@@ -1286,7 +1286,7 @@ function imageloadfont ($file) {}
  * <td>= y1</td>
  * </tr>
  * </p>
- * @param int $num_points <p>
+ * @param int $num_points [optional] <p>
  * Total number of points (vertices).
  * </p>
  * @param int $color <p>
@@ -1982,6 +1982,7 @@ function imagetypes () {}
  * </p>
  * @return bool true on success or false on failure.
  * @deprecated 7.2 Use imagecreatefromjpeg() and imagewbmp() instead
+ * @removed 8.0
  */
 function jpeg2wbmp ($jpegname, $wbmpname, $dest_height, $dest_width, $threshold) {}
 
@@ -2005,6 +2006,7 @@ function jpeg2wbmp ($jpegname, $wbmpname, $dest_height, $dest_width, $threshold)
  * </p>
  * @return bool true on success or false on failure.
  * @deprecated 7.2 Use imagecreatefrompng() and imagewbmp() instead
+ * @removed 8.0
  */
 function png2wbmp ($pngname, $wbmpname, $dest_height, $dest_width, $threshold) {}
 
@@ -2021,6 +2023,7 @@ function png2wbmp ($pngname, $wbmpname, $dest_height, $dest_width, $threshold) {
  * </p>
  * @return bool true on success or false on failure.
  * @deprecated 7.3 Use imagewbmp() instead
+ * @removed 8.0
  */
 function image2wbmp ($image, $filename = null, $threshold = null) {}
 
@@ -2040,10 +2043,10 @@ function imagelayereffect ($image, $effect) {}
 /**
  * Makes the colors of the palette version of an image more closely match the true color version
  * @link https://php.net/manual/en/function.imagecolormatch.php
- * @param $image1 resource <p>
+ * @param resource $image1 <p>
  * A truecolor image link resource.
  * </p>
- * @param $image2 resource <p>
+ * @param resource $image2 <p>
  * A palette image link resource pointing to an image that has the same
  * size as image1.
  * </p>
@@ -2056,7 +2059,7 @@ function imagecolormatch ($image1, $image2) {}
  * @link https://php.net/manual/en/function.imagexbm.php
  * @param resource $image
  * @param string $filename <p>
- * The path to save the file to. If not set or &null;, the raw image stream
+ * The path to save the file to. If not set or null, the raw image stream
  * will be outputted directly.
  * </p>
  * @param int $foreground [optional] <p>
@@ -2159,7 +2162,7 @@ function imagegetclip ($im) {}
  * points[2]	= x1
  * points[3]	= y1
  * </pre>
- * @param int $num_points Total number of points (vertices).
+ * @param int $num_points [optional] Total number of points (vertices).
  * @param int $color A color identifier created with {@see imagecolorallocate()}.
  * @return bool Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * @link https://php.net/manual/en/function.imageopenpolygon.php
@@ -2803,7 +2806,7 @@ define('IMG_TGA', 128);
  * such as {@link https://secure.php.net/manual/en/function.imagecreatetruecolor.php imagecreatetruecolor()}.</p>
  * @param array $affine <p>Array with keys 0 to 5.</p>
  * @param array $clip [optional] <p>Array with keys "x", "y", "width" and "height".</p>
- * @return resource|bool Return affined image resource on success or FALSE on failure.
+ * @return resource|false Return affined image resource on success or FALSE on failure.
  */
 function imageaffine($image, $affine, $clip = null) {}
 
@@ -2835,7 +2838,7 @@ function imageaffinematrixget ($type, $options = null) {}
  * An image resource, returned by one of the image creation functions, such as {@link https://secure.php.net/manual/en/function.imagecreatetruecolor.php imagecreatetruecolor()}.
  * </p>
  * @param array $rect <p>Array with keys "x", "y", "width" and "height".</p>
- * @return resource|bool Return cropped image resource on success or FALSE on failure.
+ * @return resource|false Return cropped image resource on success or FALSE on failure.
  * @since 5.5
  */
 function imagecrop ($image, $rect) {}
@@ -2859,7 +2862,7 @@ function imagecrop ($image, $rect) {}
  * @return resource|bool Return cropped image resource on success or <b>FALSE</b> on failure.
  * @since 5.5
  */
-function imagecropauto ($image, $mode = -1, $threshold = .5, $color = -1) {}
+function imagecropauto ($image, $mode = IMG_CROP_DEFAULT, $threshold = .5, $color = -1) {}
 
 /**
  * Flips an image using a given mode

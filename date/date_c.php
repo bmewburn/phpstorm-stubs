@@ -308,6 +308,12 @@ class DateTimeImmutable implements DateTimeInterface {
      * @return void Initializes a DateTime object.
      */
     public function __wakeup() { }
+
+    /**
+     * @return DateTimeImmutable
+     * @since 8.0
+     */
+    public static function createFromInterface(DateTimeInterface $object){}
 }
 
 
@@ -365,7 +371,7 @@ class DateTime implements DateTimeInterface {
      * Alter the timestamp of a DateTime object by incrementing or decrementing
      * in a format accepted by strtotime().
      * @param string $modify A date/time string. Valid formats are explained in <a href="https://secure.php.net/manual/en/datetime.formats.php">Date and Time Formats</a>.
-     * @return static Returns the DateTime object for method chaining or FALSE on failure.
+     * @return static|false Returns the DateTime object for method chaining or FALSE on failure.
      * @link https://php.net/manual/en/datetime.modify.php
      */
     public function modify ($modify) {}
@@ -495,6 +501,12 @@ class DateTime implements DateTimeInterface {
      * @return DateTime <p>Returns a new instance of a DateTime object.</p>
      */
     public static function __set_state ($array) {}
+
+    /**
+     * @return DateTime
+     * @since 8.0
+     */
+    public static function createFromInterface(DateTimeInterface $object){}
 }
 
 /**
@@ -676,7 +688,7 @@ class DateInterval {
  * Representation of date period.
  * @link https://php.net/manual/en/class.dateperiod.php
  */
-class DatePeriod implements Traversable {
+class DatePeriod implements IteratorAggregate {
     const EXCLUDE_START_DATE = 1;
 
     /**
@@ -776,4 +788,9 @@ class DatePeriod implements Traversable {
      * @since 7.3.4
      */
     public function getRecurrences () {}
+
+    /**
+     * @since 8.0
+     */
+    public function getIterator(){}
 }

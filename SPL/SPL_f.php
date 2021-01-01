@@ -50,10 +50,11 @@ function spl_autoload_extensions ($file_extensions = null) {}
  * spl_autoload will be registered.
  * </p>
  * @param bool $throw This parameter specifies whether spl_autoload_register() should throw exceptions when the
- * autoload_function cannot be registered.
+ * autoload_function cannot be registered. Ignored since since 8.0.
  * @param bool $prepend If true, spl_autoload_register() will prepend the autoloader on the autoload stack instead of
  * appending it.
  * @return bool true on success or false on failure.
+ * @throws TypeError Since 8.0.
  * @since 5.1.2
  */
 function spl_autoload_register ($autoload_function = null, $throw = true, $prepend = false) {}
@@ -101,7 +102,7 @@ function spl_autoload_call ($class_name) {}
  * the __autoload magic
  * method.
  * </p>
- * @return array An array on success, or false on error.
+ * @return string[]|false An array on success, or false on error.
  */
 function class_parents ($class, $autoload = null) {}
 
@@ -116,7 +117,7 @@ function class_parents ($class, $autoload = null) {}
  * the __autoload magic
  * method.
  * </p>
- * @return array An array on success, or false on error.
+ * @return string[]|false An array on success, or false on error.
  */
 function class_implements ($class, $autoload = null) {}
 
@@ -176,7 +177,7 @@ function iterator_apply (Traversable $iterator, $function, array $args = null) {
  * Return the traits used by the given class
  * @param mixed $class An object (class instance) or a string (class name).
  * @param bool $autoload Whether to allow this function to load the class automatically through the __autoload() magic method.
- * @return array Array on success, or FALSE on error.
+ * @return string[]|false An array on success, or false on error.
  * @link https://php.net/manual/en/function.class-uses.php
  * @see class_parents()
  * @see get_declared_traits()

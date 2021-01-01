@@ -13,7 +13,7 @@
  * You can set this optional parameter to 1, if you
  * want to search for the file in the include_path too.
  * </p>
- * @return int the number of (uncompressed) bytes read from the file, or FALSE on error
+ * @return int|false the number of (uncompressed) bytes read from the file, or FALSE on error
  */
 function readgzfile ($filename, $use_include_path = 0) {}
 
@@ -92,6 +92,7 @@ function gzgets ($zp, $length) {}
  * </p>
  * @return string|false The uncompressed and striped string, or <b>FALSE</b> on error.
  * @deprecated 7.3
+ * @removed 8.0
  */
 function gzgetss ($zp, $length, $allowable_tags = null) {}
 
@@ -215,9 +216,9 @@ function gzwrite ($zp, $string, $length = null) {}
 /**
  * Alias of <b>gzwrite</b>
  * @link https://php.net/manual/en/function.gzputs.php
- * @param $fp
- * @param $str
- * @param $length [optional]
+ * @param resource $fp
+ * @param string $str
+ * @param int $length [optional]
  */
 function gzputs ($fp, $str, $length) {}
 
@@ -410,7 +411,7 @@ function ob_gzhandler ($buffer, $mode) {}
  * <b>ZLIB_RLE</b>, <b>ZLIB_FIXED</b> or <b>ZLIB_DEFAULT_STRATEGY</b> (the
  * default). <b>dictionary</b>A string or an array of strings of the preset
  * dictionary (default: no preset dictionary).</p>
- * @return resource|false <p>
+ * @return resource|false|DeflateContext <p>
  * Returns a deflate context resource (zlib.deflate) on success, or
  * <b>FALSE</b> on failure.
  * </p>
@@ -444,7 +445,7 @@ function deflate_add ($context, $data, $flush_mode = ZLIB_SYNC_FLUSH) {}
 /**
  * Initialize an incremental inflate context
  * @link https://php.net/manual/en/function.inflate-init.php
- * @param $encoding <p>
+ * @param int $encoding <p>
  * One of the ZLIB_ENCODING_* constants.
  * </p>
  * @param array $options [optional] <p>
@@ -456,7 +457,7 @@ function deflate_add ($context, $data, $flush_mode = ZLIB_SYNC_FLUSH) {}
  * <b>ZLIB_RLE</b>, <b>ZLIB_FIXED</b> or <b>ZLIB_DEFAULT_STRATEGY</b> (the
  * default). <b>dictionary</b>A string or an array of strings of the preset
  * dictionary (default: no preset dictionary).</p>
- * @return resource|false <p>
+ * @return resource|false|InflateContext <p>
  * Returns an inflate context resource (zlib.inflate) on success, or
  * <b>FALSE</b> on failure.
  * </p>
@@ -500,6 +501,16 @@ function inflate_get_read_len ($context){}
  * @since 7.2
  */
 function  inflate_get_status($context) {}
+
+/**
+ * @since 8.0
+ */
+class InflateContext{}
+
+/**
+ * @since 8.0
+ */
+class DeflateContext{}
 
 define ('FORCE_GZIP', 31);
 define ('FORCE_DEFLATE', 15);
