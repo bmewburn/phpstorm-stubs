@@ -14,11 +14,11 @@
     "inspection"
   ],
   "require-dev": {
-    "php": "^7.4",
-    "nikic/php-parser": "^4",
-    "phpdocumentor/reflection-docblock": "dev-master",
-    "phpunit/phpunit": "^9",
-    "friendsofphp/php-cs-fixer": "^2.16"
+    "php": "^8.0",
+    "nikic/php-parser": "@stable",
+    "phpdocumentor/reflection-docblock": "@stable",
+    "phpunit/phpunit": "@stable",
+    "friendsofphp/php-cs-fixer": "@stable"
   },
   "autoload": {
     "files": ["PhpStormStubsMap.php"]

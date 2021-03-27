@@ -1,5 +1,8 @@
 <?php
 
+use JetBrains\PhpStorm\Deprecated;
+use JetBrains\PhpStorm\Pure;
+
 /**
  * The ReflectionType class reports information about a function's parameters.
  *
@@ -15,9 +18,7 @@ abstract class ReflectionType implements Stringable
      * @return bool Returns {@see true} if {@see null} is allowed, otherwise {@see false}
      * @since 7.0
      */
-    public function allowsNull()
-    {
-    }
+    public function allowsNull() {}
 
     /**
      * Checks if it is a built-in type
@@ -28,9 +29,8 @@ abstract class ReflectionType implements Stringable
      * @removed 8.0 this method has been removed from the {@see ReflectionType}
      * class and moved to the {@see ReflectionNamedType} child.
      */
-    public function isBuiltin()
-    {
-    }
+    #[Pure]
+    public function isBuiltin() {}
 
     /**
      * To string
@@ -38,18 +38,15 @@ abstract class ReflectionType implements Stringable
      * @link https://php.net/manual/en/reflectiontype.tostring.php
      * @return string Returns the type of the parameter.
      * @since 7.0
-     * @deprecated 7.1 Please use {@see ReflectionType::getName()} instead.
+     * @see ReflectionNamedType::getName()
      */
-    public function __toString()
-    {
-    }
+    #[Deprecated(since: "7.1")]
+    public function __toString() {}
 
     /**
      * Cloning of this class is prohibited
      *
      * @return void
      */
-    final private function __clone()
-    {
-    }
+    final private function __clone() {}
 }

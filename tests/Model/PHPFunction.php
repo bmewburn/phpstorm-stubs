@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace StubTests\Model;
 
 use Exception;
+use JetBrains\PhpStorm\Deprecated;
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
-use phpDocumentor\Reflection\Type;
+use phpDocumentor\Reflection\Types\Compound;
+use PhpParser\Comment\Doc;
 use PhpParser\Node\FunctionLike;
 use PhpParser\Node\Stmt\Function_;
-use PhpParser\NodeAbstract;
 use ReflectionFunction;
 use stdClass;
 use StubTests\Parsers\DocFactoryProvider;
@@ -23,39 +25,56 @@ class PHPFunction extends BasePHPElement
      */
     public array $parameters = [];
 
-    public ?Type $returnTag = null;
+    /** @var string[] */
+    public array $returnTypesFromPhpDoc = [];
 
-    public ?NodeAbstract $returnType = null;
+    /** @var string[] */
+    public array $returnTypesFromAttribute = [];
+
+    /** @var string[] */
+    public array $returnTypesFromSignature = [];
 
     /**
-     * @param ReflectionFunction $function
-     * @return $this
+     * @param ReflectionFunction $reflectionObject
+     * @return static
      */
-    public function readObjectFromReflection($function): self
+    public function readObjectFromReflection($reflectionObject): static
     {
-        $this->name = $function->name;
-        $this->is_deprecated = $function->isDeprecated();
-        foreach ($function->getParameters() as $parameter) {
+        $this->name = $reflectionObject->name;
+        $this->is_deprecated = $reflectionObject->isDeprecated();
+        foreach ($reflectionObject->getParameters() as $parameter) {
             $this->parameters[] = (new PHPParameter())->readObjectFromReflection($parameter);
         }
+        array_push($this->returnTypesFromSignature, ...self::getReflectionTypeAsArray($reflectionObject->getReturnType()));
         return $this;
     }
 
     /**
      * @param Function_ $node
-     * @return $this
+     * @return static
      */
-    public function readObjectFromStubNode($node): self
+    public function readObjectFromStubNode($node): static
     {
-        $functionName = $this->getFQN($node);
+        $functionName = self::getFQN($node);
         $this->name = $functionName;
-
+        $typesFromAttribute = self::findTypesFromAttribute($node->attrGroups);
+        $this->availableVersionsRangeFromAttribute = self::findAvailableVersionsRangeFromAttribute($node->attrGroups);
+        $this->returnTypesFromAttribute = $typesFromAttribute;
+        array_push($this->returnTypesFromSignature, ...self::convertParsedTypeToArray($node->getReturnType()));
         foreach ($node->getParams() as $parameter) {
             $this->parameters[] = (new PHPParameter())->readObjectFromStubNode($parameter);
         }
 
-        $this->returnType = $node->getReturnType();
         $this->collectTags($node);
+        foreach ($this->parameters as $parameter) {
+            $relatedParamTags = array_filter($this->paramTags, fn (Param $tag) => $tag->getVariableName() === $parameter->name);
+            /** @var Param $relatedParamTag */
+            $relatedParamTag = array_pop($relatedParamTags);
+            if (!empty($relatedParamTag)){
+                $parameter->isOptional = $parameter->isOptional || str_contains((string)$relatedParamTag->getDescription(), '[optional]');
+            }
+        }
+
         $this->checkDeprecationTag($node);
         $this->checkReturnTag($node);
         return $this;
@@ -63,17 +82,10 @@ class PHPFunction extends BasePHPElement
 
     protected function checkDeprecationTag(FunctionLike $node): void
     {
-        if ($node->getDocComment() !== null) {
-            try {
-                $phpDoc = DocFactoryProvider::getDocFactory()->create($node->getDocComment()->getText());
-                if (empty($phpDoc->getTagsByName('deprecated'))) {
-                    $this->is_deprecated = false;
-                } else {
-                    $this->is_deprecated = true;
-                }
-            } catch (Exception $e) {
-                $this->parseError = $e;
-            }
+        try {
+            $this->is_deprecated = self::hasDeprecatedAttribute($node) || self::hasDeprecatedDocTag($node->getDocComment());
+        } catch (Exception $e) {
+            $this->parseError = $e;
         }
     }
 
@@ -84,7 +96,14 @@ class PHPFunction extends BasePHPElement
                 $phpDoc = DocFactoryProvider::getDocFactory()->create($node->getDocComment()->getText());
                 $parsedReturnTag = $phpDoc->getTagsByName('return');
                 if (!empty($parsedReturnTag) && $parsedReturnTag[0] instanceof Return_) {
-                    $this->returnTag = $parsedReturnTag[0]->getType();
+                    $returnType = $parsedReturnTag[0]->getType();
+                    if ($returnType instanceof Compound) {
+                        foreach ($returnType as $nextType) {
+                            array_push($this->returnTypesFromPhpDoc, (string)$nextType);
+                        }
+                    } else {
+                        array_push($this->returnTypesFromPhpDoc, (string)$returnType);
+                    }
                 }
             } catch (Exception $e) {
                 $this->parseError = $e;
@@ -92,36 +111,50 @@ class PHPFunction extends BasePHPElement
         }
     }
 
-    public function readMutedProblems($jsonData): void
+    public function readMutedProblems(stdClass|array $jsonData): void
     {
-        /**@var stdClass $function */
         foreach ($jsonData as $function) {
-            if ($function->name === $this->name && !empty($function->problems)) {
-                /**@var stdClass $problem */
-                foreach ($function->problems as $problem) {
-                    switch ($problem) {
-                        case 'parameter mismatch':
-                            $this->mutedProblems[] = StubProblemType::FUNCTION_PARAMETER_MISMATCH;
-                            break;
-                        case 'missing function':
-                            $this->mutedProblems[] = StubProblemType::STUB_IS_MISSED;
-                            break;
-                        case 'deprecated function':
-                            $this->mutedProblems[] = StubProblemType::FUNCTION_IS_DEPRECATED;
-                            break;
-                        case 'absent in meta':
-                            $this->mutedProblems[] = StubProblemType::ABSENT_IN_META;
-                            break;
-                        case 'has return typehint':
-                            $this->mutedProblems[] = StubProblemType::FUNCTION_HAS_RETURN_TYPEHINT;
-                            break;
-                        default:
-                            $this->mutedProblems[] = -1;
-                            break;
+            if ($function->name === $this->name) {
+                if (!empty($function->problems)) {
+                    foreach ($function->problems as $problem) {
+                        $this->mutedProblems[] = match ($problem) {
+                            'parameter mismatch' => StubProblemType::FUNCTION_PARAMETER_MISMATCH,
+                            'missing function' => StubProblemType::STUB_IS_MISSED,
+                            'deprecated function' => StubProblemType::FUNCTION_IS_DEPRECATED,
+                            'absent in meta' => StubProblemType::ABSENT_IN_META,
+                            'has return typehint' => StubProblemType::FUNCTION_HAS_RETURN_TYPEHINT,
+                            'wrong return typehint' => StubProblemType::WRONG_RETURN_TYPEHINT,
+                            'has duplicate in stubs' => StubProblemType::HAS_DUPLICATION,
+                            'has type mismatch in signature and phpdoc' => StubProblemType::TYPE_IN_PHPDOC_DIFFERS_FROM_SIGNATURE,
+                            default => -1
+                        };
+                    }
+                }
+                if (!empty($function->parameters)) {
+                    foreach ($this->parameters as $parameter) {
+                        $parameter->readMutedProblems($function->parameters);
                     }
                 }
                 return;
             }
         }
+    }
+
+    private static function hasDeprecatedAttribute(FunctionLike $node): bool
+    {
+        foreach ($node->getAttrGroups() as $group) {
+            foreach ($group->attrs as $attr) {
+                if ($attr->name == Deprecated::class) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static function hasDeprecatedDocTag(?Doc $docComment): bool
+    {
+        $phpDoc = $docComment != null ? DocFactoryProvider::getDocFactory()->create($docComment->getText()) : null;
+        return $phpDoc != null && !empty($phpDoc->getTagsByName('deprecated'));
     }
 }

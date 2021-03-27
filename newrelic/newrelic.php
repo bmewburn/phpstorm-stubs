@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\Deprecated;
+
 /**
  * Add a custom parameter to the current web transaction with the specified value.
  *
@@ -17,7 +20,7 @@
  * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api#api-custom-param
  *
  * @param string                       $key
- * @param bool|float|integer|string $value
+ * @param bool|float|int|string $value
  *
  * @return bool
  */
@@ -58,9 +61,6 @@ function newrelic_background_job($flag = true) {}
 /**
  * Enables the capturing of URL parameters for displaying in transaction traces. This will override the
  * newrelic.capture_params setting.
- *
- * Note: Until version 2.1.3 of the PHP agent, this function was called newrelic_enable_params. Although this alias
- * still exists, it is deprecated and will be removed in the future.
  *
  * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api#api-capture-params
  *
@@ -106,9 +106,7 @@ function newrelic_custom_metric($metricName, $value) {}
  */
 function newrelic_disable_autorum() {}
 
-/**
- * @deprecated use newrelic_capture_params() instead
- */
+#[Deprecated(replacement: 'newrelic_capture_params()')]
 function newrelic_enable_params() {}
 
 /**
@@ -155,7 +153,7 @@ function newrelic_end_transaction($ignore = false) {}
  * Returns the JavaScript string to inject at the very end of the HTML output for page load timing (sometimes referred
  * to as real user monitoring or RUM).
  *
- * If includeTags omitted or set to true, the returned JavaScript string will be enclosed in a <script> tag.
+ * If includeTags omitted or set to true, the returned JavaScript string will be enclosed in a "script"-tag.
  *
  * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api#api-rum-footer
  *
@@ -163,13 +161,13 @@ function newrelic_end_transaction($ignore = false) {}
  *
  * @return string
  */
-function newrelic_get_browser_timing_footer ($includeTags = true) {}
+function newrelic_get_browser_timing_footer($includeTags = true) {}
 
 /**
  * Returns the JavaScript string to inject as part of the header for page load timing (sometimes referred to as real
  * user monitoring or RUM).
  *
- * If includeTags are omitted or set to true, the returned JavaScript string will be enclosed in a <script> tag.
+ * If includeTags are omitted or set to true, the returned JavaScript string will be enclosed in a "script"-tag.
  *
  * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api#api-rum-header
  *
@@ -255,10 +253,10 @@ function newrelic_name_transaction($name) {}
  *
  * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api#api-notice-error
  *
- * @param string|integer   $messageOrUnused    [optional]
+ * @param string|int   $messageOrUnused    [optional]
  * @param Exception|string $exceptionOrMessage [optional]
  * @param string           $unused2            [optional]
- * @param integer          $unused3            [optional]
+ * @param int          $unused3            [optional]
  * @param mixed            $unused4            [optional]
  *
  * @return void
@@ -451,3 +449,4 @@ function newrelic_start_transaction($appName, $license = null) {}
  * @return mixed|false The return value of $callback is returned. If an error occurs, false is returned, and
  * an error at the E_WARNING level will be triggered
  */
+function newrelic_record_datastore_segment(callable $func, array $parameters) {}

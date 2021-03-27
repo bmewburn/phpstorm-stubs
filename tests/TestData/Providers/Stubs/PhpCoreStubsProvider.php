@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace StubTests\TestData\Providers;
+namespace StubTests\TestData\Providers\Stubs;
 
 use StubTests\Parsers\Utils;
 
@@ -150,6 +150,5 @@ class PhpCoreStubsProvider
         $coreStubs[] = self::$StubDirectoryMap['BUNDLED'];
         $coreStubs[] = self::$StubDirectoryMap['EXTERNAL'];
         return Utils::flattenArray($coreStubs, false);
-
     }
 }

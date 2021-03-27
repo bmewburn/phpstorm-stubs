@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace StubTests\Model;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use PhpParser\Node\Stmt\ClassMethod;
 use ReflectionMethod;
 use stdClass;
@@ -10,26 +11,26 @@ use stdClass;
 class PHPMethod extends PHPFunction
 {
     public string $access;
-    public bool $is_static;
-    public bool $is_final;
+    public bool $isStatic;
+    public bool $isFinal;
     public string $parentName;
 
     /**
-     * @param ReflectionMethod $method
-     * @return $this
+     * @param ReflectionMethod $reflectionObject
+     * @return static
      */
-    public function readObjectFromReflection($method): self
+    public function readObjectFromReflection($reflectionObject): static
     {
-        $this->name = $method->name;
-        $this->is_static = $method->isStatic();
-        $this->is_final = $method->isFinal();
-        foreach ($method->getParameters() as $parameter) {
+        $this->name = $reflectionObject->name;
+        $this->isStatic = $reflectionObject->isStatic();
+        $this->isFinal = $reflectionObject->isFinal();
+        foreach ($reflectionObject->getParameters() as $parameter) {
             $this->parameters[] = (new PHPParameter())->readObjectFromReflection($parameter);
         }
 
-        if ($method->isProtected()) {
+        if ($reflectionObject->isProtected()) {
             $access = 'protected';
-        } elseif ($method->isPrivate()) {
+        } elseif ($reflectionObject->isPrivate()) {
             $access = 'private';
         } else {
             $access = 'public';
@@ -40,14 +41,16 @@ class PHPMethod extends PHPFunction
 
     /**
      * @param ClassMethod $node
-     * @return $this
+     * @return static
      */
-    public function readObjectFromStubNode($node): self
+    public function readObjectFromStubNode($node): static
     {
-        $this->parentName = $this->getFQN($node->getAttribute('parent'));
+        $this->parentName = self::getFQN($node->getAttribute('parent'));
         $this->name = $node->name->name;
-
-        $this->returnType = $node->getReturnType();
+        $typesFromAttribute = self::findTypesFromAttribute($node->attrGroups);
+        $this->availableVersionsRangeFromAttribute = self::findAvailableVersionsRangeFromAttribute($node->attrGroups);
+        $this->returnTypesFromAttribute = $typesFromAttribute;
+        array_push($this->returnTypesFromSignature, ...self::convertParsedTypeToArray($node->getReturnType()));
         $this->collectTags($node);
         $this->checkDeprecationTag($node);
         $this->checkReturnTag($node);
@@ -59,8 +62,17 @@ class PHPMethod extends PHPFunction
             $this->parameters[] = (new PHPParameter())->readObjectFromStubNode($parameter);
         }
 
-        $this->is_final = $node->isFinal();
-        $this->is_static = $node->isStatic();
+        foreach ($this->parameters as $parameter) {
+            $relatedParamTags = array_filter($this->paramTags, fn (Param $tag) => $tag->getVariableName() === $parameter->name);
+            /** @var Param $relatedParamTag */
+            $relatedParamTag = array_pop($relatedParamTags);
+            if (!empty($relatedParamTag)) {
+                $parameter->isOptional = $parameter->isOptional || str_contains((string)$relatedParamTag->getDescription(), '[optional]');
+            }
+        }
+
+        $this->isFinal = $node->isFinal();
+        $this->isStatic = $node->isStatic();
         if ($node->isPrivate()) {
             $this->access = 'private';
         } elseif ($node->isProtected()) {
@@ -71,31 +83,25 @@ class PHPMethod extends PHPFunction
         return $this;
     }
 
-    public function readMutedProblems($jsonData): void
+    public function readMutedProblems(stdClass|array $jsonData): void
     {
-        /**@var stdClass $method */
         foreach ($jsonData as $method) {
             if ($method->name === $this->name) {
                 if (!empty($method->problems)) {
-                    /**@var stdClass $problem */
                     foreach ($method->problems as $problem) {
-                        switch ($problem) {
-                            case 'parameter mismatch':
-                                $this->mutedProblems[] = StubProblemType::FUNCTION_PARAMETER_MISMATCH;
-                                break;
-                            case 'missing method':
-                                $this->mutedProblems[] = StubProblemType::STUB_IS_MISSED;
-                                break;
-                            case 'deprecated method':
-                                $this->mutedProblems[] = StubProblemType::FUNCTION_IS_DEPRECATED;
-                                break;
-                            case 'absent in meta':
-                                $this->mutedProblems[] = StubProblemType::ABSENT_IN_META;
-                                break;
-                            default:
-                                $this->mutedProblems[] = -1;
-                                break;
-                        }
+                        $this->mutedProblems[] = match ($problem) {
+                            'parameter mismatch' => StubProblemType::FUNCTION_PARAMETER_MISMATCH,
+                            'missing method' => StubProblemType::STUB_IS_MISSED,
+                            'deprecated method' => StubProblemType::FUNCTION_IS_DEPRECATED,
+                            'absent in meta' => StubProblemType::ABSENT_IN_META,
+                            'wrong access' => StubProblemType::FUNCTION_ACCESS,
+                            'has duplicate in stubs' => StubProblemType::HAS_DUPLICATION,
+                            'has nullable typehint' => StubProblemType::HAS_NULLABLE_TYPEHINT,
+                            'has union typehint' => StubProblemType::HAS_UNION_TYPEHINT,
+                            'wrong return typehint' => StubProblemType::WRONG_RETURN_TYPEHINT,
+                            'has type mismatch in signature and phpdoc' => StubProblemType::TYPE_IN_PHPDOC_DIFFERS_FROM_SIGNATURE,
+                            default => -1
+                        };
                     }
                 }
                 if (!empty($method->parameters)) {

@@ -1,41 +1,45 @@
 <?php
 
+use JetBrains\PhpStorm\Deprecated;
+use JetBrains\PhpStorm\Immutable;
+use JetBrains\PhpStorm\Pure;
+
 /**
  * The <b>ReflectionFunction</b> class reports
  * information about a function.
- *
- * @property-read string $name Function name, same as calling the {@see ReflectionFunction::getName()} method
  *
  * @link https://php.net/manual/en/class.reflectionfunction.php
  */
 class ReflectionFunction extends ReflectionFunctionAbstract
 {
     /**
+     * @var string Function name, same as calling the {@see ReflectionFunction::getName()} method
+     */
+    #[Immutable]
+    public $name;
+
+    /**
      * Indicates deprecated functions.
      *
      * @link https://www.php.net/manual/en/class.reflectionfunction.php#reflectionfunction.constants.is-deprecated
      */
-    const IS_DEPRECATED = 2048;
+    public const IS_DEPRECATED = 2048;
 
     /**
      * Constructs a ReflectionFunction object
      *
      * @link https://php.net/manual/en/reflectionfunction.construct.php
-     * @param string|Closure $name The name of the function to reflect or a closure.
+     * @param string|Closure $function The name of the function to reflect or a closure.
      * @throws ReflectionException if the function does not exist.
      */
-    public function __construct($name)
-    {
-    }
+    public function __construct($function) {}
 
     /**
      * Returns the string representation of the ReflectionFunction object.
      *
      * @link https://php.net/manual/en/reflectionfunction.tostring.php
      */
-    public function __toString()
-    {
-    }
+    public function __toString() {}
 
     /**
      * Exports function
@@ -47,23 +51,20 @@ class ReflectionFunction extends ReflectionFunctionAbstract
      * will do the opposite.
      * @return string|null If the $return parameter is set to {@see true}, then
      * the export is returned as a string, otherwise {@see null} is returned.
-     * @deprecated 7.4
      * @removed 8.0
      */
-    public static function export($name, $return = false)
-    {
-    }
+    #[Deprecated(since: '7.4')]
+    public static function export($name, $return = false) {}
 
     /**
      * Checks if function is disabled
      *
      * @link https://php.net/manual/en/reflectionfunction.isdisabled.php
      * @return bool {@see true} if it's disable, otherwise {@see false}
-     * @deprecated 8.0
      */
-    public function isDisabled()
-    {
-    }
+    #[Deprecated(since: '8.0')]
+    #[Pure]
+    public function isDisabled() {}
 
     /**
      * Invokes function
@@ -74,9 +75,7 @@ class ReflectionFunction extends ReflectionFunctionAbstract
      * like {@see call_user_func} is.
      * @return mixed Returns the result of the invoked function call.
      */
-    public function invoke(...$args)
-    {
-    }
+    public function invoke(...$args) {}
 
     /**
      * Invokes function args
@@ -84,12 +83,9 @@ class ReflectionFunction extends ReflectionFunctionAbstract
      * @link https://php.net/manual/en/reflectionfunction.invokeargs.php
      * @param array $args The passed arguments to the function as an array, much
      * like {@see call_user_func_array} works.
-     * </p>
      * @return mixed the result of the invoked function
      */
-    public function invokeArgs(array $args)
-    {
-    }
+    public function invokeArgs(array $args) {}
 
     /**
      * Returns a dynamically created closure for the function
@@ -97,7 +93,6 @@ class ReflectionFunction extends ReflectionFunctionAbstract
      * @link https://php.net/manual/en/reflectionfunction.getclosure.php
      * @return Closure Returns {@see Closure} or {@see null} in case of an error.
      */
-    public function getClosure()
-    {
-    }
+    #[Pure]
+    public function getClosure() {}
 }

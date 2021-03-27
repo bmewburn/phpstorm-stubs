@@ -1,46 +1,52 @@
 <?php
 
+use JetBrains\PhpStorm\Deprecated;
+use JetBrains\PhpStorm\Immutable;
+use JetBrains\PhpStorm\Pure;
+
 /**
  * The <b>ReflectionClass</b> class reports information about a class.
- *
- * @property-read string $name Name of the class, same as calling the {@see ReflectionClass::getName()} method
  *
  * @link https://php.net/manual/en/class.reflectionclass.php
  */
 class ReflectionClass implements Reflector
 {
     /**
+     * @var string Name of the class, same as calling the {@see ReflectionClass::getName()} method
+     */
+    #[Immutable]
+    public $name;
+
+    /**
      * Indicates class that is abstract because it has some abstract methods.
      *
      * @link https://www.php.net/manual/en/class.reflectionclass.php#reflectionclass.constants.is-implicit-abstract
      */
-    const IS_IMPLICIT_ABSTRACT = 16;
+    public const IS_IMPLICIT_ABSTRACT = 16;
 
     /**
      * Indicates class that is abstract because of its definition.
      *
      * @link https://www.php.net/manual/en/class.reflectionclass.php#reflectionclass.constants.is-explicit-abstract
      */
-    const IS_EXPLICIT_ABSTRACT = 64;
+    public const IS_EXPLICIT_ABSTRACT = 64;
 
     /**
      * Indicates final class.
      *
      * @link https://www.php.net/manual/en/class.reflectionclass.php#reflectionclass.constants.is-final
      */
-    const IS_FINAL = 32;
+    public const IS_FINAL = 32;
 
     /**
      * Constructs a ReflectionClass
      *
      * @link https://php.net/manual/en/reflectionclass.construct.php
-     * @param string|object $argument Either a string containing the name of
+     * @param string|object $objectOrClass Either a string containing the name of
      * the class to reflect, or an object.
      * @throws \ReflectionException if the class does not exist.
      */
-    public function __construct($argument)
-    {
-    }
+    public function __construct($objectOrClass) {}
 
     /**
      * Exports a reflected class
@@ -51,12 +57,10 @@ class ReflectionClass implements Reflector
      * opposed to emitting it. Setting to {@see false} (the default) will do the opposite.
      * @return string|null If the $return parameter is set to {@see true}, then the
      * export is returned as a string, otherwise {@see null} is returned.
-     * @deprecated 7.4
      * @removed 8.0
      */
-    public static function export($argument, $return = false)
-    {
-    }
+    #[Deprecated(since: '7.4')]
+    public static function export($argument, $return = false) {}
 
     /**
      * Returns the string representation of the ReflectionClass object.
@@ -64,9 +68,7 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.tostring.php
      * @return string A string representation of this {@see ReflectionClass} instance.
      */
-    public function __toString()
-    {
-    }
+    public function __toString() {}
 
     /**
      * Gets class name
@@ -74,9 +76,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getname.php
      * @return string The class name.
      */
-    public function getName()
-    {
-    }
+    #[Pure]
+    public function getName() {}
 
     /**
      * Checks if class is defined internally by an extension, or the core
@@ -84,9 +85,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isinternal.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isInternal()
-    {
-    }
+    #[Pure]
+    public function isInternal() {}
 
     /**
      * Checks if user defined
@@ -94,9 +94,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isuserdefined.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isUserDefined()
-    {
-    }
+    #[Pure]
+    public function isUserDefined() {}
 
     /**
      * Checks if the class is instantiable
@@ -104,9 +103,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isinstantiable.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isInstantiable()
-    {
-    }
+    #[Pure]
+    public function isInstantiable() {}
 
     /**
      * Returns whether this class is cloneable
@@ -115,9 +113,8 @@ class ReflectionClass implements Reflector
      * @return bool Returns {@see true} if the class is cloneable, {@see false} otherwise.
      * @since 5.4
      */
-    public function isCloneable()
-    {
-    }
+    #[Pure]
+    public function isCloneable() {}
 
     /**
      * Gets the filename of the file in which the class has been defined
@@ -127,9 +124,8 @@ class ReflectionClass implements Reflector
      * If the class is defined in the PHP core or in a PHP extension, {@see false}
      * is returned.
      */
-    public function getFileName()
-    {
-    }
+    #[Pure]
+    public function getFileName() {}
 
     /**
      * Gets starting line number
@@ -137,9 +133,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getstartline.php
      * @return int The starting line number, as an integer.
      */
-    public function getStartLine()
-    {
-    }
+    #[Pure]
+    public function getStartLine() {}
 
     /**
      * Gets end line
@@ -148,9 +143,8 @@ class ReflectionClass implements Reflector
      * @return int|false The ending line number of the user defined class, or
      * {@see false} if unknown.
      */
-    public function getEndLine()
-    {
-    }
+    #[Pure]
+    public function getEndLine() {}
 
     /**
      * Gets doc comments
@@ -158,9 +152,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getdoccomment.php
      * @return string|false The doc comment if it exists, otherwise {@see false}
      */
-    public function getDocComment()
-    {
-    }
+    #[Pure]
+    public function getDocComment() {}
 
     /**
      * Gets the constructor of the class
@@ -169,9 +162,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionMethod|null A {@see ReflectionMethod} object reflecting
      * the class' constructor, or {@see null} if the class has no constructor.
      */
-    public function getConstructor()
-    {
-    }
+    #[Pure]
+    public function getConstructor() {}
 
     /**
      * Checks if method is defined
@@ -180,9 +172,7 @@ class ReflectionClass implements Reflector
      * @param string $name Name of the method being checked for.
      * @return bool Returns {@see true} if it has the method, otherwise {@see false}
      */
-    public function hasMethod($name)
-    {
-    }
+    public function hasMethod($name) {}
 
     /**
      * Gets a <b>ReflectionMethod</b> for a class method.
@@ -192,9 +182,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionMethod A {@see ReflectionMethod}
      * @throws \ReflectionException if the method does not exist.
      */
-    public function getMethod($name)
-    {
-    }
+    #[Pure]
+    public function getMethod($name) {}
 
     /**
      * Gets an array of methods for the class.
@@ -205,9 +194,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionMethod[] An array of {@see ReflectionMethod} objects
      * reflecting each method.
      */
-    public function getMethods($filter = null)
-    {
-    }
+    #[Pure]
+    public function getMethods($filter = null) {}
 
     /**
      * Checks if property is defined
@@ -216,9 +204,7 @@ class ReflectionClass implements Reflector
      * @param string $name Name of the property being checked for.
      * @return bool Returns {@see true} if it has the property, otherwise {@see false}
      */
-    public function hasProperty($name)
-    {
-    }
+    public function hasProperty($name) {}
 
     /**
      * Gets a <b>ReflectionProperty</b> for a class's property
@@ -228,9 +214,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionProperty A {@see ReflectionProperty}
      * @throws ReflectionException If no property exists by that name.
      */
-    public function getProperty($name)
-    {
-    }
+    #[Pure]
+    public function getProperty($name) {}
 
     /**
      * Gets properties
@@ -241,9 +226,8 @@ class ReflectionClass implements Reflector
      * and defaults to all property types.
      * @return ReflectionProperty[]
      */
-    public function getProperties($filter = null)
-    {
-    }
+    #[Pure]
+    public function getProperties($filter = null) {}
 
     /**
      * Gets a ReflectionClassConstant for a class's property
@@ -253,21 +237,19 @@ class ReflectionClass implements Reflector
      * @return ReflectionClassConstant A {@see ReflectionClassConstant}.
      * @since 7.1
      */
-    public function getReflectionConstant($name)
-    {
-    }
+    #[Pure]
+    public function getReflectionConstant(string $name) {}
 
     /**
      * Gets class constants
      *
      * @link https://php.net/manual/en/reflectionclass.getreflectionconstants.php
-     * @param int $filter [optional] allows the filtering of constants defined in a class by their visibility. Since 8.0.
+     * @param int|null $filter [optional] allows the filtering of constants defined in a class by their visibility. Since 8.0.
      * @return ReflectionClassConstant[] An array of ReflectionClassConstant objects.
      * @since 7.1
      */
-    public function getReflectionConstants($filter = ReflectionClassConstant::IS_PUBLIC | ReflectionClassConstant::IS_PROTECTED | ReflectionClassConstant::IS_PRIVATE)
-    {
-    }
+    #[Pure]
+    public function getReflectionConstants(?int $filter = ReflectionClassConstant::IS_PUBLIC|ReflectionClassConstant::IS_PROTECTED|ReflectionClassConstant::IS_PRIVATE) {}
 
     /**
      * Checks if constant is defined
@@ -276,9 +258,7 @@ class ReflectionClass implements Reflector
      * @param string $name The name of the constant being checked for.
      * @return bool Returns {@see true} if the constant is defined, otherwise {@see false}
      */
-    public function hasConstant($name)
-    {
-    }
+    public function hasConstant($name) {}
 
     /**
      * Gets constants
@@ -288,9 +268,8 @@ class ReflectionClass implements Reflector
      * @return array An array of constants, where the keys hold the name and
      * the values the value of the constants.
      */
-    public function getConstants($filter = ReflectionClassConstant::IS_PUBLIC | ReflectionClassConstant::IS_PROTECTED | ReflectionClassConstant::IS_PRIVATE)
-    {
-    }
+    #[Pure]
+    public function getConstants($filter = ReflectionClassConstant::IS_PUBLIC|ReflectionClassConstant::IS_PROTECTED|ReflectionClassConstant::IS_PRIVATE) {}
 
     /**
      * Gets defined constant
@@ -300,9 +279,8 @@ class ReflectionClass implements Reflector
      * @return mixed|false Value of the constant with the name name.
      * Returns {@see false} if the constant was not found in the class.
      */
-    public function getConstant($name)
-    {
-    }
+    #[Pure]
+    public function getConstant($name) {}
 
     /**
      * Gets the interfaces
@@ -311,9 +289,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionClass[] An associative array of interfaces, with keys as interface
      * names and the array values as {@see ReflectionClass} objects.
      */
-    public function getInterfaces()
-    {
-    }
+    #[Pure]
+    public function getInterfaces() {}
 
     /**
      * Gets the interface names
@@ -321,9 +298,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getinterfacenames.php
      * @return string[] A numerical array with interface names as the values.
      */
-    public function getInterfaceNames()
-    {
-    }
+    #[Pure]
+    public function getInterfaceNames() {}
 
     /**
      * Checks if the class is anonymous
@@ -332,9 +308,8 @@ class ReflectionClass implements Reflector
      * @return bool Returns {@see true} on success or {@see false} on failure.
      * @since 7.0
      */
-    public function isAnonymous()
-    {
-    }
+    #[Pure]
+    public function isAnonymous() {}
 
     /**
      * Checks if the class is an interface
@@ -342,9 +317,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isinterface.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isInterface()
-    {
-    }
+    #[Pure]
+    public function isInterface() {}
 
     /**
      * Returns an array of traits used by this class
@@ -355,9 +329,8 @@ class ReflectionClass implements Reflector
      * Returns {@see null} in case of an error.
      * @since 5.4
      */
-    public function getTraits()
-    {
-    }
+    #[Pure]
+    public function getTraits() {}
 
     /**
      * Returns an array of names of traits used by this class
@@ -367,9 +340,8 @@ class ReflectionClass implements Reflector
      * Returns {@see null} in case of an error.
      * @since 5.4
      */
-    public function getTraitNames()
-    {
-    }
+    #[Pure]
+    public function getTraitNames() {}
 
     /**
      * Returns an array of trait aliases
@@ -380,9 +352,8 @@ class ReflectionClass implements Reflector
      * Returns {@see null} in case of an error.
      * @since 5.4
      */
-    public function getTraitAliases()
-    {
-    }
+    #[Pure]
+    public function getTraitAliases() {}
 
     /**
      * Returns whether this is a trait
@@ -392,9 +363,8 @@ class ReflectionClass implements Reflector
      * Returns {@see null} in case of an error.
      * @since 5.4
      */
-    public function isTrait()
-    {
-    }
+    #[Pure]
+    public function isTrait() {}
 
     /**
      * Checks if class is abstract
@@ -402,9 +372,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isabstract.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isAbstract()
-    {
-    }
+    #[Pure]
+    public function isAbstract() {}
 
     /**
      * Checks if class is final
@@ -412,9 +381,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isfinal.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isFinal()
-    {
-    }
+    #[Pure]
+    public function isFinal() {}
 
     /**
      * Gets modifiers
@@ -422,9 +390,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getmodifiers.php
      * @return int bitmask of modifier constants.
      */
-    public function getModifiers()
-    {
-    }
+    #[Pure]
+    public function getModifiers() {}
 
     /**
      * Checks class for instance
@@ -433,9 +400,8 @@ class ReflectionClass implements Reflector
      * @param object $object The object being compared to.
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isInstance($object)
-    {
-    }
+    #[Pure]
+    public function isInstance($object) {}
 
     /**
      * Creates a new class instance from given arguments.
@@ -448,9 +414,7 @@ class ReflectionClass implements Reflector
      * the class does not have a constructor and the $args parameter contains
      * one or more parameters.
      */
-    public function newInstance(...$args)
-    {
-    }
+    public function newInstance(...$args) {}
 
     /**
      * Creates a new class instance without invoking the constructor.
@@ -462,9 +426,7 @@ class ReflectionClass implements Reflector
      * onwards, this exception is limited only to internal classes that are final.
      * @since 5.4
      */
-    public function newInstanceWithoutConstructor()
-    {
-    }
+    public function newInstanceWithoutConstructor() {}
 
     /**
      * Creates a new class instance from given arguments.
@@ -477,9 +439,7 @@ class ReflectionClass implements Reflector
      * one or more parameters.
      * @since 5.1.3
      */
-    public function newInstanceArgs(array $args = [])
-    {
-    }
+    public function newInstanceArgs(array $args = []) {}
 
     /**
      * Gets parent class
@@ -488,9 +448,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionClass|false A {@see ReflectionClass} or {@see false}
      * if there's no parent.
      */
-    public function getParentClass()
-    {
-    }
+    #[Pure]
+    public function getParentClass() {}
 
     /**
      * Checks if a subclass
@@ -500,9 +459,8 @@ class ReflectionClass implements Reflector
      * string or a {@see ReflectionClass} object of the class to check against.
      * @return bool {@see true} on success or {@see false} on failure.
      */
-    public function isSubclassOf($class)
-    {
-    }
+    #[Pure]
+    public function isSubclassOf($class) {}
 
     /**
      * Gets static properties
@@ -511,9 +469,8 @@ class ReflectionClass implements Reflector
      * @return mixed[] The static properties, as an array where the keys hold
      * the name and the values the value of the properties.
      */
-    public function getStaticProperties()
-    {
-    }
+    #[Pure]
+    public function getStaticProperties() {}
 
     /**
      * Gets static property value
@@ -525,9 +482,8 @@ class ReflectionClass implements Reflector
      * not exist and this argument is omitted, a {@see ReflectionException} is thrown.
      * @return mixed The value of the static property.
      */
-    public function getStaticPropertyValue($name, $default = null)
-    {
-    }
+    #[Pure]
+    public function getStaticPropertyValue($name, $default = null) {}
 
     /**
      * Sets static property value
@@ -537,9 +493,7 @@ class ReflectionClass implements Reflector
      * @param mixed $value New property value.
      * @return void No value is returned.
      */
-    public function setStaticPropertyValue($name, $value)
-    {
-    }
+    public function setStaticPropertyValue($name, $value) {}
 
     /**
      * Gets default properties
@@ -551,9 +505,8 @@ class ReflectionClass implements Reflector
      * does not distinguish between static and non static properties and does
      * not take visibility modifiers into account.
      */
-    public function getDefaultProperties()
-    {
-    }
+    #[Pure]
+    public function getDefaultProperties() {}
 
     /**
      * An alias of {@see ReflectionClass::isIterable} method.
@@ -561,9 +514,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.isiterateable.php
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function isIterateable()
-    {
-    }
+    #[Pure]
+    public function isIterateable() {}
 
     /**
      * Check whether this class is iterable
@@ -572,9 +524,8 @@ class ReflectionClass implements Reflector
      * @return bool Returns {@see true} on success or {@see false} on failure.
      * @since 7.2
      */
-    public function isIterable()
-    {
-    }
+    #[Pure]
+    public function isIterable() {}
 
     /**
      * Checks whether it implements an interface.
@@ -583,9 +534,7 @@ class ReflectionClass implements Reflector
      * @param string $interface The interface name.
      * @return bool Returns {@see true} on success or {@see false} on failure.
      */
-    public function implementsInterface($interface)
-    {
-    }
+    public function implementsInterface($interface) {}
 
     /**
      * Gets a <b>ReflectionExtension</b> object for the extension which defined the class
@@ -594,9 +543,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionExtension A {@see ReflectionExtension} object representing
      * the extension which defined the class, or {@see null} for user-defined classes.
      */
-    public function getExtension()
-    {
-    }
+    #[Pure]
+    public function getExtension() {}
 
     /**
      * Gets the name of the extension which defined the class
@@ -605,9 +553,8 @@ class ReflectionClass implements Reflector
      * @return string|false The name of the extension which defined the class,
      * or {@see false} for user-defined classes.
      */
-    public function getExtensionName()
-    {
-    }
+    #[Pure]
+    public function getExtensionName() {}
 
     /**
      * Checks if in namespace
@@ -615,9 +562,7 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.innamespace.php
      * @return bool {@see true} on success or {@see false} on failure.
      */
-    public function inNamespace()
-    {
-    }
+    public function inNamespace() {}
 
     /**
      * Gets namespace name
@@ -625,9 +570,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getnamespacename.php
      * @return string The namespace name.
      */
-    public function getNamespaceName()
-    {
-    }
+    #[Pure]
+    public function getNamespaceName() {}
 
     /**
      * Gets short name
@@ -635,9 +579,8 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.getshortname.php
      * @return string The class short name.
      */
-    public function getShortName()
-    {
-    }
+    #[Pure]
+    public function getShortName() {}
 
     /**
      * Returns an array of function attributes.
@@ -647,9 +590,8 @@ class ReflectionClass implements Reflector
      * @return ReflectionAttribute[]
      * @since 8.0
      */
-    public function getAttributes($name = null, $flags = 0)
-    {
-    }
+    #[Pure]
+    public function getAttributes(?string $name = null, int $flags = 0) {}
 
     /**
      * Clones object
@@ -657,8 +599,5 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.clone.php
      * @return void
      */
-    final private function __clone()
-    {
-    }
-
+    final private function __clone() {}
 }

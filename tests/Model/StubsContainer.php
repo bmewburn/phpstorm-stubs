@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace StubTests\Model;
 
-use \RuntimeException;
+use RuntimeException;
 use function array_key_exists;
 
 class StubsContainer
@@ -35,14 +35,18 @@ class StubsContainer
 
     /**
      * @param PHPConst $constant
-     * @throws RuntimeException
      */
     public function addConstant(PHPConst $constant): void
     {
-        if (array_key_exists($constant->name, $this->constants)) {
-            throw new RuntimeException($constant->name . ' is already defined in stubs');
+        if (isset($constant->name)) {
+            if (array_key_exists($constant->name, $this->constants)) {
+                $amount = count(array_filter($this->constants,
+                    fn (PHPConst $nextConstant) => $nextConstant->name === $constant->name));
+                $this->constants[$constant->name . '_duplicated_' . $amount] = $constant;
+            } else {
+                $this->constants[$constant->name] = $constant;
+            }
         }
-        $this->constants[$constant->name] = $constant;
     }
 
     /**
@@ -53,17 +57,66 @@ class StubsContainer
         return $this->functions;
     }
 
-    public function addFunction(PHPFunction $function): void
+    /**
+     * @param string $name
+     * @param string|null $sourceFilePath
+     * @return PHPFunction|null
+     * @throws RuntimeException
+     */
+    public function getFunction(string $name, ?string $sourceFilePath = null): ?PHPFunction
     {
-        $this->functions[$function->name] = $function;
+        $functions = array_filter($this->functions, fn (PHPFunction $function): bool => $function->name === $name);
+        if (count($functions) === 1) {
+            return array_pop($functions);
+        } else {
+            if ($sourceFilePath !== null) {
+                $functions = array_filter($functions, fn (PHPFunction $function) => $function->sourceFilePath === $sourceFilePath);
+            }
+            if (count($functions) > 1) {
+                throw new RuntimeException("Multiple functions with name $name found");
+            }
+            if (!empty($functions)) {
+                return array_pop($functions);
+            }
+        }
+        return null;
     }
 
-    public function getClass(string $name): ?PHPClass
+    public function addFunction(PHPFunction $function): void
     {
-        if (array_key_exists($name, $this->classes) && $this->classes[$name] !== null) {
-            return $this->classes[$name];
+        if (isset($function->name)) {
+            if (array_key_exists($function->name, $this->functions)) {
+                $amount = count(array_filter($this->functions,
+                    fn (PHPFunction $nextFunction) => $nextFunction->name === $function->name));
+                $this->functions[$function->name . '_duplicated_' . $amount] = $function;
+            } else {
+                $this->functions[$function->name] = $function;
+            }
         }
+    }
 
+    /**
+     * @param string $name
+     * @param string|null $sourceFilePath
+     * @return PHPClass|null
+     * @throws RuntimeException
+     */
+    public function getClass(string $name, ?string $sourceFilePath = null): ?PHPClass
+    {
+        $classes = array_filter($this->classes, fn (PHPClass $class): bool => $class->name === $name);
+        if (count($classes) === 1) {
+            return array_pop($classes);
+        } else {
+            if ($sourceFilePath !== null) {
+                $classes = array_filter($classes, fn (PHPClass $class) => $class->sourceFilePath === $sourceFilePath);
+            }
+            if (count($classes) > 1) {
+                throw new RuntimeException("Multiple classes with name $name found");
+            }
+            if (!empty($classes)) {
+                return array_pop($classes);
+            }
+        }
         return null;
     }
 
@@ -80,27 +133,47 @@ class StubsContainer
      */
     public function getCoreClasses(): array
     {
-        return array_filter($this->classes, fn($class) => $class->stubBelongsToCore === true);
+        return array_filter($this->classes, fn (PHPClass $class): bool => $class->stubBelongsToCore === true);
     }
 
     /**
      * @param PHPClass $class
-     * @throws RuntimeException
      */
     public function addClass(PHPClass $class): void
     {
-        if (array_key_exists($class->name, $this->classes)) {
-            throw new RuntimeException($class->name . ' is already defined in stubs');
+        if (isset($class->name)) {
+            if (array_key_exists($class->name, $this->classes)) {
+                $amount = count(array_filter($this->classes,
+                    fn (PHPClass $nextClass) => $nextClass->name === $class->name));
+                $this->classes[$class->name . '_duplicated_' . $amount] = $class;
+            } else {
+                $this->classes[$class->name] = $class;
+            }
         }
-        $this->classes[$class->name] = $class;
     }
 
-    public function getInterface(string $name): ?PHPInterface
+    /**
+     * @param string $name
+     * @param string|null $sourceFilePath
+     * @return PHPInterface|null
+     * @throws RuntimeException
+     */
+    public function getInterface(string $name, ?string $sourceFilePath = null): ?PHPInterface
     {
-        if (array_key_exists($name, $this->interfaces) && $this->interfaces[$name] !== null) {
-            return $this->interfaces[$name];
+        $interfaces = array_filter($this->interfaces, fn (PHPInterface $interface): bool => $interface->name === $name);
+        if (count($interfaces) === 1) {
+            return array_pop($interfaces);
+        } else {
+            if ($sourceFilePath !== null) {
+                $interfaces = array_filter($interfaces, fn (PHPInterface $interface) => $interface->sourceFilePath === $sourceFilePath);
+            }
+            if (count($interfaces) > 1) {
+                throw new RuntimeException("Multiple interfaces with name $name found");
+            }
+            if (!empty($interfaces)) {
+                return array_pop($interfaces);
+            }
         }
-
         return null;
     }
 
@@ -117,18 +190,22 @@ class StubsContainer
      */
     public function getCoreInterfaces(): array
     {
-        return array_filter($this->interfaces,fn($interface) => $interface->stubBelongsToCore === true);
+        return array_filter($this->interfaces, fn (PHPInterface $interface): bool => $interface->stubBelongsToCore === true);
     }
 
     /**
      * @param PHPInterface $interface
-     * @throws RuntimeException
      */
     public function addInterface(PHPInterface $interface): void
     {
-        if (array_key_exists($interface->name, $this->interfaces)) {
-            throw new RuntimeException($interface->name . ' is already defined in stubs');
+        if (isset($interface->name)) {
+            if (array_key_exists($interface->name, $this->interfaces)) {
+                $amount = count(array_filter($this->interfaces,
+                    fn (PHPInterface $nextInterface) => $nextInterface->name === $interface->name));
+                $this->interfaces[$interface->name . '_duplicated_' . $amount] = $interface;
+            } else {
+                $this->interfaces[$interface->name] = $interface;
+            }
         }
-        $this->interfaces[$interface->name] = $interface;
     }
 }

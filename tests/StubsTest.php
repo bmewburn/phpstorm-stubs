@@ -1,39 +1,41 @@
 <?php
+declare(strict_types=1);
 
 namespace StubTests;
 
-use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
-use phpDocumentor\Reflection\DocBlock\Tags\Link;
-use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
-use phpDocumentor\Reflection\DocBlock\Tags\See;
-use phpDocumentor\Reflection\DocBlock\Tags\Since;
-use PHPUnit\Framework\TestCase;
-use StubTests\Model\BasePHPClass;
-use StubTests\Model\BasePHPElement;
+use JetBrains\PhpStorm\Pure;
+use PhpParser\Node\Expr\BinaryOp\BitwiseOr;
+use PhpParser\Node\Expr\ClassConstFetch;
+use PhpParser\Node\Expr\ConstFetch;
+use PhpParser\Node\Expr\UnaryMinus;
+use PhpParser\Node\Scalar\DNumber;
+use PhpParser\Node\Scalar\LNumber;
+use PhpParser\Node\Scalar\String_;
+use PHPUnit\Framework\Exception;
+use RuntimeException;
 use StubTests\Model\PHPClass;
 use StubTests\Model\PHPConst;
-use StubTests\Model\PHPDocElement;
 use StubTests\Model\PHPFunction;
 use StubTests\Model\PHPInterface;
 use StubTests\Model\PHPMethod;
+use StubTests\Model\PHPParameter;
+use StubTests\Model\PHPProperty;
 use StubTests\Model\StubProblemType;
-use StubTests\Model\Tags\RemovedTag;
 use StubTests\Parsers\Utils;
+use StubTests\TestData\Providers\EntitiesFilter;
 use StubTests\TestData\Providers\PhpStormStubsSingleton;
 
-class StubsTest extends TestCase
+class StubsTest extends BaseStubsTest
 {
     /**
-     * @dataProvider \StubTests\TestData\Providers\ReflectionTestDataProviders::constantProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionConstantsProvider::constantProvider
+     * @throws Exception
      */
     public function testConstants(PHPConst $constant): void
     {
         $constantName = $constant->name;
         $constantValue = $constant->value;
         $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getConstants();
-        if ($constant->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-            static::markTestSkipped('constant is excluded');
-        }
         static::assertArrayHasKey(
             $constantName,
             $stubConstants,
@@ -42,20 +44,13 @@ class StubsTest extends TestCase
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\ReflectionTestDataProviders::constantProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionConstantsProvider::constantValuesProvider
      */
     public function testConstantsValues(PHPConst $constant): void
     {
         $constantName = $constant->name;
         $constantValue = $constant->value;
         $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getConstants();
-        if ($constant->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-            static::markTestSkipped('constant is excluded');
-        }
-        if ($constant->hasMutedProblem(StubProblemType::WRONG_CONSTANT_VALUE)) {
-            static::markTestSkipped('constant is excluded');
-        }
-
         static::assertEquals(
             $constantValue,
             $stubConstants[$constantName]->value,
@@ -65,338 +60,475 @@ class StubsTest extends TestCase
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\ReflectionTestDataProviders::functionProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionConstantsProvider::classConstantProvider
+     * @throws Exception|RuntimeException
      */
-    public function testFunctions(PHPFunction $function): void
+    public function testClassConstants(PHPClass|PHPInterface $class, PHPConst $constant): void
+    {
+        $constantName = $constant->name;
+        $constantValue = $constant->value;
+        if ($class instanceof PHPClass) {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->constants;
+        } else {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class->name)->constants;
+        }
+        static::assertArrayHasKey(
+            $constantName,
+            $stubConstants,
+            "Missing constant: const $constantName = $constantValue\n"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionConstantsProvider::classConstantValuesProvider
+     * @throws RuntimeException
+     */
+    public function testClassConstantsValues(PHPClass|PHPInterface $class, PHPConst $constant): void
+    {
+        $constantName = $constant->name;
+        $constantValue = $constant->value;
+        if ($class instanceof PHPClass) {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->constants;
+        } else {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class->name)->constants;
+        }
+        static::assertEquals(
+            $constantValue,
+            $stubConstants[$constantName]->value,
+            "Constant value mismatch: const $class->name::$constantName \n
+            Expected value: $constantValue but was {$stubConstants[$constantName]->value}"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionConstantsProvider::classConstantProvider
+     * @throws RuntimeException
+     */
+    public function testClassConstantsVisibility(PHPClass|PHPInterface $class, PHPConst $constant): void
+    {
+        $constantName = $constant->name;
+        $constantVisibility = $constant->visibility;
+        if ($class instanceof PHPClass) {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->constants;
+        } else {
+            $stubConstants = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class->name)->constants;
+        }
+        static::assertEquals(
+            $constantVisibility,
+            $stubConstants[$constantName]->visibility,
+            "Constant visibility mismatch: const $constantName \n
+            Expected visibility: $constantVisibility but was {$stubConstants[$constantName]->visibility}"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionFunctionsProvider::allFunctionsProvider
+     * @throws Exception
+     */
+    public function testFunctionsExist(PHPFunction $function): void
     {
         $functionName = $function->name;
         $stubFunctions = PhpStormStubsSingleton::getPhpStormStubs()->getFunctions();
         $params = self::getParameterRepresentation($function);
-        if ($function->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-            static::markTestSkipped('function is excluded');
-        }
         static::assertArrayHasKey($functionName, $stubFunctions, "Missing function: function $functionName($params){}");
-        $phpstormFunction = $stubFunctions[$functionName];
-        if (!$function->hasMutedProblem(StubProblemType::FUNCTION_IS_DEPRECATED)) {
-            static::assertFalse(
-                $function->is_deprecated && $phpstormFunction->is_deprecated !== true,
-                "Function $functionName is not deprecated in stubs"
-            );
-        }
-        if (!$function->hasMutedProblem(StubProblemType::FUNCTION_PARAMETER_MISMATCH)) {
-            static::assertSameSize(
-                $function->parameters,
-                $phpstormFunction->parameters,
-                "Parameter number mismatch for function $functionName. 
-                Expected: " . self::getParameterRepresentation($function)
-            );
-        }
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\ReflectionTestDataProviders::classProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionFunctionsProvider::functionsForDeprecationTestsProvider
      */
-    public function testClasses(PHPClass $class): void
+    public function testFunctionsDeprecation(PHPFunction $function)
+    {
+        $functionName = $function->name;
+        $stubFunctions = PhpStormStubsSingleton::getPhpStormStubs()->getFunctions();
+        $phpstormFunction = $stubFunctions[$functionName];
+        static::assertFalse(
+            $function->is_deprecated && $phpstormFunction->is_deprecated !== true,
+            "Function $functionName is not deprecated in stubs"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionFunctionsProvider::functionsForParamsAmountTestsProvider
+     * @throws Exception
+     */
+    public function testFunctionsParametersAmount(PHPFunction $function)
+    {
+        $functionName = $function->name;
+        $stubFunctions = PhpStormStubsSingleton::getPhpStormStubs()->getFunctions();
+        $phpstormFunction = $stubFunctions[$functionName];
+        static::assertSameSize(
+            $function->parameters,
+            $phpstormFunction->parameters,
+            "Parameter number mismatch for function $functionName. 
+                Expected: " . self::getParameterRepresentation($function)
+        );
+    }
+
+    /**
+     * @throws Exception|RuntimeException
+     */
+    public function testFunctionsDuplicates()
+    {
+        $filtered = EntitiesFilter::getFiltered(
+            PhpStormStubsSingleton::getPhpStormStubs()->getFunctions(), problemTypes: StubProblemType::HAS_DUPLICATION
+        );
+        $duplicates = self::getDuplicatedFunctions($filtered);
+        self::assertCount(0, $duplicates,
+            "Functions \"" . implode(', ', $duplicates) .
+            "\" have duplicates in stubs.\nPlease use #[LanguageLevelTypeAware] or #[PhpStormStubsElementAvailable] if possible"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionParametersProvider::functionOptionalParametersProvider
+     * @throws RuntimeException
+     */
+    public function testFunctionsOptionalParameters(PHPFunction $function, PHPParameter $parameter)
+    {
+        $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getFunction($function->name);
+        $stubParameters = array_filter($phpstormFunction->parameters, fn (PHPParameter $stubParameter) => $stubParameter->name === $parameter->name);
+        /** @var PHPParameter $stubOptionalParameter */
+        $stubOptionalParameter = array_pop($stubParameters);
+        self::assertEquals($parameter->isOptional, $stubOptionalParameter->isOptional,
+            sprintf('Reflection function %s has optional parameter %s', $function->name, $parameter->name));
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionParametersProvider::functionOptionalParametersWithDefaultValueProvider
+     * @param PHPFunction $function
+     * @param PHPParameter $parameter
+     * @throws Exception|RuntimeException
+     */
+    public function testFunctionsDefaultParametersValue(PHPFunction $function, PHPParameter $parameter)
+    {
+        $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getFunction($function->name);
+        $stubParameters = array_filter($phpstormFunction->parameters, fn (PHPParameter $stubParameter) => $stubParameter->name === $parameter->name);
+        /** @var PHPParameter $stubOptionalParameter */
+        $stubOptionalParameter = array_pop($stubParameters);
+        $reflectionValue = self::getStringRepresentationOfDefaultParameterValue($parameter->defaultValue);
+        $stubValue = self::getStringRepresentationOfDefaultParameterValue($stubOptionalParameter->defaultValue);
+        self::assertEquals($reflectionValue, $stubValue,
+            sprintf('Reflection function %s has optional parameter %s with default value %s but stub parameter has value %s',
+                $function->name, $parameter->name, $reflectionValue, $stubValue));
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionParametersProvider::methodOptionalParametersWithDefaultValueProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @param PHPParameter $parameter
+     * @throws Exception|RuntimeException
+     */
+    public function testMethodsDefaultParametersValue(PHPClass|PHPInterface $class, PHPMethod $method, PHPParameter $parameter)
+    {
+        if ($class instanceof PHPClass) {
+            $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->methods[$method->name];
+        } else {
+            $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class->name)->methods[$method->name];
+        }
+        $stubParameters = array_filter($phpstormFunction->parameters, fn (PHPParameter $stubParameter) => $stubParameter->name === $parameter->name);
+        /** @var PHPParameter $stubOptionalParameter */
+        $stubOptionalParameter = array_pop($stubParameters);
+        $reflectionValue = self::getStringRepresentationOfDefaultParameterValue($parameter->defaultValue);
+        $stubValue = self::getStringRepresentationOfDefaultParameterValue($stubOptionalParameter->defaultValue, $class);
+        self::assertEquals($reflectionValue, $stubValue,
+            sprintf('Reflection method %s::%s has optional parameter %s with default value %s but stub parameter has value %s',
+                $class->name, $method->name, $parameter->name, $reflectionValue, $stubValue));
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionParametersProvider::methodOptionalParametersProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @param PHPParameter $parameter
+     * @throws RuntimeException
+     */
+    public function testMethodsOptionalParameters(PHPClass|PHPInterface $class, PHPMethod $method, PHPParameter $parameter)
+    {
+        if ($class instanceof PHPClass) {
+            $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->methods[$method->name];
+        } else {
+            $phpstormFunction = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class->name)->methods[$method->name];
+        }
+        $stubParameters = array_filter($phpstormFunction->parameters, fn (PHPParameter $stubParameter) => $stubParameter->name === $parameter->name);
+        /** @var PHPParameter $stubOptionalParameter */
+        $stubOptionalParameter = array_pop($stubParameters);
+        self::assertEquals($parameter->isOptional, $stubOptionalParameter->isOptional,
+            sprintf('Reflection method %s::%s has optional parameter %s but stub parameter is not optional',
+                $class->name, $method->name, $parameter->name));
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionClassesTestDataProviders::classWithParentProvider
+     * @param PHPClass|PHPInterface $class
+     * @throws Exception|RuntimeException
+     */
+    public function testClassesParent(PHPClass|PHPInterface $class)
     {
         $className = $class->name;
-        $stubClasses = PhpStormStubsSingleton::getPhpStormStubs()->getClasses();
-        if ($class->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-            static::markTestSkipped('class is skipped');
-        }
-        static::assertArrayHasKey($className, $stubClasses, "Missing class $className: class $className {}");
-        $stubClass = $stubClasses[$className];
-        if (!$class->hasMutedProblem(StubProblemType::WRONG_PARENT)) {
+        if ($class instanceof PHPClass) {
+            $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className);
             static::assertEquals(
                 $class->parentClass,
                 $stubClass->parentClass,
-                "Class $className should extend {$class->parentClass}"
+                empty($class->parentClass) ? "Class $className should not extend $stubClass->parentClass" :
+                    "Class $className should extend $class->parentClass"
             );
-        }
-        foreach ($class->constants as $constant) {
-            if (!$constant->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-                static::assertArrayHasKey(
-                    $constant->name,
-                    $stubClass->constants,
-                    "Missing constant $className::{$constant->name}"
-                );
-            }
-        }
-        foreach ($class->methods as $method) {
-            $params = self::getParameterRepresentation($method);
-            $methodName = $method->name;
-            if (!$method->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-                static::assertArrayHasKey(
-                    $methodName,
-                    $stubClass->methods,
-                    "Missing method $className::$methodName($params){}"
-                );
-                $stubMethod = $stubClass->methods[$methodName];
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_IS_FINAL)) {
-                    static::assertEquals(
-                        $method->is_final,
-                        $stubMethod->is_final,
-                        "Method $className::$methodName final modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_IS_STATIC)) {
-                    static::assertEquals(
-                        $method->is_static,
-                        $stubMethod->is_static,
-                        "Method $className::$methodName static modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_ACCESS)) {
-                    static::assertEquals(
-                        $method->access,
-                        $stubMethod->access,
-                        "Method $className::$methodName access modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_PARAMETER_MISMATCH)) {
-                    static::assertSameSize(
-                        $method->parameters,
-                        $stubMethod->parameters,
-                        "Parameter number mismatch for method $className::$methodName. 
-                        Expected: " . self::getParameterRepresentation($method)
-                    );
-                }
-            }
-        }
-        foreach ($class->interfaces as $interface) {
-            if (!$class->hasMutedProblem(StubProblemType::WRONG_INTERFACE)) {
-                static::assertContains(
-                    $interface,
-                    $stubClass->interfaces,
-                    "Class $className doesn't implement interface $interface"
-                );
-            }
-        }
-        foreach ($class->properties as $property) {
-            $propertyName = $property->name;
-            if ($property->access === "private") {
-                continue;
-            }
-            if (!$property->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-                static::assertArrayHasKey(
-                    $propertyName,
-                    $stubClass->properties,
-                    "Missing property $className::$property->access $property->type $$propertyName"
-                );
-                $stubProperty = $stubClass->properties[$propertyName];
-                if (!$property->hasMutedProblem(StubProblemType::PROPERTY_IS_STATIC)) {
-                    static::assertEquals(
-                        $property->is_static,
-                        $stubProperty->is_static,
-                        "Property $className::$propertyName static modifier is incorrect"
-                    );
-                }
-                if (!$property->hasMutedProblem(StubProblemType::PROPERTY_ACCESS)) {
-                    static::assertEquals(
-                        $property->access,
-                        $stubProperty->access,
-                        "Property $className::$propertyName access modifier is incorrect"
-                    );
-                }
-                if (!$property->hasMutedProblem(StubProblemType::PROPERTY_TYPE)
-                    && !empty($property->type)) {
-                    static::assertEquals(
-                        $property->type,
-                        $stubProperty->type,
-                        "Property type doesn't match for property $className::$propertyName"
-                    );
-                }
-            }
-        }
-    }
-
-    /**
-     * @dataProvider \StubTests\TestData\Providers\ReflectionTestDataProviders::interfaceProvider
-     */
-    public function testInterfaces(PHPInterface $interface): void
-    {
-        $interfaceName = $interface->name;
-        $stubInterfaces = PhpStormStubsSingleton::getPhpStormStubs()->getInterfaces();
-        if ($interface->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-            static::markTestSkipped('interface is skipped');
-        }
-        static::assertArrayHasKey(
-            $interfaceName,
-            $stubInterfaces,
-            "Missing interface $interfaceName: interface $interfaceName {}"
-        );
-        $stubInterface = $stubInterfaces[$interfaceName];
-        if (!$interface->hasMutedProblem(StubProblemType::WRONG_PARENT)) {
-            foreach ($interface->parentInterfaces as $parentInterface) {
+        } else {
+            $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className);
+            foreach ($class->parentInterfaces as $parentInterface) {
                 static::assertContains(
                     $parentInterface,
-                    $stubInterface->parentInterfaces,
-                    "Missing parent interface $parentInterface"
+                    $stubClass->parentInterfaces,
+                    "Interface $className should extend $parentInterface"
                 );
             }
         }
-        foreach ($interface->constants as $constant) {
-            if (!$constant->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-                static::assertArrayHasKey(
-                    $constant->name,
-                    $stubInterface->constants,
-                    "Missing constant $interfaceName::{$constant->name}"
-                );
-            }
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionMethodsProvider::classMethodsProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @throws Exception|RuntimeException
+     */
+    public function testClassesMethodsExist(PHPClass|PHPInterface $class, PHPMethod $method)
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className);
+        } else {
+            $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className);
         }
-        foreach ($interface->methods as $method) {
-            $params = self::getParameterRepresentation($method);
-            $methodName = $method->name;
-            if (!$method->hasMutedProblem(StubProblemType::STUB_IS_MISSED)) {
-                static::assertArrayHasKey(
-                    $methodName,
-                    $stubInterface->methods,
-                    "Missing method $interfaceName::$methodName($params){}"
-                );
-                $stubMethod = $stubInterface->methods[$methodName];
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_IS_FINAL)) {
-                    static::assertEquals(
-                        $method->is_final,
-                        $stubMethod->is_final,
-                        "Method $interfaceName::$methodName final modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_IS_STATIC)) {
-                    static::assertEquals(
-                        $method->is_static,
-                        $stubMethod->is_static,
-                        "Method $interfaceName::$methodName static modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_ACCESS)) {
-                    static::assertEquals(
-                        $method->access,
-                        $stubMethod->access,
-                        "Method $interfaceName::$methodName access modifier is incorrect"
-                    );
-                }
-                if (!$method->hasMutedProblem(StubProblemType::FUNCTION_PARAMETER_MISMATCH)) {
-                    static::assertSameSize(
-                        $method->parameters,
-                        $stubMethod->parameters,
-                        "Parameter number mismatch for method $interfaceName::$methodName. 
+        static::assertArrayHasKey(
+            $method->name,
+            $stubClass->methods,
+            "Missing method $className::$method->name"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionMethodsProvider::classFinalMethodsProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @throws RuntimeException
+     */
+    public function testClassesFinalMethods(PHPClass|PHPInterface $class, PHPMethod $method)
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className)->methods[$method->name];
+        } else {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className)->methods[$method->name];
+        }
+        static::assertEquals(
+            $method->isFinal,
+            $stubMethod->isFinal,
+            "Method $className::$method->name final modifier is incorrect"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionMethodsProvider::classStaticMethodsProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @throws RuntimeException
+     */
+    public function testClassesStaticMethods(PHPClass|PHPInterface $class, PHPMethod $method)
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className)->methods[$method->name];
+        } else {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className)->methods[$method->name];
+        }
+        static::assertEquals(
+            $method->isStatic,
+            $stubMethod->isStatic,
+            "Method $className::$method->name static modifier is incorrect"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionMethodsProvider::classMethodsWithAccessProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @throws RuntimeException
+     */
+    public function testClassesMethodsVisibility(PHPClass|PHPInterface $class, PHPMethod $method)
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className)->methods[$method->name];
+        } else {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className)->methods[$method->name];
+        }
+        static::assertEquals(
+            $method->access,
+            $stubMethod->access,
+            "Method $className::$method->name access modifier is incorrect"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionMethodsProvider::classMethodsWithParametersProvider
+     * @param PHPClass|PHPInterface $class
+     * @param PHPMethod $method
+     * @throws Exception|RuntimeException
+     */
+    public function testClassMethodsParametersCount(PHPClass|PHPInterface $class, PHPMethod $method)
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getClass($className)->methods[$method->name];
+        } else {
+            $stubMethod = PhpStormStubsSingleton::getPhpStormStubs()->getInterface($className)->methods[$method->name];
+        }
+        static::assertSameSize(
+            $method->parameters,
+            $stubMethod->parameters,
+            "Parameter number mismatch for method $className::$method->name. 
                         Expected: " . self::getParameterRepresentation($method)
-                    );
-                }
-            }
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionClassesTestDataProviders::classesWithInterfacesProvider
+     * @param PHPClass $class
+     * @throws Exception|RuntimeException
+     */
+    public function testClassInterfaces(PHPClass $class)
+    {
+        $className = $class->name;
+        $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name);
+        foreach ($class->interfaces as $interface) {
+            static::assertContains(
+                $interface,
+                $stubClass->interfaces,
+                "Class $className doesn't implement interface $interface"
+            );
         }
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::stubClassConstantProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionPropertiesProvider::classPropertiesProvider
+     * @param PHPClass $class
+     * @param PHPProperty $property
+     * @throws Exception|RuntimeException
      */
-    public function testClassConstantsPHPDocs(string $className, PHPConst $constant): void
+    public function testClassProperties(PHPClass $class, PHPProperty $property)
     {
-        static::assertNull($constant->parseError, $constant->parseError ?: '');
-        $this->checkPHPDocCorrectness($constant, "constant $className::$constant->name");
+        $className = $class->name;
+        $stubClass = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name);
+        static::assertArrayHasKey(
+            $property->name,
+            $stubClass->properties,
+            "Missing property $className::$property->access $property->type $$property->name"
+        );
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::coreStubMethodProvider
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionPropertiesProvider::classStaticPropertiesProvider
+     * @param PHPClass $class
+     * @param PHPProperty $property
+     * @throws RuntimeException
      */
-    public function testCoreMethodsTypeHints(string $methodName, PHPMethod $stubFunction): void
+    public function testClassStaticProperties(PHPClass $class, PHPProperty $property)
     {
-        $firstSinceVersion = 5;
-        if (!empty($stubFunction->sinceTags)) {
-            $sinceVersions = array_map(fn(Since $tag) => (int)$tag->getVersion(), $stubFunction->sinceTags);
-            sort($sinceVersions, SORT_DESC);
-            $firstSinceVersion = array_pop($sinceVersions);
-        } elseif ($stubFunction->hasInheritDocTag) {
-            self::markTestSkipped("Function '$methodName' contains inheritdoc.");
+        $className = $class->name;
+        $stubProperty = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->properties[$property->name];
+        static::assertEquals(
+            $property->is_static,
+            $stubProperty->is_static,
+            "Property $className::$property->name static modifier is incorrect"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionPropertiesProvider::classPropertiesWithAccessProvider
+     * @param PHPClass $class
+     * @param PHPProperty $property
+     * @throws RuntimeException
+     */
+    public function testClassPropertiesVisibility(PHPClass $class, PHPProperty $property)
+    {
+        $className = $class->name;
+        $stubProperty = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->properties[$property->name];
+        static::assertEquals(
+            $property->access,
+            $stubProperty->access,
+            "Property $className::$property->name access modifier is incorrect"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionPropertiesProvider::classPropertiesWithTypeProvider
+     * @param PHPClass $class
+     * @param PHPProperty $property
+     * @throws RuntimeException
+     */
+    public function testClassPropertiesType(PHPClass $class, PHPProperty $property)
+    {
+        $className = $class->name;
+        $stubProperty = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class->name)->properties[$property->name];
+        static::assertEquals(
+            $property->type,
+            $stubProperty->type,
+            "Property type doesn't match for property $className::$property->name"
+        );
+    }
+
+    /**
+     * @dataProvider \StubTests\TestData\Providers\Reflection\ReflectionClassesTestDataProviders::allClassesProvider
+     * @throws Exception
+     */
+    public function testClassesExist(PHPClass|PHPInterface $class): void
+    {
+        $className = $class->name;
+        if ($class instanceof PHPClass) {
+            $stubClasses = PhpStormStubsSingleton::getPhpStormStubs()->getClasses();
+        } else {
+            $stubClasses = PhpStormStubsSingleton::getPhpStormStubs()->getInterfaces();
         }
-        self::checkFunctionDoesNotHaveScalarTypeHints($firstSinceVersion, $stubFunction);
-        self::checkFunctionDoesNotHaveReturnTypeHints($firstSinceVersion, $stubFunction);
+        static::assertArrayHasKey($className, $stubClasses, "Missing class $className: class $className {}");
     }
 
     /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::stubConstantProvider
+     * @throws Exception
      */
-    public function testConstantsPHPDocs(PHPConst $constant): void
+    public function testImplodeFunctionIsCorrect()
     {
-        static::assertNull($constant->parseError, $constant->parseError ?: '');
-        $this->checkPHPDocCorrectness($constant, "constant $constant->name");
-    }
-
-    /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::stubFunctionProvider
-     */
-    public function testFunctionPHPDocs(PHPFunction $function): void
-    {
-        static::assertNull($function->parseError, $function->parseError ?: '');
-        $this->checkPHPDocCorrectness($function, "function $function->name");
-    }
-
-    /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::stubClassProvider
-     */
-    public function testClassesPHPDocs(BasePHPClass $class): void
-    {
-        static::assertNull($class->parseError, $class->parseError ?: '');
-        $this->checkPHPDocCorrectness($class, "class $class->name");
-    }
-
-    /**
-     * @dataProvider \StubTests\TestData\Providers\StubsTestDataProviders::stubMethodProvider
-     */
-    public function testMethodsPHPDocs(string $methodName, PHPMethod $method): void
-    {
-        if ($methodName === '__construct') {
-            static::assertNull($method->returnTag, '@return tag for __construct should be omitted');
+        $implodeFunctions = array_filter(PhpStormStubsSingleton::getPhpStormStubs()->getFunctions(),
+            fn (PHPFunction $function) => $function->name === 'implode');
+        self::assertCount(1, $implodeFunctions);
+        /** @var PHPFunction $implodeFunction */
+        $implodeFunction = array_pop($implodeFunctions);
+        $implodeParameters = $implodeFunction->parameters;
+        $separatorParameters = array_filter($implodeParameters, fn (PHPParameter $parameter) => $parameter->name === 'separator');
+        $arrayParameters = array_filter($implodeParameters, fn (PHPParameter $parameter) => $parameter->name === 'array');
+        /** @var PHPParameter $separatorParameter */
+        $separatorParameter = array_pop($separatorParameters);
+        /** @var PHPParameter $arrayParameter */
+        $arrayParameter = array_pop($arrayParameters);
+        self::assertCount(2, $implodeParameters);
+        self::assertEquals(['array', 'string'], $separatorParameter->typesFromSignature);
+        if (property_exists($separatorParameter->defaultValue, 'value')) {
+            self::assertEquals('', $separatorParameter->defaultValue->value);
+        } else {
+            self::fail("Couldn't read default value");
         }
-        static::assertNull($method->parseError, $method->parseError ?: '');
-        $this->checkPHPDocCorrectness($method, "method $methodName");
+        self::assertEquals(['?array'], $arrayParameter->typesFromSignature);
+        self::assertEquals(['string'], $implodeFunction->returnTypesFromSignature);
+        self::assertEquals(['string'], $implodeFunction->returnTypesFromPhpDoc);
     }
 
-    private function checkPHPDocCorrectness(BasePHPElement $element, string $elementName): void
-    {
-        $this->checkLinks($element, $elementName);
-        if ($element->stubBelongsToCore) {
-            $this->checkDeprecatedRemovedSinceVersionsMajor($element, $elementName);
-        }
-        $this->checkContainsOnlyValidTags($element, $elementName);
-    }
-
-    private function checkContainsOnlyValidTags(BasePHPElement $element, string $elementName): void
-    {
-        $VALID_TAGS = [
-            'author',
-            'copyright',
-            'deprecated',
-            'example', //temporary addition due to the number of existing cases
-            'inheritdoc',
-            'link',
-            'meta',
-            'method',
-            'mixin',
-            'package',
-            'param',
-            'property',
-            'property-read',
-            'removed',
-            'return',
-            'see',
-            'since',
-            'throws',
-            'uses',
-            'var',
-            'version',
-        ];
-        /** @var PHPDocElement $element */
-        foreach ($element->tagNames as $tagName) {
-            static::assertContains($tagName, $VALID_TAGS, "Element $elementName has invalid tag: @$tagName");
-        }
-    }
-
+    #[Pure]
     private static function getParameterRepresentation(PHPFunction $function): string
     {
         $result = '';
         foreach ($function->parameters as $parameter) {
-            if (!empty($parameter->type)) {
-                $result .= $parameter->type . ' ';
+            if (!empty($parameter->types)) {
+                $result .= implode('|', $parameter->types);
             }
             if ($parameter->is_passed_by_ref) {
                 $result .= '&';
@@ -406,99 +538,105 @@ class StubsTest extends TestCase
             }
             $result .= '$' . $parameter->name . ', ';
         }
-        $result = rtrim($result, ', ');
-
-        return $result;
+        return rtrim($result, ', ');
     }
 
-    private function checkLinks(BasePHPElement $element, string $elementName): void
+    private static function getAllDuplicatesOfFunction(?string $name): array
     {
-        /** @var PHPDocElement $element */
-        foreach ($element->links as $link) {
-            if ($link instanceof Link) {
-                static::assertStringStartsWith(
-                    'https',
-                    $link->getLink(),
-                    "In $elementName @link doesn't start with https"
-                );
-            }
-        }
-        foreach ($element->see as $see) {
-            if ($see instanceof See && $see->getReference() instanceof Url && strncmp($see, 'http', 4) === 0) {
-                static::assertStringStartsWith('https', $see, "In $elementName @see doesn't start with https");
-            }
-        }
+        return array_filter(PhpStormStubsSingleton::getPhpStormStubs()->getFunctions(),
+            fn ($duplicateValue, $duplicateKey) => str_contains($duplicateValue->name, $name) && str_contains($duplicateKey, 'duplicated'), ARRAY_FILTER_USE_BOTH);
     }
 
-    private function checkDeprecatedRemovedSinceVersionsMajor(BasePHPElement $element, $elementName): void
+    /**
+     * @param array $filtered
+     * @return array
+     * @throws RuntimeException
+     */
+    private static function getDuplicatedFunctions(array $filtered): array
     {
-        /** @var PHPDocElement $element */
-        foreach ($element->sinceTags as $sinceTag) {
-            if ($sinceTag instanceof Since) {
-                $version = $sinceTag->getVersion();
-                if ($version !== null) {
-                    self::assertTrue(Utils::tagDoesNotHaveZeroPatchVersion($sinceTag), "$elementName has 
-                    'since' version $version.'Since' version for PHP Core functionallity for style consistensy 
-                    should have X.X format for the case when patch version is '0'.");
-                }
-            }
-        }
-        foreach ($element->deprecatedTags as $deprecatedTag) {
-            if ($deprecatedTag instanceof Deprecated) {
-                $version = $deprecatedTag->getVersion();
-                if ($version !== null) {
-                    self::assertTrue(Utils::tagDoesNotHaveZeroPatchVersion($deprecatedTag), "$elementName has 
-                    'deprecated' version $version.'Deprecated' version for PHP Core functionallity for style consistensy 
-                    should have X.X format for the case when patch version is '0'.");
-                }
-            }
-        }
-        foreach ($element->removedTags as $removedTag) {
-            if ($removedTag instanceof RemovedTag) {
-                $version = $removedTag->getVersion();
-                if ($version !== null) {
-                    self::assertTrue(Utils::tagDoesNotHaveZeroPatchVersion($removedTag), "$elementName has 
-                    'removed' version $version.'Removed' version for PHP Core functionallity for style consistensy 
-                    should have X.X format for the case when patch version is '0'.");
-                }
-            }
-        }
-    }
-
-    private static function checkFunctionDoesNotHaveScalarTypeHints(int $sinceVersion, PHPFunction $function)
-    {
-        if ($sinceVersion < 7) {
-            if (empty($function->parameters)) {
-                self::assertTrue(true, 'Parameters list empty');
-            } else {
-                foreach ($function->parameters as $parameter) {
-                    if (!$parameter->hasMutedProblem(StubProblemType::PARAMETER_HAS_SCALAR_TYPEHINT)) {
-                        self::assertFalse($parameter->type === 'int' || $parameter->type === 'float' ||
-                            $parameter->type === 'string' || $parameter->type === 'bool',
-                            "Function '{$function->name}' with @since '$sinceVersion'  
-                has parameter '{$parameter->name}' with typehint '{$parameter->type}' but typehints available only since php 7");
-                    } else {
-                        self::markTestSkipped("Skipped");
+        $duplicatedFunctions = array_filter($filtered, function (PHPFunction $value, int|string $key) {
+            if (str_contains($key, 'duplicated')) {
+                $duplicatesOfFunction = self::getAllDuplicatesOfFunction($value->name);
+                $functionVersions[] = Utils::getAvailableInVersions(
+                    PhpStormStubsSingleton::getPhpStormStubs()->getFunction($value->name));
+                array_push($functionVersions, ...array_values(array_map(fn (PHPFunction $function) => Utils::getAvailableInVersions($function), $duplicatesOfFunction)));
+                $hasDuplicates = false;
+                $current = array_pop($functionVersions);
+                $next = array_pop($functionVersions);
+                while ($next !== null) {
+                    if (!empty(array_intersect($current, $next))) {
+                        $hasDuplicates = true;
                     }
+                    $current = array_merge($current, $next);
+                    $next = array_pop($functionVersions);
                 }
+                return $hasDuplicates;
             }
-        } else {
-            self::assertTrue(true, "Function '{$function->name}' has since version > 7");
-        }
+            return false;
+        }, ARRAY_FILTER_USE_BOTH);
+        return array_unique(array_map(fn (PHPFunction $function) => $function->name, $duplicatedFunctions));
     }
 
-    private static function checkFunctionDoesNotHaveReturnTypeHints(int $sinceVersion, PHPFunction $function)
+    /**
+     * @param mixed $defaultValue
+     * @param PHPClass|PHPInterface|null $contextClass
+     * @return bool|float|int|string|null
+     * @throws Exception|RuntimeException
+     */
+    private static function getStringRepresentationOfDefaultParameterValue(mixed $defaultValue, PHPClass|PHPInterface $contextClass = null): float|bool|int|string|null
     {
-        $returnTypeHint = $function->returnType === null ? $function->returnType : $function->returnType->getType();
-        if ($sinceVersion < 7) {
-            if (!$function->hasMutedProblem(StubProblemType::FUNCTION_HAS_RETURN_TYPEHINT)) {
-                self::assertNull($returnTypeHint, "Function '$function->name' has since version '$sinceVersion'
-            but has return typehint '$returnTypeHint' that supported only since PHP 7. Please declare return type via PhpDoc");
+        if ($defaultValue instanceof ConstFetch) {
+            $defaultValueName = (string)$defaultValue->name;
+            if ($defaultValueName !== 'false' && $defaultValueName !== 'true' && $defaultValueName !== 'null') {
+                $constants = array_filter(PhpStormStubsSingleton::getPhpStormStubs()->getConstants(),
+                    function (PHPConst $const) use ($defaultValue) {
+                        return $const->name === (string)$defaultValue->name;
+                    });
+                /** @var PHPConst $constant */
+                $constant = array_pop($constants);
+                $value = $constant->value;
             } else {
-                self::markTestSkipped("Skipped");
+                $value = $defaultValueName;
+            }
+        } elseif ($defaultValue instanceof String_ || $defaultValue instanceof LNumber || $defaultValue instanceof DNumber) {
+            $value = strval($defaultValue->value);
+        } elseif ($defaultValue instanceof BitwiseOr) {
+            if ($defaultValue->left instanceof ConstFetch && $defaultValue->right instanceof ConstFetch) {
+                $constants = array_filter(PhpStormStubsSingleton::getPhpStormStubs()->getConstants(),
+                    fn (PHPConst $const) => property_exists($defaultValue->left, 'name') &&
+                        $const->name === (string)$defaultValue->left->name);
+                /** @var PHPConst $leftConstant */
+                $leftConstant = array_pop($constants);
+                $constants = array_filter(PhpStormStubsSingleton::getPhpStormStubs()->getConstants(),
+                    fn (PHPConst $const) => property_exists($defaultValue->right, 'name') &&
+                        $const->name === (string)$defaultValue->right->name);
+                /** @var PHPConst $rightConstant */
+                $rightConstant = array_pop($constants);
+                $value = $leftConstant->value|$rightConstant->value;
+            }
+        } elseif ($defaultValue instanceof UnaryMinus && property_exists($defaultValue->expr, 'value')) {
+            $value = '-' . strval($defaultValue->expr->value);
+        } elseif ($defaultValue instanceof ClassConstFetch) {
+            $class = (string)$defaultValue->class;
+            if ($class === 'self' && $contextClass !== null) {
+                $class = $contextClass->name;
+            }
+            $parentClass = PhpStormStubsSingleton::getPhpStormStubs()->getClass($class) ??
+                PhpStormStubsSingleton::getPhpStormStubs()->getInterface($class);
+            if ($parentClass === null) {
+                throw new Exception("Class $class not found in stubs");
+            }
+            if ((string)$defaultValue->name === 'class') {
+                $value = (string)$defaultValue->class;
+            } else {
+                $constants = array_filter($parentClass->constants, fn (PHPConst $const) => $const->name === (string)$defaultValue->name);
+                /** @var PHPConst $constant */
+                $constant = array_pop($constants);
+                $value = $constant->value;
             }
         } else {
-            self::assertTrue(true, "Function '{$function->name}' has since version > 7");
+            $value = strval($defaultValue);
         }
+        return $value;
     }
 }

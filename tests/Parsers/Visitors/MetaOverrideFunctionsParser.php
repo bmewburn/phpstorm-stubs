@@ -23,7 +23,7 @@ class MetaOverrideFunctionsParser extends NodeVisitorAbstract
     {
         $this->overridenFunctions = [];
         StubParser::processStubs($this, null,
-            fn(SplFileInfo $file): bool => $file->getFilename() === '.phpstorm.meta.php');
+            fn (SplFileInfo $file): bool => $file->getFilename() === '.phpstorm.meta.php');
     }
 
     /**
@@ -31,7 +31,7 @@ class MetaOverrideFunctionsParser extends NodeVisitorAbstract
      * @return void
      * @throws RuntimeException
      */
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): void
     {
         if ($node instanceof Node\Expr\FuncCall && (string)$node->name === self::OVERRIDE_FUNCTION) {
             $args = $node->args;

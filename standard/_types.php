@@ -8,39 +8,40 @@ namespace {
      * @link https://secure.php.net/manual/en/class.generator.php
      * @link https://wiki.php.net/rfc/generators
      */
-    final class Generator implements Iterator {
+    final class Generator implements Iterator
+{
         /**
          * Throws an exception if the generator is currently after the first yield.
          * @return void
          */
-        function rewind() {}
+        public function rewind() {}
         /**
          * Returns false if the generator has been closed, true otherwise.
          * @return bool
          */
-        function valid() {}
+        public function valid() {}
         /**
          * Returns whatever was passed to yield or null if nothing was passed or the generator is already closed.
          * @return mixed
          */
-        function current() {}
+        public function current() {}
         /**
          * Returns the yielded key or, if none was specified, an auto-incrementing key or null if the generator is already closed.
          * @return string|float|int|bool|null
          */
-        function key() {}
+        public function key() {}
         /**
          * Resumes the generator (unless the generator is already closed).
          * @return void
          */
-        function next() {}
+        public function next() {}
 
         /**
          * Sets the return value of the yield expression and resumes the generator (unless the generator is already closed).
          * @param mixed $value
          * @return mixed
          */
-        function send($value) {}
+        public function send(mixed $value) {}
 
         /**
          * Throws an exception at the current suspension point in the generator.
@@ -56,7 +57,7 @@ namespace {
          * @return mixed|null
          * @since 7.0
          */
-        function getReturn() {}
+        public function getReturn() {}
 
         /**
          * Serialize callback
@@ -64,10 +65,9 @@ namespace {
          * @link https://php.net/manual/en/generator.wakeup.php
          * @return void
          */
-        public function __wakeup(){}
+        public function __wakeup() {}
     }
 
     class ClosedGeneratorException extends Exception {}
-
 }
 

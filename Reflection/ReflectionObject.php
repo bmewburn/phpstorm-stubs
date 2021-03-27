@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\Deprecated;
+
 /**
  * The <b>ReflectionObject</b> class reports
  * information about an object.
@@ -12,11 +14,9 @@ class ReflectionObject extends ReflectionClass
      * Constructs a ReflectionObject
      *
      * @link https://php.net/manual/en/reflectionobject.construct.php
-     * @param object $argument An object instance.
+     * @param object $object An object instance.
      */
-    public function __construct($argument)
-    {
-    }
+    public function __construct($object) {}
 
     /**
      * Export
@@ -28,10 +28,8 @@ class ReflectionObject extends ReflectionClass
      * the opposite.
      * @return string|null If the $return parameter is set to {@see true}, then
      * the export is returned as a string, otherwise {@see null} is returned.
-     * @deprecated 7.4
      * @removed 8.0
      */
-    public static function export($argument, $return = false)
-    {
-    }
+    #[Deprecated(since: '7.4')]
+    public static function export($argument, $return = false) {}
 }

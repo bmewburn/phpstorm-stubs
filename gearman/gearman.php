@@ -804,13 +804,8 @@ define('GEARMAN_WORKER_STATE_GRAB_JOB_RECV', 4);
  */
 define('GEARMAN_WORKER_STATE_PRE_SLEEP', 5);
 
-
-/**
- */
 function gearman_version() {}
 
-/**
- */
 function gearman_bugreport() {}
 
 /**
@@ -1170,8 +1165,6 @@ function gearman_task_recv_data($task_object, $data_len) {}
  */
 function gearman_worker_return_code($worker_object) {}
 
-/**
- */
 function gearman_worker_create() {}
 
 /**
@@ -1326,6 +1319,7 @@ function gearman_job_send_exception($job_object, $exception) {}
 function gearman_job_send_fail($job_object) {}
 
 /**
+ * Get the job handle
  * @param $job_object
  */
 function gearman_job_handle($job_object) {}
@@ -1350,13 +1344,11 @@ function gearman_job_workload($job_object) {}
  */
 function gearman_job_workload_size($job_object) {}
 
-
-
 /**
  * Class: GearmanClient
- *
  */
-class GearmanClient {
+class GearmanClient
+{
     /**
      * Creates a GearmanClient instance representing a client that connects to the job
      * server and submits tasks to complete.
@@ -1389,8 +1381,6 @@ class GearmanClient {
      */
     public function getErrno() {}
 
-    /**
-       */
     public function options() {}
 
     /**
@@ -1478,8 +1468,6 @@ class GearmanClient {
      */
     public function addServers($servers = '127.0.0.1:4730') {}
 
-    /**
-       */
     public function wait() {}
 
     /**
@@ -1808,12 +1796,11 @@ class GearmanClient {
     public function ping($workload) {}
 }
 
-
 /**
  * Class: GearmanTask
- *
  */
-class GearmanTask {
+class GearmanTask
+{
     /**
      * Returns the last Gearman return code for this task.
      *
@@ -1920,12 +1907,11 @@ class GearmanTask {
     public function recvData($data_len) {}
 }
 
-
 /**
  * Class: GearmanWorker
- *
  */
-class GearmanWorker {
+class GearmanWorker
+{
     /**
      * Creates a GearmanWorker instance representing a worker that connects to the job
      * server and accepts tasks to run.
@@ -2017,7 +2003,7 @@ class GearmanWorker {
      * the list of available workers.
      *
      * @link https://php.net/manual/en/gearmanworker.setid.php
-     * @param int $id A string identifier
+     * @param string $id A string identifier
      * @return bool Returns TRUE on success or FALSE on failure
      */
     public function setId($id) {}
@@ -2087,8 +2073,6 @@ class GearmanWorker {
      */
     public function unregisterAll() {}
 
-    /**
-       */
     public function grabJob() {}
 
     /**
@@ -2117,15 +2101,13 @@ class GearmanWorker {
      * @return bool
      */
     public function work() {}
-
 }
-
 
 /**
  * Class: GearmanJob
- *
  */
-class GearmanJob {
+class GearmanJob
+{
     /**
      * Returns the last return code issued by the job server.
      *
@@ -2138,7 +2120,7 @@ class GearmanJob {
      * Sets the return value for this job, indicates how the job completed.
      *
      * @link https://php.net/manual/en/gearmanjob.setreturn.php
-     * @param string $gearman_return_t A valid Gearman return value
+     * @param int $gearman_return_t A valid Gearman return value
      * @return bool Description
      */
     public function setReturn($gearman_return_t) {}
@@ -2246,12 +2228,7 @@ class GearmanJob {
     public function workloadSize() {}
 }
 
-
 /**
  * Class: GearmanException
  */
-class GearmanException extends Exception {
-}
-
-
-?>
+class GearmanException extends Exception {}

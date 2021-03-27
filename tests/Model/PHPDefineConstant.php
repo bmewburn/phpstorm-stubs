@@ -10,17 +10,17 @@ use function is_string;
 class PHPDefineConstant extends PHPConst
 {
     /**
-     * @param array $constant
-     * @return $this
+     * @param array $reflectionObject
+     * @return static
      */
-    public function readObjectFromReflection($constant): self
+    public function readObjectFromReflection($reflectionObject): static
     {
-        if (is_string($constant[0])) {
-            $this->name = utf8_encode($constant[0]);
+        if (is_string($reflectionObject[0])) {
+            $this->name = utf8_encode($reflectionObject[0]);
         } else {
-            $this->name = $constant[0];
+            $this->name = $reflectionObject[0];
         }
-        $constantValue = $constant[1];
+        $constantValue = $reflectionObject[1];
         if ($constantValue !== null) {
             if (is_resource($constantValue)) {
                 $this->value = 'PHPSTORM_RESOURCE';
@@ -32,14 +32,15 @@ class PHPDefineConstant extends PHPConst
         } else {
             $this->value = null;
         }
+        $this->visibility = 'public';
         return $this;
     }
 
     /**
      * @param FuncCall $node
-     * @return $this
+     * @return static
      */
-    public function readObjectFromStubNode($node): self
+    public function readObjectFromStubNode($node): static
     {
         $constName = $this->getConstantFQN($node, $node->args[0]->value->value);
         if (in_array($constName, ['null', 'true', 'false'])) {
@@ -47,6 +48,7 @@ class PHPDefineConstant extends PHPConst
         }
         $this->name = $constName;
         $this->value = $this->getConstValue($node->args[1]);
+        $this->visibility = 'public';
         $this->collectTags($node);
         return $this;
     }

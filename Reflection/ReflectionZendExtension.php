@@ -1,13 +1,20 @@
 <?php
 
+use JetBrains\PhpStorm\Immutable;
+use JetBrains\PhpStorm\Pure;
+
 /**
- * @property-read string $name Name of the extension, same as calling the {@see ReflectionZendExtension::getName()} method
- *
  * @link https://secure.php.net/manual/en/class.reflectionzendextension.php
  * @since 5.4
  */
 class ReflectionZendExtension implements Reflector
 {
+    /**
+     * @var string Name of the extension, same as calling the {@see ReflectionZendExtension::getName()} method
+     */
+    #[Immutable]
+    public $name;
+
     /**
      * Constructs a ReflectionZendExtension object
      *
@@ -16,9 +23,7 @@ class ReflectionZendExtension implements Reflector
      * @throws \ReflectionException if the extension does not exist.
      * @since 5.4
      */
-    public function __construct($name)
-    {
-    }
+    public function __construct($name) {}
 
     /**
      * Exports a reflected zend extension.
@@ -31,9 +36,7 @@ class ReflectionZendExtension implements Reflector
      * @return string|null If the $return parameter is set to {@see true}, then
      * the export is returned as a string, otherwise {@see null} is returned.
      */
-    public static function export($name, $return = false)
-    {
-    }
+    public static function export($name, $return = false) {}
 
     /**
      * To string handler
@@ -42,9 +45,7 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function __toString()
-    {
-    }
+    public function __toString() {}
 
     /**
      * Gets name
@@ -53,9 +54,8 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function getName()
-    {
-    }
+    #[Pure]
+    public function getName() {}
 
     /**
      * Gets version
@@ -64,9 +64,8 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function getVersion()
-    {
-    }
+    #[Pure]
+    public function getVersion() {}
 
     /**
      * Gets author
@@ -75,9 +74,8 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function getAuthor()
-    {
-    }
+    #[Pure]
+    public function getAuthor() {}
 
     /**
      * Gets URL
@@ -86,9 +84,8 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function getURL()
-    {
-    }
+    #[Pure]
+    public function getURL() {}
 
     /**
      * Gets copyright
@@ -97,9 +94,8 @@ class ReflectionZendExtension implements Reflector
      * @return string
      * @since 5.4
      */
-    public function getCopyright()
-    {
-    }
+    #[Pure]
+    public function getCopyright() {}
 
     /**
      * Clone handler
@@ -108,8 +104,5 @@ class ReflectionZendExtension implements Reflector
      * @return void
      * @since 5.4
      */
-    final private function __clone()
-    {
-    }
-
+    final private function __clone() {}
 }

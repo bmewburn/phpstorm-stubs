@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\Deprecated;
+
 /**
  * The reflection class.
  *
@@ -14,9 +16,7 @@ class Reflection
      * @param int $modifiers Bitfield of the modifiers to get.
      * @return array An array of modifier names.
      */
-    public static function getModifierNames($modifiers)
-    {
-    }
+    public static function getModifierNames($modifiers) {}
 
     /**
      * Exports
@@ -27,10 +27,8 @@ class Reflection
      * opposed to emitting it. Setting to {@see false} (the default) will do the opposite.
      * @return string|null If the return parameter is set to {@see true}, then the
      * export is returned as a string, otherwise {@see null} is returned.
-     * @deprecated 7.4
      * @removed 8.0
      */
-    public static function export(Reflector $reflector, $return = false)
-    {
-    }
+    #[Deprecated(since: '7.4')]
+    public static function export(Reflector $reflector, $return = false) {}
 }
