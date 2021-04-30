@@ -346,7 +346,7 @@ function define(string $constant_name, $value, #[Deprecated] bool $case_insensit
  * @return bool true if the named constant given by <i>name</i>
  * has been defined, false otherwise.
  */
-#[Pure]
+#[Pure(true)]
 function defined(string $constant_name): bool {}
 
 /**
@@ -472,7 +472,7 @@ function interface_exists(string $interface, bool $autoload = true): bool {}
  * This function will return false for constructs, such as
  * <b>include_once</b> and <b>echo</b>.
  */
-#[Pure]
+#[Pure(true)]
 function function_exists(string $function): bool {}
 
 /**
@@ -499,7 +499,7 @@ function class_alias(string $class, string $alias, bool $autoload = true): bool 
  * the returned array.
  * </p>
  */
-#[Pure]
+#[Pure(true)]
 function get_included_files(): array {}
 
 /**
@@ -507,7 +507,7 @@ function get_included_files(): array {}
  * @link https://php.net/manual/en/function.get-required-files.php
  * @return string[]
  */
-#[Pure]
+#[Pure(true)]
 function get_required_files(): array {}
 
 /**
@@ -693,7 +693,7 @@ function restore_exception_handler(): bool {}
  * the appendices.
  * </p>
  */
-#[Pure]
+#[Pure(true)]
 function get_declared_classes(): array {}
 
 /**
@@ -880,7 +880,7 @@ function get_extension_funcs(string $extension): array|false {}
  * </p>
  * @return array
  */
-#[Pure]
+#[Pure(true)]
 function get_defined_constants(bool $categorize = false): array {}
 
 /**

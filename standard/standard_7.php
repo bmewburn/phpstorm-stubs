@@ -332,7 +332,7 @@ function chroot(string $directory): bool {}
  * modes and permissions.
  * </p>
  */
-#[Pure]
+#[Pure(true)]
 function getcwd(): string|false {}
 
 /**
@@ -572,7 +572,7 @@ function filetype(string $filename): string|false {}
  * <p>
  * The check is done using the real UID/GID instead of the effective one.
  */
-#[Pure]
+#[Pure(true)]
 function file_exists(string $filename): bool {}
 
 /**
@@ -584,7 +584,7 @@ function file_exists(string $filename): bool {}
  * @return bool true if the filename exists and is
  * writable.
  */
-#[Pure]
+#[Pure(true)]
 function is_writable(string $filename): bool {}
 
 /**
@@ -597,7 +597,7 @@ function is_writable(string $filename): bool {}
  * @return bool true if the filename exists and is
  * writable.
  */
-#[Pure]
+#[Pure(true)]
 function is_writeable(string $filename): bool {}
 
 /**
@@ -648,7 +648,7 @@ function is_file(string $filename): bool {}
  * @return bool true if the filename exists and is a directory, false
  * otherwise.
  */
-#[Pure]
+#[Pure(true)]
 function is_dir(string $filename): bool {}
 
 /**
@@ -919,7 +919,7 @@ function disk_total_space(string $directory): float|false {}
  * @return float|false the number of available bytes as a float
  * or false on failure.
  */
-#[Pure]
+#[Pure(true)]
 function disk_free_space(string $directory): float|false {}
 
 /**
@@ -929,7 +929,7 @@ function disk_free_space(string $directory): float|false {}
  * @param string $directory
  * @return float|false
  */
-#[Pure]
+#[Pure(true)]
 function diskfreespace(string $directory): float|false {}
 
 /**

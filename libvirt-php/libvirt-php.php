@@ -121,7 +121,7 @@ const VIR_CRED_PASSPHRASE = 5;
 /* Challenge response */
 const VIR_CRED_ECHOPROMPT = 6;
 /* Challenge response */
-const VIR_CRED_NOECHOPROMP = 7;
+const VIR_CRED_NOECHOPROMPT = 7;
 /* Authentication realm */
 const VIR_CRED_REALM = 8;
 /* Externally managed credential More may be added - expect the unexpected */
@@ -415,7 +415,7 @@ function libvirt_connect_get_soundhw_models($conn, ?string $arch, int $flags = 0
 /**
  * Function is used to get the system information from connection if available
  * @param resource $conn resource for connection
- * @return string|false: XML description of system information from the connection or FALSE for error
+ * @return string|false XML description of system information from the connection or FALSE for error
  * @since 0.4.1(-2)
  */
 function libvirt_connect_get_sysinfo($conn): string|false {}
@@ -947,7 +947,7 @@ function libvirt_domain_new($conn, string $name, string|null|false $arch, int $m
 
 /**
  * Function is used to get the VNC server location for the newly created domain (newly started installation)
- * @return string|null: a VNC server for a newly created domain resource (if any)
+ * @return string|null a VNC server for a newly created domain resource (if any)
  * @since 0.4.5
  */
 function libvirt_domain_new_get_vnc(): string|null {}
