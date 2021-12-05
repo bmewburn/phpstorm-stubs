@@ -15,6 +15,9 @@ use function array_pop;
 
 class StubsMetaInternalTagTest extends BaseStubsTest
 {
+    /**
+     * @var string[]
+     */
     private static array $overriddenFunctionsInMeta;
 
     public static function setUpBeforeClass(): void
@@ -31,10 +34,12 @@ class StubsMetaInternalTagTest extends BaseStubsTest
         $functions = PhpStormStubsSingleton::getPhpStormStubs()->getFunctions();
         foreach ($functions as $function) {
             if ($function->hasInternalMetaTag) {
-                $reflectionFunctions = array_filter(ReflectionStubsSingleton::getReflectionStubs()->getFunctions(),
-                    fn ($refFunction) => $refFunction->name === $function->name);
+                $reflectionFunctions = array_filter(
+                    ReflectionStubsSingleton::getReflectionStubs()->getFunctions(),
+                    fn ($refFunction) => $refFunction->name === $function->name
+                );
                 $reflectionFunction = array_pop($reflectionFunctions);
-                if (!$reflectionFunction->hasMutedProblem(StubProblemType::ABSENT_IN_META)) {
+                if ($reflectionFunction !== null && !$reflectionFunction->hasMutedProblem(StubProblemType::ABSENT_IN_META)) {
                     self::checkInternalMetaInOverride($function->name);
                 }
             }
@@ -51,8 +56,10 @@ class StubsMetaInternalTagTest extends BaseStubsTest
                 if ($method->hasInternalMetaTag) {
                     $refClass = ReflectionStubsSingleton::getReflectionStubs()->getClass($className);
                     if ($refClass !== null) {
-                        $reflectionMethods = array_filter($refClass->methods,
-                            fn ($refMethod) => $refMethod->name === $methodName);
+                        $reflectionMethods = array_filter(
+                            $refClass->methods,
+                            fn ($refMethod) => $refMethod->name === $methodName
+                        );
                         /** @var PHPMethod $reflectionMethod */
                         $reflectionMethod = array_pop($reflectionMethods);
                         if ($reflectionMethod->hasMutedProblem(StubProblemType::ABSENT_IN_META)) {
@@ -69,12 +76,14 @@ class StubsMetaInternalTagTest extends BaseStubsTest
     }
 
     /**
-     * @param string $elementName
      * @throws Exception
      */
     private static function checkInternalMetaInOverride(string $elementName): void
     {
-        self::assertContains($elementName, self::$overriddenFunctionsInMeta,
-            "$elementName contains @meta in phpdoc but isn't added to 'override()' functions in meta file");
+        self::assertContains(
+            $elementName,
+            self::$overriddenFunctionsInMeta,
+            "$elementName contains @meta in phpdoc but isn't added to 'override()' functions in meta file"
+        );
     }
 }

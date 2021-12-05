@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace StubTests;
 
+use JetBrains\PhpStorm\Pure;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\ConstFetch;
@@ -18,6 +19,14 @@ use StubTests\Model\StubsContainer;
 use StubTests\Parsers\ExpectedFunctionArgumentsInfo;
 use StubTests\Parsers\MetaExpectedArgumentsCollector;
 use StubTests\TestData\Providers\PhpStormStubsSingleton;
+use function array_key_exists;
+use function array_map;
+use function array_walk_recursive;
+use function count;
+use function method_exists;
+use function property_exists;
+use function str_starts_with;
+use function substr;
 
 class StubsMetaExpectedArgumentsTest extends BaseStubsTest
 {
@@ -29,8 +38,17 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
      * @var string[]
      */
     private static array $registeredArgumentsSet;
+    /**
+     * @var string[]
+     */
     private static array $functionsFqns;
+    /**
+     * @var string[]
+     */
     private static array $methodsFqns;
+    /**
+     * @var string[]
+     */
     private static array $constantsFqns;
 
     public static function setUpBeforeClass(): void
@@ -69,7 +87,8 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
     public static function getMethodsFqns(StubsContainer $stubs): array
     {
         return self::flatten(
-            array_map(fn (PHPClass $class) => array_map(fn (PHPMethod $method) => self::getClassMemberFqn($class->name, $method->name), $class->methods), $stubs->getClasses()));
+            array_map(fn (PHPClass $class) => array_map(fn (PHPMethod $method) => self::getClassMemberFqn($class->name, $method->name), $class->methods), $stubs->getClasses())
+        );
     }
 
     /**
@@ -130,8 +149,11 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
                         self::fail("Couldn't read name of arguments set");
                     }
                     self::assertContains($name, self::$registeredArgumentsSet, 'Can\'t find registered argument set: ' . $name);
-                    self::assertArrayNotHasKey($name, $usedArgumentsSet,
-                        $name . ' argumentsSet used more then once for ' . self::getFqn($argument->getFunctionReference()));
+                    self::assertArrayNotHasKey(
+                        $name,
+                        $usedArgumentsSet,
+                        $name . ' argumentsSet used more then once for ' . self::getFqn($argument->getFunctionReference())
+                    );
                     $usedArgumentsSet[$name] = $name;
                 }
             }
@@ -143,8 +165,11 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
         foreach (self::$expectedArguments as $argument) {
             foreach ($argument->getExpectedArguments() as $literalArgument) {
                 if ($literalArgument instanceof String_) {
-                    self::assertEquals(String_::KIND_SINGLE_QUOTED, $literalArgument->getAttribute('kind'),
-                        'String literals as expectedArguments should be single-quoted');
+                    self::assertEquals(
+                        String_::KIND_SINGLE_QUOTED,
+                        $literalArgument->getAttribute('kind'),
+                        'String literals as expectedArguments should be single-quoted'
+                    );
                 }
             }
         }
@@ -163,9 +188,8 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
             $functionReferenceFqn = self::getFqn($argument->getFunctionReference());
             $index = $argument->getIndex();
             if (array_key_exists($functionReferenceFqn, $functionsFqnsWithIndeces)) {
-                $indices = $functionsFqnsWithIndeces[$functionReferenceFqn];
-                self::assertNotContains($index, $indices, 'Expected arguments for ' . $functionReferenceFqn . ' with index ' . $index . ' already registered');
-                $indices[] = $index;
+                self::assertNotContains($index, $functionsFqnsWithIndeces[$functionReferenceFqn], 'Expected arguments for ' . $functionReferenceFqn . ' with index ' . $index . ' already registered');
+                $functionsFqnsWithIndeces[$functionReferenceFqn][] = $index;
             } else {
                 $functionsFqnsWithIndeces[$functionReferenceFqn] = [$index];
             }
@@ -183,8 +207,11 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
                 continue;
             }
             $functionReferenceFqn = self::getFqn($argument->getFunctionReference());
-            self::assertArrayNotHasKey($functionReferenceFqn, $expectedReturnValuesFunctionsFqns,
-                'Expected return values for ' . $functionReferenceFqn . ' already registered');
+            self::assertArrayNotHasKey(
+                $functionReferenceFqn,
+                $expectedReturnValuesFunctionsFqns,
+                'Expected return values for ' . $functionReferenceFqn . ' already registered'
+            );
             $expectedReturnValuesFunctionsFqns[$functionReferenceFqn] = $functionReferenceFqn;
         }
     }
@@ -218,8 +245,10 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
                 }
                 $originalName = $name->getAttribute('originalName');
                 if (method_exists($originalName, 'isFullyQualified')) {
-                    self::assertTrue($originalName->isFullyQualified(),
-                        self::getFqn($expr) . ' should be fully qualified');
+                    self::assertTrue(
+                        $originalName->isFullyQualified(),
+                        self::getFqn($expr) . ' should be fully qualified'
+                    );
                 } else {
                     self::fail('Could not check if name is fully qualified');
                 }
@@ -227,6 +256,7 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
         }
     }
 
+    #[Pure]
     private static function getClassMemberFqn(string $className, string $memberName): string
     {
         return self::toPresentableFqn($className) . '.' . $memberName;
@@ -241,8 +271,6 @@ class StubsMetaExpectedArgumentsTest extends BaseStubsTest
     }
 
     /**
-     * @param Expr|null $expr
-     * @return string
      * @throws Exception
      */
     private static function getFqn(?Expr $expr): string
