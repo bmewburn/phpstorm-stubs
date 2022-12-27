@@ -1,6 +1,14 @@
 <?php
 
 // Start of dba v.
+use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+
+/** @since 8.2 */
+const DBA_LMDB_USE_SUB_DIR = 0;
+
+/** @since 8.2 */
+const DBA_LMDB_NO_SUB_DIR = 0;
 
 /**
  * Open database
@@ -118,7 +126,11 @@
  * @param mixed ...$handler_params [optional]
  * @return resource|false a positive handle on success or <b>FALSE</b> on failure.
  */
+#[PhpStormStubsElementAvailable(from: '5.3', to: '8.1')]
 function dba_open($path, $mode, $handler, ...$handler_params) {}
+
+#[PhpStormStubsElementAvailable(from: '8.2')]
+function dba_open(string $path, string $mode, ?string $handler = null, int $permission = 0o644, int $map_size = 0, ?int $flags = null) {}
 
 /**
  * Open database persistently
@@ -141,7 +153,11 @@ function dba_open($path, $mode, $handler, ...$handler_params) {}
  * @param mixed ...$handler_params [optional]
  * @return resource|false a positive handle on success or <b>FALSE</b> on failure.
  */
+#[PhpStormStubsElementAvailable(from: '5.3', to: '8.1')]
 function dba_popen($path, $mode, $handler, ...$handler_params) {}
+
+#[PhpStormStubsElementAvailable(from: '8.2')]
+function dba_popen(string $path, string $mode, ?string $handler = null, int $permission = 0o644, int $map_size = 0, ?int $flags = null) {}
 
 /**
  * Close a DBA database
@@ -166,7 +182,7 @@ function dba_close($dba): void {}
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function dba_delete($key, $dba): bool {}
+function dba_delete(#[LanguageLevelTypeAware(['8.2' => 'array|string'], default: '')] $key, $dba): bool {}
 
 /**
  * Check whether key exists
@@ -180,7 +196,7 @@ function dba_delete($key, $dba): bool {}
  * </p>
  * @return bool <b>TRUE</b> if the key exists, <b>FALSE</b> otherwise.
  */
-function dba_exists($key, $dba): bool {}
+function dba_exists(#[LanguageLevelTypeAware(['8.2' => 'array|string'], default: '')] $key, $dba): bool {}
 
 /**
  * Fetch data specified by key
@@ -240,7 +256,7 @@ function dba_fetch($key, $skip, $dba): string|false {}
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function dba_insert($key, string $value, $dba): bool {}
+function dba_insert(#[LanguageLevelTypeAware(['8.2' => 'array|string'], default: '')] $key, string $value, $dba): bool {}
 
 /**
  * Replace or insert entry
@@ -257,7 +273,7 @@ function dba_insert($key, string $value, $dba): bool {}
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function dba_replace($key, string $value, $dba): bool {}
+function dba_replace(#[LanguageLevelTypeAware(['8.2' => 'array|string'], default: '')] $key, string $value, $dba): bool {}
 
 /**
  * Fetch first key

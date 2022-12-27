@@ -2,6 +2,7 @@
 
 // Start of libxml v.
 use JetBrains\PhpStorm\Deprecated;
+use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 use JetBrains\PhpStorm\Pure;
 
 /**
@@ -22,6 +23,7 @@ class LibXMLError
      * @var int
      */
     public int $level;
+
     /**
      * <p style="margin-top:0;">
      * The error's code.
@@ -29,6 +31,7 @@ class LibXMLError
      * @var int
      */
     public int $code;
+
     /**
      * <p style="margin-top:0;">
      * The column where the error occurred.
@@ -41,6 +44,7 @@ class LibXMLError
      * @var int
      */
     public int $column;
+
     /**
      * <p style="margin-top:0;">
      * The error message, if any.
@@ -48,11 +52,13 @@ class LibXMLError
      * @var string
      */
     public string $message;
+
     /**
      * <p style="margin-top:0;">The filename, or empty if the XML was loaded from a string.</p>
      * @var string
      */
     public string $file;
+
     /**
      * <p style="margin-top:0;">
      * The line where the error occurred.
@@ -76,13 +82,16 @@ function libxml_set_streams_context($context): void {}
 /**
  * Disable libxml errors and allow user to fetch error information as needed
  * @link https://php.net/manual/en/function.libxml-use-internal-errors.php
- * @param bool|null $use_errors [optional] <p>
+ * @param bool|null $use_errors <p>
  * Enable (<b>TRUE</b>) user error handling or disable (<b>FALSE</b>) user error handling. Disabling will also clear any existing libxml errors.
  * </p>
  * @return bool This function returns the previous value of
  * <i>use_errors</i>.
  */
-function libxml_use_internal_errors(?bool $use_errors = false): bool {}
+function libxml_use_internal_errors(
+    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] bool $use_errors = false,
+    #[PhpStormStubsElementAvailable(from: '8.0')] ?bool $use_errors = null
+): bool {}
 
 /**
  * Retrieve last error from libxml

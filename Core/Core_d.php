@@ -171,7 +171,7 @@ define('PHP_MINOR_VERSION', 3);
 define('PHP_RELEASE_VERSION', 6);
 define('PHP_EXTRA_VERSION', "-13ubuntu3.2");
 define('PHP_VERSION_ID', 50306);
-define('PHP_ZTS', 0);
+define('PHP_ZTS', 1);
 define('PHP_DEBUG', 0);
 define('PHP_OS', "Linux");
 /**
@@ -268,3 +268,10 @@ define('PHP_OUTPUT_HANDLER_STDFLAGS', 112);
 define('PHP_OUTPUT_HANDLER_STARTED', 4096);
 /** @link https://php.net/manual/en/outcontrol.constants.php */
 define('PHP_OUTPUT_HANDLER_DISABLED', 8192);
+
+/**
+ * Specifies where the manpages were installed into.
+ * @since 5.3.7
+ * @link https://php.net/manual/en/reserved.constants.php
+ */
+define('PHP_MANDIR', '/usr/local/php/php/man');

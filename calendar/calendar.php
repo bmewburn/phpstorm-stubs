@@ -174,7 +174,7 @@ function easter_date(?int $year, #[PhpStormStubsElementAvailable(from: '8.0')] i
 /**
  * Get number of days after March 21 on which Easter falls for a given year
  * @link https://php.net/manual/en/function.easter-days.php
- * @param int|null $year [optional] <p>
+ * @param positive-int|null $year [optional] <p>
  * The year as a positive number
  * </p>
  * @param int $mode [optional] <p>
@@ -191,12 +191,12 @@ function easter_days(?int $year, int $mode = CAL_EASTER_DEFAULT): int {}
 /**
  * Convert Unix timestamp to Julian Day
  * @link https://php.net/manual/en/function.unixtojd.php
- * @param int|null $timestamp [optional] defaults to time() <p>
+ * @param int|null $timestamp defaults to time() <p>
  * A unix timestamp to convert.
  * </p>
  * @return int|false A julian day number as integer.
  */
-function unixtojd(?int $timestamp = 0): int|false {}
+function unixtojd(?int $timestamp = null): int|false {}
 
 /**
  * Convert Julian Day to Unix timestamp

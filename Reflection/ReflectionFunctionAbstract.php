@@ -27,7 +27,17 @@ abstract class ReflectionFunctionAbstract implements Reflector
      * @link https://php.net/manual/en/reflectionfunctionabstract.clone.php
      * @return void
      */
+    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
+
+    /**
+     * Clones function
+     *
+     * @link https://php.net/manual/en/reflectionfunctionabstract.clone.php
+     * @return void
+     */
+    #[PhpStormStubsElementAvailable(from: "8.1")]
+    private function __clone(): void {}
 
     /**
      * Checks if function in namespace
@@ -297,11 +307,13 @@ abstract class ReflectionFunctionAbstract implements Reflector
     public function hasReturnType(): bool {}
 
     /**
+     * @template T
+     *
      * Returns an array of function attributes.
      *
-     * @param string|null $name Name of an attribute class
+     * @param class-string<T>|null $name Name of an attribute class
      * @param int $flags Сriteria by which the attribute is searched.
-     * @return ReflectionAttribute[]
+     * @return ReflectionAttribute<T>[]
      * @since 8.0
      */
     #[Pure]
@@ -323,4 +335,7 @@ abstract class ReflectionFunctionAbstract implements Reflector
     #[Pure]
     #[TentativeType]
     public function isStatic(): bool {}
+
+    #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')]
+    public function __toString() {}
 }

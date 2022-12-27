@@ -3,6 +3,7 @@
 // Start of Core v.5.3.6-13ubuntu3.2
 use JetBrains\PhpStorm\ExpectedValues;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 use JetBrains\PhpStorm\Internal\TentativeType;
 use JetBrains\PhpStorm\Pure;
 
@@ -165,7 +166,9 @@ interface ArrayAccess
 }
 
 /**
- * Interface for customized serializing.
+ * Interface for customized serializing.<br>
+ * As of PHP 8.1.0, a class which implements Serializable without also implementing `__serialize()` and `__unserialize()`
+ * will generate a deprecation warning.
  * @link https://php.net/manual/en/class.serializable.php
  */
 interface Serializable
@@ -278,11 +281,14 @@ class Exception implements Throwable
 {
     /** The error message */
     protected $message;
+
     /** The error code */
     protected $code;
+
     /** The filename where the error happened  */
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
     protected $file;
+
     /** The line where the error happened */
     #[LanguageLevelTypeAware(['8.1' => 'int'], default: '')]
     protected $line;
@@ -293,7 +299,17 @@ class Exception implements Throwable
      * @link https://php.net/manual/en/exception.clone.php
      * @return void
      */
+    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
+
+    /**
+     * Clone the exception
+     * Tries to clone the Exception, which results in Fatal error.
+     * @link https://php.net/manual/en/exception.clone.php
+     * @return void
+     */
+    #[PhpStormStubsElementAvailable("8.1")]
+    private function __clone(): void {}
 
     /**
      * Construct the exception. Note: The message is NOT binary safe.
@@ -390,11 +406,14 @@ class Error implements Throwable
 {
     /** The error message */
     protected $message;
+
     /** The error code */
     protected $code;
+
     /** The filename where the error happened  */
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
     protected $file;
+
     /** The line where the error happened */
     #[LanguageLevelTypeAware(['8.1' => 'int'], default: '')]
     protected $line;
@@ -491,7 +510,17 @@ class Error implements Throwable
      * @return void
      * @link https://php.net/manual/en/error.clone.php
      */
+    #[PhpStormStubsElementAvailable(from: "7.0", to: "8.0")]
     final private function __clone(): void {}
+
+    /**
+     * Clone the error
+     * Error can not be clone, so this method results in fatal error.
+     * @return void
+     * @link https://php.net/manual/en/error.clone.php
+     */
+    #[PhpStormStubsElementAvailable('8.1')]
+    private function __clone(): void {}
 
     #[TentativeType]
     public function __wakeup(): void {}
@@ -669,7 +698,7 @@ interface Countable
     /**
      * Count elements of an object
      * @link https://php.net/manual/en/countable.count.php
-     * @return int The custom count as an integer.
+     * @return int<0,max> The custom count as an integer.
      * <p>
      * The return value is cast to an integer.
      * </p>
@@ -697,11 +726,10 @@ final class WeakReference
     /**
      * Create a new weak reference.
      * @link https://www.php.net/manual/en/weakreference.create.php
-     * @param object $referent The object to be weakly referenced.
      * @return WeakReference the freshly instantiated object.
      * @since 7.4
      */
-    public static function create($referent) {}
+    public static function create(object $object): WeakReference {}
 
     /**
      * Gets a weakly referenced object. If the object has already been
@@ -771,22 +799,21 @@ final class WeakMap implements ArrayAccess, Countable, IteratorAggregate
     /**
      * Returns the number of items in the {@see WeakMap} instance.
      *
-     * @return int
+     * @return int<0,max>
      */
     public function count(): int {}
 }
 
 /**
- * Stringable interface marks classes as available for serialization
- * in a string.
+ * Stringable interface denotes a class as having a __toString() method.
  *
  * @since 8.0
  */
 interface Stringable
 {
     /**
-     * Magic method {@see https://www.php.net/manual/en/language.oop5.magic.php}
-     * called during serialization to string.
+     * Magic method {@see https://www.php.net/manual/en/language.oop5.magic.php#object.tostring}
+     * allows a class to decide how it will react when it is treated like a string.
      *
      * @return string Returns string representation of the object that
      * implements this interface (and/or "__toString" magic method).
@@ -801,6 +828,7 @@ interface Stringable
 final class Attribute
 {
     public int $flags;
+
     /**
      * Marks that attribute declaration is allowed only in classes.
      */
@@ -877,6 +905,7 @@ interface UnitEnum
     /**
      * @return static[]
      */
+    #[Pure]
     public static function cases(): array;
 }
 
@@ -885,18 +914,20 @@ interface UnitEnum
  */
 interface BackedEnum extends UnitEnum
 {
-    public readonly string $value;
+    public readonly int|string $value;
 
     /**
      * @param int|string $value
      * @return static
      */
+    #[Pure]
     public static function from(int|string $value): static;
 
     /**
      * @param int|string $value
      * @return static|null
      */
+    #[Pure]
     public static function tryFrom(int|string $value): ?static;
 }
 
@@ -914,12 +945,14 @@ interface IntBackedEnum extends BackedEnum
      * @param int $value
      * @return static
      */
+    #[Pure]
     public static function from(int $value): static;
 
     /**
      * @param int $value
      * @return static|null
      */
+    #[Pure]
     public static function tryFrom(int $value): ?static;
 }
 
@@ -933,8 +966,10 @@ interface StringBackedEnum extends BackedEnum
 {
     public readonly string $value;
 
+    #[Pure]
     public static function from(string $value): static;
 
+    #[Pure]
     public static function tryFrom(string $value): ?static;
 }
 
@@ -1053,4 +1088,36 @@ final class FiberError extends Error
 final class ReturnTypeWillChange
 {
     public function __construct() {}
+}
+
+/**
+ * @since 8.2
+ */
+#[Attribute(Attribute::TARGET_CLASS)]
+final class AllowDynamicProperties
+{
+    public function __construct() {}
+}
+
+/**
+ * @since 8.2
+ */
+#[Attribute(Attribute::TARGET_PARAMETER)]
+final class SensitiveParameter
+{
+    public function __construct() {}
+}
+
+/**
+ * @since 8.2
+ */
+final class SensitiveParameterValue
+{
+    private readonly mixed $value;
+
+    public function __construct(mixed $value) {}
+
+    public function getValue(): mixed {}
+
+    public function __debugInfo(): array {}
 }

@@ -126,12 +126,12 @@ define('M_SQRT3', 1.7320508075689);
 /**
  * The infinite
  */
-define('INF', INF);
+define('INF', (float)INF);
 
 /**
  * Not A Number
  */
-define('NAN', NAN);
+define('NAN', (float)NAN);
 
 /**
  * Round halves up
@@ -842,6 +842,10 @@ define('ASSERT_ACTIVE', 1);
 define('ASSERT_CALLBACK', 2);
 define('ASSERT_BAIL', 3);
 define('ASSERT_WARNING', 4);
+
+/**
+ * @removed 8.0
+ */
 define('ASSERT_QUIET_EVAL', 5);
 define('ASSERT_EXCEPTION', 5);
 
@@ -1118,13 +1122,6 @@ define('PHP_QUERY_RFC1738', 1);
 define('PHP_QUERY_RFC3986', 2);
 
 //WI-11254 Stubs for missing constants from PHP 5.4
-
-/**
- * Specifies where the manpages were installed into.
- * @since 5.3.7
- * @link https://php.net/manual/en/reserved.constants.php
- */
-define('PHP_MANDIR', '/usr/local/php/php/man');
 
 /**
  * (PHP4, PHP5)

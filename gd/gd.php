@@ -328,6 +328,7 @@ function imagecolorexact(GdImage $image, int $red, int $green, int $blue): int {
  * </p>
  * @return bool|null
  */
+#[LanguageLevelTypeAware(['8.2' => 'null|false'], default: 'null|bool')]
 function imagecolorset(GdImage $image, int $color, int $red, int $green, int $blue, int $alpha = 0): ?bool {}
 
 /**
@@ -751,7 +752,7 @@ function imagecolorclosestalpha(GdImage $image, int $red, int $green, int $blue,
  * on failure
  */
 #[Pure]
-#[LanguageLevelTypeAware(['8.1' => 'int'], default: 'int|false')]
+#[LanguageLevelTypeAware(['8.0' => 'int'], default: 'int|false')]
 function imagecolorexactalpha(GdImage $image, int $red, int $green, int $blue, int $alpha) {}
 
 /**
@@ -860,6 +861,15 @@ function imagesetstyle(GdImage $image, array $style): bool {}
  * @return resource|GdImage|false an image resource identifier on success, false on errors.
  */
 function imagecreatefrompng(string $filename): GdImage|false {}
+
+/**
+ * Create a new image from file or URL
+ * @link https://www.php.net/manual/function.imagecreatefromavif.php
+ * @param string $filename Path to the AVIF raster image.
+ * @return GdImage|false returns an image object representing the image obtained from the given filename
+ * @since 8.1
+ */
+function imagecreatefromavif(string $filename): GdImage|false {}
 
 /**
  * Create a new image from file or URL
@@ -2161,10 +2171,11 @@ function imagexbm(GdImage $image, ?string $filename, ?int $foreground_color = nu
 function imagefilter(
     GdImage $image,
     int $filter,
+    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg1 = null,
     #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg2 = null,
     #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg3 = null,
     #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg4 = null,
-    ...$args
+    #[PhpStormStubsElementAvailable(from: '8.0')] ...$args
 ): bool {}
 
 /**
@@ -2186,13 +2197,13 @@ function imageconvolution(GdImage $image, array $matrix, float $divisor, float $
 
 /**
  * @param resource|GdImage $image An image resource, returned by one of the image creation functions, such as {@see imagecreatetruecolor()}.
- * @param int|null $resolution_x [optional] The horizontal resolution in DPI.
- * @param int|null $resolution_y [optional] The vertical resolution in DPI.
+ * @param int|null $resolution_x The horizontal resolution in DPI.
+ * @param int|null $resolution_y The vertical resolution in DPI.
  * @return array|bool When used as getter (that is without the optional parameters), it returns <b>TRUE</b> on success, or <b>FALSE</b> on failure. When used as setter (that is with one or both optional parameters given), it returns an indexed array of the horizontal and vertical resolution on success, or <b>FALSE</b> on failure.
  * @link https://php.net/manual/en/function.imageresolution.php
  * @since 7.2
  */
-function imageresolution(GdImage $image, ?int $resolution_x = 96, ?int $resolution_y = 96): array|bool {}
+function imageresolution(GdImage $image, ?int $resolution_x = null, ?int $resolution_y = null): array|bool {}
 
 /**
  * <b>imagesetclip()</b> sets the current clipping rectangle, i.e. the area beyond which no pixels will be drawn.
@@ -2899,6 +2910,19 @@ define('IMG_AVIF', 256);
  * @since 8.1
  */
 define('IMG_WEBP_LOSSLESS', 101);
+
+/**
+ * Outputs or saves a AVIF Raster image from the given image
+ * @link https://www.php.net/manual/function.imageavif.php
+ * @param GdImage $image A GdImage object, returned by one of the image creation functions, such as imagecreatetruecolor().
+ * @param resource|string|null $file The path or an open stream resource (which is automatically closed after this function returns) to save the file to. If not set or null, the raw image stream will be output directly.
+ * @param int $quality quality is optional, and ranges from 0 (worst quality, smaller file) to 100 (best quality, larger file). If -1 is provided, the default value 30 is used.
+ * @param int $speed speed is optional, and ranges from 0 (slow, smaller file) to 10 (fast, larger file). If -1 is provided, the default value 6 is used.
+ * @return bool Returns true on success or false on failure. However, if libgd fails to output the image, this function returns true.
+ * @since 8.1
+ */
+function imageavif(GdImage $image, string|null $file = null, int $quality = -1, int $speed = -1): bool {}
+
 /**
  * Return an image containing the affine tramsformed src image, using an optional clipping area
  * @link https://secure.php.net/manual/en/function.imageaffine.php
@@ -3122,5 +3146,6 @@ final class GdImage
      * You cannot initialize a GdImage object except through helper functions.
      */
     private function __construct() {}
+
     private function __clone() {}
 }

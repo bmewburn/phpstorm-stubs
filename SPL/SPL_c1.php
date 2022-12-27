@@ -363,6 +363,7 @@ class DirectoryIterator extends SplFileInfo implements SeekableIterator
      * @link https://php.net/manual/en/directoryiterator.key.php
      * @return string The key for the current <b>DirectoryIterator</b> item.
      */
+    #[TentativeType]
     public function key(): mixed {}
 
     /**
@@ -370,6 +371,7 @@ class DirectoryIterator extends SplFileInfo implements SeekableIterator
      * @link https://php.net/manual/en/directoryiterator.current.php
      * @return DirectoryIterator The current <b>DirectoryIterator</b> item.
      */
+    #[TentativeType]
     public function current(): mixed {}
 
     /**
@@ -467,14 +469,17 @@ class FilesystemIterator extends DirectoryIterator
     /**
      * Sets handling flags
      * @link https://php.net/manual/en/filesystemiterator.setflags.php
-     * @param int $flags [optional] <p>
+     * @param int $flags <p>
      * The handling flags to set.
      * See the FilesystemIterator constants.
      * </p>
      * @return void
      */
     #[TentativeType]
-    public function setFlags(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = null): void {}
+    public function setFlags(
+        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $flags = null,
+        #[PhpStormStubsElementAvailable(from: '8.0')] int $flags
+    ): void {}
 }
 
 /**
@@ -583,7 +588,7 @@ class GlobIterator extends FilesystemIterator implements Countable
     /**
      * Get the number of directories and files
      * @link https://php.net/manual/en/globiterator.count.php
-     * @return int The number of returned directories and files, as an
+     * @return int<0,max> The number of returned directories and files, as an
      * integer.
      */
     #[TentativeType]
@@ -600,14 +605,17 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * Drop newlines at the end of a line.
      */
     public const DROP_NEW_LINE = 1;
+
     /**
      * Read on rewind/next.
      */
     public const READ_AHEAD = 2;
+
     /**
      * Skip empty lines in the file. This requires the {@see READ_AHEAD} flag to work as expected.
      */
     public const SKIP_EMPTY = 4;
+
     /**
      * Read lines as CSV rows.
      */
@@ -689,7 +697,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * @param string $escape [optional] <p>
      * The escape character (one character only). Defaults as a backslash (\) or the value set using <b>SplFileObject::setCsvControl</b>.
      * </p>
-     * @return array|false an indexed array containing the fields read, or false on error.
+     * @return array|false|null an indexed array containing the fields read, or false on error.
      * </p>
      * <p>
      * A blank line in a CSV file will be returned as an array
@@ -697,11 +705,12 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * in which case empty lines are skipped.
      */
     #[TentativeType]
+    #[LanguageLevelTypeAware(['8.1' => 'array|false'], default: 'array|false|null')]
     public function fgetcsv(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $separator = ",",
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $enclosure = "\"",
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $escape = "\\"
-    ): array|false {}
+    ) {}
 
     /**
      * Write a field array as a CSV line
@@ -968,7 +977,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
     /**
      * Get maximum line length
      * @link https://php.net/manual/en/splfileobject.getmaxlinelen.php
-     * @return int the maximum line length if one has been set with
+     * @return int<0, max> the maximum line length if one has been set with
      * <b>SplFileObject::setMaxLineLen</b>, default is 0.
      */
     #[TentativeType]
@@ -981,7 +990,8 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * @since 5.1.2
      */
     #[TentativeType]
-    public function hasChildren(): bool {}
+    #[LanguageLevelTypeAware(['8.2' => 'false'], default: 'bool')]
+    public function hasChildren() {}
 
     /**
      * No purpose
@@ -989,7 +999,8 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * @return null|RecursiveIterator An SplFileObject does not have children so this method returns NULL.
      */
     #[TentativeType]
-    public function getChildren(): ?RecursiveIterator {}
+    #[LanguageLevelTypeAware(['8.2' => 'null|null'], default: 'null|RecursiveIterator')]
+    public function getChildren() {}
 
     /**
      * Seek to specified line
@@ -1496,7 +1507,7 @@ class SplMinHeap extends SplHeap
      * @param TValue $value2 <p>
      * The value of the second node being compared.
      * </p>
-     * @return void Result of the comparison, positive integer if <i>value1</i> is lower than <i>value2</i>, 0 if they are equal, negative integer otherwise.
+     * @return int Result of the comparison, positive integer if <i>value1</i> is lower than <i>value2</i>, 0 if they are equal, negative integer otherwise.
      * </p>
      * <p>
      * Having multiple elements with the same value in a Heap is not recommended. They will end up in an arbitrary relative position.
@@ -1605,7 +1616,7 @@ class SplMaxHeap extends SplHeap
      * @param TValue $value2 <p>
      * The value of the second node being compared.
      * </p>
-     * @return void Result of the comparison, positive integer if <i>value1</i> is greater than <i>value2</i>, 0 if they are equal, negative integer otherwise.
+     * @return int Result of the comparison, positive integer if <i>value1</i> is greater than <i>value2</i>, 0 if they are equal, negative integer otherwise.
      * </p>
      * <p>
      * Having multiple elements with the same value in a Heap is not recommended. They will end up in an arbitrary relative position.
@@ -1630,12 +1641,6 @@ class SplPriorityQueue implements Iterator, Countable
     public const EXTR_BOTH = 3;
     public const EXTR_PRIORITY = 2;
     public const EXTR_DATA = 1;
-
-    /**
-     * Construct a new SplPriorityQueue object
-     * @link https://www.php.net/manual/en/splpriorityqueue.construct.php
-     */
-    public function __construct() {}
 
     /**
      * Compare priorities in order to place elements correctly in the heap while sifting up.
@@ -2283,9 +2288,12 @@ class MultipleIterator implements Iterator
     /**
      * Constructs a new MultipleIterator
      * @link https://php.net/manual/en/multipleiterator.construct.php
-     * @param int $flags [optional] Defaults to MultipleIterator::MIT_NEED_ALL | MultipleIterator::MIT_KEYS_NUMERIC
+     * @param int $flags Defaults to MultipleIterator::MIT_NEED_ALL | MultipleIterator::MIT_KEYS_NUMERIC
      */
-    public function __construct(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = MultipleIterator::MIT_NEED_ALL|MultipleIterator::MIT_KEYS_NUMERIC) {}
+    public function __construct(
+        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $flags,
+        #[PhpStormStubsElementAvailable(from: '8.0')] int $flags = MultipleIterator::MIT_NEED_ALL|MultipleIterator::MIT_KEYS_NUMERIC
+    ) {}
 
     /**
      * Gets the flag information

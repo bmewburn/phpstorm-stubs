@@ -5,6 +5,7 @@
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\ExpectedValues;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 use JetBrains\PhpStorm\Internal\TentativeType;
 use JetBrains\PhpStorm\Pure;
 
@@ -23,7 +24,6 @@ class php_user_filter
 
     #[LanguageLevelTypeAware(['8.1' => 'mixed'], default: '')]
     public $params;
-
     public $stream;
 
     /**
@@ -99,14 +99,26 @@ class Directory
     /**
      * @var string The directory that was opened.
      */
-    #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
+    #[PhpStormStubsElementAvailable(to: '8.0')]
     public $path;
+
+    /**
+     * @var string The directory that was opened.
+     */
+    #[PhpStormStubsElementAvailable(from: '8.1')]
+    public readonly string $path;
 
     /**
      * @var resource Can be used with other directory functions such as {@see readdir()}, {@see rewinddir()} and {@see closedir()}.
      */
-    #[LanguageLevelTypeAware(['8.1' => 'mixed'], default: '')]
+    #[PhpStormStubsElementAvailable(to: '8.0')]
     public $handle;
+
+    /**
+     * @var resource Can be used with other directory functions such as {@see readdir()}, {@see rewinddir()} and {@see closedir()}.
+     */
+    #[PhpStormStubsElementAvailable(from: '8.1')]
+    public readonly mixed $handle;
 
     /**
      * Close directory handle.
@@ -114,15 +126,17 @@ class Directory
      * @param resource $dir_handle [optional]
      * @link https://secure.php.net/manual/en/directory.close.php
      */
-    public function close($dir_handle = null) {}
+    #[TentativeType]
+    public function close(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
 
     /**
-     *  Rewind directory handle.
+     * Rewind directory handle.
      * Same as rewinddir(), only dir_handle defaults to $this.
      * @param resource $dir_handle [optional]
      * @link https://secure.php.net/manual/en/directory.rewind.php
      */
-    public function rewind($dir_handle = null) {}
+    #[TentativeType]
+    public function rewind(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
 
     /**
      * Read entry from directory handle.
@@ -131,7 +145,8 @@ class Directory
      * @return string|false
      * @link https://secure.php.net/manual/en/directory.read.php
      */
-    public function read($dir_handle = null) {}
+    #[TentativeType]
+    public function read(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): string|false {}
 }
 
 /**
@@ -143,7 +158,7 @@ class Directory
  * @return mixed the value of the constant, or null if the constant is not
  * defined.
  */
-#[Pure]
+#[Pure(true)]
 function constant(string $name): mixed {}
 
 /**
@@ -184,10 +199,10 @@ function usleep(int $microseconds): void {}
 /**
  * Delay for a number of seconds and nanoseconds
  * @link https://php.net/manual/en/function.time-nanosleep.php
- * @param int $seconds <p>
+ * @param positive-int $seconds <p>
  * Must be a positive integer.
  * </p>
- * @param int $nanoseconds <p>
+ * @param positive-int $nanoseconds <p>
  * Must be a positive integer less than 1 billion.
  * </p>
  * @return bool|array true on success or false on failure.
@@ -275,7 +290,7 @@ function time_sleep_until(float $timestamp): bool {}
  * </p>
  * @deprecated 8.1
  */
-#[Pure]
+#[Pure(true)]
 #[Deprecated(since: '8.1')]
 function strptime(string $timestamp, string $format): array|false {}
 
@@ -405,7 +420,7 @@ function wordwrap(string $string, int $width = 75, string $break = "\n", bool $c
  * </tbody>
  *
  * </table>
- * @param string|null $encoding [optional] <p>
+ * @param string|null $encoding <p>
  * Defines encoding used in conversion.
  * If omitted, the default value for this argument is ISO-8859-1 in
  * versions of PHP prior to 5.4.0, and UTF-8 from PHP 5.4.0 onwards.
@@ -427,7 +442,7 @@ function wordwrap(string $string, int $width = 75, string $break = "\n", bool $c
  * @return string The converted string.
  */
 #[Pure]
-function htmlspecialchars(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?string $encoding = 'UTF-8', bool $double_encode = true): string {}
+function htmlspecialchars(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?string $encoding = null, bool $double_encode = true): string {}
 
 /**
  * Convert all applicable characters to HTML entities
@@ -550,7 +565,7 @@ function htmlspecialchars_decode(string $string, int $flags = ENT_QUOTES|ENT_SUB
 /**
  * Returns the translation table used by <function>htmlspecialchars</function> and <function>htmlentities</function>
  * @link https://php.net/manual/en/function.get-html-translation-table.php
- * @param int $table [optional] <p>
+ * @param int $table <p>
  * There are two new constants (HTML_ENTITIES,
  * HTML_SPECIALCHARS) that allow you to specify the
  * table you want.
@@ -721,7 +736,11 @@ function htmlspecialchars_decode(string $string, int $flags = ENT_QUOTES|ENT_SUB
  * @return array the translation table as an array.
  */
 #[Pure]
-function get_html_translation_table(int $table, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, string $encoding = "UTF-8"): array {}
+function get_html_translation_table(
+    int $table = 0,
+    int $flags = ENT_QUOTES|ENT_SUBSTITUTE,
+    #[PhpStormStubsElementAvailable(from: '7.0')] string $encoding = "UTF-8"
+): array {}
 
 /**
  * Calculate the sha1 hash of a string
@@ -752,7 +771,7 @@ function sha1(string $string, bool $binary = false): string {}
  * </p>
  * @return string|false a string on success, false otherwise.
  */
-#[Pure]
+#[Pure(true)]
 function sha1_file(string $filename, bool $binary = false): string|false {}
 
 /**
@@ -783,7 +802,7 @@ function md5(string $string, bool $binary = false): string {}
  * </p>
  * @return string|false a string on success, false otherwise.
  */
-#[Pure]
+#[Pure(true)]
 function md5_file(string $filename, bool $binary = false): string|false {}
 
 /**
@@ -820,14 +839,14 @@ function iptcparse(string $iptc_block): array|false {}
  * @param string $filename <p>
  * Path to the JPEG image.
  * </p>
- * @param int $spool [optional] <p>
+ * @param int $spool <p>
  * Spool flag. If the spool flag is over 2 then the JPEG will be
  * returned as a string.
  * </p>
  * @return string|bool If success and spool flag is lower than 2 then the JPEG will not be
  * returned as a string, false on errors.
  */
-function iptcembed(string $iptc_data, string $filename, int $spool): string|bool {}
+function iptcembed(string $iptc_data, string $filename, int $spool = 0): string|bool {}
 
 /**
  * Get the size of an image
@@ -1077,6 +1096,7 @@ function image_type_to_extension(int $image_type, bool $include_dot = true): str
  * </p>
  * @return bool true on success or false on failure.
  */
+#[LanguageLevelTypeAware(['8.2' => 'true'], default: 'bool')]
 function phpinfo(#[ExpectedValues(flags: [INFO_GENERAL, INFO_CREDITS, INFO_CONFIGURATION, INFO_MODULES, INFO_ENVIRONMENT, INFO_VARIABLES, INFO_LICENSE, INFO_ALL])] int $flags = INFO_ALL): bool {}
 
 /**
@@ -1155,6 +1175,7 @@ function phpversion(?string $extension): string|false {}
  * </p>
  * @return bool true on success or false on failure.
  */
+#[LanguageLevelTypeAware(['8.2' => 'true'], default: 'bool')]
 function phpcredits(int $flags = CREDITS_ALL): bool {}
 
 /**
@@ -1214,8 +1235,8 @@ function php_sapi_name(): string|false {}
  * the sequence "s n r v m".</p>
  * @return string the description, as a string.
  */
-#[Pure]
-function php_uname(string $mode = 'a'): string {}
+#[Pure(true)]
+function php_uname(#[PhpStormStubsElementAvailable(from: '7.0')] string $mode = 'a'): string {}
 
 /**
  * Return a list of .ini files parsed from the additional ini dir
@@ -1283,7 +1304,7 @@ function strnatcasecmp(string $string1, string $string2): int {}
  * @param string $needle <p>
  * The substring to search for
  * </p>
- * @param int $offset [optional] <p>
+ * @param int $offset <p>
  * The offset where to start counting
  * </p>
  * @param int|null $length [optional] <p>
@@ -1291,10 +1312,10 @@ function strnatcasecmp(string $string1, string $string2): int {}
  * substring. It outputs a warning if the offset plus the length is
  * greater than the haystack length.
  * </p>
- * @return int This functions returns an integer.
+ * @return int<0,max> This functions returns an integer.
  */
 #[Pure]
-function substr_count(string $haystack, string $needle, int $offset, ?int $length): int {}
+function substr_count(string $haystack, string $needle, int $offset = 0, ?int $length): int {}
 
 /**
  * Finds the length of the initial segment of a string consisting
@@ -1306,7 +1327,7 @@ function substr_count(string $haystack, string $needle, int $offset, ?int $lengt
  * @param string $characters <p>
  * The list of allowable characters to include in counted segments.
  * </p>
- * @param int $offset [optional] <p>
+ * @param int $offset <p>
  * The position in subject to
  * start searching.
  * </p>
@@ -1347,7 +1368,7 @@ function substr_count(string $haystack, string $needle, int $offset, ?int $lengt
  * which consists entirely of characters in str2.
  */
 #[Pure]
-function strspn(string $string, string $characters, int $offset, ?int $length): int {}
+function strspn(string $string, string $characters, int $offset = 0, ?int $length): int {}
 
 /**
  * Find length of initial segment not matching mask
@@ -1358,7 +1379,7 @@ function strspn(string $string, string $characters, int $offset, ?int $length): 
  * @param string $characters <p>
  * The second string.
  * </p>
- * @param int $offset [optional] <p>
+ * @param int $offset <p>
  * The start position of the string to examine.
  * </p>
  * @param int|null $length [optional] <p>
@@ -1367,7 +1388,7 @@ function strspn(string $string, string $characters, int $offset, ?int $length): 
  * @return int the length of the segment as an integer.
  */
 #[Pure]
-function strcspn(string $string, string $characters, int $offset, ?int $length): int {}
+function strcspn(string $string, string $characters, int $offset = 0, ?int $length): int {}
 
 /**
  * Tokenize string
@@ -1380,9 +1401,13 @@ function strcspn(string $string, string $characters, int $offset, ?int $length):
  * @param string $string <p>
  * The string being split up into smaller strings (tokens).
  * </p>
- * @param string|null $token [optional] <p>
+ * @param string|null $token <p>
  * The delimiter used when splitting up str.
  * </p>
  * @return string|false A string token.
  */
-function strtok(string $string, ?string $token): string|false {}
+function strtok(
+    string $string,
+    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $token,
+    #[PhpStormStubsElementAvailable(from: '7.1')] ?string $token = null
+): string|false {}

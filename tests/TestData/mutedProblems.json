@@ -934,23 +934,34 @@
       ]
     },
     {
-      "name": "sodium_crypto_secretstream_xchacha20poly1305_push",
+      "name": "hash_update_file",
       "problems": [
         {
-          "description": "missing function",
+          "description": "parameter mismatch",
           "versions": [
-            "ALL"
+            5.6,
+            7.0
           ]
         }
       ]
     },
     {
-      "name": "sodium_crypto_secretstream_xchacha20poly1305_pull",
-      "problems": [
+      "name": "var_dump",
+      "parameters": [
         {
-          "description": "missing function",
-          "versions": [
-            "ALL"
+          "name": "vars",
+          "problems": [
+            {
+              "description": "wrong optionallity",
+              "versions": [
+                5.6,
+                7.0,
+                7.1,
+                7.2,
+                7.3,
+                7.4
+              ]
+            }
           ]
         }
       ]
@@ -958,33 +969,23 @@
   ],
   "classes": [
     {
-      "name": "Exception",
-      "methods": [
+      "name": "DOMException",
+      "problems": [
         {
-          "name": "__clone",
-          "problems": [
-            {
-              "description":"has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
+          "description": "has wrong final modifier",
+          "versions": [
+            5.6
           ]
         }
       ]
     },
     {
-      "name": "Error",
-      "methods": [
+      "name": "mysqli_sql_exception",
+      "problems": [
         {
-          "name": "__clone",
-          "problems": [
-            {
-              "description":"has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
+          "description": "has wrong final modifier",
+          "versions": [
+            5.6
           ]
         }
       ]
@@ -998,7 +999,8 @@
             {
               "description": "parameter mismatch",
               "versions": [
-                8.0, 8.1
+                8.0,
+                8.1
               ]
             }
           ]
@@ -1053,17 +1055,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
         }
       ]
     },
@@ -1074,7 +1065,8 @@
           "description": "has wrong final modifier",
           "versions": [
             8.0,
-            8.1
+            8.1,
+            8.2
           ]
         }
       ],
@@ -1115,17 +1107,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
         }
       ]
     },
@@ -1155,33 +1136,6 @@
               "description": "has type mismatch in signature and phpdoc",
               "versions": [
                 "ALL"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "ReflectionZendExtension",
-      "methods": [
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
               ]
             }
           ]
@@ -1779,44 +1733,6 @@
                   "description": "wrong default value",
                   "versions": [
                     "ALL"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "addEmptyDir",
-          "parameters": [
-            {
-              "name": "dirname",
-              "problems": [
-                {
-                  "description": "wrong optionallity",
-                  "versions": [
-                    7.1,
-                    7.2,
-                    7.3,
-                    7.4
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "addFromString",
-          "parameters": [
-            {
-              "name": "contents",
-              "problems": [
-                {
-                  "description": "wrong optionallity",
-                  "versions": [
-                    7.1,
-                    7.2,
-                    7.3,
-                    7.4
                   ]
                 }
               ]
@@ -2515,17 +2431,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
         }
       ]
     },
@@ -2542,33 +2447,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "ReflectionType",
-      "methods": [
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
-              ]
-            }
-          ]
         }
       ]
     },
@@ -2582,17 +2460,6 @@
               "description": "parameter mismatch",
               "versions": [
                 "ALL"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "__clone",
-          "problems": [
-            {
-              "description": "has wrong final modifier",
-              "versions": [
-                8.1
               ]
             }
           ]
@@ -3075,60 +2942,6 @@
       ]
     },
     {
-      "name": "WeakReference",
-      "methods": [
-        {
-          "name": "create",
-          "problems": [
-            {
-              "description": "parameter mismatch",
-              "versions": [
-                "ALL"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Directory",
-      "methods": [
-        {
-          "name": "close",
-          "problems": [
-            {
-              "description": "parameter mismatch",
-              "versions": [
-                "ALL"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "rewind",
-          "problems": [
-            {
-              "description": "parameter mismatch",
-              "versions": [
-                "ALL"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "read",
-          "problems": [
-            {
-              "description": "parameter mismatch",
-              "versions": [
-                "ALL"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "IntlCalendar",
       "methods": [
         {
@@ -3150,6 +2963,7 @@
         {
           "description": "wrong parent",
           "versions": [
+            7.0,
             7.1,
             7.2
           ]
@@ -3165,6 +2979,8 @@
             {
               "description": "has wrong final modifier",
               "versions": [
+                5.6,
+                7.0,
                 7.1,
                 7.2,
                 7.3,
@@ -3228,6 +3044,8 @@
             {
               "description": "has wrong static modifier",
               "versions": [
+                5.6,
+                7.0,
                 7.1,
                 7.2,
                 7.3,
@@ -3242,6 +3060,8 @@
             {
               "description": "has wrong static modifier",
               "versions": [
+                5.6,
+                7.0,
                 7.1,
                 7.2,
                 7.3,
@@ -3273,39 +3093,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "getNamedItemNS",
-          "parameters": [
-            {
-              "name": "namespaceURI",
-              "problems": [
-                {
-                  "description": "wrong optionallity",
-                  "versions": [
-                    7.1,
-                    7.2,
-                    7.3,
-                    7.4
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "localName",
-              "problems": [
-                {
-                  "description": "wrong optionallity",
-                  "versions": [
-                    7.1,
-                    7.2,
-                    7.3,
-                    7.4
-                  ]
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -3316,7 +3103,8 @@
           "description": "has wrong final modifier",
           "versions": [
             8.0,
-            8.1
+            8.1,
+            8.2
           ]
         }
       ]
@@ -3342,7 +3130,25 @@
           "description": "has wrong final modifier",
           "versions": [
             8.0,
-            8.1
+            8.1,
+            8.2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transliterator",
+      "properties": [
+        {
+          "name": "id",
+          "problems": [
+            {
+              "description": "wrong readonly",
+              "versions": [
+                8.1,
+                8.2
+              ]
+            }
           ]
         }
       ]

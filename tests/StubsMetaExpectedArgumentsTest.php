@@ -28,24 +28,28 @@ use function property_exists;
 use function str_starts_with;
 use function substr;
 
-class StubsMetaExpectedArgumentsTest extends BaseStubsTest
+class StubsMetaExpectedArgumentsTest extends AbstractBaseStubsTestCase
 {
     /**
      * @var ExpectedFunctionArgumentsInfo[]
      */
     private static array $expectedArguments;
+
     /**
      * @var string[]
      */
     private static array $registeredArgumentsSet;
+
     /**
      * @var string[]
      */
     private static array $functionsFqns;
+
     /**
      * @var string[]
      */
     private static array $methodsFqns;
+
     /**
      * @var string[]
      */
