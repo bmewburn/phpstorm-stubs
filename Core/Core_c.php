@@ -25,7 +25,7 @@ interface iterable {}
  *
  * @link https://php.net/manual/en/class.traversable.php
  * @template TKey
- * @template TValue
+ * @template-covariant TValue
  *
  * @template-implements iterable<TKey, TValue>
  */
@@ -35,7 +35,7 @@ interface Traversable extends iterable {}
  * Interface to create an external Iterator.
  * @link https://php.net/manual/en/class.iteratoraggregate.php
  * @template TKey
- * @template TValue
+ * @template-covariant TValue
  * @template-implements Traversable<TKey, TValue>
  */
 interface IteratorAggregate extends Traversable
@@ -56,7 +56,7 @@ interface IteratorAggregate extends Traversable
  * themselves internally.
  * @link https://php.net/manual/en/class.iterator.php
  * @template TKey
- * @template TValue
+ * @template-covariant TValue
  * @template-implements Traversable<TKey, TValue>
  */
 interface Iterator extends Traversable
@@ -711,6 +711,7 @@ interface Countable
  * Weak references allow the programmer to retain a reference to an
  * object which does not prevent the object from being destroyed.
  * They are useful for implementing cache like structures.
+ * @template T of object
  * @link https://www.php.net/manual/en/class.weakreference.php
  * @since 7.4
  */
@@ -726,7 +727,9 @@ final class WeakReference
     /**
      * Create a new weak reference.
      * @link https://www.php.net/manual/en/weakreference.create.php
-     * @return WeakReference the freshly instantiated object.
+     * @template TIn of object
+     * @param TIn $object Any object.
+     * @return WeakReference<TIn> The freshly instantiated object.
      * @since 7.4
      */
     public static function create(object $object): WeakReference {}
@@ -735,7 +738,7 @@ final class WeakReference
      * Gets a weakly referenced object. If the object has already been
      * destroyed, NULL is returned.
      * @link https://www.php.net/manual/en/weakreference.get.php
-     * @return object|null
+     * @return T|null
      * @since 7.4
      */
     public function get(): ?object {}

@@ -4,10 +4,11 @@ namespace {
 
    
     /**
-     * @template TKey of array-key
+     * @template-covariant TKey
+     * @template-covariant TYield
      * @template TSend
-     * @template TReturn
-     * @template TYield
+     * @template-covariant TReturn
+     * 
      *
      * Generator objects are returned from generators, cannot be instantiated via new.
      * @link https://secure.php.net/manual/en/class.generator.php

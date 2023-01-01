@@ -2,6 +2,7 @@
 
 // Start of standard v.5.3.2-0.dotdeb.1
 
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\ExpectedValues;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -165,7 +166,7 @@ function constant(string $name): mixed {}
  * Convert binary data into hexadecimal representation
  * @link https://php.net/manual/en/function.bin2hex.php
  * @param string $string <p>
- * A character.
+ * A string.
  * </p>
  * @return string the hexadecimal representation of the given string.
  */
@@ -175,7 +176,7 @@ function bin2hex(string $string): string {}
 /**
  * Delay execution
  * @link https://php.net/manual/en/function.sleep.php
- * @param int $seconds <p>
+ * @param int<0,max> $seconds <p>
  * Halt time in seconds.
  * </p>
  * @return int|false zero on success, or false on errors. If the call was interrupted
@@ -215,6 +216,7 @@ function usleep(int $microseconds): void {}
  * remaining in the delay
  * </p>
  */
+#[ArrayShape(["seconds" => "int", "nanoseconds" => "int"])]
 function time_nanosleep(int $seconds, int $nanoseconds): array|bool {}
 
 /**
@@ -292,10 +294,21 @@ function time_sleep_until(float $timestamp): bool {}
  */
 #[Pure(true)]
 #[Deprecated(since: '8.1')]
+#[ArrayShape([
+    'tm_sec' => 'int',
+    'tm_min' => 'int',
+    'tm_hour' => 'int',
+    'tm_mday' => 'int',
+    'tm_mon' => 'int',
+    'tm_year' => 'int',
+    'tm_wday' => 'int',
+    'tm_yday' => 'int',
+    'unparsed' => 'string'
+])]
 function strptime(string $timestamp, string $format): array|false {}
 
 /**
- * Flush the output buffer
+ * Flush system output buffer
  * @link https://php.net/manual/en/function.flush.php
  * @return void
  */
@@ -308,7 +321,7 @@ function flush(): void {}
  * The input string.
  * </p>
  * @param int $width [optional] <p>
- * The column width.
+ * The number of characters at which the string will be wrapped.
  * </p>
  * @param string $break [optional] <p>
  * The line is broken using the optional
@@ -320,7 +333,7 @@ function flush(): void {}
  * a word that is larger than the given width, it is broken apart.
  * (See second example).
  * </p>
- * @return string the given string wrapped at the specified column.
+ * @return string the given string wrapped at the specified length.
  */
 #[Pure]
 function wordwrap(string $string, int $width = 75, string $break = "\n", bool $cut_long_words = false): string {}
@@ -749,7 +762,7 @@ function get_html_translation_table(
  * The input string.
  * </p>
  * @param bool $binary [optional] <p>
- * If the optional raw_output is set to true,
+ * If the optional binary is set to true,
  * then the sha1 digest is instead returned in raw binary format with a
  * length of 20, otherwise the returned value is a 40-character
  * hexadecimal number.
@@ -840,11 +853,12 @@ function iptcparse(string $iptc_block): array|false {}
  * Path to the JPEG image.
  * </p>
  * @param int $spool <p>
- * Spool flag. If the spool flag is over 2 then the JPEG will be
- * returned as a string.
+ * Spool flag. If the spool flag is less than 2 then the JPEG will
+ * be returned as a string. Otherwise the JPEG will be printed to
+ * STDOUT.
  * </p>
- * @return string|bool If success and spool flag is lower than 2 then the JPEG will not be
- * returned as a string, false on errors.
+ * @return string|bool If spool is less than 2, the JPEG will be returned, or false on
+ * failure. Otherwise returns true on success or false on failure.
  */
 function iptcembed(string $iptc_data, string $filename, int $spool = 0): string|bool {}
 
@@ -909,6 +923,7 @@ function iptcembed(string $iptc_data, string $filename, int $spool = 0): string|
  * On failure, false is returned.
  * </p>
  */
+#[ArrayShape([0 => "int", 1 => "int", 2 => "int", 3 => "string", "bits" => "int", "channels" => "int", "mime" => "string"])]
 function getimagesize(string $filename, &$image_info): array|false {}
 
 /**
@@ -1008,7 +1023,7 @@ function image_type_to_mime_type(int $image_type): string {}
  * Removed since 8.0.
  * Whether to prepend a dot to the extension or not. Default to true.
  * </p>
- * @return string|false A string with the extension corresponding to the given image type.
+ * @return string|false A string with the extension corresponding to the given image type, or false on failure.
  */
 #[Pure]
 function image_type_to_extension(int $image_type, bool $include_dot = true): string|false {}
@@ -1118,7 +1133,7 @@ function phpversion(?string $extension): string|false {}
  * @link https://php.net/manual/en/function.phpcredits.php
  * @param int $flags [optional] <p>
  * To generate a custom credits page, you may want to use the
- * flag parameter.
+ * flags parameter.
  * </p>
  * <p>
  * <table>
@@ -1208,7 +1223,7 @@ function zend_logo_guid(): string {}
 /**
  * Returns the type of interface between web server and PHP
  * @link https://php.net/manual/en/function.php-sapi-name.php
- * @return string|false the interface type, as a lowercase string.
+ * @return string|false the interface type, as a lowercase string, or false on failure.
  * <p>
  * Although not exhaustive, the possible return values include
  * aolserver, apache,
@@ -1223,6 +1238,7 @@ function zend_logo_guid(): string {}
  * </p>
  */
 #[Pure]
+#[ExpectedValues(['cli', 'phpdbg', 'embed', 'apache', 'apache2handler', 'cgi-fcgi', 'cli-server', 'fpm-fcgi', 'litespeed'])]
 function php_sapi_name(): string|false {}
 
 /**
@@ -1305,12 +1321,14 @@ function strnatcasecmp(string $string1, string $string2): int {}
  * The substring to search for
  * </p>
  * @param int $offset <p>
- * The offset where to start counting
+ * The offset where to start counting. If the offset is negative,
+ * counting starts from the end of the string.
  * </p>
  * @param int|null $length [optional] <p>
  * The maximum length after the specified offset to search for the
  * substring. It outputs a warning if the offset plus the length is
- * greater than the haystack length.
+ * greater than the haystack length. A negative length counts from
+ * the end of haystack.
  * </p>
  * @return int<0,max> This functions returns an integer.
  */

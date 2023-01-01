@@ -183,7 +183,7 @@ $argc = 0;
  * <p><a href="https://secure.php.net/manual/en/reserved.variables.php">
  * https://secure.php.net/manual/en/reserved.variables.php</a>
  */
-$argv = [];
+$argv = [1 + 1 => "a" . "b"];
 
 /**
  *

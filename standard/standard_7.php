@@ -367,7 +367,7 @@ function getcwd(): string|false {}
  * not specified, the last link opened by opendir
  * is assumed.
  * </p>
- * @return void
+ * @see https://bugs.php.net/bug.php?id=75485
  */
 function rewinddir($dir_handle): void {}
 
@@ -1189,4 +1189,5 @@ function ezmlm_hash(string $addr): int {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function openlog(string $prefix, int $flags, int $facility): bool {}
+#[LanguageLevelTypeAware(["8.2" => "true"], default: "bool")]
+function openlog(string $prefix, int $flags, int $facility) {}

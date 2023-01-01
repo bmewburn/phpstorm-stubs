@@ -878,7 +878,7 @@ define('STREAM_REPORT_ERRORS', 8);
  * not be bound to the actual resource you requested.
  * If the requested resource is network based, this flag will cause the
  * opener to block until the whole contents have been downloaded.
- * @link https://php.net/manual/en/internals2.ze1.streams.constants.php
+ * @link https://www.php.net/manual/en/stream.constants.php
  */
 define('STREAM_MUST_SEEK', 16);
 define('STREAM_URL_STAT_LINK', 1);
@@ -1425,3 +1425,82 @@ define('LOG_NOWAIT', 16);
  * @link https://php.net/manual/en/network.constants.php
  */
 define('LOG_PERROR', 32);
+
+/**
+ * @since 8.2
+ */
+define('DECIMAL_POINT', 65536);
+/**
+ * @since 8.2
+ */
+define('THOUSANDS_SEP', 65537);
+/**
+ * @since 8.2
+ */
+define('GROUPING', 65538);
+
+/**
+ * @since 8.2
+ */
+define('ERA_YEAR', 131117);
+
+/**
+ * @since 8.2
+ */
+define('INT_CURR_SYMBOL', 262144);
+/**
+ * @since 8.2
+ */
+define('CURRENCY_SYMBOL', 262145);
+/**
+ * @since 8.2
+ */
+define('MON_DECIMAL_POINT', 262146);
+/**
+ * @since 8.2
+ */
+define('MON_THOUSANDS_SEP', 262147);
+/**
+ * @since 8.2
+ */
+define('MON_GROUPING', 262148);
+/**
+ * @since 8.2
+ */
+define('POSITIVE_SIGN', 262149);
+/**
+ * @since 8.2
+ */
+define('NEGATIVE_SIGN', 262150);
+/**
+ * @since 8.2
+ */
+define('INT_FRAC_DIGITS', 262151);
+/**
+ * @since 8.2
+ */
+define('FRAC_DIGITS', 262152);
+/**
+ * @since 8.2
+ */
+define('P_CS_PRECEDES', 262153);
+/**
+ * @since 8.2
+ */
+define('P_SEP_BY_SPACE', 262154);
+/**
+ * @since 8.2
+ */
+define('N_CS_PRECEDES', 262155);
+/**
+ * @since 8.2
+ */
+define('N_SEP_BY_SPACE', 262156);
+/**
+ * @since 8.2
+ */
+define('P_SIGN_POSN', 262157);
+/**
+ * @since 8.2
+ */
+define('N_SIGN_POSN', 262158);

@@ -1,6 +1,7 @@
 <?php
 
 // Start of openssl v.
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
@@ -141,6 +142,7 @@ function openssl_pkey_get_public(#[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsym
  * Depending on the key type used, additional details may be returned. Note that
  * some elements may not always be available.
  */
+#[ArrayShape(["bits" => "int", "key" => "string", "rsa" => "array", "dsa" => "array", "dh" => "array", "type" => "int"])]
 function openssl_pkey_get_details(#[LanguageLevelTypeAware(["8.0" => "OpenSSLAsymmetricKey"], default: "resource")] $key): array|false {}
 
 /**
@@ -278,6 +280,25 @@ function openssl_x509_free(#[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificat
  * @return array|false The structure of the returned data is (deliberately) not
  * yet documented, as it is still subject to change.
  */
+#[ArrayShape([
+    'name' => 'string',
+    'subject' => 'string',
+    'hash' => 'string',
+    'issuer' => 'string',
+    'version' => 'int',
+    'serialNumber' => 'string',
+    'serialNumberHex' => 'string',
+    'validFrom' => 'string',
+    'validTo' => 'string',
+    'validFrom_time_t' => 'int',
+    'validTo_time_t' => 'int',
+    'alias' => 'string',
+    'signatureTypeSN' => 'string',
+    'signatureTypeLN' => 'string',
+    'signatureTypeNID' => 'int',
+    'purposes' => 'array',
+    'extensions' => 'array'
+])]
 function openssl_x509_parse(
     #[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificate|string"], default: "resource|string")] $certificate,
     #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] bool $shortname,
@@ -756,6 +777,15 @@ function openssl_decrypt(
 function openssl_cipher_iv_length(string $cipher_algo): int|false {}
 
 /**
+ * This function works in exactly the same way as openssl_cipher_iv_length but for a key length. This is especially
+ * useful to make sure that the right key length is provided to openssl_encrypt and openssl_decrypt.
+ * @param string $cipher_algo
+ * @return int|false
+ * @since 8.2
+ */
+function openssl_cipher_key_length(string $cipher_algo): int|false {}
+
+/**
  * Generate signature
  * @link https://php.net/manual/en/function.openssl-sign.php
  * @param string $data
@@ -1142,7 +1172,7 @@ function openssl_pkey_derive(
  * </p>
  * @return string|false the generated string of bytes on success, or false on failure.
  */
-#[LanguageLevelTypeAware(["8.0" => "string"], default: "string|false")]
+#[LanguageLevelTypeAware(["7.4" => "string"], default: "string|false")]
 function openssl_random_pseudo_bytes(int $length, &$strong_result) {}
 
 /**
@@ -1159,6 +1189,16 @@ function openssl_error_string(): string|false {}
  * @return array an array with the available certificate locations
  * @since 5.6
  */
+#[ArrayShape([
+    'default_cert_file' => 'string',
+    'default_cert_file_env' => 'string',
+    'default_cert_dir' => 'string',
+    'default_cert_dir_env' => 'string',
+    'default_private_dir' => 'string',
+    'default_default_cert_area' => 'string',
+    'ini_cafile' => 'string',
+    'ini_capath' => 'string'
+])]
 function openssl_get_cert_locations(): array {}
 
 function openssl_get_curve_names(): array|false {}

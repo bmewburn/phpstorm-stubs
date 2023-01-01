@@ -1,6 +1,7 @@
 <?php
 
 // Start of sockets v.
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
 /**
@@ -56,6 +57,19 @@ function socket_addrinfo_bind(AddressInfo $address): Socket|false {}
  * @return array containing the fields in the addrinfo structure.
  * @since 7.2
  */
+#[ArrayShape([
+    'ai_flags' => 'int',
+    'ai_family' => 'int',
+    'ai_socktype' => 'int',
+    'ai_protocol' => 'int',
+    'ai_canonname' => 'string',
+    'ai_addr' => [
+        'sin_port' => 'int',
+        'sin_addr' => 'string',
+        'sin6_port' => 'int',
+        'sin6_addr' => 'string',
+    ]
+])]
 function socket_addrinfo_explain(AddressInfo $address): array {}
 
 /**

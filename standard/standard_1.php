@@ -185,7 +185,7 @@ function hebrevc(string $hebrew_text, $max_chars_per_line): string {}
  * The input string.
  * </p>
  * @param bool $use_xhtml [optional] <p>
- * Whenever to use XHTML compatible line breaks or not.
+ * Whether to use XHTML compatible line breaks or not.
  * </p>
  * @return string the altered string.
  */
@@ -251,7 +251,7 @@ function dirname(string $path, #[PhpStormStubsElementAvailable(from: '7.0')] int
  * PATHINFO_FILENAME. It
  * defaults to return all elements.
  * </p>
- * @return string[]|string The following associative array elements are returned:
+ * @return string|array{dirname: string, basename: string, extension: string, filename: string} The following associative array elements are returned:
  * dirname, basename,
  * extension (if any), and filename.
  * </p>
@@ -260,7 +260,13 @@ function dirname(string $path, #[PhpStormStubsElementAvailable(from: '7.0')] int
  * string if not all elements are requested.
  */
 #[Pure(true)]
-function pathinfo(string $path, int $flags = PATHINFO_ALL): array|string {}
+#[ArrayShape(['dirname' => 'string', 'basename' => 'string', 'extension' => 'string', 'filename' => 'string'])]
+function pathinfo(string $path, #[ExpectedValues(flags: [
+    PATHINFO_DIRNAME,
+    PATHINFO_BASENAME,
+    PATHINFO_EXTENSION,
+    PATHINFO_FILENAME
+])] int $flags = PATHINFO_ALL): array|string {}
 
 /**
  * Un-quotes a quoted string
@@ -1064,7 +1070,7 @@ function join(array|string $separator = "", ?array $array): string {}
  *
  * </li>
  * </ul>
- * @param string|array|int $locales <p>
+ * @param string|string[]|int $locales <p>
  * If locale is null or the empty string
  * "", the locale names will be set from the
  * values of environment variables with the same names as the above
@@ -1081,7 +1087,7 @@ function join(array|string $separator = "", ?array $array): string {}
  * different names on different systems or for providing a fallback
  * for a possibly not available locale.
  * </p>
- * @param string ...$rest
+ * @param string|string[] ...$rest
  * @return string|false <p>the new current locale, or false if the locale functionality is
  * not implemented on your platform, the specified locale does not exist or
  * the category name is invalid.

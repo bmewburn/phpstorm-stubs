@@ -133,6 +133,7 @@ function stream_context_set_params($context, array $params): bool {}
  * </p>
  * @return array an associate array containing all context options and parameters.
  */
+#[ArrayShape(["notification" => "string", "options" => "array"])]
 function stream_context_get_params($context): array {}
 
 /**
@@ -983,7 +984,7 @@ function stream_wrapper_restore(string $protocol): bool {}
 /**
  * Retrieve list of registered streams
  * @link https://php.net/manual/en/function.stream-get-wrappers.php
- * @return array an indexed array containing the name of all stream wrappers
+ * @return list<string> an indexed array containing the name of all stream wrappers
  * available on the running system.
  */
 #[Pure(true)]
@@ -992,7 +993,7 @@ function stream_get_wrappers(): array {}
 /**
  * Retrieve list of registered socket transports
  * @link https://php.net/manual/en/function.stream-get-transports.php
- * @return array an indexed array of socket transports names.
+ * @return list<string> an indexed array of socket transports names.
  */
 #[Pure(true)]
 function stream_get_transports(): array {}

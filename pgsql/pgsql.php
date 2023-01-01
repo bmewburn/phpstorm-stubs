@@ -1,6 +1,7 @@
 <?php
 
 // Start of pgsql v.
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
@@ -241,6 +242,7 @@ function pg_options(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|null'],
  * and server keys and values (if available). Returns
  * <b>FALSE</b> on error or invalid connection.
  */
+#[ArrayShape(["client" => "string", "protocol" => "int", "server" => "string"])]
 function pg_version(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|null'], default: 'resource')] $connection = null): array {}
 
 /**
@@ -1025,6 +1027,7 @@ function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Result'], defa
  * @return array|false An array containing the NOTIFY message name and backend PID.
  * Otherwise if no NOTIFY is waiting, then <b>FALSE</b> is returned.
  */
+#[ArrayShape(["message" => "string", "pid" => "int", "payload" => "string"])]
 function pg_get_notify(
     #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null,
     #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
@@ -2062,8 +2065,8 @@ function pg_consume_input(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection']
  */
 function pg_flush(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection): int|bool {}
 
-define('PGSQL_LIBPQ_VERSION', "14.4");
-define('PGSQL_LIBPQ_VERSION_STR', "14.4");
+define('PGSQL_LIBPQ_VERSION', "14.5");
+define('PGSQL_LIBPQ_VERSION_STR', "14.5");
 
 /**
  * Passed to <b>pg_connect</b> to force the creation of a new connection,

@@ -1,5 +1,6 @@
 <?php
 
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
@@ -83,6 +84,22 @@ use JetBrains\PhpStorm\Pure;
  * </p>
  */
 #[Pure]
+#[ArrayShape([
+    "GD Version" => "string",
+    "FreeType Support" => "bool",
+    "GIF Read Support" => "bool",
+    "GIF Create Support" => "bool",
+    "JPEG Support" => "bool",
+    "PNG Support" => "bool",
+    "WBMP Support" => "bool",
+    "XPM Support" => "bool",
+    "XBM Support" => "bool",
+    "WebP Support" => "bool",
+    "BMP Support" => "bool",
+    "TGA Read Support" => "bool",
+    "AVIF Support" => "bool",
+    "JIS-mapped Japanese Font Support" => "bool"
+])]
 function gd_info(): array {}
 
 /**
@@ -371,6 +388,7 @@ function imagecolorstotal(GdImage $image): int {}
  */
 #[Pure]
 #[LanguageLevelTypeAware(['8.0' => 'array'], default: 'array|false')]
+#[ArrayShape(["red" => "int", "green" => "int", "blue" => "int", "alpha" => "int"])]
 function imagecolorsforindex(GdImage $image, int $color) {}
 
 /**
@@ -1160,8 +1178,28 @@ function imagefilledpolygon(
     GdImage $image,
     array $points,
     #[Deprecated(since: "8.1")] int $num_points_or_color,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?int $color = null
+    ?int $color
+): bool {}
+
+/**
+ * Draw a filled polygon
+ * @link https://php.net/manual/en/function.imagefilledpolygon.php
+ * @param GdImage $image
+ * @param int[] $points <p>
+ * An array containing the x and y
+ * coordinates of the polygons vertices consecutively.
+ * </p>
+ * @param int|null $color <p>
+ * A color identifier created with
+ * imagecolorallocate.
+ * </p>
+ * @return bool true on success or false on failure.
+ */
+#[PhpStormStubsElementAvailable(from: '8.0')]
+function imagefilledpolygon(
+    GdImage $image,
+    array $points,
+    ?int $color
 ): bool {}
 
 /**
@@ -1663,7 +1701,7 @@ function imagettfbbox($size, $angle, $font_filename, $text) {}
  * corner when you see the text horizontally.
  * Returns false on error.
  */
-function imagettftext($image, $size, $angle, $x, $y, $color, $font_filename, $text) {}
+function imagettftext(GdImage $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, array $options = []): array|false {}
 
 /**
  * Give the bounding box of a text using fonts via freetype2
@@ -2203,6 +2241,7 @@ function imageconvolution(GdImage $image, array $matrix, float $divisor, float $
  * @link https://php.net/manual/en/function.imageresolution.php
  * @since 7.2
  */
+#[LanguageLevelTypeAware(['8.2' => 'array|true'], default: 'array|bool')]
 function imageresolution(GdImage $image, ?int $resolution_x = null, ?int $resolution_y = null): array|bool {}
 
 /**
