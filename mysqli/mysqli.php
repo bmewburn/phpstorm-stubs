@@ -466,7 +466,6 @@ class mysqli
      * @param int $option <p>
      * The option that you want to set. It can be one of the following values:
      * <table>
-     * Valid options
      * <tr valign="top">
      * <td>Name</td>
      * <td>Description</td>
@@ -640,7 +639,6 @@ class mysqli
      * connection options:
      * </p>
      * <table>
-     * Supported flags
      * <tr valign="top">
      * <td>Name</td>
      * <td>Description</td>
@@ -1037,7 +1035,6 @@ class mysqli_result implements IteratorAggregate
      * </p>
      * <p>
      * <table>
-     * Object properties
      * <tr valign="top">
      * <td>Property</td>
      * <td>Description</td>
@@ -1106,7 +1103,6 @@ class mysqli_result implements IteratorAggregate
      * </p>
      * <p>
      * <table>
-     * Object properties
      * <tr valign="top">
      * <td>Property</td>
      * <td>Description</td>
@@ -1173,7 +1169,6 @@ class mysqli_result implements IteratorAggregate
      * </p>
      * <p>
      * <table>
-     * Object attributes
      * <tr valign="top">
      * <td>Attribute</td>
      * <td>Description</td>
@@ -1432,7 +1427,6 @@ class mysqli_stmt
      * @param int $attribute <p>
      * The attribute that you want to set. It can have one of the following values:
      * <table>
-     * Attribute values
      * <tr valign="top">
      * <td>Character</td>
      * <td>Description</td>
@@ -1488,7 +1482,6 @@ class mysqli_stmt
      * A string that contains one or more characters which specify the types
      * for the corresponding bind variables:
      * <table>
-     * Type specification chars
      * <tr valign="top">
      * <td>Character</td>
      * <td>Description</td>
@@ -2312,7 +2305,6 @@ function mysqli_prepare(mysqli $mysql, string $query): mysqli_stmt|false {}
  * @link https://php.net/manual/en/function.mysqli-report.php
  * @param int $flags <p>
  * <table>
- * Supported flags
  * <tr valign="top">
  * <td>Name</td>
  * <td>Description</td>
@@ -2539,7 +2531,6 @@ function mysqli_stmt_send_long_data(mysqli_stmt $statement, int $param_num, stri
  * A string that contains one or more characters which specify the types
  * for the corresponding bind variables:
  * <table>
- * Type specification chars
  * <tr valign="top">
  * <td>Character</td>
  * <td>Description</td>

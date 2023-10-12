@@ -505,8 +505,8 @@ function octdec(string $octal_string): int|float {}
  * @param int $num <p>
  * Decimal value to convert
  * </p>
- * <table>
  * Range of inputs on 32-bit machines
+ * <table>
  * <tr valign="top">
  * <td>positive number</td>
  * <td>negative number</td>
@@ -559,8 +559,8 @@ function octdec(string $octal_string): int|float {}
  * <td>11111111111111111111111111111111 (32 1's)</td>
  * </tr>
  * </table>
- * <table>
  * Range of inputs on 64-bit machines
+ * <table>
  * <tr valign="top">
  * <td>positive number</td>
  * <td>negative number</td>
@@ -1048,7 +1048,6 @@ function import_request_variables(string $types, $prefix = null): bool {}
  * </p>
  * <p>
  * <table>
- * error_log log types
  * <tr valign="top">
  * <td>0</td>
  * <td>

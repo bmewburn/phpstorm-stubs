@@ -463,7 +463,6 @@ function xml_parser_free(#[LanguageLevelTypeAware(["8.0" => "XMLParser"], defaul
  * <p>
  * The following options are available:
  * <table>
- * XML parser options
  * <tr valign="top">
  * <td>Option constant</td>
  * <td>Data type</td>

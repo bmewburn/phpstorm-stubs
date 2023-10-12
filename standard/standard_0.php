@@ -255,8 +255,8 @@ function time_sleep_until(float $timestamp): bool {}
  *  unparsed:string
  * }|false an array or false on failure.
  * <p>
- * <table>
  * The following parameters are returned in the array
+ * <table>
  * <tr valign="top">
  * <td>parameters</td>
  * <td>Description</td>
@@ -479,7 +479,6 @@ function htmlspecialchars(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE
  * be done with 'single' and "double" quotes. It takes on one of three
  * constants with the default being ENT_COMPAT:
  * <table>
- * Available quote_style constants
  * <tr valign="top">
  * <td>Constant Name</td>
  * <td>Description</td>
@@ -525,7 +524,6 @@ function htmlentities(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?s
  * on one of three constants with the default being
  * ENT_COMPAT:
  * <table>
- * Available quote_style constants
  * <tr valign="top">
  * <td>Constant Name</td>
  * <td>Description</td>
@@ -563,7 +561,6 @@ function html_entity_decode(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITU
  * @param int $flags [optional] <p>
  * The quote style. One of the following constants:
  * <table>
- * quote_style constants
  * <tr valign="top">
  * <td>Constant Name</td>
  * <td>Description</td>
@@ -947,7 +944,6 @@ function getimagesize(string $filename, &$image_info): array|false {}
  * </p>
  * @return string The returned values are as follows
  * <table>
- * Returned values Constants
  * <tr valign="top">
  * <td>imagetype</td>
  * <td>Returned value</td>
@@ -1054,7 +1050,6 @@ function image_type_to_extension(int $image_type, bool $include_dot = true): str
  * </p>
  * <p>
  * <table>
- * phpinfo options
  * <tr valign="top">
  * <td>Name (constant)</td>
  * <td>Value</td>
@@ -1152,7 +1147,6 @@ function phpversion(?string $extension): string|false {}
  * </p>
  * <p>
  * <table>
- * Pre-defined phpcredits flags
  * <tr valign="top">
  * <td>name</td>
  * <td>description</td>

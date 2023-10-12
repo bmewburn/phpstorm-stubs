@@ -1209,7 +1209,6 @@ class RegexIterator extends FilterIterator
      * meanings of these modes are described in the
      * predefined constants.
      * <table>
-     * <b>RegexIterator</b> modes
      * <tr valign="top">
      * <td>value</td>
      * <td>constant</td>
@@ -1270,7 +1269,6 @@ class RegexIterator extends FilterIterator
      * meanings of these flags are described in the
      * predefined constants.
      * <table>
-     * <b>RegexIterator</b> flags
      * <tr valign="top">
      * <td>value</td>
      * <td>constant</td>
@@ -1656,7 +1654,6 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      * meanings of these flags are described in the
      * predefined constants.
      * <table>
-     * ArrayObject behavior flags
      * <tr valign="top">
      * <td>value</td>
      * <td>constant</td>

@@ -27,8 +27,8 @@ use JetBrains\PhpStorm\Pure;
  *  'JIS-mapped Japanese Font Support':bool
  * } an associative array.
  * <p>
- * <table>
  * Elements of array returned by <b>gd_info</b>
+ * <table>
  * <tr valign="top">
  * <td>Attribute</td>
  * <td>Meaning</td>
@@ -1335,7 +1335,6 @@ function imageline(GdImage $image, int $x1, int $y1, int $x2, int $y2, int $colo
  * </p>
  * <p>
  * <table>
- * Font file format
  * <tr valign="top">
  * <td>byte position</td>
  * <td>C data type</td>
@@ -1751,8 +1750,8 @@ function imagettftext(GdImage $image, float $size, float $angle, int $x, int $y,
  * The string to be measured.
  * </p>
  * @param array $options [optional] <p>
- * <table>
  * Possible array indexes for extrainfo
+ * <table>
  * <tr valign="top">
  * <td>Key</td>
  * <td>Type</td>
@@ -1877,8 +1876,8 @@ function imageftbbox(float $size, float $angle, string $font_filename, string $s
  * Text to be inserted into image.
  * </p>
  * @param array $options [optional] <p>
- * <table>
  * Possible array indexes for extrainfo
+ * <table>
  * <tr valign="top">
  * <td>Key</td>
  * <td>Type</td>

@@ -302,9 +302,9 @@ function date(string $format, ?int $timestamp) {}
  * Format a local time/date as integer
  * @link https://php.net/manual/en/function.idate.php
  * @param string $format <p>
- * <table>
  * The following characters are recognized in the
  * format parameter string
+ * <table>
  * <tr valign="top">
  * <td>format character</td>
  * <td>Description</td>
@@ -877,8 +877,8 @@ function localtime(?int $timestamp, bool $associative = false): array {}
  * associative array are as follows:
  * </p>
  * <p>
- * <table>
  * Key elements of the returned associative array
+ * <table>
  * <tr valign="top">
  * <td>Key</td>
  * <td>Description</td>
@@ -1519,8 +1519,8 @@ function date_default_timezone_get(): string {}
  * time is taken.
  * </p>
  * @param int $returnFormat [optional] <p>
- * <table>
  * format constants
+ * <table>
  * <tr valign="top">
  * <td>constant</td>
  * <td>description</td>
@@ -1571,8 +1571,8 @@ function date_sunrise(int $timestamp, int $returnFormat = SUNFUNCS_RET_STRING, ?
  * time is taken.
  * </p>
  * @param int $returnFormat [optional] <p>
- * <table>
  * format constants
+ * <table>
  * <tr valign="top">
  * <td>constant</td>
  * <td>description</td>

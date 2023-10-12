@@ -572,8 +572,6 @@ function fread($stream, int $length): string|false {}
  * The mode parameter specifies the type of access
  * you require to the stream. It may be any of the following:
  * <table>
- * A list of possible modes for fopen
- * using mode
  * <tr valign="top">
  * <td>mode</td>
  * <td>Description</td>
@@ -1046,7 +1044,6 @@ function file_get_contents(string $filename, bool $use_include_path = false, $co
  * </p>
  * <p>
  * <table>
- * Available flags
  * <tr valign="top">
  * <td>Flag</td>
  * <td>Description</td>

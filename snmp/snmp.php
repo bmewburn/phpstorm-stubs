@@ -496,8 +496,9 @@ function snmp_set_enum_print($enum_print) {}
 /**
  * Set the OID output format
  * @link https://php.net/manual/en/function.snmp-set-oid-output-format.php
- * @param int $oid_format [optional] <table>
+ * @param int $oid_format [optional] 
  * OID .1.3.6.1.2.1.1.3.0 representation for various <i>oid_format</i> values
+ * <table>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_FULL</b></td><td>.iso.org.dod.internet.mgmt.mib-2.system.sysUpTime.sysUpTimeInstance</td></tr>
  * <tr valign="top"><td><b>SNMP_OID_OUTPUT_NUMERIC</b></td><td>.1.3.6.1.2.1.1.3.0</td> </tr>
  * </table>
@@ -932,8 +933,9 @@ function snmp3_set($host, $sec_name, $sec_level, $auth_protocol, $auth_passphras
 /**
  * Specify the method how the SNMP values will be returned
  * @link https://php.net/manual/en/function.snmp-set-valueretrieval.php
- * @param int $method <table>
+ * @param int $method 
  * types
+ * <table>
  * <tr valign="top">
  * <td>SNMP_VALUE_LIBRARY</td>
  * <td>The return values will be as returned by the Net-SNMP library.</td>

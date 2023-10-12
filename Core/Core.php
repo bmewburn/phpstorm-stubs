@@ -215,7 +215,6 @@ function each(&$array): array {}
  * meanings of these error levels are described in the
  * predefined constants.
  * <table>
- * error_reporting level constants and bit values
  * <tr valign="top">
  * <td>value</td>
  * <td>constant</td>

@@ -901,8 +901,8 @@ class AssertionError extends Error {}
  * Set/get the various assert flags
  * @link https://php.net/manual/en/function.assert-options.php
  * @param int $option <p>
- * <table>
  * Assert Options
+ * <table>
  * <tr valign="top">
  * <td>Option</td>
  * <td>INI Setting</td>

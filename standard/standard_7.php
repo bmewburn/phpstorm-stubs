@@ -95,7 +95,6 @@ function pfsockopen(
  * <p>
  * Currently implemented formats are:
  * <table>
- * pack format characters
  * <tr valign="top">
  * <td>Code</td>
  * <td>Description</td>
@@ -709,9 +708,9 @@ function is_link(string $filename): bool {}
  *  ctime:int,
  *  blksize:int,
  *  blocks:int
- * }|false <table>
- * stat and fstat result
- * format
+ * }|false 
+ * stat and fstat result format
+ * <table>
  * <tr valign="top">
  * <td>Numeric</td>
  * <td>Associative (since PHP 4.0.6)</td>
@@ -1098,7 +1097,6 @@ function ezmlm_hash(string $addr): int {}
  * The option argument is used to indicate
  * what logging options will be used when generating a log message.
  * <table>
- * openlog Options
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -1143,7 +1141,6 @@ function ezmlm_hash(string $addr): int {}
  * (in your machine's syslog configuration) how messages coming from
  * different facilities will be handled.
  * <table>
- * openlog Facilities
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>

@@ -416,7 +416,6 @@ function stream_socket_get_name($socket, bool $remote): string|false {}
  * The value of flags can be any combination
  * of the following:
  * <table>
- * Possible values for flags
  * <tr valign="top">
  * <td>STREAM_OOB</td>
  * <td>
@@ -455,7 +454,6 @@ function stream_socket_recvfrom($socket, int $length, int $flags = 0, &$address)
  * The value of flags can be any combination
  * of the following:
  * <table>
- * possible values for flags
  * <tr valign="top">
  * <td>STREAM_OOB</td>
  * <td>
@@ -1187,7 +1185,6 @@ function realpath(string $path): string|false {}
  * the following flags, joined with the
  * binary OR (|) operator.
  * <table>
- * A list of possible flags for fnmatch
  * <tr valign="top">
  * <td>Flag</td>
  * <td>Description</td>

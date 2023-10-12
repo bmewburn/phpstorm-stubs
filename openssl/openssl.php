@@ -331,8 +331,8 @@ function openssl_x509_parse(
  * The examined certificate.
  * </p>
  * @param int $purpose <p>
- * <table>
  * <b>openssl_x509_checkpurpose</b> purposes
+ * <table>
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -530,7 +530,6 @@ function openssl_pkcs12_read(string $pkcs12, &$certificates, string $passphrase)
  * behave as their equivalents in the openssl.conf, as
  * listed in the table below.
  * <table>
- * Configuration overrides
  * <tr valign="top">
  * <td><i>configargs</i> key</td>
  * <td>type</td>

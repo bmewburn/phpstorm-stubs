@@ -45,7 +45,6 @@ const DBA_LMDB_NO_SUB_DIR = 0;
  * only be done one after another. Also read during write is not allowed.
  * The dba extension uses locks to prevent this. See the following table:
  * <table>
- * DBA locking
  * <tr valign="top">
  * <td>already open</td>
  * <td><i>mode</i> = "rl"</td>

@@ -499,7 +499,6 @@ function ftp_close(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default
  * @param int $option <p>
  * Currently, the following options are supported:
  * <table>
- * Supported runtime FTP options
  * <tr valign="top">
  * <td><b>FTP_TIMEOUT_SEC</b></td>
  * <td>
@@ -539,7 +538,6 @@ function ftp_set_option(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], de
  * @param int $option <p>
  * Currently, the following options are supported:
  * <table>
- * Supported runtime FTP options
  * <tr valign="top">
  * <td><b>FTP_TIMEOUT_SEC</b></td>
  * <td>

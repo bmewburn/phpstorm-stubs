@@ -622,7 +622,6 @@ function oci_field_type_raw($statement, $field) {}
  * @param int $mode [optional] <p>
  * An optional second parameter can be one of the following constants:
  * <table>
- * Execution Modes
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -779,9 +778,8 @@ function oci_fetch_assoc($statement) {}
  * </p>
  * @param int $mode [optional] <p>
  * An optional second parameter can be any combination of the following
- * constants:
+ * constants {@see oci_fetch_array}:
  * <table>
- * {@see oci_fetch_array} Modes
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -898,8 +896,8 @@ function ocifetchinto($statement_resource, &$result, $mode = null) {}
  * @param int $flags [optional] <p>
  * Parameter <i>flags</i> indicates the array
  * structure and whether associative arrays should be used.
+ * {@see oci_fetch_all}
  * <table>
- * {@see oci_fetch_all} Array Structure Modes
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -918,8 +916,8 @@ function ocifetchinto($statement_resource, &$result, $mode = null) {}
  * </p>
  * <p>
  * Arrays can be indexed by column heading or numerically.
+ * {@see oci_fetch_all}
  * <table>
- * {@see oci_fetch_all} Array Index Modes
  * <tr valign="top">
  * <td>Constant</td>
  * <td>Description</td>
@@ -1085,7 +1083,6 @@ function oci_server_version($connection) {}
  * @return string|false The type of <i>statement</i> as one of the
  * following strings.
  * <table>
- * Statement type
  * <tr valign="top">
  * <td>Return String</td>
  * <td>Notes</td>
@@ -1461,8 +1458,8 @@ function oci_pconnect($username, $password, $connection_string = null, $characte
  * error information as an associative array.
  * </p>
  * <p>
+ * {@see oci_error}
  * <table>
- * {@see oci_error} Array Description
  * <tr valign="top">
  * <td>Array key</td>
  * <td>Type</td>

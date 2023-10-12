@@ -105,7 +105,6 @@ function msg_send(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"], defaul
  * low-level msgrcv system call. It defaults to 0, but you may specify one
  * or more of the following values (by adding or ORing them together).
  * <table>
- * Flag values for msg_receive
  * <tr valign="top">
  * <td><b>MSG_IPC_NOWAIT</b></td>
  * <td>If there are no messages of the
@@ -175,7 +174,6 @@ function msg_remove_queue(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"]
  * }|false The return value is an array whose keys and values have the following
  * meanings:
  * <table>
- * Array structure for msg_stat_queue
  * <tr valign="top">
  * <td>msg_perm.uid</td>
  * <td>

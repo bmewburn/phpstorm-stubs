@@ -220,7 +220,6 @@ function iconv_strrpos(string $haystack, string $needle, ?string $encoding = nul
  * The items supported by <b>iconv_mime_encode</b> are
  * listed below. Note that item names are treated case-sensitive.
  * <table>
- * Configuration items supported by <b>iconv_mime_encode</b>
  * <tr valign="top">
  * <td>Item</td>
  * <td>Type</td>
@@ -317,7 +316,6 @@ function iconv_mime_encode(string $field_name, string $field_value, array $optio
  * MIME header field. You can specify any combination
  * of the following bitmasks.
  * <table>
- * Bitmasks acceptable to <b>iconv_mime_decode</b>
  * <tr valign="top">
  * <td>Value</td>
  * <td>Constant</td>

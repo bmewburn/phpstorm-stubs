@@ -143,7 +143,6 @@ function socket_select(?array &$read, ?array &$write, ?array &$except, ?int $sec
  * family to be used by the socket.
  * </p>
  * <table>
- * Available address/protocol families
  * <tr valign="top">
  * <td>Domain</td>
  * <td>Description</td>
@@ -175,7 +174,6 @@ function socket_select(?array &$read, ?array &$write, ?array &$except, ?int $sec
  * to be used by the socket.
  * </p>
  * <table>
- * Available socket types
  * <tr valign="top">
  * <td>Type</td>
  * <td>Description</td>
@@ -229,7 +227,6 @@ function socket_select(?array &$read, ?array &$write, ?array &$except, ?int $sec
  * can also be used.
  * </p>
  * <table>
- * Common protocols
  * <tr valign="top">
  * <td>Name</td>
  * <td>Description</td>
@@ -625,7 +622,6 @@ function socket_bind(Socket $socket, string $address, int $port = 0): bool {}
  * operator.
  * </p>
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
  * <td>Flag</td>
  * <td>Description</td>
@@ -686,7 +682,6 @@ function socket_recv(Socket $socket, &$data, int $length, int $flags): int|false
  * the following flags, joined with the binary OR (|)
  * operator.
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
  * <td>
@@ -756,7 +751,6 @@ function socket_sendmsg(
  * operator.
  * </p>
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
  * <td>Flag</td>
  * <td>Description</td>
@@ -844,7 +838,6 @@ function socket_recvmsg(
  * the following flags, joined with the binary OR (|)
  * operator.
  * <table>
- * Possible values for <i>flags</i>
  * <tr valign="top">
  * <td><b>MSG_OOB</b></td>
  * <td>
@@ -901,8 +894,9 @@ function socket_sendto(Socket $socket, string $data, int $length, int $flags, st
  * specifying the protocol number of that level. Protocol numbers can be
  * found by using the <b>getprotobyname</b> function.
  * </p>
- * @param int $option <table>
+ * @param int $option 
  * Available Socket Options
+ * <table>
  * <tr valign="top">
  * <td>Option</td>
  * <td>Description</td>
@@ -1287,7 +1281,6 @@ function socket_set_option(Socket $socket, int $level, int $option, $value): boo
  * @param int $mode [optional] <p>
  * The value of <i>how</i> can be one of the following:
  * <table>
- * possible values for <i>how</i>
  * <tr valign="top">
  * <td>0</td>
  * <td>

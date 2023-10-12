@@ -276,7 +276,6 @@ function session_set_save_handler(SessionHandlerInterface $sessionhandler, bool 
  * current cache limiter is changed to the new value.
  * </p>
  * <table>
- * Possible values
  * <tr valign="top">
  * <td>Value</td>
  * <td>Headers sent</td>

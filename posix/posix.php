@@ -358,7 +358,6 @@ function posix_access(string $filename, int $flags = POSIX_F_OK): bool {}
  * @param string $name <p>The name of the group</p>
  * @return array|false The array elements returned are:
  * <table>
- * The group information array
  * <tr valign="top">
  * <td>Element</td>
  * <td>Description</td>
@@ -407,7 +406,6 @@ function posix_getgrnam(string $name): array|false {}
  * </p>
  * @return array|false The array elements returned are:
  * <table>
- * The group information array
  * <tr valign="top">
  * <td>Element</td>
  * <td>Description</td>
@@ -631,7 +629,6 @@ function posix_getpwuid(int $user_id): array|false {}
  * @return array|false an associative array of elements for each
  * limit that is defined. Each limit has a soft and a hard limit.
  * <table>
- * List of possible limits returned
  * <tr valign="top">
  * <td>Limit name</td>
  * <td>Limit description</td>
