@@ -11,6 +11,7 @@ The following files have been removed from this distribution.
 * .space.kts
 * CODE_OF_CONDUCT.md
 * composer.json
+* composer.lock
 * CONTRIBUTING.md
 * docker-compose.yml
 * Inspections.xml
