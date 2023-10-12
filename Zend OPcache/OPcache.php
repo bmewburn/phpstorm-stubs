@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 
@@ -43,7 +44,20 @@ function opcache_reset(): bool {}
  * Get status information about the cache
  * @link https://php.net/manual/en/function.opcache-get-status.php
  * @param bool $include_scripts <p>Include script specific state information</p>
- * @return array|false <p>Returns an array of information, optionally containing script specific state information</p>
+ * @return array{
+ *  opcache_enabled:bool,
+ *  file_cache:string,
+ *  file_cache_only:bool,
+ *  cache_full:bool,
+ *  restart_pending:bool,
+ *  restart_in_progress:bool,
+ *  memory_usage:array,
+ *  interned_strings_usage:array,
+ *  opcache_statistics:array,
+ *  preload_statistics:array,
+ *  scripts:array,
+ *  jit:array,
+ * }|false <p>Returns an array of information, optionally containing script specific state information</p>
  * @since 5.5
  */
 #[ArrayShape([
@@ -66,7 +80,7 @@ function opcache_get_status(bool $include_scripts = true): array|false {}
  * (PHP 5 &gt;= 5.5.5, PECL ZendOpcache &gt;= 7.0.2 )<br/>
  * Get configuration information about the cache
  * @link https://php.net/manual/en/function.opcache-get-configuration.php
- * @return array|false <p>Returns an array of information, including ini, blacklist and version</p>
+ * @return array{directives:array, version:string[], blacklist:array}|false <p>Returns an array of information, including ini, blacklist and version</p>
  * @since 5.5
  */
 #[ArrayShape(["directives" => "array", "version" => "string[]", "blacklist" => "array"])]

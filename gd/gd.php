@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -9,7 +10,22 @@ use JetBrains\PhpStorm\Pure;
 /**
  * Retrieve information about the currently installed GD library
  * @link https://php.net/manual/en/function.gd-info.php
- * @return array an associative array.
+ * @return array{
+ *  'GD Version':string,
+ *  'FreeType Support':bool,
+ *  'GIF Read Support':bool,
+ *  'GIF Create Support':bool,
+ *  'JPEG Support':bool,
+ *  'PNG Support':bool,
+ *  'WBMP Support':bool,
+ *  'XPM Support':bool,
+ *  'XBM Support':bool,
+ *  'WebP Support':bool,
+ *  'BMP Support':bool,
+ *  'TGA Read Support':bool,
+ *  'AVIF Support':bool,
+ *  'JIS-mapped Japanese Font Support':bool
+ * } an associative array.
  * <p>
  * <table>
  * Elements of array returned by <b>gd_info</b>
@@ -384,7 +400,7 @@ function imagecolorstotal(GdImage $image): int {}
  * @param int $color <p>
  * The color index.
  * </p>
- * @return array|false an associative array with red, green, blue and alpha keys that
+ * @return array{red:int, green:int, blue:int, alpha:int}|false an associative array with red, green, blue and alpha keys that
  * contain the appropriate values for the specified color index or <b>FALSE</b> on failure
  */
 #[Pure]

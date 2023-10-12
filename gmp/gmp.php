@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of gmp v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -423,7 +424,7 @@ function gmp_gcd(GMP|string|int $num1, GMP|string|int $num2): GMP {}
  * numeric string given that it is possible to convert the latter to a number.</p>
  * @param resource|string|GMP $num2 <p>It can be either a GMP number resource, or a
  * numeric string given that it is possible to convert the latter to a number.</p>
- * @return array An array of GMP numbers.
+ * @return array{g:mixed, s:mixed, t:mixed} An array of GMP numbers.
  */
 #[Pure]
 #[ArrayShape(["g" => "mixed", "s" => "mixed", "t" => "mixed"])]

@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of sysvmsg v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -160,7 +161,18 @@ function msg_remove_queue(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"]
  * @param SysvMessageQueue|resource $queue <p>
  * Message queue resource handle
  * </p>
- * @return array|false The return value is an array whose keys and values have the following
+ * @return array{
+ *  "msg_perm.uid":int,
+ *  "msg_perm.gid":int,
+ *  "msg_perm.mode":int,
+ *  msg_stime:int,
+ *  msg_rtime:int,
+ *  msg_ctime:int,
+ *  msg_qnum:int,
+ *  msg_qbytes:int,
+ *  msg_lspid:int,
+ *  msg_lrpid:int,
+ * }|false The return value is an array whose keys and values have the following
  * meanings:
  * <table>
  * Array structure for msg_stat_queue

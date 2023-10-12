@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 // Start of imap v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -1202,7 +1203,7 @@ function imap_timeout(int $timeout_type, int $timeout = -1): int|bool {}
  * user.name where name is the mailbox you wish to
  * retrieve information about.
  * </p>
- * @return array|false an array with integer values limit and usage for the given
+ * @return array{usage:int, limit:int}|false an array with integer values limit and usage for the given
  * mailbox. The value of limit represents the total amount of space
  * allowed for this mailbox. The usage value represents the mailboxes
  * current level of capacity. Will return <b>FALSE</b> in the case of failure.

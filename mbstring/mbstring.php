@@ -1,5 +1,5 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of mbstring v.
 
 use JetBrains\PhpStorm\ArrayShape;
@@ -904,7 +904,21 @@ function mb_send_mail(string $to, string $subject, string $message, array|string
  * "http_input", "internal_encoding", "func_overload",
  * the specified setting parameter will be returned.
  * </p>
- * @return array|string|int|false An array of type information if type
+ * @return array{
+ *  internal_encoding:string,
+ *  http_input:string,
+ *  http_output:string,
+ *  http_output_conv_mimetypes:string,
+ *  mail_charset:string,
+ *  mail_header_encoding:string,
+ *  mail_body_encoding:string,
+ *  illegal_chars:string,
+ *  encoding_translation:string,
+ *  language:string,
+ *  detect_order:string,
+ *  substitute_character:string,
+ *  strict_detection:string
+ * }|string|int|false An array of type information if type
  * is not specified, otherwise a specific type.
  */
 #[Pure]

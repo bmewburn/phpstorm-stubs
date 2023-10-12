@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -114,7 +115,7 @@ function curl_copy_handle(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], defa
  * Gets cURL version information
  * @link https://php.net/manual/en/function.curl-version.php
  * @param int $age [optional] Removed since version PHP 8.0.
- * @return array|false an associative array with the following elements:
+ * @return array{version_number:string, version:string, ssl_version_number:int, ssl_version:string, libz_version:string, host:string, age:int, features:int, protocols:array}|false an associative array with the following elements:
  * <tr valign="top">
  * <td>Indice</td>
  * <td>Value description</td>
@@ -2754,7 +2755,7 @@ function curl_multi_getcontent(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'],
  * @param int &$queued_messages [optional] <p>
  * Number of messages that are still in the queue
  * </p>
- * @return array|false On success, returns an associative array for the message, false on failure.
+ * @return array{msg:int, result:int, handle:resource}|false On success, returns an associative array for the message, false on failure.
  */
 #[Pure]
 #[ArrayShape(["msg" => "int", "result" => "int", "handle" => "resource"])]

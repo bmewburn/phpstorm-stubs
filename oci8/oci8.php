@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 // Start of oci8 v.2.0.7
 use JetBrains\PhpStorm\ArrayShape;
@@ -1455,7 +1456,7 @@ function oci_pconnect($username, $password, $connection_string = null, $characte
  * {@see oci_new_connect} or
  * {@see oci_pconnect} do not pass <i>resource</i>.
  * </p>
- * @return array|false If no error is found, {@see oci_error} returns
+ * @return array{code:int, message:string, offset:int, sqltext:string}|false If no error is found, {@see oci_error} returns
  * <b>FALSE</b>. Otherwise, {@see oci_error} returns the
  * error information as an associative array.
  * </p>

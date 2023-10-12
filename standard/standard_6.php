@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Project Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -131,7 +132,7 @@ function stream_context_set_params($context, array $params): bool {}
  * A stream resource or a
  * context resource
  * </p>
- * @return array an associate array containing all context options and parameters.
+ * @return array{notification:string, options:array} an associate array containing all context options and parameters.
  */
 #[ArrayShape(["notification" => "string", "options" => "array"])]
 function stream_context_get_params($context): array {}
@@ -830,7 +831,7 @@ function socket_set_blocking($stream, bool $enable): bool {}
  * The stream can be any stream created by fopen,
  * fsockopen and pfsockopen.
  * </p>
- * @return array The result array contains the following items:
+ * @return array{timed_out:bool, blocked:bool, eof:bool, unread_bytes:int, stream_type:string, wrapper_type:string, wrapper_data:mixed, mode:string, seekable:bool, uri:string, crypto:array, mediatype:string} The result array contains the following items:
  * <p>
  * timed_out (bool) - true if the stream
  * timed out while waiting for data on the last call to

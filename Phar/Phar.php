@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 // Start of Phar v.2.0.1
 
 use JetBrains\PhpStorm\ArrayShape;
@@ -399,7 +400,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * (PHP &gt;= 5.3.0, PECL phar &gt;= 1.0.0)<br/>
      * Return MD5/SHA1/SHA256/SHA512/OpenSSL signature of a Phar archive
      * @link https://php.net/manual/en/phar.getsignature.php
-     * @return array Array with the opened archive's signature in hash key and MD5,
+     * @return array{hash:string, hash_type:string} Array with the opened archive's signature in hash key and MD5,
      * SHA-1,
      * SHA-256, SHA-512, or OpenSSL
      * in hash_type. This signature is a hash calculated on the

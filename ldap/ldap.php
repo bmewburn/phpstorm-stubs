@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 // Start of ldap v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -620,7 +621,7 @@ function ldap_get_dn(
  * attribute=value format) set <i>with_attrib</i> to 0
  * and to get only values set it to 1.
  * </p>
- * @return array|false an array of all DN components.
+ * @return array{count:int}|false an array of all DN components.
  * The first element in this array has count key and
  * represents the number of returned values, next elements are numerically
  * indexed DN components.

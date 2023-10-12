@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -91,7 +92,7 @@ function header_register_callback(callable $callback): bool {}
  * Some programs use these APP markers to embed text information in images. <br>
  * A very common one is to embed » IPTC information in the APP13 marker. <br>
  * You can use the iptcparse() function to parse the binary APP13 marker into something readable.
- * @return array|false Returns an array with 7 elements.<br>
+ * @return array{0:int, 1:int, 2:int, 3:string, bits:int, channels:int, mime:string}|false Returns an array with 7 elements.<br>
  * Index 0 and 1 contains respectively the width and the height of the image.<br>
  * Index 2 is one of the <b>IMAGETYPE_XXX</b> constants indicating the type of the image.<br>
  * Index 3 is a text string with the correct <b>height="yyy" width="xxx"</b> string<br>
@@ -279,7 +280,7 @@ function ob_get_level(): int {}
  * true to return all active output buffer levels. If false or not
  * set, only the top level output buffer is returned.
  * </p>
- * @return array If called without the full_status parameter
+ * @return array{level:int, type:int, flags:int, name:string, del:int, chunk_size:int, buffer_size:int, buffer_used:int} If called without the full_status parameter
  * or with full_status = false a simple array
  * with the following elements is returned:
  * <pre>

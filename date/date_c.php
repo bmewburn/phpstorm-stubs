@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Immutable;
@@ -232,7 +233,7 @@ class DateTimeImmutable implements DateTimeInterface
      * (PHP 5 &gt;=5.5.0)<br/>
      * Returns the warnings and errors
      * @link https://secure.php.net/manual/en/datetimeimmutable.getlasterrors.php
-     * @return array|false Returns array containing info about warnings and errors.
+     * @return array{warning_count:int, warnings:string[], error_count:int, errors:string[]}|false Returns array containing info about warnings and errors.
      */
     #[ArrayShape(["warning_count" => "int", "warnings" => "string[]", "error_count" => "int", "errors" => "string[]"])]
     #[TentativeType]
@@ -710,7 +711,7 @@ class DateTime implements DateTimeInterface
 
     /**
      * Returns an array of warnings and errors found while parsing a date/time string
-     * @return array|false
+     * @return array{warning_count:int, warnings:string[], error_count:int, errors:string[]}|false
      * @link https://php.net/manual/en/datetime.getlasterrors.php
      */
     #[ArrayShape(["warning_count" => "int", "warnings" => "string[]", "error_count" => "int", "errors" => "string[]"])]
@@ -777,7 +778,7 @@ class DateTimeZone
 
     /**
      * Returns location information for a timezone
-     * @return array|false
+     * @return array{country_code:string, latitude:double, longitude:double, comments:string}|false
      * @link https://php.net/manual/en/datetimezone.getlocation.php
      */
     #[TentativeType]

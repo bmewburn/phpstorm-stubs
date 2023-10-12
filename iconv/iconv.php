@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of iconv v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -52,7 +53,7 @@ function ob_iconv_handler(string $contents, int $status): string {}
  * output_encoding
  * internal_encoding
  * </p>
- * @return string|string[]|false the current value of the internal configuration variable if
+ * @return string|array{input_encoding:string, output_encoding:string, internal_encoding:string}|false the current value of the internal configuration variable if
  * successful or <b>FALSE</b> on failure.
  * <p>
  * If <i>type</i> is omitted or set to "all",

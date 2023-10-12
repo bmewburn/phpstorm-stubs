@@ -1,5 +1,5 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of standard v.5.3.2-0.dotdeb.1
 
 use JetBrains\PhpStorm\ArrayShape;
@@ -206,7 +206,7 @@ function usleep(int $microseconds): void {}
  * @param positive-int $nanoseconds <p>
  * Must be a positive integer less than 1 billion.
  * </p>
- * @return bool|array true on success or false on failure.
+ * @return bool|array{seconds:int, nanoseconds:int} true on success or false on failure.
  * <p>
  * If the delay was interrupted by a signal, an associative array will be
  * returned with the components:
@@ -243,7 +243,17 @@ function time_sleep_until(float $timestamp): bool {}
  * For more information about the format options, read the
  * strftime page.
  * </p>
- * @return array|false an array or false on failure.
+ * @return array{
+ *  tm_sec:int,
+ *  tm_min:int,
+ *  tm_hour:int,
+ *  tm_mday:int,
+ *  tm_mon:int,
+ *  tm_year:int,
+ *  tm_wday:int,
+ *  tm_yday:int,
+ *  unparsed:string
+ * }|false an array or false on failure.
  * <p>
  * <table>
  * The following parameters are returned in the array
@@ -883,7 +893,7 @@ function iptcembed(string $iptc_data, string $filename, int $spool = 0): string|
  * You can use the iptcparse function to parse the
  * binary APP13 marker into something readable.
  * </p>
- * @return array|false an array with 7 elements.
+ * @return array{0:int, 1:int, 2:int, 3:string, bits:int, channels:int, mime:string}|false an array with 7 elements.
  * <p>
  * Index 0 and 1 contains respectively the width and the height of the image.
  * </p>

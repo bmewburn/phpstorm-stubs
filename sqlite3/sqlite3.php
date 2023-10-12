@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of sqlite3 v.0.7-dev
 use JetBrains\PhpStorm\ArrayShape;
@@ -101,7 +102,7 @@ class SQLite3
     /**
      * Returns the SQLite3 library version as a string constant and as a number
      * @link https://php.net/manual/en/sqlite3.version.php
-     * @return array an associative array with the keys "versionString" and
+     * @return array{versionString:string, versionNumber:int} an associative array with the keys "versionString" and
      * "versionNumber".
      */
     #[ArrayShape(["versionString" => "string", "versionNumber" => "int"])]

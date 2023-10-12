@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -112,7 +113,7 @@ function bzerrstr($bz) {}
  * The file pointer. It must be valid and must point to a file
  * successfully opened by <b>bzopen</b>.
  * </p>
- * @return array an associative array, with the error code in the
+ * @return array{errno:int, errstr:string} an associative array, with the error code in the
  * errno entry, and the error message in the
  * errstr entry.
  */

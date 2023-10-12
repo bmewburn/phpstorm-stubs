@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 // Start of openssl v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -129,7 +130,7 @@ function openssl_pkey_get_public(#[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsym
  * @param OpenSSLAsymmetricKey|resource $key <p>
  * Resource holding the key.
  * </p>
- * @return array|false an array with the key details in success or false in failure.
+ * @return array{bits:int, key:string, rsa:array, dsa:array, dh:array, type:int}|false an array with the key details in success or false in failure.
  * Returned array has indexes bits (number of bits),
  * key (string representation of the public key) and
  * type (type of the key which is one of
@@ -277,7 +278,25 @@ function openssl_x509_free(#[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificat
  * fields will be indexed with the short name form, otherwise, the long name
  * form will be used - e.g.: CN is the shortname form of commonName.
  * </p>
- * @return array|false The structure of the returned data is (deliberately) not
+ * @return array{
+ *  name:string,
+ *  subject:string,
+ *  hash:string,
+ *  issuer:string,
+ *  version:int,
+ *  serialNumber:string,
+ *  serialNumberHex:string,
+ *  validFrom:string,
+ *  validTo:string,
+ *  validFrom_time_t:int,
+ *  validTo_time_t:int,
+ *  alias:string,
+ *  signatureTypeSN:string,
+ *  signatureTypeLN:string,
+ *  signatureTypeNID:int,
+ *  purposes:array,
+ *  extensions:array
+ * }|false The structure of the returned data is (deliberately) not
  * yet documented, as it is still subject to change.
  */
 #[ArrayShape([
@@ -1195,7 +1214,16 @@ function openssl_error_string(): string|false {}
 /**
  * Retrieve the available certificate locations
  * @link https://php.net/manual/en/function.openssl-get-cert-locations.php
- * @return array an array with the available certificate locations
+ * @return array{
+ *  default_cert_file:string,
+ *  default_cert_file_env:string,
+ *  default_cert_dir:string,
+ *  default_cert_dir_env:string,
+ *  default_private_dir:string,
+ *  default_default_cert_area:string,
+ *  ini_cafile:string,
+ *  ini_capath:string
+ * } an array with the available certificate locations
  * @since 5.6
  */
 #[ArrayShape([

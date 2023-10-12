@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of readline v.5.5.3-1ubuntu2.1
 use JetBrains\PhpStorm\ArrayShape;
@@ -28,8 +29,7 @@ function readline(?string $prompt): string|false {}
  * be indexed by the following values: done, end, erase_empty_line,
  * library_version, line_buffer, mark, pending_input, point, prompt,
  * readline_name, and terminal_name.
- * </p>
- * <p>
+ * 
  * If called with one or two parameters, the old value is returned.
  */
 #[ArrayShape([

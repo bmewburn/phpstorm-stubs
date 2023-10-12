@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 // Start of password v.
 /**
  * <p>
@@ -143,7 +144,7 @@ define('PASSWORD_ARGON2_PROVIDER', 'standard');
  * Returns information about the given hash
  * @link https://secure.php.net/manual/en/function.password-get-info.php
  * @param string $hash A hash created by password_hash().
- * @return array|null Returns an associative array with three elements:
+ * @return array{algo:int, algoName:string, options:array}|null Returns an associative array with three elements:
  * <ul>
  * <li>
  * <em>algo</em>, which will match a

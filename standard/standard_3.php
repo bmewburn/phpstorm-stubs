@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -836,7 +837,7 @@ function microtime(#[TypeContract(true: "float", false: "string")] bool $as_floa
  * @param bool $as_float [optional] <p>
  * When set to true, a float instead of an array is returned.
  * </p>
- * @return int[]|float By default an array is returned. If return_float
+ * @return {sec:int, usec:int, minuteswest:int, dsttime:int}|float By default an array is returned. If return_float
  * is set, then a float is returned.
  * </p>
  * <p>

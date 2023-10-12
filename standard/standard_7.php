@@ -1,5 +1,7 @@
 <?php
 
+//modified by Mewburn Projects Pty Ltd
+
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -693,7 +695,21 @@ function is_link(string $filename): bool {}
  * @param string $filename <p>
  * Path to the file.
  * </p>
- * @return array|false <table>
+ * @return array{
+ *  dev:int,
+ *  ino:int,
+ *  mode:int,
+ *  nlink:int,
+ *  uid:int,
+ *  gid:int,
+ *  rdev:int,
+ *  size:int,
+ *  atime:int,
+ *  mtime:int,
+ *  ctime:int,
+ *  blksize:int,
+ *  blocks:int
+ * }|false <table>
  * stat and fstat result
  * format
  * <tr valign="top">

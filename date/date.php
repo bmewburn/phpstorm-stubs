@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of date v.5.3.2-0.dotdeb.1
 use JetBrains\PhpStorm\ArrayShape;
@@ -829,7 +830,17 @@ function time(): int {}
  * the associative array are as follows:
  * </p>
  * "tm_sec" - seconds
- * @return array
+ * @return array{
+ *  tm_sec:int,
+ *  tm_min:int,
+ *  tm_hour:int,
+ *  tm_mday:int,
+ *  tm_mon:int,
+ *  tm_year:int,
+ *  tm_wday:int,
+ *  tm_yday:int,
+ *  tm_isdst:int
+ * }
  */
 #[Pure(true)]
 #[ArrayShape([
@@ -849,7 +860,19 @@ function localtime(?int $timestamp, bool $associative = false): array {}
  * Get date/time information
  * @link https://php.net/manual/en/function.getdate.php
  * @param int|null $timestamp [optional]
- * @return array an associative array of information related to
+ * @return array{
+ *  seconds:int,
+ *  minutes:int,
+ *  hours:int,
+ *  mday:int,
+ *  wday:int,
+ *  mon:int,
+ *  year:int,
+ *  yday:int,
+ *  weekday:int,
+ *  month:string,
+ *  0:int
+ * } an associative array of information related to
  * the timestamp. Elements from the returned
  * associative array are as follows:
  * </p>
@@ -1005,7 +1028,26 @@ function date_create_from_format(string $format, string $datetime, ?DateTimeZone
  * @param string $datetime <p>
  * Date in format accepted by strtotime.
  * </p>
- * @return array|false array with information about the parsed date
+ * @return array{
+ *  year:int,
+ *  month:int,
+ *  day:int,
+ *  hour:int,
+ *  minute:int,
+ *  second:int,
+ *  fraction:double,
+ *  is_localtime:bool,
+ *  zone_type:int,
+ *  zone:int,
+ *  is_dst:bool,
+ *  tz_abbr:string,
+ *  tz_id:string,
+ *  relative:array,
+ *  warning_count:int,
+ *  warnings:array,
+ *  error_count:int,
+ *  errors:array
+ * }|false array with information about the parsed date
  * on success or false on failure.
  */
 #[Pure(true)]
@@ -1041,7 +1083,27 @@ function date_parse(string $datetime): false|array {}
  * @param string $datetime <p>
  * String representing the date.
  * </p>
- * @return array associative array with detailed info about given date.
+ * @return array{
+ *  year:int,
+ *  month:int,
+ *  day:int,
+ *  hour:int,
+ *  minute:int,
+ *  second:int,
+ *  fraction:double,
+ *  is_localtime:bool,
+ *  zone_type:int,
+ *  zone:int,
+ *  is_dst:bool,
+ *  tz_abbr:string,
+ *  tz_id:string,
+ *  relative:array,
+ *  warning_count:int,
+ *  warnings:array,
+ *  error_count:int,
+ *  errors:array
+ * 
+ * } associative array with detailed info about given date.
  */
 #[Pure(true)]
 #[ArrayShape([
@@ -1071,7 +1133,7 @@ function date_parse_from_format(string $format, string $datetime): array {}
  * Alias:
  * {@see DateTime::getLastErrors}
  * @link https://php.net/manual/en/function.date-get-last-errors.php
- * @return array|false <p>Returns array containing info about warnings and errors.</p>
+ * @return array{warning_count:int, warnings:string[], error_count:int, errors:string[]}|false <p>Returns array containing info about warnings and errors.</p>
  */
 #[ArrayShape(["warning_count" => "int", "warnings" => "string[]", "error_count" => "int", "errors" => "string[]"])]
 #[Pure(true)]
@@ -1353,7 +1415,12 @@ function timezone_transitions_get(DateTimeZone $object, int $timestampBegin, int
  * {@see DateTimeZone::getLocation}
  * @link https://php.net/manual/en/function.timezone-location-get.php
  * @param DateTimeZone $object <p>Procedural style only: A {@see DateTimeZone} object returned by {@see timezone_open()}</p>
- * @return array|false <p>Array containing location information about timezone.</p>
+ * @return array{
+ *  country_code:string,
+ *  latitude:double,
+ *  longitude:double,
+ *  comments:string
+ * }|false <p>Array containing location information about timezone.</p>
  */
 #[Pure(true)]
 #[ArrayShape([

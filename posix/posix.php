@@ -192,7 +192,7 @@ function posix_getsid(int $process_id): int|false {}
 /**
  * Get system name
  * @link https://php.net/manual/en/function.posix-uname.php
- * @return array|false a hash of strings with information about the
+ * @return array{sysname:string, nodename:string, release:string, version:string, machine:string, domainname:string}|false <p>a hash of strings with information about the
  * system. The indices of the hash are
  * sysname - operating system name (e.g. Linux)
  * nodename - system name (e.g. valiant)
@@ -206,6 +206,7 @@ function posix_getsid(int $process_id): int|false {}
  * domainname is a GNU extension and not part of POSIX.1, so this
  * field is only available on GNU systems or when using the GNU
  * libc.
+ * </p>
  */
 #[Pure]
 #[ArrayShape([
@@ -221,7 +222,7 @@ function posix_uname(): array|false {}
 /**
  * Get process times
  * @link https://php.net/manual/en/function.posix-times.php
- * @return array|false a hash of strings with information about the current
+ * @return array{ticks:int, utime:int, stime:int, cutime:int, cstime:int}|false a hash of strings with information about the current
  * process CPU usage. The indices of the hash are:
  * ticks - the number of clock ticks that have elapsed since
  * reboot.
@@ -452,10 +453,9 @@ function posix_getgrgid(int $group_id): array|false {}
  * @param string $username <p>
  * An alphanumeric username.
  * </p>
- * @return array|false On success an array with the following elements is returned, else
+ * @return array{name:string, passwd:string, uid:int, gid:int, gecos:string, dir:string, shell:string}|false On success an array with the following elements is returned, else
  * <b>FALSE</b> is returned:
  * <table>
- * The user information array
  * <tr valign="top">
  * <td>Element</td>
  * <td>Description</td>
@@ -538,9 +538,16 @@ function posix_getpwnam(string $username): array|false {}
  * @param int $user_id <p>
  * The user identifier.
  * </p>
- * @return array|false an associative array with the following elements:
+ * @return array{
+ *  name:string,
+ *  passwd:string,
+ *  uid:int,
+ *  gid:int,
+ *  gecos:string,
+ *  dir:string,
+ *  shell:string
+ * }|false an associative array with the following elements:
  * <table>
- * The user information array
  * <tr valign="top">
  * <td>Element</td>
  * <td>Description</td>

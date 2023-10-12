@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 /**
  * Start of mysqli extension stubs v.0.1
  * @link https://php.net/manual/en/book.mysqli.php
@@ -1825,7 +1826,7 @@ function mysqli_errno(mysqli $mysql): int {}
  * Returns a list of errors from the last command executed
  * @link https://php.net/manual/en/mysqli.error-list.php
  * @param mysqli $mysql A link identifier returned by mysqli_connect() or mysqli_init()
- * @return array A list of errors, each as an associative array containing the errno, error, and sqlstate.
+ * @return array{errno:int, sqlstate:string, error:string} A list of errors, each as an associative array containing the errno, error, and sqlstate.
  * @since 5.4
  */
 #[ArrayShape([
@@ -2095,7 +2096,7 @@ function mysqli_get_host_info(mysqli $mysql): string {}
 /**
  * Return information about open and cached links
  * @link https://php.net/manual/en/function.mysqli-get-links-stats.php
- * @return array mysqli_get_links_stats() returns an associative array with three elements, keyed as follows:
+ * @return array{total:int, active_plinks:int, cached_plinks:int} mysqli_get_links_stats() returns an associative array with three elements, keyed as follows:
  * <dl>
  * <dt>
  * <code>total</code></dt>

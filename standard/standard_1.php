@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -1113,7 +1114,7 @@ function setlocale(
 /**
  * Get numeric formatting information
  * @link https://php.net/manual/en/function.localeconv.php
- * @return array localeconv returns data based upon the current locale
+ * @return array{decimal_point:string, thousands_sep:string, grouping:array, int_curr_symbol:string, currency_symbol:string, mon_decimal_point:string, mon_thousands_sep:string, mon_grouping:string, positive_sign:string, negative_sign:string, int_frac_digits:string, frac_digits:string, p_cs_precedes:bool, p_sep_by_space:bool, n_cs_precedes:bool, n_sep_by_space:bool, p_sign_posn:int, n_sign_posn:int} localeconv returns data based upon the current locale
  * as set by setlocale. The associative array that is
  * returned contains the following fields:
  * <tr valign="top">

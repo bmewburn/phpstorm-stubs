@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of Core v.5.3.6-13ubuntu3.2
 use JetBrains\PhpStorm\ArrayShape;
@@ -1066,7 +1067,7 @@ function gc_disable(): void {}
 /**
  * Gets information about the garbage collector
  * @link https://php.net/manual/en/function.gc-status.php
- * @return int[] associative array with the following elements:
+ * @return array{runs:int, collected:int, threshold:int, roots:int} associative array with the following elements:
  * <ul>
  * <li>"runs"</li>
  * <li>"collected"</li>

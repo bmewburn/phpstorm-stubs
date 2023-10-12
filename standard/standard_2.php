@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -472,7 +473,7 @@ function fscanf($stream, string $format, #[TypeContract(exists: "int|false|null"
  * or PHP_URL_FRAGMENT to retrieve just a specific
  * URL component as a string.
  * </p>
- * @return array|string|int|null|false On seriously malformed URLs, parse_url() may return FALSE.
+ * @return array{scheme:string, host:string, port:int, user:string, pass:string, query:string, path:string, fragment:string}|string|int|null|false On seriously malformed URLs, parse_url() may return FALSE.
  * If the component parameter is omitted, an associative array is returned.
  * At least one element will be present within the array. Potential keys within this array are:
  * scheme - e.g. http
@@ -845,7 +846,7 @@ function proc_terminate($process, int $signal = 15): bool {}
  * The proc_open resource that will
  * be evaluated.
  * </p>
- * @return array|false An array of collected information on success, and false
+ * @return array{command:string, pid:int, running:bool, signaled:bool, stopped:bool, exitcode:int, termsig:int, stopsig:int}|false An array of collected information on success, and false
  * on failure. The returned array contains the following elements:
  * </p>
  * <p>

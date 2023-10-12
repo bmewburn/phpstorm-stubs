@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Deprecated;
@@ -9,7 +10,7 @@ use JetBrains\PhpStorm\Pure;
 /**
  * Get the last occurred error
  * @link https://php.net/manual/en/function.error-get-last.php
- * @return array|null an associative array describing the last error with keys "type",
+ * @return array{type:int, message:string, file:string, line:int}|null an associative array describing the last error with keys "type",
  * "message", "file" and "line". Returns null if there hasn't been an error
  * yet.
  */
@@ -428,7 +429,7 @@ function ini_get(string $option): string|false {}
  * Retrieve details settings or only the current value for each setting.
  * Default is true (retrieve details).
  * </p>
- * @return array|false an associative array with directive name as the array key.
+ * @return array{global_value:string, local_value:string, access:int}|false an associative array with directive name as the array key.
  * <p>
  * When details is true (default) the array will
  * contain global_value (set in
@@ -873,7 +874,7 @@ function is_uploaded_file(string $filename): bool {}
 function move_uploaded_file(string $from, string $to): bool {}
 
 /**
- * @return array|false
+ * @return array{description:string, mac:string, mtu:int, unicast:array, up:bool}|false
  * @since 7.3
  */
 #[Pure]

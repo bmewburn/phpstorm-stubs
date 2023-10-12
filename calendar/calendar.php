@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of calendar v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -244,7 +245,17 @@ function cal_to_jd(int $calendar, int $month, int $day, int $year): int {}
  * @param int $calendar <p>
  * Calendar to convert to
  * </p>
- * @return array an array containing calendar information like month, day, year,
+ * @return array{
+ *  date:string,
+ *  month:int,
+ *  day:int,
+ *  year:int,
+ *  dow:int,
+ *  abbrevdayname:string,
+ *  dayname:string,
+ *  abbrevmonth:string,
+ *  monthname:string
+ * } an array containing calendar information like month, day, year,
  * day of week, abbreviated and full names of weekday and month and the
  * date in string form "month/day/year".
  */
@@ -284,7 +295,7 @@ function cal_days_in_month(int $calendar, int $month, int $year): int {}
  * Calendar to return information for. If no calendar is specified
  * information about all calendars is returned.
  * </p>
- * @return array
+ * @return array{months:array, abbrevmonths:array, maxdaysinmonth:int, calname:string, calsymbol:string}
  */
 #[ArrayShape(["months" => "array", "abbrevmonths" => "array", "maxdaysinmonth" => "int", "calname" => "string", "calsymbol" => "string"])]
 function cal_info(int $calendar = -1): array {}

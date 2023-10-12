@@ -395,7 +395,7 @@ function session_set_cookie_params(int $lifetime_or_options, ?string $path = nul
 /**
  * Get the session cookie parameters
  * @link https://php.net/manual/en/function.session-get-cookie-params.php
- * @return array an array with the current session cookie information, the array
+ * @return array{lifetime:int, path:string, domain:string, secure:bool, httponly:bool, samesite:string} an array with the current session cookie information, the array
  * contains the following items:
  * "lifetime" - The
  * lifetime of the cookie in seconds.

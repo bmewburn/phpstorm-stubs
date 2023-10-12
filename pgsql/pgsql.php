@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of pgsql v.
 use JetBrains\PhpStorm\ArrayShape;
@@ -238,7 +239,7 @@ function pg_options(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|null'],
  * is used. The default connection is the last connection made by
  * <b>pg_connect</b> or <b>pg_pconnect</b>.
  * </p>
- * @return array an array with client, protocol
+ * @return array{client:string, protocol:int, server:string} an array with client, protocol
  * and server keys and values (if available). Returns
  * <b>FALSE</b> on error or invalid connection.
  */
@@ -1025,7 +1026,7 @@ function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Result'], defa
  * while <b>PGSQL_BOTH</b>, the default, will return both
  * numerical and associative indices.
  * </p>
- * @return array|false An array containing the NOTIFY message name and backend PID.
+ * @return array{message:string, pid:int, payload:string}|false An array containing the NOTIFY message name and backend PID.
  * Otherwise if no NOTIFY is waiting, then <b>FALSE</b> is returned.
  */
 #[ArrayShape(["message" => "string", "pid" => "int", "payload" => "string"])]

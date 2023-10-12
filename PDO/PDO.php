@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of PDO v.1.0.4dev
 use JetBrains\PhpStorm\ArrayShape;
@@ -1183,7 +1184,7 @@ class PDO
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch extended error information associated with the last operation on the database handle
      * @link https://php.net/manual/en/pdo.errorinfo.php
-     * @return array <b>PDO::errorInfo</b> returns an array of error information
+     * @return array{0:string, 1:int, 2:string} <b>PDO::errorInfo</b> returns an array of error information
      * about the last operation performed by this database handle. The array
      * consists of the following fields:
      * <tr valign="top">
@@ -1774,7 +1775,7 @@ class PDOStatement implements IteratorAggregate
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch extended error information associated with the last operation on the statement handle
      * @link https://php.net/manual/en/pdostatement.errorinfo.php
-     * @return array <b>PDOStatement::errorInfo</b> returns an array of
+     * @return array{0:string, 1:int, 2:string} <b>PDOStatement::errorInfo</b> returns an array of
      * error information about the last operation performed by this
      * statement handle. The array consists of the following fields:
      * <tr valign="top">
@@ -1841,11 +1842,19 @@ class PDOStatement implements IteratorAggregate
      * @param int $column <p>
      * The 0-indexed column in the result set.
      * </p>
-     * @return array|false an associative array containing the following values representing
+     * @return array{
+     *  name:string,
+     *  len:int,
+     *  precision:int,
+     *  "oci:decl_type:int|string,
+     *  native_type:string,
+     *  scale:int,
+     *  flags:array,
+     *  pdo_type:int
+     * }|false an associative array containing the following values representing
      * the metadata for a single column:
-     * </p>
+     * 
      * <table>
-     * Column metadata
      * <tr valign="top">
      * <td>Name</td>
      * <td>Value</td>

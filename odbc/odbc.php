@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 // Start of odbc v.1.0
 use JetBrains\PhpStorm\ArrayShape;
@@ -158,7 +159,7 @@ function odbc_cursor($result_id) {}
  * Use <b>SQL_FETCH_FIRST</b> the first time this function is
  * called, thereafter use the <b>SQL_FETCH_NEXT</b>.
  * </p>
- * @return array|false <b>FALSE</b> on error, and an array upon success.
+ * @return array{server:string, description:string}|false <b>FALSE</b> on error, and an array upon success.
  */
 #[ArrayShape(["server" => "string", "description" => "string"])]
 function odbc_data_source($connection_id, $fetch_type) {}

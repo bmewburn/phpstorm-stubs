@@ -1,3 +1,35 @@
+# Notice of Derivative Work
+
+This notice applies to the contents of the `stub` folder only.
+
+The contents of the `stub` folder are a derivative work of phpstorm-stubs - https://github.com/JetBrains/phpstorm-stubs.
+It is modified and distributed under the rights granted by the original source licence below.
+The following files have been removed from this distribution.
+
+* .gitignore
+* .php-cs-fixer.php
+* .space.kts
+* CODE_OF_CONDUCT.md
+* composer.json
+* CONTRIBUTING.md
+* docker-compose.yml
+* Inspections.xml
+* LICENSE
+* PhpStormStubsMap.php
+* phpunit.xml.dist
+* qodana.yaml
+* runTests.sh
+* .github/*
+* .idea/*
+* tests/*
+* README.md
+
+
+## Original Source Licence
+
+* Apache 2 - https://www.apache.org/licenses/LICENSE-2.0
+* Contains material by the PHP Documentation Group, licensed with CC-BY 3.0 - https://www.php.net/manual/en/cc.license.php
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -199,3 +231,4 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
