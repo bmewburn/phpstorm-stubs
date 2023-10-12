@@ -684,7 +684,7 @@ class mysqli
         ?string $database = null,
         ?int $port = null,
         ?string $socket = null,
-        int $flags = null
+        int $flags = 0
     ): bool {}
 
     /**
@@ -1292,7 +1292,7 @@ class mysqli_result implements IteratorAggregate
      * are no more rows in the result set, or false on failure.
      */
     #[TentativeType]
-    public function fetch_object(string $class = 'stdClass', array $constructor_args = null): object|false|null {}
+    public function fetch_object(string $class = 'stdClass', array $constructor_args = []): object|false|null {}
 
     /**
      * Fetch the next row of a result set as an enumerated array
@@ -1324,10 +1324,10 @@ class mysqli_result implements IteratorAggregate
      * The field number. This value must be in the range from
      * 0 to number of fields - 1.
      * </p>
-     * @return bool true on success or false on failure.
      */
     #[TentativeType]
-    public function field_seek(int $index): bool {}
+    #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
+    public function field_seek(int $index) {}
 
     /**
      * Frees the memory associated with a result
@@ -2011,9 +2011,9 @@ function mysqli_field_count(mysqli $mysql): int {}
  * @param mysqli_result $result A mysqli_result object returned by mysqli_query(),
  * mysqli_store_result(), mysqli_use_result() or mysqli_stmt_get_result().
  * @param int $index The field number. This value must be in the range from 0 to number of fields - 1.
- * @return bool
  */
-function mysqli_field_seek(mysqli_result $result, int $index): bool {}
+#[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
+function mysqli_field_seek(mysqli_result $result, int $index) {}
 
 /**
  * Get current field offset of a result pointer
