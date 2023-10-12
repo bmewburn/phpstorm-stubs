@@ -24,6 +24,7 @@ The following files have been removed from this distribution.
 * .idea/*
 * tests/*
 * README.md
+* meta/attributes/*
 
 
 ## Original Source Licence
