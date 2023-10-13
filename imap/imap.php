@@ -48,7 +48,6 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
  * Connection parameters, the following (string) keys maybe used
  * to set one or more connection parameters:
  * DISABLE_AUTHENTICATOR - Disable authentication properties</p>
- * @return resource|false an IMAP stream on success or <b>FALSE</b> on error.
  */
 #[LanguageLevelTypeAware(['8.1' => 'IMAP\Connection|false'], default: 'resource|false')]
 function imap_open(string $mailbox, string $user, string $password, int $flags = 0, int $retries = 0, array $options = []) {}
