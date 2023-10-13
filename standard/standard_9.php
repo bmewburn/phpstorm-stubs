@@ -729,16 +729,19 @@ function array_product(array $array): int|float {}
 function array_filter(array $array, ?callable $callback, int $mode = 0): array {}
 
 /**
+ * @template R
+ * @template T
+ * 
  * Applies the callback to the elements of the given arrays
  * @link https://php.net/manual/en/function.array-map.php
- * @param callable|null $callback <p>
+ * @param (callable(T):R)|null $callback <p>
  * Callback function to run for each element in each array.
  * </p>
- * @param array $array <p>
+ * @param array<array-key, T> $array <p>
  * An array to run through the callback function.
  * </p>
- * @param array ...$arrays
- * @return array an array containing all the elements of arr1
+ * @param array<array-key, T> ...$arrays
+ * @return array<array-key, R> an array containing all the elements of arr1
  * after applying the callback function to each one.
  * @meta
  */
