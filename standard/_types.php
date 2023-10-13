@@ -60,7 +60,7 @@ namespace {
          * @param Throwable $exception
          * @return TYield
          */
-        public function PS_UNRESERVE_PREFIX_throw(Throwable $exception): mixed {}
+        public function throw(Throwable $exception): mixed {}
 
         /**
          * Returns whatever was passed to return or null if nothing.
