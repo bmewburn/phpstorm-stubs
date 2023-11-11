@@ -96,7 +96,6 @@ class CURLFile
  * to its value. You can manually set this using the
  * curl_setopt function.
  * </p>
- * @return resource|false|CurlHandle a cURL handle on success, false on errors.
  */
 #[LanguageLevelTypeAware(['8.0' => 'CurlHandle|false'], default: 'resource|false')]
 function curl_init(?string $url) {}
@@ -105,7 +104,6 @@ function curl_init(?string $url) {}
  * Copy a cURL handle along with all of its preferences
  * @link https://php.net/manual/en/function.curl-copy-handle.php
  * @param CurlHandle|resource $handle
- * @return CurlHandle|resource|false a new cURL handle.
  */
 #[Pure]
 #[LanguageLevelTypeAware(['8.0' => 'CurlHandle|false'], default: 'resource|false')]

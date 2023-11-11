@@ -38,7 +38,6 @@ use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
  * is created, even if the <i>connection_string</i> is identical to
  * an existing connection.
  * </p>
- * @return resource|false PostgreSQL connection resource on success, <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|false'], default: 'resource|false')]
 function pg_connect(
@@ -78,7 +77,6 @@ function pg_connect(
  * is created, even if the <i>connection_string</i> is identical to
  * an existing connection.
  * </p>
- * @return resource|false PostgreSQL connection resource on success, <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|false'], default: 'resource|false')]
 function pg_pconnect(
@@ -322,7 +320,6 @@ function pg_transaction_status(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connect
  * Any user-supplied data substituted directly into a query string should
  * be properly escaped.
  * </p>
- * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_query(
@@ -363,7 +360,6 @@ function pg_query(
  * parameters. Use <b>pg_escape_bytea</b> instead, or use the
  * large object functions.
  * </p>
- * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_query_params(
@@ -394,7 +390,6 @@ function pg_query_params(
  * (multiple statements separated by semi-colons are not allowed.) If any parameters
  * are used, they are referred to as $1, $2, etc.
  * </p>
- * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_prepare(
@@ -429,7 +424,6 @@ function pg_prepare(
  * <p>
  * Elements are converted to strings by calling this function.
  * </p>
- * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_execute(
@@ -773,7 +767,6 @@ function pg_affected_rows(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Result'], de
  * @param resource $connection <p>
  * PostgreSQL database connection resource.
  * </p>
- * @return resource|false The result resource, or <b>FALSE</b> if no more results are available.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_get_result(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection) {}
@@ -1310,7 +1303,6 @@ function pg_lo_unlink(
  * Can be either "r" for read-only, "w" for write only or "rw" for read and
  * write.
  * </p>
- * @return resource|false A large object resource or <b>FALSE</b> on error.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob|false'], default: 'resource|false')]
 function pg_lo_open(
@@ -1819,7 +1811,6 @@ function pg_select(
 /**
  * @param $connection
  * @param $query [optional]
- * @return mixed
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_exec(
@@ -1973,7 +1964,6 @@ function pg_lounlink(
  * @param $connection
  * @param $oid [optional]
  * @param $mode [optional]
- * @return resource
  * @deprecated
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob|false'], default: 'resource|false')]

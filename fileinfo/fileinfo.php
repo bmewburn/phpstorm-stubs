@@ -1,5 +1,5 @@
 <?php
-
+// Modified by Mewburn Projects Pty Ltd
 // Start of fileinfo v.1.0.5
 
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -102,7 +102,6 @@ class finfo
  * A .mime and/or .mgc suffix is added if
  * needed.
  * </p>
- * @return resource|false a magic database resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'finfo|false'], default: 'resource|false')]
 function finfo_open(int $flags = 0, ?string $magic_database = null) {}

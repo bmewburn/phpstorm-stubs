@@ -1,5 +1,5 @@
 <?php
-
+// Modified by Mewburn Projects Pty Ltd
 // Start of ftp v.
 use JetBrains\PhpStorm\ExpectedValues as EV;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -52,7 +52,6 @@ function ftp_mlsd(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default:
  * queried at any time with <b>ftp_set_option</b> and
  * <b>ftp_get_option</b>.
  * </p>
- * @return resource|false a FTP stream on success or <b>FALSE</b> on error.
  */
 #[LanguageLevelTypeAware(['8.1' => 'FTP\Connection|false'], default: 'resource|false')]
 function ftp_connect(string $hostname, int $port = 21, int $timeout = 90) {}
@@ -74,7 +73,6 @@ function ftp_connect(string $hostname, int $port = 21, int $timeout = 90) {}
  * queried at any time with <b>ftp_set_option</b> and
  * <b>ftp_get_option</b>.
  * </p>
- * @return resource|false a SSL-FTP stream on success or <b>FALSE</b> on error.
  */
 #[LanguageLevelTypeAware(['8.1' => 'FTP\Connection|false'], default: 'resource|false')]
 function ftp_ssl_connect(string $hostname, int $port = 21, int $timeout = 90) {}
