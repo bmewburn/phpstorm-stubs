@@ -1,6 +1,7 @@
 <?php
 
 // Start of dba v.
+use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 
@@ -237,6 +238,7 @@ function dba_fetch($key, $handle): string|false {}
  * @return string|false the associated string if the key/data pair is found, <b>FALSE</b>
  * otherwise.
  */
+#[Deprecated(since: 8.3)]
 function dba_fetch($key, $skip, $dba): string|false {}
 
 /**
