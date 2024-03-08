@@ -437,6 +437,7 @@ class SimpleXMLIterator extends SimpleXMLElement implements RecursiveIterator, C
 /**
  * Interprets an XML file into an object
  * @link https://php.net/manual/en/function.simplexml-load-file.php
+ * @template T of \SimpleXMLElement
  * @param string $filename <p>
  * Path to the XML file
  * </p>
@@ -448,7 +449,7 @@ class SimpleXMLIterator extends SimpleXMLElement implements RecursiveIterator, C
  * urlencode('b&c'))). Since PHP 5.1.0 you don't need to do
  * this because PHP will do it for you.
  * </p>
- * @param string|null $class_name [optional] <p>
+ * @param class-string<T>|null $class_name [optional] <p>
  * You may use this optional parameter so that
  * <b>simplexml_load_file</b> will return an object of
  * the specified class. That class should extend the
@@ -465,7 +466,7 @@ class SimpleXMLIterator extends SimpleXMLElement implements RecursiveIterator, C
  * <b>TRUE</b> if <i>ns</i> is a prefix, <b>FALSE</b> if it's a URI;
  * defaults to <b>FALSE</b>.
  * </p>
- * @return SimpleXMLElement|false an object of class SimpleXMLElement with
+ * @return ($class_name is null ? SimpleXMLElement : T)|false an object of class SimpleXMLElement with
  * properties containing the data held within the XML document, or <b>FALSE</b> on failure.
  */
 function simplexml_load_file(string $filename, ?string $class_name = "SimpleXMLElement", int $options = 0, string $namespace_or_prefix = "", bool $is_prefix = false): SimpleXMLElement|false {}
@@ -473,10 +474,11 @@ function simplexml_load_file(string $filename, ?string $class_name = "SimpleXMLE
 /**
  * Interprets a string of XML into an object
  * @link https://php.net/manual/en/function.simplexml-load-string.php
+ * @template T of \SimpleXMLElement
  * @param string $data <p>
  * A well-formed XML string
  * </p>
- * @param string|null $class_name [optional] <p>
+ * @param class-string<T>|null $class_name [optional] <p>
  * You may use this optional parameter so that
  * <b>simplexml_load_string</b> will return an object of
  * the specified class. That class should extend the
@@ -493,7 +495,7 @@ function simplexml_load_file(string $filename, ?string $class_name = "SimpleXMLE
  * <b>TRUE</b> if <i>ns</i> is a prefix, <b>FALSE</b> if it's a URI;
  * defaults to <b>FALSE</b>.
  * </p>
- * @return SimpleXMLElement|false an object of class SimpleXMLElement with
+ * @return ($class_name is null ? SimpleXMLElement : T)|false an object of class SimpleXMLElement with
  * properties containing the data held within the xml document, or <b>FALSE</b> on failure.
  */
 function simplexml_load_string(string $data, ?string $class_name = "SimpleXMLElement", int $options = 0, string $namespace_or_prefix = "", bool $is_prefix = false): SimpleXMLElement|false {}
@@ -501,16 +503,17 @@ function simplexml_load_string(string $data, ?string $class_name = "SimpleXMLEle
 /**
  * Get a SimpleXMLElement object from a DOM node.
  * @link https://php.net/manual/en/function.simplexml-import-dom.php
+ * @template T of \SimpleXMLElement
  * @param SimpleXMLElement|DOMNode $node <p>
  * A DOM Element node
  * </p>
- * @param string|null $class_name [optional] <p>
+ * @param class-string<T>|null $class_name [optional] <p>
  * You may use this optional parameter so that
  * <b>simplexml_import_dom</b> will return an object of
  * the specified class. That class should extend the
  * SimpleXMLElement class.
  * </p>
- * @return SimpleXMLElement|null a SimpleXMLElement or <b>FALSE</b> on failure.
+ * @return ($class_name is null ? SimpleXMLElement : T)|null a SimpleXMLElement or <b>null</b> on failure.
  */
 function simplexml_import_dom(SimpleXMLElement|DOMNode $node, ?string $class_name = "SimpleXMLElement"): ?SimpleXMLElement {}
 
