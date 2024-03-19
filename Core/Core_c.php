@@ -913,67 +913,30 @@ interface UnitEnum
 }
 
 /**
+ * @template T of int|string
  * @since 8.1
  */
 interface BackedEnum extends UnitEnum
 {
+    /**
+     * 
+     * @var T
+     */
     public readonly int|string $value;
 
     /**
-     * @param int|string $value
+     * @param T $value
      * @return static
      */
     #[Pure]
     public static function from(int|string $value): static;
 
     /**
-     * @param int|string $value
+     * @param T $value
      * @return static|null
      */
     #[Pure]
     public static function tryFrom(int|string $value): ?static;
-}
-
-/**
- * @since 8.1
- * @internal
- *
- * Internal interface to ensure precise type inference
- */
-interface IntBackedEnum extends BackedEnum
-{
-    public readonly int $value;
-
-    /**
-     * @param int $value
-     * @return static
-     */
-    #[Pure]
-    public static function from(int $value): static;
-
-    /**
-     * @param int $value
-     * @return static|null
-     */
-    #[Pure]
-    public static function tryFrom(int $value): ?static;
-}
-
-/**
- * @since 8.1
- * @internal
- *
- * Internal interface to ensure precise type inference
- */
-interface StringBackedEnum extends BackedEnum
-{
-    public readonly string $value;
-
-    #[Pure]
-    public static function from(string $value): static;
-
-    #[Pure]
-    public static function tryFrom(string $value): ?static;
 }
 
 /**
