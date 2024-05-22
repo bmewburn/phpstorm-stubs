@@ -2088,8 +2088,8 @@ function pg_exit_pipeline_mode(PgSql\Connection $connection): bool {}
  */
 function pg_enter_pipeline_mode(PgSql\Connection $connection): bool {}
 
-define('PGSQL_LIBPQ_VERSION', "15.4");
-define('PGSQL_LIBPQ_VERSION_STR', "15.4");
+define('PGSQL_LIBPQ_VERSION', "16.2");
+define('PGSQL_LIBPQ_VERSION_STR', "16.2");
 
 /**
  * Passed to <b>pg_connect</b> to force the creation of a new connection,

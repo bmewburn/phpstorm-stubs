@@ -1549,8 +1549,8 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     public function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'object|array'], default: '')] $array = [],
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $iteratorClass = "ArrayIterator"
+        #[PhpStormStubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
+        #[PhpStormStubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $iteratorClass = "ArrayIterator"
     ) {}
 
     /**
@@ -1570,7 +1570,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      * @param TKey $key <p>
      * The index with the value.
      * </p>
-     * @return mixed|false The value at the specified index or false.
+     * @return TValue|null The value at the specified index or null.
      */
     #[TentativeType]
     public function offsetGet(#[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $key): mixed {}

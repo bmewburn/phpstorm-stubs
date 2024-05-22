@@ -170,6 +170,11 @@ define('T_CLASS_C', 382);
 define('T_TRAIT_C', 383);
 define('T_METHOD_C', 384);
 define('T_FUNC_C', 385);
+define('T_NS_C', 386);
+/**
+ * @since 8.0
+ */
+define('T_ATTRIBUTE', 387);
 define('T_COMMENT', 392);
 define('T_DOC_COMMENT', 393);
 define('T_OPEN_TAG', 394);
@@ -182,7 +187,6 @@ define('T_DOLLAR_OPEN_CURLY_BRACES', 400);
 define('T_CURLY_OPEN', 401);
 define('T_PAAMAYIM_NEKUDOTAYIM', 402);
 define('T_NAMESPACE', 375);
-define('T_NS_C', 386);
 define('T_NS_SEPARATOR', 403);
 define('T_ELLIPSIS', 404);
 define('T_DOUBLE_COLON', 402);
@@ -204,10 +208,6 @@ define('T_NAME_RELATIVE', 315);
  * @since 8.0
  */
 define('T_NAME_QUALIFIED', 316);
-/**
- * @since 8.0
- */
-define('T_ATTRIBUTE', 387);
 /**
  * @since 8.0
  */

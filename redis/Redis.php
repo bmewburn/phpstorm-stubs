@@ -510,7 +510,7 @@ class Redis
      * }
      * </pre>
      */
-    public function get($key) {}
+    public function get(string $key): mixed {}
 
     /**
      * Set the string value in argument as value of the key.
@@ -2374,7 +2374,7 @@ class Redis
      *
      * @param string $pattern pattern, using '*' as a wildcard
      *
-     * @return array|false|Redis The keys that match a certain pattern or Redis if in multimode
+     * @return list<string>|false|Redis The keys that match a certain pattern or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -3124,7 +3124,7 @@ class Redis
      * // }
      * </pre>
      */
-    public function mGet(array $array) {}
+    public function mGet(array $array): Redis|array {}
 
     /**
      * Set one ore more string keys but only if none of the key exist.
@@ -4013,7 +4013,7 @@ class Redis
      * $redis->hGet('h', 'key1');           // returns "plop"
      * </pre>
      */
-    public function hSet($key, $hashKey, $value) {}
+    public function hSet(string $key, string $hashKey, mixed $value): Redis|int|false {}
 
     /**
      * Adds a value to the hash stored at key only if this field isn't already in the hash.
@@ -4050,7 +4050,7 @@ class Redis
      *
      * @link    https://redis.io/commands/hget
      */
-    public function hGet($key, $hashKey) {}
+    public function hGet(string $key, string $hashKey): mixed {}
 
     /**
      * Returns the length of a hash, in number of items
@@ -4112,7 +4112,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the keys of the hash. This works like PHP's array_keys() or Redis if in multimode
+     * @return list<string>|false|Redis An array of elements, the keys of the hash. This works like PHP's array_keys() or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4147,7 +4147,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the values of the hash. This works like PHP's array_values() or Redis if in multimode
+     * @return list<mixed>|false|Redis An array of elements, the values of the hash. This works like PHP's array_values() or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4182,7 +4182,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the contents of the hash or Redis if in multimode
+     * @return array<string, mixed>|false|Redis An array of elements, the contents of the hash or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4305,7 +4305,7 @@ class Redis
      * $redis->hIncrBy('user:1', 'salary', 100); // Joe earns 100 more now.
      * </pre>
      */
-    public function hMSet($key, $hashKeys) {}
+    public function hMSet(string $key, array $hashKeys): Redis|bool {}
 
     /**
      * Retrieve the values associated to the specified fields in the hash.
@@ -4803,7 +4803,7 @@ class Redis
      * $redis->evalSha($sha); // Returns 1
      * </pre>
      */
-    public function evalSha($scriptSha, $args = [], $numKeys = 0) {}
+    public function evalSha(string $scriptSha, array $args = [], int $numKeys = 0): mixed {}
 
     /**
      * @param string $scriptSha
@@ -5522,34 +5522,26 @@ class Redis
     public function xRevRange($stream, $end, $start, $count = -1) {}
 
     /**
-     * Trim the stream length to a given maximum.
-     * If the "approximate" flag is pasesed, Redis will use your size as a hint but only trim trees in whole nodes
-     * (this is more efficient)
+     * Truncate a STREAM key in various ways.
      *
-     * @param string $stream    The STREAM key to trim.
+     * @param string $key       The STREAM key to trim.
      * @param string $threshold This can either be a maximum length, or a minimum id.
      *                          MAXLEN - An integer describing the maximum desired length of the stream after the command.
      *                          MINID  - An ID that will become the new minimum ID in the stream, as Redis will trim all
-     *                          messages older than this ID.
+     *                                   messages older than this ID.
      * @param bool   $approx    Whether redis is allowed to do an approximate trimming of the stream.  This is
      *                          more efficient for Redis given how streams are stored internally.
      * @param bool   $minid     When set to `true`, users should pass a minimum ID to the `$threshold` argument.
      * @param int    $limit     An optional upper bound on how many entries to trim during the command.
      *
-     * @return false|int|Redis The number of messages trimed from the stream or Redis if in multimode
+     * @return Redis|int|false  The number of entries deleted from the stream.
      *
-     * @throws RedisException
+     * @see https://redis.io/commands/xtrim
      *
-     * @link    https://redis.io/commands/xtrim
-     * @example
-     * <pre>
-     * // Trim to exactly 100 messages
-     * $redis->xTrim('mystream', 100);
-     * // Let Redis approximate the trimming
-     * $redis->xTrim('mystream', 100, true);
-     * </pre>
+     * @example $redis->xTrim('stream', 3);
+     * @example $redis->xTrim('stream', '2-1', false, true);
      */
-    public function xTrim($stream, $threshold, $approx = false, $minid = false, $limit = -1) {}
+    public function xtrim(string $key, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1): Redis|int|false {}
 
     /**
      * Adds a values to the set value stored at key.

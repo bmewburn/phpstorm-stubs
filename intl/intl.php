@@ -434,9 +434,7 @@ class Collator
     #[Pure]
     #[TentativeType]
     public function getLocale(
-        #[LanguageAware(['8.0' => 'int'], default: '')]
-        #[EV([Locale::VALID_LOCALE, Locale::ACTUAL_LOCALE])]
-        $type
+        #[LanguageAware(['8.0' => 'int'], default: '')] #[EV([Locale::VALID_LOCALE, Locale::ACTUAL_LOCALE])] $type
     ): string|false {}
 
     /**
@@ -927,7 +925,7 @@ class NumberFormatter
     #[Pure]
     public function __construct(
         #[LanguageAware(['8.0' => 'string'], default: '')] $locale,
-        #[LanguageAware(['8.0' => 'int'], default: '')] #[EV([NumberFormatter::PATTERN_DECIMAL,
+        #[LanguageAware(['8.0' => 'int'], default: '')] #[EV([NumberFormatter::DECIMAL, NumberFormatter::PATTERN_DECIMAL,
             NumberFormatter::PATTERN_RULEBASED, NumberFormatter::CURRENCY, NumberFormatter::PERCENT,
             NumberFormatter::SCIENTIFIC, NumberFormatter::SPELLOUT, NumberFormatter::ORDINAL,
             NumberFormatter::DURATION, NumberFormatter::PATTERN_RULEBASED, NumberFormatter::CURRENCY_ACCOUNTING,
@@ -2126,9 +2124,7 @@ class IntlDateFormatter
     #[Pure]
     #[TentativeType]
     public function getLocale(
-        #[ElementAvailable(from: '8.0')]
-        #[LanguageAware(['8.0' => 'int'], default: '')]
-        $type = 0
+        #[ElementAvailable(from: '8.0')] #[LanguageAware(['8.0' => 'int'], default: '')] $type = 0
     ): string|false {}
 
     /**
@@ -2547,7 +2543,7 @@ class Spoofchecker
      * </p>
      * @param string $string2 <p>
      * </p>
-     * @param string &$errorCode [optional] <p>
+     * @param int &$errorCode [optional] <p>
      * </p>
      * @return bool
      */
@@ -6794,8 +6790,8 @@ function intltz_get_id_for_windows_id(string $timezoneId, ?string $region = null
  * @link https://php.net/manual/en/intl.constants.php
  */
 define('INTL_MAX_LOCALE_LEN', 156);
-define('INTL_ICU_VERSION', "73.2");
-define('INTL_ICU_DATA_VERSION', "73.2");
+define('INTL_ICU_VERSION', "74.1");
+define('INTL_ICU_DATA_VERSION', "74.1");
 define('ULOC_ACTUAL_LOCALE', 0);
 define('ULOC_VALID_LOCALE', 1);
 define('GRAPHEME_EXTR_COUNT', 0);
@@ -7249,9 +7245,7 @@ class IntlBreakIterator implements IteratorAggregate
     #[Pure]
     #[TentativeType]
     public function getPartsIterator(
-        #[LanguageAware(['8.3' => 'string', '8.0' => 'int'], default: '')]
-        #[EV([IntlPartsIterator::KEY_SEQUENTIAL, IntlPartsIterator::KEY_LEFT, IntlPartsIterator::KEY_RIGHT])]
-        $type = IntlPartsIterator::KEY_SEQUENTIAL
+        #[LanguageAware(['8.3' => 'string', '8.0' => 'int'], default: '')] #[EV([IntlPartsIterator::KEY_SEQUENTIAL, IntlPartsIterator::KEY_LEFT, IntlPartsIterator::KEY_RIGHT])] $type = IntlPartsIterator::KEY_SEQUENTIAL
     ): IntlPartsIterator {}
 
     /**

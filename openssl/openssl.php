@@ -130,7 +130,7 @@ function openssl_pkey_get_public(#[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsym
  * @param OpenSSLAsymmetricKey|resource $key <p>
  * Resource holding the key.
  * </p>
- * @return array{bits:int, key:string, rsa:array, dsa:array, dh:array, type:int}|false an array with the key details in success or false in failure.
+ * @return array{bits:int, key:string, rsa:array, dsa:array, dh:array, ec:array, type:int}|false an array with the key details in success or false in failure.
  * Returned array has indexes bits (number of bits),
  * key (string representation of the public key) and
  * type (type of the key which is one of
@@ -143,7 +143,7 @@ function openssl_pkey_get_public(#[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsym
  * Depending on the key type used, additional details may be returned. Note that
  * some elements may not always be available.
  */
-#[ArrayShape(["bits" => "int", "key" => "string", "rsa" => "array", "dsa" => "array", "dh" => "array", "type" => "int"])]
+#[ArrayShape(["bits" => "int", "key" => "string", "rsa" => "array", "dsa" => "array", "dh" => "array", "ec" => "array", "type" => "int"])]
 function openssl_pkey_get_details(#[LanguageLevelTypeAware(["8.0" => "OpenSSLAsymmetricKey"], default: "resource")] $key): array|false {}
 
 /**

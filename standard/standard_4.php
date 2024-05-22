@@ -604,7 +604,7 @@ function restore_include_path() {}
  * setcookie successfully runs, it will return true.
  * This does not indicate whether the user accepted the cookie.
  */
-function setcookie(string $name, $value = "", $expires_or_options = 0, $path = "", $domain = "", $secure = false, $httponly = false): bool {}
+function setcookie(string $name, string $value = "", int $expires_or_options = 0, string $path = "", string $domain = "", bool $secure = false, bool $httponly = false): bool {}
 
 /**
  * Send a cookie
@@ -627,7 +627,7 @@ function setcookie(string $name, $value = "", $expires_or_options = 0, $path = "
  *                        This does not indicate whether the user accepted the cookie.
  * @since 7.3
  */
-function setcookie(string $name, $value = '', array $options = []): bool {}
+function setcookie(string $name, string $value = '', array $options = []): bool {}
 
 /**
  * Send a cookie without urlencoding the cookie value
@@ -711,7 +711,7 @@ function header(string $header, bool $replace = true, int $response_code = 0): v
  * This parameter is case-insensitive.
  * @return void
  */
-function header_remove(?string $name): void {}
+function header_remove(?string $name = null): void {}
 
 /**
  * Checks if or where headers have been sent
@@ -729,7 +729,7 @@ function header_remove(?string $name): void {}
  * @return bool headers_sent will return false if no HTTP headers
  * have already been sent or true otherwise.
  */
-function headers_sent(&$filename, &$line): bool {}
+function headers_sent(&$filename = null, &$line = null): bool {}
 
 /**
  * Returns a list of response headers sent (or ready to send)
