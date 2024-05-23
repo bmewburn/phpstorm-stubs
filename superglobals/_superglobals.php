@@ -1,4 +1,6 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
+
 /**
  * @xglobal $GLOBALS array
  * Contains a reference to every variable which is currently available within the global scope of the script.
@@ -118,6 +120,49 @@ $_REQUEST = [];
  *
  * <p><a href="https://secure.php.net/manual/en/reserved.variables.php">
  * https://secure.php.net/manual/en/reserved.variables.php</a>
+ * 
+ * @var array{
+ *  PHP_SELF: string,
+ *  argv: string,
+ *  argc: string,
+ *  GATEWAY_INTERFACE: string,
+ *  SERVER_ADDR: string,
+ *  SERVER_NAME: string,
+ *  SERVER_SOFTWARE: string,
+ *  SERVER_PROTOCOL: string,
+ *  REQUEST_METHOD: string,
+ *  REQUEST_TIME: string,
+ *  REQUEST_TIME_FLOAT: string,
+ *  QUERY_STRING: string,
+ *  DOCUMENT_ROOT: string,
+ *  HTTP_ACCEPT: string,
+ *  HTTP_ACCEPT_CHARSET: string,
+ *  HTTP_ACCEPT_ENCODING: string,
+ *  HTTP_ACCEPT_LANGUAGE: string,
+ *  HTTP_CONNECTION: string,
+ *  HTTP_HOST: string,
+ *  HTTP_REFERER: string,
+ *  HTTP_USER_AGENT: string,
+ *  HTTPS: string,
+ *  REMOTE_ADDR: string,
+ *  REMOTE_HOST: string,
+ *  REMOTE_PORT: string,
+ *  REMOTE_USER: string,
+ *  REDIRECT_REMOTE_USER: string,
+ *  SCRIPT_FILENAME: string,
+ *  SERVER_ADMIN: string,
+ *  SERVER_PORT: string,
+ *  SERVER_SIGNATURE: string,
+ *  PATH_TRANSLATED: string,
+ *  SCRIPT_NAME: string,
+ *  REQUEST_URI: string,
+ *  PHP_AUTH_DIGEST: string,
+ *  PHP_AUTH_USER: string,
+ *  PHP_AUTH_PW: string,
+ *  AUTH_TYPE: string,
+ *  PATH_INFO: string,
+ *  ORIG_PATH_INFO: string
+ * }
  */
 $_SERVER = [];
 /**
