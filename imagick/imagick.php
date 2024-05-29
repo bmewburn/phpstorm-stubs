@@ -3407,7 +3407,9 @@ class Imagick implements Iterator, Countable
      * Merges a sequence of images. This is useful for combining Photoshop layers into a single image.
      * This is replaced by:
      * <pre>
-     * $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN)
+     * <code>
+     * $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+     * </code>
      * </pre>
      * @link https://php.net/manual/en/imagick.flattenimages.php
      * @return Imagick Returns an Imagick object containing the merged image.

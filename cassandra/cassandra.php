@@ -3676,7 +3676,6 @@ namespace Cassandra {
          * Initialize a Collection type
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          *
          * $collection = Type::collection(Type::int())
@@ -3697,7 +3696,6 @@ namespace Cassandra {
          * Initialize a set type
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          *
          * $set = Type::set(Type::varchar())
@@ -3718,7 +3716,6 @@ namespace Cassandra {
          * Initialize a map type
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          *
          * $map = Type::map(Type::int(), Type::varchar())
@@ -3740,7 +3737,6 @@ namespace Cassandra {
          * Initialize a tuple type
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          *
          * $tuple = Type::tuple(Type::varchar(), Type::int())
@@ -3761,7 +3757,6 @@ namespace Cassandra {
          * Initialize a user type
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          *
          * $userType = Type::userType("a", Type::varchar(), "b", Type::int())
@@ -4948,7 +4943,6 @@ namespace Cassandra {
          *
          * <pre>
          * <code>
-         * &lt;?php
          * $decimal = new Cassandra::Decimal("1313123123.234234234234234234123");
          * </code>
          * </pre>
@@ -6012,7 +6006,6 @@ namespace Cassandra\Type {
          *
          * <pre>
          * <code>
-         * &lt;?php
          * use Type;
          * use Uuid;
          *

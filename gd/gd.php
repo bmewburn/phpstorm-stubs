@@ -1689,13 +1689,11 @@ function imagettfbbox(float $size, float $angle, string $font_filename, string $
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * // Set the enviroment variable for GD
  * putenv('GDFONTPATH=' . realpath('.'));
  *
  * // Name the font to be used (note the lack of the .ttf extension)
  * $font = 'SomeFont';
- * ?&gt;
  * </code>
  * </pre>
  * <p>
@@ -1863,13 +1861,11 @@ function imageftbbox(float $size, float $angle, string $font_filename, string $s
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * // Set the enviroment variable for GD
  * putenv('GDFONTPATH=' . realpath('.'));
  *
  * // Name the font to be used (note the lack of the .ttf extension)
  * $font = 'SomeFont';
- * ?&gt;
  * </code>
  * </pre>
  * <p>

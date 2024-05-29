@@ -894,11 +894,9 @@ function lchgrp(string $filename, string|int $group): bool {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * chmod("/somedir/somefile", 755);   // decimal; probably incorrect
  * chmod("/somedir/somefile", "u+rwx,go+rx"); // string; incorrect
  * chmod("/somedir/somefile", 0755);  // octal; correct value of mode
- * ?&gt;
  * </code>
  * </pre>
  * <p>
@@ -1024,9 +1022,7 @@ function diskfreespace(string $directory): float|false {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * $text = str_replace("\n.", "\n..", $text);
- * ?&gt;
  * </code>
  * </pre>
  * @param string|array $additional_headers <p>

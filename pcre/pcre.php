@@ -33,10 +33,8 @@ use JetBrains\PhpStorm\Pure;
  * and its string offset into <i>subject</i> at offset 1.
  * <pre>
  * <code>
- * &lt;?php
  * preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
  * print_r($matches);
- * ?&gt;
  * </code>
  * </pre>
  * The above example will output:
@@ -76,12 +74,10 @@ use JetBrains\PhpStorm\Pure;
  * otherwise they are reported as an empty string.
  * <pre>
  * <code>
- * &lt;?php
  * preg_match('/(a)(b)*(c)/', 'ac', $matches);
  * var_dump($matches);
  * preg_match('/(a)(b)*(c)/', 'ac', $matches, PREG_UNMATCHED_AS_NULL);
  * var_dump($matches);
- * ?&gt;
  * </code>
  * </pre>
  * The above example will output:
@@ -121,10 +117,12 @@ use JetBrains\PhpStorm\Pure;
  * ^, $ or
  * (?&lt;=x). Compare:
  * <pre>
+ * <code>
  * $subject = "abcdef";
  * $pattern = '/^def/';
  * preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
  * print_r($matches);
+ * </code>
  * </pre>
  * The above example will output:</p>
  * <pre>

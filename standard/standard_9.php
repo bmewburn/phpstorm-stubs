@@ -1,5 +1,5 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 /**
  * @since 5.6
  */
@@ -163,8 +163,12 @@ function array_reverse(array $array, bool $preserve_keys = false): array {}
  * <br/>
  * <p>
  * Example use:
- * <blockquote><pre>array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax . ", {$dx}"; }, '1')  // Returns '1, 2, 3, 4'</pre></blockquote>
- * <blockquote><pre>array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax + (int)$dx; }, 1)  // Returns 10</pre></blockquote>
+ * <pre>
+ * <code>
+ * array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax . ", {$dx}"; }, '1');  // Returns '1, 2, 3, 4'
+ * array_reduce(['2', '3', '4'], function($ax, $dx) { return $ax + (int)$dx; }, 1);  // Returns 10
+ * </code>
+ * </pre>
  * <br/>
  * </p>
  * @meta

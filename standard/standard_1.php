@@ -530,11 +530,9 @@ function money_format(string $format, float $number): ?string {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * $rest = substr("abcdef", -1);    // returns "f"
  * $rest = substr("abcdef", -2);    // returns "ef"
  * $rest = substr("abcdef", -3, 1); // returns "d"
- * ?&gt;
  * </code>
  * </pre>
  * @param int|null $length [optional] <p>
@@ -558,12 +556,10 @@ function money_format(string $format, float $number): ?string {}
  * Using a negative length:
  * <pre>
  * <code>
- * &lt;?php
  * $rest = substr("abcdef", 0, -1);  // returns "abcde"
  * $rest = substr("abcdef", 2, -1);  // returns "cde"
  * $rest = substr("abcdef", 4, -4);  // returns false
  * $rest = substr("abcdef", -3, -1); // returns "de"
- * ?&gt;
  * </code>
  * </pre>
  */
@@ -718,12 +714,10 @@ function addslashes(string $string): string {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * echo addcslashes('foo[ ]', 'A..z');
  * // output:  \f\o\o\[ \]
  * // All upper and lower-case letters will be escaped
  * // ... but so will the [\]^_`
- * ?&gt;
  * </code>
  * </pre>
  * <p>
@@ -735,10 +729,8 @@ function addslashes(string $string): string {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * echo addcslashes("zoo['.']", 'z..A');
  * // output:  \zoo['\.']
- * ?&gt;
  * </code>
  * </pre>
  * <p>

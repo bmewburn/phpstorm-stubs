@@ -1,4 +1,5 @@
 <?php
+//modified by mEwburn Projects Pty Ltd
 
 declare(strict_types=1);
 
@@ -46,6 +47,7 @@ function swoole_coroutine_create(callable $func, ...$params) {}
  * @return void
  * @example
  * <pre>
+ * <code>
  * swoole_coroutine_create(function () {  // The surrounding function of a coroutine.
  *   echo '1';
  *   swoole_coroutine_defer(function () { // The callback function to be deferred.
@@ -53,7 +55,8 @@ function swoole_coroutine_create(callable $func, ...$params) {}
  *   });
  *   echo '2';
  * });
- * <pre>
+ * </code>
+ * </pre>
  */
 function swoole_coroutine_defer(callable $callback) {}
 
@@ -262,6 +265,7 @@ function go(callable $func, ...$params) {}
  *
  * @example
  * <pre>
+ * <code>
  * go(function () {      // The surrounding function of a coroutine.
  *   echo '1';
  *   defer(function () { // The callback function to be deferred.
@@ -269,7 +273,8 @@ function go(callable $func, ...$params) {}
  *   });
  *   echo '2';
  * });
- * <pre>
+ * </code>
+ * </pre>
  */
 function defer(callable $callback) {}
 

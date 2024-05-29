@@ -566,9 +566,7 @@ function fread($stream, int $length): string|false {}
  * </p>
  * <pre>
  * <code>
- * &lt;?php
  * $handle = fopen("c:\\folder\\resource.txt", "r");
- * ?&gt;
  * </code>
  * </pre>
  * @param string $mode <p>

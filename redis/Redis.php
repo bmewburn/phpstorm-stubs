@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\Deprecated;
 
@@ -166,12 +167,14 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->connect('127.0.0.1', 6379);
      * $redis->connect('127.0.0.1');            // port 6379 by default
      * $redis->connect('127.0.0.1', 6379, 2.5); // 2.5 sec timeout.
      * $redis->connect('/tmp/redis.sock');      // unix domain socket.
      * // since PhpRedis >= 5.3.0 can specify authentication and stream information on connect
      * $redis->connect('127.0.0.1', 6379, 1, NULL, 0, 0, ['auth' => ['phpredis', 'phpredis']]);
+     * </code>
      * </pre>
      */
     public function connect(
@@ -316,6 +319,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->pconnect('127.0.0.1', 6379);
      *
      * // port 6379 by default - same connection like before
@@ -329,6 +333,7 @@ class Redis
      *
      * // unix domain socket - would be another connection than the four before.
      * $redis->pconnect('/tmp/redis.sock');
+     * </code>
      * </pre>
      */
     public function pconnect(
@@ -394,8 +399,10 @@ class Redis
      * @since >= 4.0
      * @example
      * <pre>
+     * <code>
      * // Swaps DB 0 with DB 1 atomically
      * $redis->swapdb(0, 1);
+     * </code>
      * </pre>
      */
     public function swapdb(int $db1, int $db2) {}
@@ -412,6 +419,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_NONE);        // don't serialize data
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_PHP);         // use built-in serialize/unserialize
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_IGBINARY);    // use igBinary serialize/unserialize
@@ -427,6 +435,7 @@ class Redis
      * // until keys come back OR Redis returns an iterator of zero
      * $redis->setOption(Redis::OPT_SCAN, Redis::SCAN_NORETRY);
      * $redis->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
+     * </code>
      * </pre>
      */
     public function setOption($option, $value) {}
@@ -494,6 +503,7 @@ class Redis
      * @link    https://redis.io/commands/get
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', 'hello');
      * $redis->get('key');
      *
@@ -503,11 +513,12 @@ class Redis
      * $redis->set('key', ['asd' => 'as', 'dd' => 123, 'b' => true]);
      * var_dump($redis->get('key'));
      * // Output:
-     * array(3) {
-     *  'asd' => string(2) "as"
-     *  'dd' => int(123)
-     *  'b' => bool(true)
-     * }
+     * //array(3) {
+     * // 'asd' => string(2) "as"
+     * // 'dd' => int(123)
+     * // 'b' => bool(true)
+     * //}
+     * </code>
      * </pre>
      */
     public function get(string $key): mixed {}
@@ -536,6 +547,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * // Simple key -> value set
      * $redis->set('key', 'value');
      *
@@ -547,6 +559,7 @@ class Redis
      *
      * // Will set a key, if it does exist, with a ttl of 1000 milliseconds
      * $redis->set('key', 'value', ['xx', 'px' => 1000]);
+     * </code>
      * </pre>
      *
      * @return bool|Redis TRUE if the command is successful or Redis if in multimode
@@ -603,8 +616,10 @@ class Redis
      * @link    https://redis.io/commands/setnx
      * @example
      * <pre>
+     * <code>
      * $redis->setnx('key', 'value');   // return TRUE
      * $redis->setnx('key', 'value');   // return FALSE
+     * </code>
      * </pre>
      */
     public function setnx(string $key, $value) {}
@@ -622,6 +637,7 @@ class Redis
      * @link https://redis.io/commands/del
      * @example
      * <pre>
+     * <code>
      * $redis->set('key1', 'val1');
      * $redis->set('key2', 'val2');
      * $redis->set('key3', 'val3');
@@ -629,6 +645,7 @@ class Redis
      *
      * $redis->del('key1', 'key2');     // return 2
      * $redis->del(['key3', 'key4']);   // return 2
+     * </code>
      * </pre>
      */
     public function del($key1, ...$otherKeys) {}
@@ -660,12 +677,14 @@ class Redis
      * @link    https://redis.io/commands/unlink
      * @example
      * <pre>
+     * <code>
      * $redis->set('key1', 'val1');
      * $redis->set('key2', 'val2');
      * $redis->set('key3', 'val3');
      * $redis->set('key4', 'val4');
      * $redis->unlink('key1', 'key2');          // return 2
      * $redis->unlink(array('key3', 'key4'));   // return 2
+     * </code>
      * </pre>
      */
     public function unlink($key, ...$other_keys) {}
@@ -687,6 +706,7 @@ class Redis
      * @link    https://redis.io/commands/multi
      * @example
      * <pre>
+     * <code>
      * $ret = $redis->multi()
      *      ->set('key1', 'val1')
      *      ->get('key1')
@@ -699,6 +719,7 @@ class Redis
      * //    1 => 'val1',
      * //    2 => TRUE,
      * //    3 => 'val2');
+     * </code>
      * </pre>
      */
     public function multi($mode = Redis::MULTI) {}
@@ -716,6 +737,7 @@ class Redis
      * @link   https://redis.io/topics/pipelining
      * @example
      * <pre>
+     * <code>
      * $ret = $this->redis->pipeline()
      *      ->ping()
      *      ->multi()->set('x', 42)->incr('x')->exec()
@@ -730,6 +752,7 @@ class Redis
      * //    2 => '+PONG',
      * //    3 => [43, 1],
      * //    4 => '+PONG');
+     * </code>
      * </pre>
      */
     public function pipeline() {}
@@ -788,12 +811,14 @@ class Redis
      * @link    https://redis.io/commands/watch
      * @example
      * <pre>
+     * <code>
      * $redis->watch('x');
      * // long code here during the execution of which other clients could well modify `x`
      * $ret = $redis->multi()
      *          ->incr('x')
      *          ->exec();
      * // $ret = FALSE if x has been modified between the call to WATCH and the call to EXEC.
+     * </code>
      * </pre>
      */
     public function watch($key, ...$other_keys) {}
@@ -853,6 +878,7 @@ class Redis
      * @link    https://redis.io/commands/psubscribe
      * @example
      * <pre>
+     * <code>
      * function f($redis, $pattern, $chan, $msg) {
      *  echo "Pattern: $pattern\n";
      *  echo "Channel: $chan\n";
@@ -860,6 +886,7 @@ class Redis
      * }
      *
      * $redis->psubscribe(array('chan-1', 'chan-2', 'chan-3'), 'f')
+     * </code>
      * </pre>
      */
     public function psubscribe($patterns, $callback) {}
@@ -900,10 +927,12 @@ class Redis
      * @link    https://redis.io/commands/pubsub
      * @example
      * <pre>
+     * <code>
      * $redis->pubsub('channels'); // All channels
      * $redis->pubsub('channels', '*pattern*'); // Just channels matching your pattern
      * $redis->pubsub('numsub', array('chan1', 'chan2')); // Get subscriber counts for 'chan1' and 'chan2'
      * $redis->pubsub('numpat'); // Get the number of pattern subscribers
+     * </code>
      * </pre>
      */
     public function pubsub($keyword, $argument = null) {}
@@ -962,12 +991,14 @@ class Redis
      * @link https://github.com/phpredis/phpredis#exists
      * @example
      * <pre>
+     * <code>
      * $redis->exists('key'); // 1
      * $redis->exists('NonExistingKey'); // 0
      *
      * $redis->mset(['foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz']);
      * $redis->exists(['foo', 'bar', 'baz]); // 3
      * $redis->exists('foo', 'bar', 'baz'); // 3
+     * </code>
      * </pre>
      */
     public function exists($key, ...$other_keys) {}
@@ -985,11 +1016,13 @@ class Redis
      * @link    https://redis.io/commands/incr
      * @example
      * <pre>
+     * <code>
      * $redis->incr('key1'); // key1 didn't exists, set to 0 before the increment and now has the value 1
      * $redis->incr('key1'); // 2
      * $redis->incr('key1'); // 3
      * $redis->incr('key1'); // 4
      * $redis->incr('key1', 2); // 6
+     * </code>
      * </pre>
      */
     public function incr($key, $by = 1) {}
@@ -1007,10 +1040,12 @@ class Redis
      * @link    https://redis.io/commands/incrbyfloat
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', 3);
      * $redis->incrByFloat('x', 1.5);   // float(4.5)
      * $redis->get('x');                // float(4.5)
      * $redis->incrByFloat('x', 3.1415926);
+     * </code>
      * </pre>
      */
     public function incrByFloat($key, $increment) {}
@@ -1028,11 +1063,13 @@ class Redis
      * @link    https://redis.io/commands/incrby
      * @example
      * <pre>
+     * <code>
      * $redis->incr('key1');        // key1 didn't exists, set to 0 before the increment and now has the value 1
      * $redis->incr('key1');        // 2
      * $redis->incr('key1');        // 3
      * $redis->incr('key1');        // 4
      * $redis->incrBy('key1', 10);  // 14
+     * </code>
      * </pre>
      */
     public function incrBy($key, $value) {}
@@ -1050,10 +1087,12 @@ class Redis
      * @link    https://redis.io/commands/decr
      * @example
      * <pre>
+     * <code>
      * $redis->decr('key1'); // key1 didn't exists, set to 0 before the increment and now has the value -1
      * $redis->decr('key1'); // -2
      * $redis->decr('key1'); // -3
      * $redis->decr('key1', 2); // -5
+     * </code>
      * </pre>
      */
     public function decr($key, $by = 1) {}
@@ -1071,10 +1110,12 @@ class Redis
      * @link    https://redis.io/commands/decrby
      * @example
      * <pre>
+     * <code>
      * $redis->decr('key1');        // key1 didn't exists, set to 0 before the increment and now has the value -1
      * $redis->decr('key1');        // -2
      * $redis->decr('key1');        // -3
      * $redis->decrBy('key1', 10);  // -13
+     * </code>
      * </pre>
      */
     public function decrBy($key, $value) {}
@@ -1094,6 +1135,7 @@ class Redis
      * @link https://redis.io/commands/lpush
      * @example
      * <pre>
+     * <code>
      * $redis->lPush('l', 'v1', 'v2', 'v3', 'v4')   // int(4)
      * var_dump( $redis->lRange('l', 0, -1) );
      * // Output:
@@ -1103,6 +1145,7 @@ class Redis
      * //   [2]=> string(2) "v2"
      * //   [3]=> string(2) "v1"
      * // }
+     * </code>
      * </pre>
      */
     public function lPush($key, ...$value1) {}
@@ -1122,6 +1165,7 @@ class Redis
      * @link    https://redis.io/commands/rpush
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('l', 'v1', 'v2', 'v3', 'v4');    // int(4)
      * var_dump( $redis->lRange('l', 0, -1) );
      * // Output:
@@ -1131,6 +1175,7 @@ class Redis
      * //   [2]=> string(2) "v3"
      * //   [3]=> string(2) "v4"
      * // }
+     * </code>
      * </pre>
      */
     public function rPush($key, ...$value1) {}
@@ -1148,12 +1193,14 @@ class Redis
      * @link    https://redis.io/commands/lpushx
      * @example
      * <pre>
+     * <code>
      * $redis->del('key1');
      * $redis->lPushx('key1', 'A');     // returns 0
      * $redis->lPush('key1', 'A');      // returns 1
      * $redis->lPushx('key1', 'B');     // returns 2
      * $redis->lPushx('key1', 'C');     // returns 3
      * // key1 now points to the following list: [ 'A', 'B', 'C' ]
+     * </code>
      * </pre>
      */
     public function lPushx($key, $value) {}
@@ -1171,12 +1218,14 @@ class Redis
      * @link    https://redis.io/commands/rpushx
      * @example
      * <pre>
+     * <code>
      * $redis->del('key1');
      * $redis->rPushx('key1', 'A'); // returns 0
      * $redis->rPush('key1', 'A'); // returns 1
      * $redis->rPushx('key1', 'B'); // returns 2
      * $redis->rPushx('key1', 'C'); // returns 3
      * // key1 now points to the following list: [ 'A', 'B', 'C' ]
+     * </code>
      * </pre>
      */
     public function rPushx($key, $value) {}
@@ -1194,10 +1243,12 @@ class Redis
      * @link    https://redis.io/commands/lpop
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');  // key1 => [ 'A', 'B', 'C' ]
      * $redis->lPop('key1');        // key1 => [ 'B', 'C' ]
+     * </code>
      * </pre>
      */
     public function lPop($key, $count = 0) {}
@@ -1215,10 +1266,12 @@ class Redis
      * @link    https://redis.io/commands/rpop
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');  // key1 => [ 'A', 'B', 'C' ]
      * $redis->rPop('key1');        // key1 => [ 'A', 'B' ]
+     * </code>
      * </pre>
      */
     public function rPop($key, $count = 0) {}
@@ -1240,6 +1293,7 @@ class Redis
      * @link    https://redis.io/commands/blpop
      * @example
      * <pre>
+     * <code>
      * // Non blocking feature
      * $redis->lPush('key1', 'A');
      * $redis->del('key2');
@@ -1264,6 +1318,7 @@ class Redis
      *
      * // process 1
      * // array('key1', 'A') is returned
+     * </code>
      * </pre>
      */
     public function blPop($key_or_keys, $timeout_or_key, ...$extra_args) {}
@@ -1286,6 +1341,7 @@ class Redis
      * @link    https://redis.io/commands/brpop
      * @example
      * <pre>
+     * <code>
      * // Non blocking feature
      * $redis->rPush('key1', 'A');
      * $redis->del('key2');
@@ -1310,6 +1366,7 @@ class Redis
      *
      * // process 1
      * // array('key1', 'A') is returned
+     * </code>
      * </pre>
      */
     public function brPop($key_or_keys, $timeout_or_key, ...$extra_args) {}
@@ -1328,12 +1385,14 @@ class Redis
      * @link    https://redis.io/commands/llen
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C'); // key1 => [ 'A', 'B', 'C' ]
      * $redis->lLen('key1');       // 3
      * $redis->rPop('key1');
      * $redis->lLen('key1');       // 2
+     * </code>
      * </pre>
      */
     public function lLen($key) {}
@@ -1367,12 +1426,14 @@ class Redis
      * @link    https://redis.io/commands/lindex
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');  // key1 => [ 'A', 'B', 'C' ]
      * $redis->lIndex('key1', 0);     // 'A'
      * $redis->lIndex('key1', -1);    // 'C'
      * $redis->lIndex('key1', 10);    // `FALSE`
+     * </code>
      * </pre>
      */
     public function lIndex($key, $index) {}
@@ -1404,12 +1465,14 @@ class Redis
      * @link    https://redis.io/commands/lset
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');    // key1 => [ 'A', 'B', 'C' ]
      * $redis->lIndex('key1', 0);     // 'A'
      * $redis->lSet('key1', 0, 'X');
      * $redis->lIndex('key1', 0);     // 'X'
+     * </code>
      * </pre>
      */
     public function lSet($key, $index, $value) {}
@@ -1430,10 +1493,12 @@ class Redis
      * @link    https://redis.io/commands/lrange
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');
      * $redis->lRange('key1', 0, -1); // array('A', 'B', 'C')
+     * </code>
      * </pre>
      */
     public function lRange($key, $start, $end) {}
@@ -1465,12 +1530,14 @@ class Redis
      * @link        https://redis.io/commands/ltrim
      * @example
      * <pre>
+     * <code>
      * $redis->rPush('key1', 'A');
      * $redis->rPush('key1', 'B');
      * $redis->rPush('key1', 'C');
      * $redis->lRange('key1', 0, -1); // array('A', 'B', 'C')
      * $redis->lTrim('key1', 0, 1);
      * $redis->lRange('key1', 0, -1); // array('A', 'B')
+     * </code>
      * </pre>
      */
     public function lTrim($key, $start, $end) {}
@@ -1504,6 +1571,7 @@ class Redis
      * @link    https://redis.io/commands/lrem
      * @example
      * <pre>
+     * <code>
      * $redis->lPush('key1', 'A');
      * $redis->lPush('key1', 'B');
      * $redis->lPush('key1', 'C');
@@ -1513,6 +1581,7 @@ class Redis
      * $redis->lRange('key1', 0, -1);   // array('A', 'A', 'C', 'B', 'A')
      * $redis->lRem('key1', 'A', 2);    // 2
      * $redis->lRange('key1', 0, -1);   // array('C', 'B', 'A')
+     * </code>
      * </pre>
      */
     public function lRem($key, $value, $count = 0) {}
@@ -1546,6 +1615,7 @@ class Redis
      * @link    https://redis.io/commands/linsert
      * @example
      * <pre>
+     * <code>
      * $redis->del('key1');
      * $redis->lInsert('key1', Redis::AFTER, 'A', 'X');     // 0
      *
@@ -1560,6 +1630,7 @@ class Redis
      * $redis->lRange('key1', 0, -1);                       // array('A', 'B', 'X', 'C', 'Y')
      *
      * $redis->lInsert('key1', Redis::AFTER, 'W', 'value'); // -1
+     * </code>
      * </pre>
      */
     public function lInsert($key, $position, $pivot, $value) {}
@@ -1577,8 +1648,10 @@ class Redis
      * @link    https://redis.io/commands/sadd
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('k', 'v1');                // int(1)
      * $redis->sAdd('k', 'v1', 'v2', 'v3');    // int(2)
+     * </code>
      * </pre>
      */
     public function sAdd(string $key, $value, ...$other_values) {}
@@ -1595,6 +1668,7 @@ class Redis
      * @link    https://redis.io/commands/srem
      * @example
      * <pre>
+     * <code>
      * var_dump( $redis->sAdd('k', 'v1', 'v2', 'v3') );    // int(3)
      * var_dump( $redis->sRem('k', 'v2', 'v3') );          // int(2)
      * var_dump( $redis->sMembers('k') );
@@ -1602,6 +1676,7 @@ class Redis
      * // array(1) {
      * //   [0]=> string(2) "v1"
      * // }
+     * </code>
      * </pre>
      */
     public function sRem(string $key, $value, ...$other_values) {}
@@ -1632,6 +1707,7 @@ class Redis
      * @link    https://redis.io/commands/smove
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1' , 'set11');
      * $redis->sAdd('key1' , 'set12');
      * $redis->sAdd('key1' , 'set13');          // 'key1' => {'set11', 'set12', 'set13'}
@@ -1639,6 +1715,7 @@ class Redis
      * $redis->sAdd('key2' , 'set22');          // 'key2' => {'set21', 'set22'}
      * $redis->sMove('key1', 'key2', 'set13');  // 'key1' =>  {'set11', 'set12'}
      *                                          // 'key2' =>  {'set21', 'set22', 'set13'}
+     * </code>
      * </pre>
      */
     public function sMove($srcKey, $dstKey, $member) {}
@@ -1656,12 +1733,14 @@ class Redis
      * @link    https://redis.io/commands/sismember
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1' , 'set1');
      * $redis->sAdd('key1' , 'set2');
      * $redis->sAdd('key1' , 'set3'); // 'key1' => {'set1', 'set2', 'set3'}
      *
      * $redis->sIsMember('key1', 'set1'); // TRUE
      * $redis->sIsMember('key1', 'setX'); // FALSE
+     * </code>
      * </pre>
      */
     public function sIsMember(string $key, $value) {}
@@ -1689,11 +1768,13 @@ class Redis
      * @link    https://redis.io/commands/scard
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1' , 'set1');
      * $redis->sAdd('key1' , 'set2');
      * $redis->sAdd('key1' , 'set3');   // 'key1' => {'set1', 'set2', 'set3'}
      * $redis->sCard('key1');           // 3
      * $redis->sCard('keyX');           // 0
+     * </code>
      * </pre>
      */
     public function sCard($key) {}
@@ -1712,6 +1793,7 @@ class Redis
      * @link    https://redis.io/commands/spop
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1' , 'set1');
      * $redis->sAdd('key1' , 'set2');
      * $redis->sAdd('key1' , 'set3');   // 'key1' => {'set3', 'set1', 'set2'}
@@ -1727,6 +1809,7 @@ class Redis
      * //   [1]=> string(4) "set3"
      * //   [2]=> string(4) "set1"
      * // }
+     * </code>
      * </pre>
      */
     public function sPop($key, $count = 0) {}
@@ -1752,6 +1835,7 @@ class Redis
      * @link    https://redis.io/commands/srandmember
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1' , 'one');
      * $redis->sAdd('key1' , 'two');
      * $redis->sAdd('key1' , 'three');              // 'key1' => {'one', 'two', 'three'}
@@ -1766,6 +1850,7 @@ class Redis
      * //   [0]=> string(2) "one"
      * //   [1]=> string(5) "three"
      * // }
+     * </code>
      * </pre>
      */
     public function sRandMember($key, $count = 0) {}
@@ -1786,6 +1871,7 @@ class Redis
      * @link    https://redis.io/commands/sinter
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1', 'val1');
      * $redis->sAdd('key1', 'val2');
      * $redis->sAdd('key1', 'val3');
@@ -1805,6 +1891,7 @@ class Redis
      * //  [1]=>
      * //  string(4) "val3"
      * //}
+     * </code>
      * </pre>
      */
     public function sInter($key1, ...$otherKeys) {}
@@ -1823,6 +1910,7 @@ class Redis
      * @link    https://redis.io/commands/sinterstore
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('key1', 'val1');
      * $redis->sAdd('key1', 'val2');
      * $redis->sAdd('key1', 'val3');
@@ -1845,6 +1933,7 @@ class Redis
      * //  [1]=>
      * //  string(4) "val3"
      * //}
+     * </code>
      * </pre>
      */
     public function sInterStore(string $key, ...$otherKeys) {}
@@ -1862,6 +1951,7 @@ class Redis
      * @link    https://redis.io/commands/sunionstore
      * @example
      * <pre>
+     * <code>
      * $redis->sAdd('s0', '1');
      * $redis->sAdd('s0', '2');
      * $redis->sAdd('s1', '3');
@@ -1881,6 +1971,7 @@ class Redis
      * //  [3]=>
      * //  string(1) "2"
      * //}
+     * </code>
      * </pre>
      */
     public function sUnion($key1, ...$otherKeys) {}
@@ -1899,6 +1990,7 @@ class Redis
      * @link    https://redis.io/commands/sunionstore
      * @example
      * <pre>
+     * <code>
      * $redis->del('s0', 's1', 's2');
      *
      * $redis->sAdd('s0', '1');
@@ -1922,6 +2014,7 @@ class Redis
      * //  [3]=>
      * //  string(1) "2"
      * //}
+     * </code>
      * </pre>
      */
     public function sUnionStore($dstKey, $key1, ...$otherKeys) {}
@@ -1939,6 +2032,7 @@ class Redis
      * @link    https://redis.io/commands/sdiff
      * @example
      * <pre>
+     * <code>
      * $redis->del('s0', 's1', 's2');
      *
      * $redis->sAdd('s0', '1');
@@ -1957,6 +2051,7 @@ class Redis
      * //  [1]=>
      * //  string(1) "2"
      * //}
+     * </code>
      * </pre>
      */
     public function sDiff($key1, ...$otherKeys) {}
@@ -1975,6 +2070,7 @@ class Redis
      * @link    https://redis.io/commands/sdiffstore
      * @example
      * <pre>
+     * <code>
      * $redis->del('s0', 's1', 's2');
      *
      * $redis->sAdd('s0', '1');
@@ -1995,6 +2091,7 @@ class Redis
      * //  [1]=>
      * //  string(1) "2"
      * //}
+     * </code>
      * </pre>
      */
     public function sDiffStore($dstKey, $key1, ...$otherKeys) {}
@@ -2011,6 +2108,7 @@ class Redis
      * @link    https://redis.io/commands/smembers
      * @example
      * <pre>
+     * <code>
      * $redis->del('s');
      * $redis->sAdd('s', 'a');
      * $redis->sAdd('s', 'b');
@@ -2027,6 +2125,7 @@ class Redis
      * //  string(1) "b"
      * //}
      * // The order is random and corresponds to redis' own internal representation of the set structure.
+     * </code>
      * </pre>
      */
     public function sMembers($key) {}
@@ -2080,6 +2179,7 @@ class Redis
      * @link    https://redis.io/commands/sscan
      * @example
      * <pre>
+     * <code>
      * $redis->del('myset');
      * for ($i = 0; $i < 10000; $i++) {
      *     $redis->sAdd('myset', "member:$i");
@@ -2116,6 +2216,7 @@ class Redis
      *         $scanned++;
      *     }
      * }
+     * </code>
      * </pre>
      */
     public function sScan($key, &$iterator, $pattern = null, $count = 0) {}
@@ -2133,9 +2234,11 @@ class Redis
      * @link    https://redis.io/commands/getset
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $exValue = $redis->getSet('x', 'lol');   // return '42', replaces x by 'lol'
      * $newValue = $redis->get('x')'            // return 'lol'
+     * </code>
      * </pre>
      */
     public function getSet($key, $value) {}
@@ -2150,8 +2253,10 @@ class Redis
      * @link    https://redis.io/commands/randomkey
      * @example
      * <pre>
+     * <code>
      * $key = $redis->randomKey();
      * $surprise = $redis->get($key);  // who knows what's in there.
+     * </code>
      * </pre>
      */
     public function randomKey() {}
@@ -2168,11 +2273,13 @@ class Redis
      * @link    https://redis.io/commands/select
      * @example
      * <pre>
+     * <code>
      * $redis->select(0);       // switch to DB 0
      * $redis->set('x', '42');  // write 42 to x
      * $redis->move('x', 1);    // move to DB 1
      * $redis->select(1);       // switch to DB 1
      * $redis->get('x');        // will return 42
+     * </code>
      * </pre>
      */
     public function select($dbIndex) {}
@@ -2190,11 +2297,13 @@ class Redis
      * @link    https://redis.io/commands/move
      * @example
      * <pre>
+     * <code>
      * $redis->select(0);       // switch to DB 0
      * $redis->set('x', '42');  // write 42 to x
      * $redis->move('x', 1);    // move to DB 1
      * $redis->select(1);       // switch to DB 1
      * $redis->get('x');        // will return 42
+     * </code>
      * </pre>
      */
     public function move($key, $dbIndex) {}
@@ -2212,10 +2321,12 @@ class Redis
      * @link    https://redis.io/commands/rename
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $redis->rename('x', 'y');
      * $redis->get('y');   // → 42
      * $redis->get('x');   // → `FALSE`
+     * </code>
      * </pre>
      */
     public function rename($srcKey, $dstKey) {}
@@ -2247,10 +2358,12 @@ class Redis
      * @link    https://redis.io/commands/renamenx
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $redis->rename('x', 'y');
      * $redis->get('y');   // → 42
      * $redis->get('x');   // → `FALSE`
+     * </code>
      * </pre>
      */
     public function renameNx($srcKey, $dstKey) {}
@@ -2275,10 +2388,12 @@ class Redis
      * @link    https://redis.io/commands/expire
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $redis->expire('x', 3);  // x will disappear in 3 seconds.
      * sleep(5);                    // wait 5 seconds
      * $redis->get('x');            // will return `FALSE`, as 'x' has expired.
+     * </code>
      * </pre>
      */
     public function expire($key, $ttl, $mode = null) {}
@@ -2299,10 +2414,12 @@ class Redis
      * @link    https://redis.io/commands/pexpire
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $redis->pExpire('x', 11500); // x will disappear in 11500 milliseconds.
      * $redis->ttl('x');            // 12
      * $redis->pttl('x');           // 11500
+     * </code>
      * </pre>
      */
     public function pExpire($key, $ttl, $mode = null) {}
@@ -2336,11 +2453,13 @@ class Redis
      * @link    https://redis.io/commands/expireat
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $now = time(NULL);               // current timestamp
      * $redis->expireAt('x', $now + 3); // x will disappear in 3 seconds.
      * sleep(5);                        // wait 5 seconds
      * $redis->get('x');                // will return `FALSE`, as 'x' has expired.
+     * </code>
      * </pre>
      */
     public function expireAt($key, $timestamp, $mode = null) {}
@@ -2361,10 +2480,12 @@ class Redis
      * @link    https://redis.io/commands/pexpireat
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', '42');
      * $redis->pExpireAt('x', 1555555555005);
      * echo $redis->ttl('x');                       // 218270121
      * echo $redis->pttl('x');                      // 218270120575
+     * </code>
      * </pre>
      */
     public function pExpireAt($key, $timestamp, $mode = null) {}
@@ -2381,8 +2502,10 @@ class Redis
      * @link    https://redis.io/commands/keys
      * @example
      * <pre>
+     * <code>
      * $allKeys = $redis->keys('*');   // all keys will match this.
      * $keyWithUserPrefix = $redis->keys('user*');
+     * </code>
      * </pre>
      */
     public function keys($pattern) {}
@@ -2406,8 +2529,10 @@ class Redis
      * @link    https://redis.io/commands/dbsize
      * @example
      * <pre>
+     * <code>
      * $count = $redis->dbSize();
      * echo "Redis has $count keys\n";
+     * </code>
      * </pre>
      */
     public function dbSize() {}
@@ -2460,9 +2585,11 @@ class Redis
      * @link    https://redis.io/commands/slaveof
      * @example
      * <pre>
+     * <code>
      * $redis->slaveof('10.0.1.7', 6379);
      * // ...
      * $redis->slaveof();
+     * </code>
      * </pre>
      */
     #[Deprecated(replacement: '%class%->replicaof(%parametersList%)')]
@@ -2491,6 +2618,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * // Get ten slowLog entries
      * $redis->slowLog('get', 10);
      * // Get the default number of slowLog entries
@@ -2501,6 +2629,7 @@ class Redis
      *
      * // Retrieve slowLog length
      * $redis->slowLog('len');
+     * </code>
      * </pre>
      *
      * @link https://redis.io/commands/slowlog
@@ -2525,10 +2654,12 @@ class Redis
      * @link    https://redis.io/commands/object
      * @example
      * <pre>
+     * <code>
      * $redis->lPush('l', 'Hello, world!');
      * $redis->object("encoding", "l"); // → ziplist
      * $redis->object("refcount", "l"); // → 1
      * $redis->object("idletime", "l"); // → 400 (in seconds, with a precision of 10 seconds).
+     * </code>
      * </pre>
      */
     public function object($subcommand, $key) {}
@@ -2624,9 +2755,11 @@ class Redis
      * @link    https://redis.io/commands/append
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', 'value1');
      * $redis->append('key', 'value2'); // 12
      * $redis->get('key');              // 'value1value2'
+     * </code>
      * </pre>
      */
     public function append($key, $value) {}
@@ -2645,9 +2778,11 @@ class Redis
      * @link    https://redis.io/commands/getrange
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', 'string value');
      * $redis->getRange('key', 0, 5);   // 'string'
      * $redis->getRange('key', -5, -1); // 'value'
+     * </code>
      * </pre>
      */
     public function getRange($key, $start, $end) {}
@@ -2678,9 +2813,11 @@ class Redis
      * @link    https://redis.io/commands/setrange
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', 'Hello world');
      * $redis->setRange('key', 6, "redis"); // returns 11
      * $redis->get('key');                  // "Hello redis"
+     * </code>
      * </pre>
      */
     public function setRange($key, $offset, $value) {}
@@ -2696,8 +2833,10 @@ class Redis
      * @link    https://redis.io/commands/strlen
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', 'value');
      * $redis->strlen('key'); // 5
+     * </code>
      * </pre>
      */
     public function strlen($key) {}
@@ -2729,6 +2868,7 @@ class Redis
      * @link    https://redis.io/commands/bitpos
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', '\xff\xff');
      * $redis->bitpos('key', 1); // int(0)
      * $redis->bitpos('key', 1, 1); // int(8)
@@ -2736,6 +2876,7 @@ class Redis
      * $redis->bitpos('key', 0); // int(16)
      * $redis->bitpos('key', 0, 1); // int(16)
      * $redis->bitpos('key', 0, 1, 5); // int(-1)
+     * </code>
      * </pre>
      */
     public function bitpos($key, $bit, $start = 0, $end = -1, $bybit = false) {}
@@ -2753,9 +2894,11 @@ class Redis
      * @link    https://redis.io/commands/getbit
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', "\x7f");  // this is 0111 1111
      * $redis->getBit('key', 0);    // 0
      * $redis->getBit('key', 1);    // 1
+     * </code>
      * </pre>
      */
     public function getBit($key, $offset) {}
@@ -2774,10 +2917,12 @@ class Redis
      * @link    https://redis.io/commands/setbit
      * @example
      * <pre>
+     * <code>
      * $redis->set('key', "*");     // ord("*") = 42 = 0x2f = "0010 1010"
      * $redis->setBit('key', 5, 1); // returns 0
      * $redis->setBit('key', 7, 1); // returns 0
      * $redis->get('key');          // chr(0x2f) = "/" = b("0010 1111")
+     * </code>
      * </pre>
      */
     public function setBit($key, $offset, $value) {}
@@ -2797,11 +2942,13 @@ class Redis
      * @link    https://redis.io/commands/bitcount
      * @example
      * <pre>
+     * <code>
      * $redis->set('bit', '345'); // // 11 0011  0011 0100  0011 0101
      * var_dump( $redis->bitCount('bit', 0, 0) ); // int(4)
      * var_dump( $redis->bitCount('bit', 1, 1) ); // int(3)
      * var_dump( $redis->bitCount('bit', 2, 2) ); // int(4)
      * var_dump( $redis->bitCount('bit', 0, 2) ); // int(11)
+     * </code>
      * </pre>
      */
     public function bitCount($key, $start = 0, $end = -1, $bybit = false) {}
@@ -2821,6 +2968,7 @@ class Redis
      * @link    https://redis.io/commands/bitop
      * @example
      * <pre>
+     * <code>
      * $redis->set('bit1', '1'); // 11 0001
      * $redis->set('bit2', '2'); // 11 0010
      *
@@ -2828,6 +2976,7 @@ class Redis
      * $redis->bitOp('OR',  'bit', 'bit1', 'bit2'); // bit = 110011
      * $redis->bitOp('NOT', 'bit', 'bit1', 'bit2'); // bit = 110011
      * $redis->bitOp('XOR', 'bit', 'bit1', 'bit2'); // bit = 11
+     * </code>
      * </pre>
      */
     public function bitOp($operation, $retKey, $key1, ...$otherKeys) {}
@@ -2882,6 +3031,7 @@ class Redis
      * @link    https://redis.io/commands/sort
      * @example
      * <pre>
+     * <code>
      * $redis->del('s');
      * $redis->sadd('s', 5);
      * $redis->sadd('s', 4);
@@ -2892,6 +3042,7 @@ class Redis
      * var_dump($redis->sort('s')); // 1,2,3,4,5
      * var_dump($redis->sort('s', array('sort' => 'desc'))); // 5,4,3,2,1
      * var_dump($redis->sort('s', array('sort' => 'desc', 'store' => 'out'))); // (int)5
+     * </code>
      * </pre>
      */
     public function sort($key, $options = null) {}
@@ -2957,10 +3108,11 @@ class Redis
      * <pre>
      * $redis->info();
      *
-     * or
+     * //or
      *
      * $redis->info("COMMANDSTATS"); //Information on the commands that have been run (>=2.6 only)
      * $redis->info("CPU"); // just CPU information from Redis INFO
+     * </code>
      * </pre>
      */
     public function info(...$sections) {}
@@ -2975,7 +3127,9 @@ class Redis
      * @link    https://redis.io/commands/role
      * @example
      * <pre>
+     * <code>
      * $redis->role();
+     * </code>
      * </pre>
      */
     public function role() {}
@@ -3011,8 +3165,10 @@ class Redis
      * @link    https://redis.io/commands/ttl
      * @example
      * <pre>
+     * <code>
      * $redis->setex('key', 123, 'test');
      * $redis->ttl('key'); // int(123)
+     * </code>
      * </pre>
      */
     public function ttl($key) {}
@@ -3031,8 +3187,10 @@ class Redis
      * @link    https://redis.io/commands/pttl
      * @example
      * <pre>
+     * <code>
      * $redis->setex('key', 123, 'test');
      * $redis->pttl('key'); // int(122999)
+     * </code>
      * </pre>
      */
     public function pttl($key) {}
@@ -3064,12 +3222,14 @@ class Redis
      * @link    https://redis.io/commands/mset
      * @example
      * <pre>
+     * <code>
      * $redis->mSet(array('key0' => 'value0', 'key1' => 'value1'));
      * var_dump($redis->get('key0'));
      * var_dump($redis->get('key1'));
      * // Output:
      * // string(6) "value0"
      * // string(6) "value1"
+     * </code>
      * </pre>
      */
     public function mSet($array) {}
@@ -3086,11 +3246,13 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->set('key1', 'value1');
      * $redis->set('key2', 'value2');
      * $redis->set('key3', 'value3');
      * $redis->getMultiple(array('key1', 'key2', 'key3')); // array('value1', 'value2', 'value3');
      * $redis->getMultiple(array('key0', 'key1', 'key5')); // array(`FALSE`, 'value2', `FALSE`);
+     * </code>
      * </pre>
      */
     #[Deprecated(replacement: '%class%->mGet(%parametersList%)')]
@@ -3111,6 +3273,7 @@ class Redis
      * @link https://redis.io/commands/mget
      * @example
      * <pre>
+     * <code>
      * $redis->del('x', 'y', 'z', 'h');  // remove x y z
      * $redis->mset(array('x' => 'a', 'y' => 'b', 'z' => 'c'));
      * $redis->hset('h', 'field', 'value');
@@ -3122,6 +3285,7 @@ class Redis
      * //   [2]=> string(1) "c"
      * //   [3]=> bool(false)
      * // }
+     * </code>
      * </pre>
      */
     public function mGet(array $array): Redis|array {}
@@ -3157,6 +3321,7 @@ class Redis
      * @link    https://redis.io/commands/rpoplpush
      * @example
      * <pre>
+     * <code>
      * $redis->del('x', 'y');
      *
      * $redis->lPush('x', 'abc');
@@ -3184,6 +3349,7 @@ class Redis
      * //  [2]=>
      * //  string(3) "123"
      * //}
+     * </code>
      * </pre>
      */
     public function rPopLPush($srcKey, $dstKey) {}
@@ -3234,6 +3400,7 @@ class Redis
      * @link    https://redis.io/commands/zadd
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('z', 1, 'v1', 2, 'v2', 3, 'v3', 4, 'v4' );  // int(2)
      * $redis->zRem('z', 'v2', 'v3');                           // int(2)
      * $redis->zAdd('z', ['NX'], 5, 'v5');                      // int(1)
@@ -3257,6 +3424,7 @@ class Redis
      * //   ["v4"]=> float(4)
      * //   ["v5"]=> float(5)
      * //   ["v6"]=> float(8)
+     * </code>
      * </pre>
      */
     public function zAdd($key, $score_or_options, ...$more_scores_and_mems) {}
@@ -3291,12 +3459,14 @@ class Redis
      * @link    https://redis.io/commands/zrange
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key1', 0, 'val0');
      * $redis->zAdd('key1', 2, 'val2');
      * $redis->zAdd('key1', 10, 'val10');
      * $redis->zRange('key1', 0, -1); // array('val0', 'val2', 'val10')
      * // with scores
      * $redis->zRange('key1', 0, -1, true); // array('val0' => 0, 'val2' => 2, 'val10' => 10)
+     * </code>
      * </pre>
      */
     public function zRange($key, $start, $end, $options = null) {}
@@ -3315,6 +3485,7 @@ class Redis
      * @link    https://redis.io/commands/zrem
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('z', 1, 'v1', 2, 'v2', 3, 'v3', 4, 'v4' );  // int(2)
      * $redis->zRem('z', 'v2', 'v3');                           // int(2)
      * var_dump( $redis->zRange('z', 0, -1) );
@@ -3323,6 +3494,7 @@ class Redis
      * //   [0]=> string(2) "v1"
      * //   [1]=> string(2) "v4"
      * // }
+     * </code>
      * </pre>
      */
     public function zRem($key, $member1, ...$otherMembers) {}
@@ -3361,6 +3533,7 @@ class Redis
      * @link    https://redis.io/commands/zrevrange
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 0, 'val0');
      * $redis->zAdd('key', 2, 'val2');
      * $redis->zAdd('key', 10, 'val10');
@@ -3369,6 +3542,7 @@ class Redis
      * // with scores
      * $redis->zRevRange('key', 0, -1, true); // array('val10' => 10, 'val2' => 2, 'val0' => 0)
      * $redis->zRevRange('key', 0, -1, ['withscores' => true]);
+     * </code>
      * </pre>
      */
     public function zRevRange($key, $start, $end, $scores = null) {}
@@ -3396,6 +3570,7 @@ class Redis
      * @link    https://redis.io/commands/zrangebyscore
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 0, 'val0');
      * $redis->zAdd('key', 2, 'val2');
      * $redis->zAdd('key', 10, 'val10');
@@ -3403,6 +3578,7 @@ class Redis
      * $redis->zRangeByScore('key', 0, 3, array('withscores' => TRUE);              // array('val0' => 0, 'val2' => 2)
      * $redis->zRangeByScore('key', 0, 3, array('limit' => array(1, 1));                        // array('val2')
      * $redis->zRangeByScore('key', 0, 3, array('withscores' => TRUE, 'limit' => array(1, 1));  // array('val2' => 2)
+     * </code>
      * </pre>
      */
     public function zRangeByScore($key, $start, $end, array $options = []) {}
@@ -3461,6 +3637,7 @@ class Redis
      * @link    https://redis.io/commands/zrangebylex
      * @example
      * <pre>
+     * <code>
      * foreach (array('a', 'b', 'c', 'd', 'e', 'f', 'g') as $char) {
      *     $redis->zAdd('key', $char);
      * }
@@ -3468,6 +3645,7 @@ class Redis
      * $redis->zRangeByLex('key', '-', '[c'); // array('a', 'b', 'c')
      * $redis->zRangeByLex('key', '-', '(c'); // array('a', 'b')
      * $redis->zRangeByLex('key', '-', '[c'); // array('b', 'c')
+     * </code>
      * </pre>
      */
     public function zRangeByLex(string $key, string $min, string $max, int $offset = -1, int $count = -1) {}
@@ -3601,10 +3779,12 @@ class Redis
      * @link    https://redis.io/commands/zcount
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 0, 'val0');
      * $redis->zAdd('key', 2, 'val2');
      * $redis->zAdd('key', 10, 'val10');
      * $redis->zCount('key', 0, 3); // 2, corresponding to array('val0', 'val2')
+     * </code>
      * </pre>
      */
     public function zCount($key, $start, $end) {}
@@ -3623,10 +3803,12 @@ class Redis
      * @link    https://redis.io/commands/zremrangebyscore
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 0, 'val0');
      * $redis->zAdd('key', 2, 'val2');
      * $redis->zAdd('key', 10, 'val10');
      * $redis->zRemRangeByScore('key', '0', '3'); // 2
+     * </code>
      * </pre>
      */
     public function zRemRangeByScore($key, $start, $end) {}
@@ -3655,11 +3837,13 @@ class Redis
      * @link    https://redis.io/commands/zremrangebyrank
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 1, 'one');
      * $redis->zAdd('key', 2, 'two');
      * $redis->zAdd('key', 3, 'three');
      * $redis->zRemRangeByRank('key', 0, 1); // 2
      * $redis->zRange('key', 0, -1, array('withscores' => TRUE)); // array('three' => 3)
+     * </code>
      * </pre>
      */
     public function zRemRangeByRank($key, $start, $end) {}
@@ -3688,10 +3872,12 @@ class Redis
      * @link    https://redis.io/commands/zsize
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 0, 'val0');
      * $redis->zAdd('key', 2, 'val2');
      * $redis->zAdd('key', 10, 'val10');
      * $redis->zCard('key');            // 3
+     * </code>
      * </pre>
      */
     public function zCard($key) {}
@@ -3738,8 +3924,10 @@ class Redis
      * @link    https://redis.io/commands/zscore
      * @example
      * <pre>
+     * <code>
      * $redis->zAdd('key', 2.5, 'val2');
      * $redis->zScore('key', 'val2'); // 2.5
+     * </code>
      * </pre>
      */
     public function zScore($key, $member) {}
@@ -3758,6 +3946,7 @@ class Redis
      * @link    https://redis.io/commands/zrank
      * @example
      * <pre>
+     * <code>
      * $redis->del('z');
      * $redis->zAdd('key', 1, 'one');
      * $redis->zAdd('key', 2, 'two');
@@ -3765,6 +3954,7 @@ class Redis
      * $redis->zRank('key', 'two');     // 1
      * $redis->zRevRank('key', 'one');  // 1
      * $redis->zRevRank('key', 'two');  // 0
+     * </code>
      * </pre>
      */
     public function zRank($key, $member) {}
@@ -3796,10 +3986,12 @@ class Redis
      * @link    https://redis.io/commands/zincrby
      * @example
      * <pre>
+     * <code>
      * $redis->del('key');
      * $redis->zIncrBy('key', 2.5, 'member1');  // key or member1 didn't exist, so member1's score is to 0
      *                                          // before the increment and now has the value 2.5
      * $redis->zIncrBy('key', 1, 'member1');    // 3.5
+     * </code>
      * </pre>
      */
     public function zIncrBy($key, $value, $member) {}
@@ -3825,6 +4017,7 @@ class Redis
      * @link    https://redis.io/commands/zunionstore
      * @example
      * <pre>
+     * <code>
      * $redis->del('k1');
      * $redis->del('k2');
      * $redis->del('k3');
@@ -3843,6 +4036,7 @@ class Redis
      * // Weighted zUnionStore
      * $redis->zUnionStore('ko2', array('k1', 'k2'), array(1, 1)); // 4, 'ko2' => array('val0', 'val1', 'val2', 'val3')
      * $redis->zUnionStore('ko3', array('k1', 'k2'), array(5, 1)); // 4, 'ko3' => array('val0', 'val2', 'val3', 'val1')
+     * </code>
      * </pre>
      */
     public function zUnionStore($output, $zSetKeys, ?array $weights = null, $aggregateFunction = null) {}
@@ -3879,6 +4073,7 @@ class Redis
      * @link    https://redis.io/commands/zinterstore
      * @example
      * <pre>
+     * <code>
      * $redis->del('k1');
      * $redis->del('k2');
      * $redis->del('k3');
@@ -3901,6 +4096,7 @@ class Redis
      * // Weighted zInterStore
      * $redis->zInterStore('ko3', array('k1', 'k2'), array(1, 5), 'min'); // 2, 'ko3' => array('val1', 'val3')
      * $redis->zInterStore('ko4', array('k1', 'k2'), array(1, 5), 'max'); // 2, 'ko4' => array('val3', 'val1')
+     * </code>
      * </pre>
      */
     public function zInterStore($output, $zSetKeys, array $weights = null, $aggregateFunction = null) {}
@@ -3930,12 +4126,14 @@ class Redis
      * @link    https://redis.io/commands/zscan
      * @example
      * <pre>
+     * <code>
      * $iterator = null;
      * while ($members = $redis-zscan('zset', $iterator)) {
      *     foreach ($members as $member => $score) {
      *         echo $member . ' => ' . $score . PHP_EOL;
      *     }
      * }
+     * </code>
      * </pre>
      */
     public function zScan($key, &$iterator, $pattern = null, $count = 0) {}
@@ -3957,9 +4155,11 @@ class Redis
      * @link https://redis.io/commands/bzpopmax
      * @example
      * <pre>
+     * <code>
      * // Wait up to 5 seconds to pop the *highest* scoring member from sets `zs1` and `zs2`
      * $redis->bzPopMax(['zs1', 'zs2'], 5);
      * $redis->bzPopMax('zs1', 'zs2', 5);
+     * </code>
      * </pre>
      */
     public function bzPopMax($key_or_keys, $timeout_or_key, ...$extra_args) {}
@@ -3982,9 +4182,11 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * // Wait up to 5 seconds to pop the *lowest* scoring member from sets `zs1` and `zs2`.
      * $redis->bzPopMin(['zs1', 'zs2'], 5);
      * $redis->bzPopMin('zs1', 'zs2', 5);
+     * </code>
      * </pre>
      */
     public function bzPopMin($key_or_keys, $timeout_or_key, ...$extra_args) {}
@@ -4005,12 +4207,14 @@ class Redis
      * @link    https://redis.io/commands/hset
      * @example
      * <pre>
+     * <code>
      * $redis->del('h')
      * $redis->hSet('h', 'key1', 'hello');  // 1, 'key1' => 'hello' in the hash at "h"
      * $redis->hGet('h', 'key1');           // returns "hello"
      *
      * $redis->hSet('h', 'key1', 'plop');   // 0, value was replaced.
      * $redis->hGet('h', 'key1');           // returns "plop"
+     * </code>
      * </pre>
      */
     public function hSet(string $key, string $hashKey, mixed $value): Redis|int|false {}
@@ -4029,10 +4233,12 @@ class Redis
      * @link    https://redis.io/commands/hsetnx
      * @example
      * <pre>
+     * <code>
      * $redis->del('h')
      * $redis->hSetNx('h', 'key1', 'hello'); // TRUE, 'key1' => 'hello' in the hash at "h"
      * $redis->hSetNx('h', 'key1', 'world'); // FALSE, 'key1' => 'hello' in the hash at "h". No change since the field
      * wasn't replaced.
+     * </code>
      * </pre>
      */
     public function hSetNx($key, $hashKey, $value) {}
@@ -4064,10 +4270,12 @@ class Redis
      * @link    https://redis.io/commands/hlen
      * @example
      * <pre>
+     * <code>
      * $redis->del('h')
      * $redis->hSet('h', 'key1', 'hello');
      * $redis->hSet('h', 'key2', 'plop');
      * $redis->hLen('h'); // returns 2
+     * </code>
      * </pre>
      */
     public function hLen($key) {}
@@ -4087,6 +4295,7 @@ class Redis
      * @link    https://redis.io/commands/hdel
      * @example
      * <pre>
+     * <code>
      * $redis->hMSet('h',
      *               array(
      *                    'f1' => 'v1',
@@ -4097,12 +4306,13 @@ class Redis
      *
      * var_dump( $redis->hDel('h', 'f1') );        // int(1)
      * var_dump( $redis->hDel('h', 'f2', 'f3') );  // int(2)
-     * s
+     * 
      * var_dump( $redis->hGetAll('h') );
      * //// Output:
      * //  array(1) {
      * //    ["f4"]=> string(2) "v4"
      * //  }
+     * </code>
      * </pre>
      */
     public function hDel($key, $hashKey1, ...$otherHashKeys) {}
@@ -4119,6 +4329,7 @@ class Redis
      * @link    https://redis.io/commands/hkeys
      * @example
      * <pre>
+     * <code>
      * $redis->del('h');
      * $redis->hSet('h', 'a', 'x');
      * $redis->hSet('h', 'b', 'y');
@@ -4138,6 +4349,7 @@ class Redis
      * // string(1) "d"
      * // }
      * // The order is random and corresponds to redis' own internal representation of the set structure.
+     * </code>
      * </pre>
      */
     public function hKeys($key) {}
@@ -4154,6 +4366,7 @@ class Redis
      * @link    https://redis.io/commands/hvals
      * @example
      * <pre>
+     * <code>
      * $redis->del('h');
      * $redis->hSet('h', 'a', 'x');
      * $redis->hSet('h', 'b', 'y');
@@ -4173,6 +4386,7 @@ class Redis
      * //   string(1) "t"
      * // }
      * // The order is random and corresponds to redis' own internal representation of the set structure.
+     * </code>
      * </pre>
      */
     public function hVals($key) {}
@@ -4189,6 +4403,7 @@ class Redis
      * @link    https://redis.io/commands/hgetall
      * @example
      * <pre>
+     * <code>
      * $redis->del('h');
      * $redis->hSet('h', 'a', 'x');
      * $redis->hSet('h', 'b', 'y');
@@ -4208,6 +4423,7 @@ class Redis
      * //   string(1) "t"
      * // }
      * // The order is random and corresponds to redis' own internal representation of the set structure.
+     * </code>
      * </pre>
      */
     public function hGetAll($key) {}
@@ -4225,9 +4441,11 @@ class Redis
      * @link    https://redis.io/commands/hexists
      * @example
      * <pre>
+     * <code>
      * $redis->hSet('h', 'a', 'x');
      * $redis->hExists('h', 'a');               //  TRUE
      * $redis->hExists('h', 'NonExistingKey');  // FALSE
+     * </code>
      * </pre>
      */
     public function hExists($key, $hashKey) {}
@@ -4246,9 +4464,11 @@ class Redis
      * @link    https://redis.io/commands/hincrby
      * @example
      * <pre>
+     * <code>
      * $redis->del('h');
      * $redis->hIncrBy('h', 'x', 2); // returns 2: h[x] = 2 now.
      * $redis->hIncrBy('h', 'x', 1); // h[x] ← 2 + 1. Returns 3
+     * </code>
      * </pre>
      */
     public function hIncrBy($key, $hashKey, $value) {}
@@ -4267,6 +4487,7 @@ class Redis
      * @link    https://redis.io/commands/hincrbyfloat
      * @example
      * <pre>
+     * <code>
      * $redis = new Redis();
      * $redis->connect('127.0.0.1');
      * $redis->hset('h', 'float', 3);
@@ -4282,6 +4503,7 @@ class Redis
      *    ["int"]=>
      *    string(1) "3"
      *  }
+     * </code>
      * </pre>
      */
     public function hIncrByFloat($key, $field, $increment) {}
@@ -4300,9 +4522,11 @@ class Redis
      * @link    https://redis.io/commands/hmset
      * @example
      * <pre>
+     * <code>
      * $redis->del('user:1');
      * $redis->hMSet('user:1', array('name' => 'Joe', 'salary' => 2000));
      * $redis->hIncrBy('user:1', 'salary', 100); // Joe earns 100 more now.
+     * </code>
      * </pre>
      */
     public function hMSet(string $key, array $hashKeys): Redis|bool {}
@@ -4321,10 +4545,12 @@ class Redis
      * @link    https://redis.io/commands/hmget
      * @example
      * <pre>
+     * <code>
      * $redis->del('h');
      * $redis->hSet('h', 'field1', 'value1');
      * $redis->hSet('h', 'field2', 'value2');
      * $redis->hMGet('h', array('field1', 'field2')); // returns array('field1' => 'value1', 'field2' => 'value2')
+     * </code>
      * </pre>
      */
     public function hMGet($key, $hashKeys) {}
@@ -4344,6 +4570,7 @@ class Redis
      * @link    https://redis.io/commands/hscan
      * @example
      * <pre>
+     * <code>
      * $redis->del('big-hash');
      *
      * for ($i = 0; $i < 1000; $i++) {
@@ -4362,6 +4589,7 @@ class Redis
      *         echo "[$field] => $value\n";
      *     }
      * } while ($it != 0);
+     * </code>
      * </pre>
      */
     public function hScan($key, &$iterator, $pattern = null, $count = 0) {}
@@ -4407,6 +4635,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->del("myplaces");
      *
      * // Since the key will be new, $result will be 2
@@ -4418,6 +4647,7 @@ class Redis
      *
      * $redis->geoAdd('cities', -121.837478, 39.728494, 'Chico', ['XX', 'CH']);
      * $redis->geoAdd('cities', -121.8374, 39.7284, 'Chico', -122.03218, 37.322, 'Cupertino');
+     * </code>
      * </pre>
      */
     public function geoAdd($key, $longitude, $latitude, $member, ...$other_triples_and_options) {}
@@ -4437,6 +4667,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->geoAdd("hawaii", -157.858, 21.306, "Honolulu", -156.331, 20.798, "Maui");
      * $hashes = $redis->geoHash("hawaii", "Honolulu", "Maui");
      * var_dump($hashes);
@@ -4446,6 +4677,7 @@ class Redis
      * //   [1]=>
      * //   string(11) "8e8y6d5jps0"
      * // }
+     * </code>
      * </pre>
      */
     public function geoHash($key, ...$member) {}
@@ -4464,6 +4696,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->geoAdd("hawaii", -157.858, 21.306, "Honolulu", -156.331, 20.798, "Maui");
      * $positions = $redis->geoPos("hawaii", "Honolulu", "Maui");
      * var_dump($positions);
@@ -4479,6 +4712,7 @@ class Redis
      *      [1]=> string(20) "20.79799924753607598"
      *  }
      * }
+     * </code>
      * </pre>
      */
     public function geoPos(string $key, string ...$member) {}
@@ -4545,6 +4779,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->geoAdd("hawaii", -157.858, 21.306, "Honolulu", -156.331, 20.798, "Maui");
      *
      * $meters = $redis->geoDist("hawaii", "Honolulu", "Maui");
@@ -4564,13 +4799,14 @@ class Redis
      * var_dump($inches);
      *
      * // Output
-     * Distance between Honolulu and Maui:
-     * meters    : 168275.204
-     * kilometers: 168.2752
-     * miles     : 104.5616
-     * feet      : 552084.0028
-     * Invalid unit returned:
-     * bool(false)
+     * //Distance between Honolulu and Maui:
+     * //meters    : 168275.204
+     * //kilometers: 168.2752
+     * //miles     : 104.5616
+     * //feet      : 552084.0028
+     * //Invalid unit returned:
+     * //bool(false)
+     * </code>
      * </pre>
      */
     public function geoDist($key, $member1, $member2, $unit = null) {}
@@ -4609,6 +4845,7 @@ class Redis
      * @since >= 3.2
      * @example
      * <pre>
+     * <code>
      * // Add some cities
      * $redis->geoAdd("hawaii", -157.858, 21.306, "Honolulu", -156.331, 20.798, "Maui");
      *
@@ -4628,51 +4865,52 @@ class Redis
      * var_dump($redis->geoRadius("hawaii", -157.858, 21.306, 300, 'mi', $options));
      *
      * // Output
-     * Within 300 miles of Honolulu:
-     * array(2) {
-     *  [0]=> string(8) "Honolulu"
-     *  [1]=> string(4) "Maui"
-     * }
+     * //Within 300 miles of Honolulu:
+     * //array(2) {
+     * // [0]=> string(8) "Honolulu"
+     * // [1]=> string(4) "Maui"
+     * //}
      *
-     * Within 300 miles of Honolulu with distances:
-     * array(2) {
-     *     [0]=>
-     *   array(2) {
-     *         [0]=>
-     *     string(8) "Honolulu"
-     *         [1]=>
-     *     string(6) "0.0002"
-     *   }
-     *   [1]=>
-     *   array(2) {
-     *         [0]=>
-     *     string(4) "Maui"
-     *         [1]=>
-     *     string(8) "104.5615"
-     *   }
-     * }
+     * //Within 300 miles of Honolulu with distances:
+     * //array(2) {
+     * //    [0]=>
+     * //  array(2) {
+     * //        [0]=>
+     * //    string(8) "Honolulu"
+     * //        [1]=>
+     * //    string(6) "0.0002"
+     * //  }
+     * //  [1]=>
+     * //  array(2) {
+     * //        [0]=>
+     * //    string(4) "Maui"
+     * //        [1]=>
+     * //    string(8) "104.5615"
+     * //  }
+     * //}
      *
-     * First result within 300 miles of Honolulu with distances:
-     * array(1) {
-     *     [0]=>
-     *   array(2) {
-     *         [0]=>
-     *     string(8) "Honolulu"
-     *         [1]=>
-     *     string(6) "0.0002"
-     *   }
-     * }
+     * //First result within 300 miles of Honolulu with distances:
+     * //array(1) {
+     * //    [0]=>
+     * //  array(2) {
+     * //        [0]=>
+     * //    string(8) "Honolulu"
+     * //        [1]=>
+     * //    string(6) "0.0002"
+     * //  }
+     * //}
      *
-     * First result within 300 miles of Honolulu with distances in descending sort order:
-     * array(1) {
-     *     [0]=>
-     *   array(2) {
-     *         [0]=>
-     *     string(4) "Maui"
-     *         [1]=>
-     *     string(8) "104.5615"
-     *   }
-     * }
+     * //First result within 300 miles of Honolulu with distances in descending sort order:
+     * //array(1) {
+     * //    [0]=>
+     * //  array(2) {
+     * //        [0]=>
+     * //    string(4) "Maui"
+     * //        [1]=>
+     * //    string(8) "104.5615"
+     * //  }
+     * //}
+     * </code>
      * </pre>
      */
     public function geoRadius($key, $longitude, $latitude, $radius, $unit, array $options = []) {}
@@ -4696,6 +4934,7 @@ class Redis
      * @see georadius
      * @example
      * <pre>
+     * <code>
      * $redis->geoAdd("hawaii", -157.858, 21.306, "Honolulu", -156.331, 20.798, "Maui");
      *
      * echo "Within 300 miles of Honolulu:\n";
@@ -4705,16 +4944,17 @@ class Redis
      * var_dump($redis->geoRadiusByMember("hawaii", "Honolulu", 300, 'mi', ['count' => 1]));
      *
      * // Output
-     * Within 300 miles of Honolulu:
-     * array(2) {
-     *  [0]=> string(8) "Honolulu"
-     *  [1]=> string(4) "Maui"
-     * }
+     * //Within 300 miles of Honolulu:
+     * //array(2) {
+     * // [0]=> string(8) "Honolulu"
+     * // [1]=> string(4) "Maui"
+     * //}
      *
-     * First match within 300 miles of Honolulu:
-     * array(1) {
-     *  [0]=> string(8) "Honolulu"
-     * }
+     * //First match within 300 miles of Honolulu:
+     * //array(1) {
+     * // [0]=> string(8) "Honolulu"
+     * //}
+     * </code>
      * </pre>
      */
     public function geoRadiusByMember($key, $member, $radius, $units, array $options = []) {}
@@ -4733,10 +4973,12 @@ class Redis
      * @link    https://redis.io/commands/config-get
      * @example
      * <pre>
+     * <code>
      * $redis->config('GET', 'timeout');
      * $redis->config('GET', ['timeout', 'databases']);
      * $redis->config('SET', 'timeout', 30);
      * $redis->config('SET', ['timeout' => 30, 'loglevel' => 'warning']);
+     * </code>
      * </pre>
      */
     public function config($operation, $key_or_settings = null, $value = null) {}
@@ -4758,6 +5000,7 @@ class Redis
      * @link   https://redis.io/commands/eval
      * @example
      * <pre>
+     * <code>
      * $redis->eval("return 1"); // Returns an integer: 1
      * $redis->eval("return {1,2,3}"); // Returns Array(1,2,3)
      * $redis->del('mylist');
@@ -4766,6 +5009,7 @@ class Redis
      * $redis->rpush('mylist','c');
      * // Nested response:  Array(1,2,3,Array('a','b','c'));
      * $redis->eval("return {1,2,3,redis.call('lrange','mylist',0,-1)}}");
+     * </code>
      * </pre>
      */
     public function eval($script, $args = [], $numKeys = 0) {}
@@ -4798,9 +5042,11 @@ class Redis
      * @link    https://redis.io/commands/evalsha
      * @example
      * <pre>
+     * <code>
      * $script = 'return 1';
      * $sha = $redis->script('load', $script);
      * $redis->evalSha($sha); // Returns 1
+     * </code>
      * </pre>
      */
     public function evalSha(string $scriptSha, array $args = [], int $numKeys = 0): mixed {}
@@ -4830,10 +5076,12 @@ class Redis
      * @link    https://redis.io/commands/script-exists
      * @example
      * <pre>
+     * <code>
      * $redis->script('load', $script);
      * $redis->script('flush');
      * $redis->script('kill');
      * $redis->script('exists', $script1, [$script2, $script3, ...]);
+     * </code>
      * </pre>
      *
      * SCRIPT LOAD will return the SHA1 hash of the passed script on success, and FALSE on failure.
@@ -4852,9 +5100,11 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->eval('this-is-not-lua');
      * $err = $redis->getLastError();
      * // "ERR Error compiling script (new function): user_script:1: '=' expected near '-'"
+     * </code>
      * </pre>
      */
     public function getLastError() {}
@@ -4868,6 +5118,7 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->set('x', 'a');
      * $redis->incr('x');
      * $err = $redis->getLastError();
@@ -4875,6 +5126,7 @@ class Redis
      * $redis->clearLastError();
      * $err = $redis->getLastError();
      * // NULL
+     * </code>
      * </pre>
      */
     public function clearLastError() {}
@@ -4906,10 +5158,12 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->client('list'); // Get a list of clients
      * $redis->client('getname'); // Get the name of the current connection
      * $redis->client('setname', 'somename'); // Set the name of the current connection
      * $redis->client('kill', <ip:port>); // Kill the process at ip:port
+     * </code>
      * </pre>
      */
     public function client($command, ...$args) {}
@@ -4926,8 +5180,10 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->setOption(Redis::OPT_PREFIX, 'my-prefix:');
      * $redis->_prefix('my-value'); // Will return 'my-prefix:my-value'
+     * </code>
      * </pre>
      */
     public function _prefix($value) {}
@@ -4943,8 +5199,10 @@ class Redis
      * @return mixed
      * @example
      * <pre>
+     * <code>
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_PHP);
      * $redis->_unserialize('a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}'); // Will return Array(1,2,3)
+     * </code>
      * </pre>
      */
     public function _unserialize($value) {}
@@ -4960,6 +5218,7 @@ class Redis
      * @return string
      * @example
      * <pre>
+     * <code>
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_NONE);
      * $redis->_serialize("foo"); // returns "foo"
      * $redis->_serialize(Array()); // Returns "Array"
@@ -4967,6 +5226,7 @@ class Redis
      *
      * $redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_PHP);
      * $redis->_serialize("foo"); // Returns 's:3:"foo";'
+     * </code>
      * </pre>
      */
     public function _serialize($value) {}
@@ -4983,8 +5243,10 @@ class Redis
      * @link    https://redis.io/commands/dump
      * @example
      * <pre>
+     * <code>
      * $redis->set('foo', 'bar');
      * $val = $redis->dump('foo'); // $val will be the Redis encoded key value
+     * </code>
      * </pre>
      */
     public function dump($key) {}
@@ -5017,9 +5279,11 @@ class Redis
      * @link    https://redis.io/commands/restore
      * @example
      * <pre>
+     * <code>
      * $redis->set('foo', 'bar');
      * $val = $redis->dump('foo');
      * $redis->restore('bar', 0, $val); // The key 'bar', will now be equal to the key 'foo'
+     * </code>
      * </pre>
      */
     public function restore($key, $ttl, $value, $options = null) {}
@@ -5043,7 +5307,9 @@ class Redis
      * @link    https://redis.io/commands/migrate
      * @example
      * <pre>
+     * <code>
      * $redis->migrate('backup', 6379, 'foo', 0, 3600);
+     * </code>
      * </pre>
      */
     public function migrate($host, $port, $key, $dstdb, $timeout, $copy = false, $replace = false, $credentials = null) {}
@@ -5059,11 +5325,13 @@ class Redis
      * @link    https://redis.io/commands/time
      * @example
      * <pre>
+     * <code>
      * var_dump( $redis->time() );
      * // array(2) {
      * //   [0] => string(10) "1342364352"
      * //   [1] => string(6) "253002"
      * // }
+     * </code>
      * </pre>
      */
     public function time() {}
@@ -5093,6 +5361,7 @@ class Redis
      * @link   https://redis.io/commands/scan
      * @example
      * <pre>
+     * <code>
      * $redis->setOption(Redis::OPT_SCAN, Redis::SCAN_NORETRY);
      *
      * $it = null;
@@ -5115,6 +5384,7 @@ class Redis
      *         echo "KEY: $key\n";
      *     }
      * }
+     * </code>
      * </pre>
      */
     public function scan(&$iterator, $pattern = null, $count = 0, $type = null) {}
@@ -5147,10 +5417,12 @@ class Redis
      * @link    https://redis.io/commands/pfcount
      * @example
      * <pre>
+     * <code>
      * $redis->pfAdd('key1', array('elem1', 'elem2'));
      * $redis->pfAdd('key2', array('elem3', 'elem2'));
      * $redis->pfCount('key1'); // int(2)
      * $redis->pfCount(array('key1', 'key2')); // int(3)
+     * </code>
      * </pre>
      */
     public function pfCount($key_or_keys) {}
@@ -5169,10 +5441,12 @@ class Redis
      * @link    https://redis.io/commands/pfmerge
      * @example
      * <pre>
+     * <code>
      * $redis->pfAdd('key1', array('elem1', 'elem2'));
      * $redis->pfAdd('key2', array('elem3', 'elem2'));
      * $redis->pfMerge('key3', array('key1', 'key2'));
      * $redis->pfCount('key3'); // int(3)
+     * </code>
      * </pre>
      */
     public function pfMerge($destKey, array $sourceKeys) {}
@@ -5189,8 +5463,10 @@ class Redis
      *
      * @example
      * <pre>
+     * <code>
      * $redis->rawCommand('SET', 'key', 'value'); // bool(true)
      * $redis->rawCommand('GET", 'key'); // string(5) "value"
+     * </code>
      * </pre>
      */
     public function rawCommand($command, ...$arguments) {}
@@ -5220,7 +5496,9 @@ class Redis
      * @link    https://redis.io/commands/xack
      * @example
      * <pre>
+     * <code>
      * $redis->xAck('stream', 'group1', ['1530063064286-0', '1530063064286-1']);
+     * </code>
      * </pre>
      */
     public function xAck($stream, $group, $messages) {}
@@ -5247,9 +5525,11 @@ class Redis
      * @link    https://redis.io/commands/xadd
      * @example
      * <pre>
+     * <code>
      * $redis->xAdd('mystream', "*", ['field' => 'value']);
      * $redis->xAdd('mystream', "*", ['field' => 'value'], 10);
      * $redis->xAdd('mystream', "*", ['field' => 'value'], 10, true);
+     * </code>
      * </pre>
      */
     public function xAdd($key, $id, $messages, $maxLen = 0, $isApproximate = false, $nomkstream = false) {}
@@ -5291,6 +5571,7 @@ class Redis
      * @link    https://redis.io/commands/xclaim
      * @example
      * <pre>
+     * <code>
      * $ids = ['1530113681011-0', '1530113681011-1', '1530113681011-2'];
      *
      * // Without any options
@@ -5306,6 +5587,7 @@ class Redis
      *         'JUSTID'
      *     ]
      * );
+     * </code>
      * </pre>
      */
     public function xClaim(string $key, string $group, string $consumer, int $min_iddle, array $ids, array $options) {}
@@ -5323,7 +5605,9 @@ class Redis
      * @link    https://redis.io/commands/xdel
      * @example
      * <pre>
+     * <code>
      * $redis->xDel('mystream', ['1530115304877-0', '1530115305731-0']);
+     * </code>
      * </pre>
      */
     public function xDel($key, $ids) {}
@@ -5365,9 +5649,11 @@ class Redis
      * @link    https://redis.io/commands/xgroup
      * @example
      * <pre>
+     * <code>
      * $redis->xGroup('CREATE', 'mystream', 'mygroup', 0);
      * $redis->xGroup('CREATE', 'mystream', 'mygroup', 0, true); // create stream
      * $redis->xGroup('DESTROY', 'mystream', 'mygroup');
+     * </code>
      * </pre>
      */
     public function xGroup($operation, $key = null, $group = null, $id_or_consumer = null, $mkstream = false, $entries_read = -2) {}
@@ -5387,7 +5673,9 @@ class Redis
      * @link    https://redis.io/commands/xinfo
      * @example
      * <pre>
+     * <code>
      * $redis->xInfo('STREAM', 'mystream');
+     * </code>
      * </pre>
      */
     public function xInfo($operation, $arg1 = null, $arg2 = null, $count = -1) {}
@@ -5404,7 +5692,9 @@ class Redis
      * @link    https://redis.io/commands/xlen
      * @example
      * <pre>
+     * <code>
      * $redis->xLen('mystream');
+     * </code>
      * </pre>
      */
     public function xLen($stream) {}
@@ -5427,8 +5717,10 @@ class Redis
      * @link https://redis.io/commands/xpending
      * @example
      * <pre>
+     * <code>
      * $redis->xPending('mystream', 'mygroup');
      * $redis->xPending('mystream', 'mygroup', '-', '+', 1, 'consumer-1');
+     * </code>
      * </pre>
      */
     public function xPending($stream, $group, $start = null, $end = null, $count = -1, $consumer = null) {}
@@ -5448,10 +5740,12 @@ class Redis
      * @link    https://redis.io/commands/xrange
      * @example
      * <pre>
+     * <code>
      * // Get everything in this stream
      * $redis->xRange('mystream', '-', '+');
      * // Only the first two messages
      * $redis->xRange('mystream', '-', '+', 2);
+     * </code>
      * </pre>
      */
     public function xRange($stream, $start, $end, $count = -1) {}
@@ -5470,7 +5764,9 @@ class Redis
      * @link    https://redis.io/commands/xread
      * @example
      * <pre>
+     * <code>
      * $redis->xRead(['stream1' => '1535222584555-0', 'stream2' => '1535222584555-0']);
+     * </code>
      * </pre>
      */
     public function xRead($streams, $count = -1, $block = -1) {}
@@ -5491,10 +5787,12 @@ class Redis
      * @link    https://redis.io/commands/xreadgroup
      * @example
      * <pre>
+     * <code>
      * // Consume messages for 'mygroup', 'consumer1'
      * $redis->xReadGroup('mygroup', 'consumer1', ['s1' => 0, 's2' => 0]);
      * // Read a single message as 'consumer2' for up to a second until a message arrives.
      * $redis->xReadGroup('mygroup', 'consumer2', ['s1' => 0, 's2' => 0], 1, 1000);
+     * </code>
      * </pre>
      */
     public function xReadGroup($group, $consumer, $streams, $count = 1, $block = 1) {}
@@ -5515,8 +5813,10 @@ class Redis
      * @link    https://redis.io/commands/xrevrange
      * @example
      * <pre>
+     * <code>
      * $redis->xRevRange('mystream', '+', '-');
      * $redis->xRevRange('mystream', '0-2', '0-1');
+     * </code>
      * </pre>
      */
     public function xRevRange($stream, $end, $start, $count = -1) {}
@@ -5559,8 +5859,10 @@ class Redis
      * @since   phpredis 2.2.8
      * @example
      * <pre>
+     * <code>
      * $redis->sAddArray('k', array('v1'));                // boolean
      * $redis->sAddArray('k', array('v1', 'v2', 'v3'));    // boolean
+     * </code>
      * </pre>
      */
     public function sAddArray($key, array $values) {}

@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 /**
  * Helper autocomplete for php redis extension
@@ -203,7 +204,9 @@ class RedisArray
      * @return  bool|array
      * @example
      * <pre>
+     * <code>
      * $redis->info();
+     * </code>
      * </pre>
      */
     public function info(): bool|array {}
