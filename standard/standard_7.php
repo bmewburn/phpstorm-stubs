@@ -893,11 +893,13 @@ function lchgrp(string $filename, string|int $group): bool {}
  * you need to prefix mode with a zero (0):
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * chmod("/somedir/somefile", 755);   // decimal; probably incorrect
  * chmod("/somedir/somefile", "u+rwx,go+rx"); // string; incorrect
  * chmod("/somedir/somefile", 0755);  // octal; correct value of mode
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * <p>
  * The mode parameter consists of three octal
@@ -1021,9 +1023,11 @@ function diskfreespace(string $directory): float|false {}
  * replace these occurrences with a double dot.
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * $text = str_replace("\n.", "\n..", $text);
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * @param string|array $additional_headers <p>
  * String or array to be inserted at the end of the email header.<br/>

@@ -1,4 +1,5 @@
 <?php
+//Modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\ExpectedValues;
@@ -564,9 +565,11 @@ function fread($stream, int $length): string|false {}
  * used in the path to the file, or use forward slashes.
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * $handle = fopen("c:\\folder\\resource.txt", "r");
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * @param string $mode <p>
  * The mode parameter specifies the type of access

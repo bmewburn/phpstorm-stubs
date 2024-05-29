@@ -1,4 +1,5 @@
 <?php
+/** Modified by Mewburn Projects Pty Ltd */
 
 /**
  * Helper autocomplete for php cassandra extension.
@@ -3673,15 +3674,17 @@ namespace Cassandra {
 
         /**
          * Initialize a Collection type
-         * ```php
-         * <?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          *
          * $collection = Type::collection(Type::int())
          *                   ->create(1, 2, 3, 4, 5, 6, 7, 8, 9);
          *
          * var_dump($collection);
-         * ```
+         * </code>
+         * </pre>
          *
          * @param \Cassandra\Type $type The type of values
          *
@@ -3692,15 +3695,17 @@ namespace Cassandra {
 
         /**
          * Initialize a set type
-         * ```
-         * <?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          *
          * $set = Type::set(Type::varchar())
          *            ->create("a", "b", "c", "d", "e", "f", "g", "h", "i", "j");
          *
          * var_dump($set);
-         * ```
+         * </code>
+         * </pre>
          *
          * @param \Cassandra\Type $type The types of values
          *
@@ -3711,13 +3716,17 @@ namespace Cassandra {
 
         /**
          * Initialize a map type
-         * ```<?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          *
          * $map = Type::map(Type::int(), Type::varchar())
          *            ->create(1, "a", 2, "b", 3, "c", 4, "d", 5, "e", 6, "f")
          *
-         * var_dump($map);```
+         * var_dump($map);
+         * </code>
+         * </pre>
          *
          * @param \Cassandra\Type $keyType The type of keys
          * @param \Cassandra\Type $valueType The type of values
@@ -3729,13 +3738,17 @@ namespace Cassandra {
 
         /**
          * Initialize a tuple type
-         * ```<?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          *
          * $tuple = Type::tuple(Type::varchar(), Type::int())
          *            ->create("a", 123);
          *
-         * var_dump($tuple);```
+         * var_dump($tuple);
+         * </code>
+         * </pre>
          *
          * @param \Cassandra\Type $types A variadic list of types
          *
@@ -3746,13 +3759,17 @@ namespace Cassandra {
 
         /**
          * Initialize a user type
-         * ```<?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          *
          * $userType = Type::userType("a", Type::varchar(), "b", Type::int())
          *                 ->create("a", "abc", "b", 123);
          *
-         * var_dump($userType);```
+         * var_dump($userType);
+         * </code>
+         * </pre>
          *
          * @param \Cassandra\Type $types A variadic list of name/type pairs
          *
@@ -4929,10 +4946,12 @@ namespace Cassandra {
         /**
          * Creates a decimal from a given decimal string:
          *
-         * ~~~{.php}
-         * <?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * $decimal = new Cassandra::Decimal("1313123123.234234234234234234123");
-         * ~~~
+         * </code>
+         * </pre>
          *
          * @param string $value Any decimal string
          *
@@ -5991,7 +6010,9 @@ namespace Cassandra\Type {
         /**
          * Creates a new Map from the given values.
          *
-         * ```<?php
+         * <pre>
+         * <code>
+         * &lt;?php
          * use Type;
          * use Uuid;
          *
@@ -6000,7 +6021,9 @@ namespace Cassandra\Type {
          *                      new Uuid(), 'second uuid',
          *                      new Uuid(), 'third uuid');
          *
-         * var_dump($map);```
+         * var_dump($map);
+         * </code>
+         * </pre>
          *
          *
          *                          is a key and each even value is a value for the

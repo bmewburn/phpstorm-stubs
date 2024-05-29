@@ -1,4 +1,5 @@
 <?php
+// Modified by Mewburn Projects Pty Ltd
 
 // Start of pcre v.
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
@@ -31,10 +32,12 @@ use JetBrains\PhpStorm\Pure;
  * array consisting of the matched string at offset 0
  * and its string offset into <i>subject</i> at offset 1.
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
  * print_r($matches);
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * The above example will output:
  * <pre>
@@ -72,12 +75,14 @@ use JetBrains\PhpStorm\Pure;
  * If this flag is passed, unmatched subpatterns are reported as NULL;
  * otherwise they are reported as an empty string.
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * preg_match('/(a)(b)*(c)/', 'ac', $matches);
  * var_dump($matches);
  * preg_match('/(a)(b)*(c)/', 'ac', $matches, PREG_UNMATCHED_AS_NULL);
  * var_dump($matches);
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * The above example will output:
  * <pre>

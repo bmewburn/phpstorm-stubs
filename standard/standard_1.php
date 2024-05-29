@@ -529,11 +529,13 @@ function money_format(string $format, float $number): ?string {}
  * Using a negative start
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * $rest = substr("abcdef", -1);    // returns "f"
  * $rest = substr("abcdef", -2);    // returns "ef"
  * $rest = substr("abcdef", -3, 1); // returns "d"
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * @param int|null $length [optional] <p>
  * If length is given and is positive, the string
@@ -555,12 +557,14 @@ function money_format(string $format, float $number): ?string {}
  * </p>
  * Using a negative length:
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * $rest = substr("abcdef", 0, -1);  // returns "abcde"
  * $rest = substr("abcdef", 2, -1);  // returns "cde"
  * $rest = substr("abcdef", 4, -4);  // returns false
  * $rest = substr("abcdef", -3, -1); // returns "de"
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  */
 #[Pure]
@@ -713,12 +717,14 @@ function addslashes(string $string): string {}
  * characters that you set as the start and end of the range.
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * echo addcslashes('foo[ ]', 'A..z');
  * // output:  \f\o\o\[ \]
  * // All upper and lower-case letters will be escaped
  * // ... but so will the [\]^_`
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * <p>
  * Also, if the first character in a range has a higher ASCII value
@@ -728,10 +734,12 @@ function addslashes(string $string): string {}
  * ASCII value for a character.
  * </p>
  * <pre>
- * <?php
+ * <code>
+ * &lt;?php
  * echo addcslashes("zoo['.']", 'z..A');
  * // output:  \zoo['\.']
- * ?>
+ * ?&gt;
+ * </code>
  * </pre>
  * <p>
  * Be careful if you choose to escape characters 0, a, b, f, n, r,
