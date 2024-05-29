@@ -2091,8 +2091,7 @@ function mysqli_get_host_info(mysqli $mysql): string {}
  * @link https://php.net/manual/en/function.mysqli-get-links-stats.php
  * @return array{total:int, active_plinks:int, cached_plinks:int} mysqli_get_links_stats() returns an associative array with three elements, keyed as follows:
  * <dl>
- * <dt>
- * <code>total</code></dt>
+ * <dt>total</dt>
  * <dd>
  * <p>
  * An integer indicating the total number of open links in
@@ -2100,8 +2099,7 @@ function mysqli_get_host_info(mysqli $mysql): string {}
  * </p>
  * </dd>
  *
- * <dt>
- * <code>active_plinks</code></dt>
+ * <dt>active_plinks</dt>
  * <dd>
  * <p>
  * An integer representing the number of active persistent
@@ -2109,8 +2107,7 @@ function mysqli_get_host_info(mysqli $mysql): string {}
  * </p>
  * </dd>
  *
- * <dt>
- * <code>cached_plinks</code></dt>
+ * <dt>cached_plinks</dt>
  * <dd>
  * <p>
  * An integer representing the number of inactive persistent

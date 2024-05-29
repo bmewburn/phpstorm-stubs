@@ -1,5 +1,5 @@
 <?php
-
+//modified by MEwburn Projects Pty Ltd
 // Start of FFI v.0.1.0
 
 namespace {
@@ -42,16 +42,19 @@ namespace {
          *
          * <code>
          *  #define FFI_LIB "libc.so.6"
-         *
+         *  </code>
+         * <code>
          *  int printf(const char *format, ...);
          * </code>
          *
          * Here, FFI_LIB specifies, that the given library should be loaded.
          *
+         * <pre>
          * <code>
          *  $ffi = FFI::load(__DIR__ . "/printf.h");
          *  $ffi->printf("Hello world!\n");
          * </code>
+         * </pre>
          *
          * @param string $filename
          * @return FFI|null
@@ -70,8 +73,11 @@ namespace {
          *
          * <code>
          *  #define FFI_LIB "libc.so.6"
+         * </code>
+         * <code>
          *  #define FFI_SCOPE "libc"
-         *
+         * </code>
+         * <code>
          *  int printf(const char *format, ...);
          * </code>
          *
@@ -85,10 +91,12 @@ namespace {
          * Finally, FFI::scope() instantiate an FFI object, that implements
          * all C definition from the given scope.
          *
+         * <pre>
          * <code>
          *  $ffi = FFI::scope("libc");
          *  $ffi->printf("Hello world!\n");
          * </code>
+         * </pre>
          *
          * @param string $name
          * @return FFI

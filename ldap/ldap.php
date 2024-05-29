@@ -648,11 +648,13 @@ function ldap_dn2ufn(string $dn): string|false {}
  * the entries are indexed by individual attributes.
  * In case of multiple values for an attribute, they are indexed using
  * integers starting with 0.
+ * <pre>
  * <code>
  * $entree["attribut1"] = "value";
  * $entree["attribut2"][0] = "value1";
  * $entree["attribut2"][1] = "value2";
  * </code>
+ * </pre>
  * </p>
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
@@ -679,11 +681,13 @@ function ldap_add(
  * the entries are indexed by individual attributes.
  * In case of multiple values for an attribute, they are indexed using
  * integers starting with 0.
+ * <pre>
  * <code>
  * $entree["attribut1"] = "value";
  * $entree["attribut2"][0] = "value1";
  * $entree["attribut2"][1] = "value2";
  * </code>
+ * </pre>
  * </p>
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @since 7.3

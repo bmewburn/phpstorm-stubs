@@ -1,5 +1,5 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of svn v.1.0.1
 
 class Svn
@@ -520,6 +520,7 @@ function svn_add($path, $recursive = true, $force = false) {}
  * Scheduled action for item, i.e. addition or deletion. Constants
  * for these magic numbers are not available, they can
  * be emulated by using:
+ * <pre>
  * <code>
  * if (!defined('svn_wc_schedule_normal')) {
  * define('svn_wc_schedule_normal', 0); // nothing special
@@ -528,6 +529,7 @@ function svn_add($path, $recursive = true, $force = false) {}
  * define('svn_wc_schedule_replace', 3); // item will be added and deleted
  * }
  * </code>
+ * </pre>
  * deleted
  * Whether or not the item was deleted, but parent revision lags
  * behind. (Only set if <b>TRUE</b>.)

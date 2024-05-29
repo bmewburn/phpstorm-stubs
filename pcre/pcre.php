@@ -133,12 +133,14 @@ use JetBrains\PhpStorm\Pure;
  * <p>
  * while this example
  * </p>
+ * <pre>
  * <code>
  * $subject = "abcdef";
  * $pattern = '/^def/';
  * preg_match($pattern, substr($subject,3), $matches, PREG_OFFSET_CAPTURE);
  * print_r($matches);
  * </code>
+ * </pre>
  * <p>
  * will produce
  * </p>
@@ -199,6 +201,7 @@ function preg_match(string $pattern, string $subject, &$matches, int $flags = 0,
  * for examples.
  * </p>
  * <p>
+ * <pre>
  * <code>
  * preg_match_all("|]+>(.*)]+>|U",
  * "example: this is a test",
@@ -206,6 +209,7 @@ function preg_match(string $pattern, string $subject, &$matches, int $flags = 0,
  * echo $out[0][0] . ", " . $out[0][1] . "\n";
  * echo $out[1][0] . ", " . $out[1][1] . "\n";
  * </code>
+ * </pre>
  * The above example will output:</p>
  * <pre>
  * example: , this is a test
@@ -339,6 +343,7 @@ function preg_replace(array|string $pattern, array|string $replacement, array|st
  * <p>
  * <b>preg_replace_callback</b> and
  * anonymous function
+ * <pre>
  * <code>
  * /* a unix-style command line filter to convert uppercase
  * * letters at the beginning of paragraphs to lowercase * /
@@ -356,6 +361,7 @@ function preg_replace(array|string $pattern, array|string $replacement, array|st
  * }
  * fclose($fp);
  * </code>
+ * </pre>
  * </p>
  * @param string|string[] $subject <p>
  * The string or an array with strings to search and replace.

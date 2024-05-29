@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 use JetBrains\PhpStorm\Deprecated;
 use JetBrains\PhpStorm\Immutable;
@@ -61,11 +62,13 @@ class ReflectionMethod extends ReflectionFunctionAbstract
     /**
      * Constructs a ReflectionMethod
      *
+     * <pre>
      * <code>
      * $reflection = new ReflectionMethod(new Example(), 'method');
      * $reflection = new ReflectionMethod(Example::class, 'method');
      * $reflection = new ReflectionMethod('Example::method');
      * </code>
+     * </pre>
      *
      * @link https://php.net/manual/en/reflectionmethod.construct.php
      * @param string|object $objectOrMethod Classname, object

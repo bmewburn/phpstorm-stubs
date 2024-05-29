@@ -882,10 +882,12 @@ function get_extension_funcs(string $extension): array|false {}
  * Causing this function to return a multi-dimensional
  * array with categories in the keys of the first dimension and constants
  * and their values in the second dimension.
+ * <pre>
  * <code>
  * define("MY_CONSTANT", 1);
  * print_r(get_defined_constants(true));
  * </code>
+ * </pre>
  * The above example will output something similar to:
  * <pre>
  * Array

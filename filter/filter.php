@@ -1,5 +1,5 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of filter v.0.11.0
 use JetBrains\PhpStorm\Pure;
 
@@ -48,6 +48,7 @@ function filter_input(int $type, string $var_name, int $filter = FILTER_DEFAULT,
  * the value after filtering/sanitizing it.
  * </p>
  * <p>
+ * <pre>
  * <code>
  * // for filters that accept options, use this format
  * $options = array(
@@ -80,6 +81,7 @@ function filter_input(int $type, string $var_name, int $filter = FILTER_DEFAULT,
  * }
  * $var = filter_var('Doe, Jane Sue', FILTER_CALLBACK, array('options' => 'foo'));
  * </code>
+ * </pre>
  * </p>
  * @return mixed the filtered data, or <b>FALSE</b> if the filter fails.
  */

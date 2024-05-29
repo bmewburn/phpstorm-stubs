@@ -592,12 +592,14 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @param string $privateKey [optional] <p>
      * The contents of an OpenSSL private key, as extracted from a certificate or
      * OpenSSL key file:
+     * <pre>
      * <code>
      * $private = openssl_get_privatekey(file_get_contents('private.pem'));
      * $pkey = '';
      * openssl_pkey_export($private, $pkey);
      * $p->setSignatureAlgorithm(Phar::OPENSSL, $pkey);
      * </code>
+     * </pre>
      * See phar introduction for instructions on
      * naming and placement of the public key file.
      * </p>
@@ -836,6 +838,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * An array mapping additional file extensions to MIME type.
      * If the default mapping is sufficient, pass an empty array.
      * By default, these extensions are mapped to these MIME types:
+     * <pre>
      * <code>
      * $mimes = array(
      * 'phps' => Phar::PHPS, // pass to highlight_file()
@@ -880,6 +883,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * 'xml' => 'text/xml',
      * );
      * </code>
+     * </pre>
      * </p>
      * @param null|callable $rewrite [optional] <p>
      * The rewrites function is passed a string as its only parameter and must return a string or <b>FALSE</b>.

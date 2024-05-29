@@ -414,11 +414,13 @@ class PDO
      * Returns the name of the driver.
      * <p>
      * using <b>PDO::ATTR_DRIVER_NAME</b>
+     * <pre>
      * <code>
      * if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
      * echo "Running on mysql; doing something mysql specific here\n";
      * }
      * </code>
+     * </pre>
      * </p>
      * @link https://php.net/manual/en/pdo.constants.php#pdo.constants.attr-driver-name
      */
@@ -582,6 +584,7 @@ class PDO
      * should use <b>PDOStatement::fetchAll</b> instead.
      * <p>
      * Forcing queries to be buffered in mysql
+     * <pre>
      * <code>
      * if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
      * $stmt = $db->prepare('select * from foo',
@@ -590,6 +593,7 @@ class PDO
      * die("my application only works with mysql; I should use \$stmt->fetchAll() instead");
      * }
      * </code>
+     * </pre>
      * </p>
      * @link https://php.net/manual/en/ref.pdo-mysql.php#pdo.constants.mysql-attr-use-buffered-query
      */
@@ -1063,9 +1067,11 @@ class PDO
      * The following example incorrectly relies on the return value of
      * <b>PDO::exec</b>, wherein a statement that affected 0 rows
      * results in a call to <b>die</b>:
+     * <pre>
      * <code>
      * $db->exec() or die(print_r($db->errorInfo(), true));
      * </code>
+     * </pre>
      */
     #[TentativeType]
     public function exec(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $statement): int|false {}

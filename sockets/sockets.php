@@ -125,6 +125,7 @@ function socket_addrinfo_explain(AddressInfo $address): array {}
  * error. Since the <b>socket_select</b> may return 0 the
  * comparison with == would evaluate to <b>TRUE</b>:
  * Understanding <b>socket_select</b>'s result
+ * <pre>
  * <code>
  * $e = NULL;
  * if (false === socket_select($r, $w, $e, 0)) {
@@ -132,6 +133,7 @@ function socket_addrinfo_explain(AddressInfo $address): array {}
  * socket_strerror(socket_last_error()) . "\n";
  * }
  * </code>
+ * </pre>
  */
 function socket_select(?array &$read, ?array &$write, ?array &$except, ?int $seconds, int $microseconds = 0): int|false {}
 
