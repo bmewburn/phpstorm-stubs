@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 //20120405 AG synced to official docs
 use JetBrains\PhpStorm\Deprecated;
@@ -629,12 +630,12 @@ class DOMDocumentFragment extends DOMNode implements DOMParentNode
     public function appendXML(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $data): bool {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function append(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function prepend(...$nodes): void {}
 
@@ -1033,12 +1034,12 @@ class DOMDocument extends DOMNode implements DOMParentNode
     public function adoptNode(DOMNode $node) {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function append(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function prepend(...$nodes): void {}
 
@@ -1548,22 +1549,22 @@ class DOMCharacterData extends DOMNode implements DOMChildNode
     ): bool {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function remove(): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function before(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function after(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function replaceWith(...$nodes): void {}
 }
@@ -1989,38 +1990,37 @@ class DOMElement extends DOMNode implements DOMParentNode, DOMChildNode
     public function setIdAttributeNode(DOMAttr $attr, #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $isId): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function remove(): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function before(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function after(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function replaceWith(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function append(...$nodes): void {}
 
     /**
-     * {@inheritDoc}
+     * @since 8.0
      */
     public function prepend(...$nodes): void {}
 
     /**
      * @since 8.3
-     * {@inheritDoc}
      */
     public function replaceChildren(...$nodes): void {}
 
