@@ -41,6 +41,8 @@ class SimpleXMLElement implements Traversable, ArrayAccess, Countable, Iterator,
      */
     private function __get($name) {}
 
+    private function __set($name, $value) {}
+
     /**
      * Return a well-formed XML string based on SimpleXML element
      * @link https://php.net/manual/en/simplexmlelement.asxml.php
