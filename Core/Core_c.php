@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 
 // Start of Core v.5.3.6-13ubuntu3.2
 use JetBrains\PhpStorm\ExpectedValues;
@@ -14,11 +15,6 @@ use JetBrains\PhpStorm\Pure;
 class stdClass {}
 
 /**
- * @link https://wiki.php.net/rfc/iterable
- */
-interface iterable {}
-
-/**
  * Interface to detect if a class is traversable using foreach.
  * Abstract base interface that cannot be implemented alone.
  * Instead it must be implemented by either {@see IteratorAggregate} or {@see Iterator}.
@@ -27,9 +23,8 @@ interface iterable {}
  * @template TKey
  * @template-covariant TValue
  *
- * @template-implements iterable<TKey, TValue>
  */
-interface Traversable extends iterable {}
+interface Traversable {}
 
 /**
  * Interface to create an external Iterator.
