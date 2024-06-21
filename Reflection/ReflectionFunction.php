@@ -1,11 +1,11 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The <b>ReflectionFunction</b> class reports
@@ -104,6 +104,6 @@ class ReflectionFunction extends ReflectionFunctionAbstract
     #[TentativeType]
     public function getClosure(): Closure {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function isAnonymous(): bool {}
 }

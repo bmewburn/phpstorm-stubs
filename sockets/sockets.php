@@ -2,8 +2,8 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of sockets v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use __IDE\ArrayShape;
+use __IDE\StubsElementAvailable;
 
 /**
  * (PHP 7 &gt;= 7.2.0)<br/>
@@ -729,8 +729,8 @@ function socket_send(Socket $socket, string $data, int $length, int $flags): int
 function socket_sendmsg(
     Socket $socket,
     array $message,
-    #[PhpStormStubsElementAvailable(from: '5.5', to: '7.4')] int $flags,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $flags = 0
+    #[StubsElementAvailable(from: '5.5', to: '7.4')] int $flags,
+    #[StubsElementAvailable(from: '8.0')] int $flags = 0
 ): int|false {}
 
 /**
@@ -818,8 +818,8 @@ function socket_recvfrom(Socket $socket, &$data, int $length, int $flags, &$addr
 function socket_recvmsg(
     Socket $socket,
     array &$message,
-    #[PhpStormStubsElementAvailable(from: '5.5', to: '7.4')] int $flags,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $flags = 0
+    #[StubsElementAvailable(from: '5.5', to: '7.4')] int $flags,
+    #[StubsElementAvailable(from: '8.0')] int $flags = 0
 ): int|false {}
 
 /**
@@ -1350,7 +1350,7 @@ function socket_import_stream($stream): Socket|false {}
 function socket_cmsg_space(
     int $level,
     int $type,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $num = 0
+    #[StubsElementAvailable(from: '8.0')] int $num = 0
 ): ?int {}
 
 /**

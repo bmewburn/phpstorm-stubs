@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of xmlreader v.0.2
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * The XMLReader extension is an XML Pull parser. The reader acts as a
@@ -451,7 +451,7 @@ class XMLReader
      */
     #[TentativeType]
     public function expand(
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'DOMNode|null'], default: '')] $baseNode = null
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'DOMNode|null'], default: '')] $baseNode = null
     ): DOMNode|false {}
 }
 // End of xmlreader v.0.2

@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of zip v.1.14.0
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * A file archive, compressed with Zip.

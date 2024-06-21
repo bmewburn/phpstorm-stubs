@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of libxml v.
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Contains various information about errors thrown by libxml. The error codes
@@ -89,8 +89,8 @@ function libxml_set_streams_context($context): void {}
  * <i>use_errors</i>.
  */
 function libxml_use_internal_errors(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] bool $use_errors = false,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?bool $use_errors = null
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] bool $use_errors = false,
+    #[StubsElementAvailable(from: '8.0')] ?bool $use_errors = null
 ): bool {}
 
 /**

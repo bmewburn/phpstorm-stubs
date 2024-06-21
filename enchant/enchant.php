@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of enchant v.1.1.0
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * (PHP 5 &gt;= 5.3.0, PECL enchant &gt;= 0.1.0 )<br/>

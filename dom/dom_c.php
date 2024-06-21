@@ -2,12 +2,12 @@
 //modified by Mewburn Projects Pty Ltd
 
 //20120405 AG synced to official docs
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Language;
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Language;
 
 /**
  * The DOMNode class
@@ -216,8 +216,8 @@ class DOMNode
      * @return static The cloned node.
      */
     public function cloneNode(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $deep,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $deep = false
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $deep,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $deep = false
     ) {}
 
     /**
@@ -303,7 +303,7 @@ class DOMNode
      * </p>
      * @return string|null The namespace URI of the node.
      */
-    #[PhpStormStubsElementAvailable(from: '8.0')]
+    #[StubsElementAvailable(from: '8.0')]
     #[TentativeType]
     public function lookupNamespaceURI(?string $prefix): ?string {}
 
@@ -315,7 +315,7 @@ class DOMNode
      * </p>
      * @return string|null The namespace URI of the node.
      */
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')]
+    #[StubsElementAvailable(from: '5.3', to: '7.4')]
     public function lookupNamespaceUri($prefix) {}
 
     /**
@@ -526,10 +526,10 @@ class DOMImplementation
      */
     public function createDocumentType(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $qualifiedName,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $publicId,
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $publicId = '',
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $systemId,
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $systemId = ''
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $publicId,
+        #[StubsElementAvailable(from: '8.0')] string $publicId = '',
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $systemId,
+        #[StubsElementAvailable(from: '8.0')] string $systemId = ''
     ) {}
 
     /**
@@ -553,12 +553,12 @@ class DOMImplementation
      * as determined by $namespace and $qualifiedName.
      */
     public function createDocument(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $namespace,
-        #[PhpStormStubsElementAvailable(from: '8.0')] ?string $namespace = null,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $qualifiedName,
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $qualifiedName = '',
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] DOMDocumentType $doctype,
-        #[PhpStormStubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'DOMDocumentType|null'], default: 'DOMDocumentType')] $doctype = null
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $namespace,
+        #[StubsElementAvailable(from: '8.0')] ?string $namespace = null,
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $qualifiedName,
+        #[StubsElementAvailable(from: '8.0')] string $qualifiedName = '',
+        #[StubsElementAvailable(from: '5.3', to: '7.3')] DOMDocumentType $doctype,
+        #[StubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'DOMDocumentType|null'], default: 'DOMDocumentType')] $doctype = null
     ) {}
 }
 
@@ -896,8 +896,8 @@ class DOMDocument extends DOMNode implements DOMParentNode
      */
     public function createProcessingInstruction(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $target,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $data,
-        #[PhpStormStubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $data = ''
+        #[StubsElementAvailable(from: '5.3', to: '7.3')] $data,
+        #[StubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $data = ''
     ) {}
 
     /**
@@ -954,8 +954,8 @@ class DOMDocument extends DOMNode implements DOMParentNode
      */
     public function importNode(
         DOMNode $node,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $deep,
-        #[PhpStormStubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $deep = false
+        #[StubsElementAvailable(from: '5.3', to: '7.3')] $deep,
+        #[StubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $deep = false
     ) {}
 
     /**
@@ -1134,7 +1134,7 @@ class DOMDocument extends DOMNode implements DOMParentNode
     #[TentativeType]
     public function saveXML(
         ?DOMNode $node = null,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $options = 0
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $options = 0
     ): string|false {}
 
     /**
@@ -1382,8 +1382,8 @@ class DOMNamedNodeMap implements IteratorAggregate, Countable
      */
     #[TentativeType]
     public function item(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $index = 0,
-        #[PhpStormStubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $index
+        #[StubsElementAvailable(from: '5.3', to: '7.0')] $index = 0,
+        #[StubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $index
     ): ?DOMNode {}
 
     /**
@@ -1400,10 +1400,10 @@ class DOMNamedNodeMap implements IteratorAggregate, Countable
      */
     #[TentativeType]
     public function getNamedItemNS(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $namespaceURI = '',
-        #[PhpStormStubsElementAvailable(from: '8.0')] ?string $namespace,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $localName = '',
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $localName
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $namespaceURI = '',
+        #[StubsElementAvailable(from: '8.0')] ?string $namespace,
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $localName = '',
+        #[StubsElementAvailable(from: '8.0')] string $localName
     ): ?DOMNode {}
 
     /**
@@ -2411,7 +2411,7 @@ class DOMXPath
      * @param DOMDocument $document The <classname>DOMDocument</classname> associated with the <classname>DOMXPath</classname>.
      * @param bool $registerNodeNS [optional] allow global flag to configure query() or evaluate() calls. Since 8.0.
      */
-    public function __construct(DOMDocument $document, #[PhpStormStubsElementAvailable(from: '8.0')] bool $registerNodeNS = true) {}
+    public function __construct(DOMDocument $document, #[StubsElementAvailable(from: '8.0')] bool $registerNodeNS = true) {}
 
     /**
      * Registers the namespace with the <classname>DOMXPath</classname> object

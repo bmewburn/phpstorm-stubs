@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 /**
  * Copyright 2013-2017 Aerospike, Inc.
  *
@@ -23,7 +24,7 @@
  * @filesource
  */
 
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * The Aerospike client class

@@ -2,9 +2,9 @@
 // Modified by Mewburn Projects Pty Ltd
 
 // Start of pcre v.
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Perform a regular expression match
@@ -390,7 +390,7 @@ function preg_replace_callback(
     array|string $subject,
     int $limit = -1,
     &$count,
-    #[PhpStormStubsElementAvailable(from: '7.4')] int $flags = 0
+    #[StubsElementAvailable(from: '7.4')] int $flags = 0
 ): array|string|null {}
 
 /**
@@ -409,7 +409,7 @@ function preg_replace_callback_array(
     array|string $subject,
     int $limit = -1,
     &$count,
-    #[PhpStormStubsElementAvailable(from: '7.4')] int $flags = 0
+    #[StubsElementAvailable(from: '7.4')] int $flags = 0
 ): array|string|null {}
 
 /**

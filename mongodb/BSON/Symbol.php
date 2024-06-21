@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 namespace MongoDB\BSON;
 
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 use MongoDB\Driver\Exception\InvalidArgumentException;
 use MongoDB\Driver\Exception\UnexpectedValueException;
 

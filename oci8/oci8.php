@@ -2,9 +2,9 @@
 //Modified by Mewburn Projects Pty Ltd
 
 // Start of oci8 v.2.0.7
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * OCI8 LOB functionality for large binary (BLOB) and character (CLOB) objects.

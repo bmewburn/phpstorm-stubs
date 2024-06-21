@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 namespace {
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * Attaches a custom attribute (key/value pair) to the current transaction and the current span (if enabled).

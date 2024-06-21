@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of xml v.
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Pure;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\Pure;
 
 /**
  * Create an XML parser

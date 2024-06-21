@@ -1,10 +1,10 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Opens a bzip2 compressed file
@@ -147,8 +147,8 @@ function bzerror($bz) {}
 #[Pure]
 function bzcompress(
     string $data,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] int $blocksize,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $block_size = 4,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $blocksize,
+    #[StubsElementAvailable(from: '7.1')] int $block_size = 4,
     int $work_factor = 0
 ): string|int {}
 

@@ -2,8 +2,8 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of iconv v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Pure;
 
 /**
  * Convert string to requested character encoding

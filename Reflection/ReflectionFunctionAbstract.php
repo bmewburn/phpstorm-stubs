@@ -1,10 +1,10 @@
 <?php
-
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * A parent class to <b>ReflectionFunction</b>, read its
@@ -27,7 +27,7 @@ abstract class ReflectionFunctionAbstract implements Reflector
      * @link https://php.net/manual/en/reflectionfunctionabstract.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -36,7 +36,7 @@ abstract class ReflectionFunctionAbstract implements Reflector
      * @link https://php.net/manual/en/reflectionfunctionabstract.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     private function __clone(): void {}
 
     /**
@@ -328,23 +328,23 @@ abstract class ReflectionFunctionAbstract implements Reflector
     #[Pure]
     public function getAttributes(?string $name = null, int $flags = 0): array {}
 
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     #[Pure]
     public function getClosureUsedVariables(): array {}
 
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     #[Pure]
     public function hasTentativeReturnType(): bool {}
 
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     #[Pure]
     public function getTentativeReturnType(): ?ReflectionType {}
 
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     #[Pure]
     #[TentativeType]
     public function isStatic(): bool {}
 
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')]
+    #[StubsElementAvailable(from: '5.3', to: '5.6')]
     public function __toString() {}
 }

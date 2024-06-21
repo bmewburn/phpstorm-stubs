@@ -2,11 +2,11 @@
 
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Open Internet or Unix domain socket connection
@@ -52,8 +52,8 @@ use JetBrains\PhpStorm\Pure;
  */
 function fsockopen(
     string $hostname,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] int $port,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $port = -1,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port,
+    #[StubsElementAvailable(from: '7.1')] int $port = -1,
     &$error_code,
     &$error_message,
     ?float $timeout
@@ -72,8 +72,8 @@ function fsockopen(
  */
 function pfsockopen(
     string $hostname,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] int $port,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $port = -1,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port,
+    #[StubsElementAvailable(from: '7.1')] int $port = -1,
     &$error_code,
     &$error_message,
     ?float $timeout
@@ -186,7 +186,7 @@ function pfsockopen(
 #[LanguageLevelTypeAware(["8.0" => "string"], default: "string|false")]
 function pack(
     string $format,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.3')] $values,
     mixed ...$values
 ) {}
 
@@ -207,7 +207,7 @@ function pack(
 function unpack(
     string $format,
     string $string,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $offset = 0
+    #[StubsElementAvailable(from: '7.1')] int $offset = 0
 ): array|false {}
 
 /**
@@ -259,7 +259,7 @@ function get_browser(?string $user_agent, bool $return_array = false): object|ar
  * @return string|null the encrypted string or <b>NULL</b> if an error occurs
  */
 #[Pure]
-#[PhpStormStubsElementAvailable(to: '7.4')]
+#[StubsElementAvailable(to: '7.4')]
 function crypt($string, $salt): ?string {}
 
 /**
@@ -281,7 +281,7 @@ function crypt($string, $salt): ?string {}
  * @return string the encrypted string or <b>NULL</b> if an error occurs
  */
 #[Pure]
-#[PhpStormStubsElementAvailable('8.0')]
+#[StubsElementAvailable('8.0')]
 function crypt(string $string, string $salt): string {}
 
 /**

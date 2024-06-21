@@ -38,8 +38,8 @@
  * @link https://secure.php.net/manual/en/password.constants.php
  */
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
 
 define("PASSWORD_DEFAULT", "2y");
 

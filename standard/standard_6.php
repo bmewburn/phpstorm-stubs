@@ -1,11 +1,11 @@
 <?php
 //modified by Mewburn Project Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Runs the equivalent of the select() system call on the given
@@ -657,8 +657,8 @@ function fputcsv(
     array $fields,
     string $separator = ",",
     string $enclosure = '"',
-    #[PhpStormStubsElementAvailable(from: '7.0')] string $escape = "\\",
-    #[PhpStormStubsElementAvailable('8.1')] string $eol = PHP_EOL
+    #[StubsElementAvailable(from: '7.0')] string $escape = "\\",
+    #[StubsElementAvailable('8.1')] string $eol = PHP_EOL
 ): int|false {}
 
 /**
@@ -1033,7 +1033,7 @@ function stream_is_local($stream): bool {}
 function get_headers(
     string $url,
     #[LanguageLevelTypeAware(['8.0' => 'bool'], default: 'int')] $associative = false,
-    #[PhpStormStubsElementAvailable(from: '7.1')] $context = null
+    #[StubsElementAvailable(from: '7.1')] $context = null
 ): array|false {}
 
 /**
@@ -1053,8 +1053,8 @@ function get_headers(
 function stream_set_timeout(
     $stream,
     int $seconds,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] int $microseconds,
-    #[PhpStormStubsElementAvailable(from: '7.0')] int $microseconds = 0
+    #[StubsElementAvailable(from: '5.3', to: '5.6')] int $microseconds,
+    #[StubsElementAvailable(from: '7.0')] int $microseconds = 0
 ): bool {}
 
 /**
@@ -1076,8 +1076,8 @@ function stream_set_timeout(
 function socket_set_timeout(
     $stream,
     int $seconds,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] int $microseconds,
-    #[PhpStormStubsElementAvailable(from: '7.0')] int $microseconds = 0
+    #[StubsElementAvailable(from: '5.3', to: '5.6')] int $microseconds,
+    #[StubsElementAvailable(from: '7.0')] int $microseconds = 0
 ): bool {}
 
 /**

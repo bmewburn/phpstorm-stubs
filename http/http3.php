@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 /**
  * Extended HTTP support. Again.
  *
@@ -11,7 +12,7 @@
 namespace http;
 
 use http;
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) which is the only driver currently supported.

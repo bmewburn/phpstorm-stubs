@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of dom v.20031129
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Gets a <b>DOMElement</b> object from a <b>SimpleXMLElement</b> object

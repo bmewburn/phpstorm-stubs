@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\Pure;
 
 /**
  * Loads a php extension at runtime

@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of json v.1.3.1
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * Objects implementing JsonSerializable

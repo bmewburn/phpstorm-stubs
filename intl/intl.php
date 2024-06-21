@@ -1,13 +1,13 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of intl v.1.1.0
 
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\ExpectedValues as EV;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware as LanguageAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable as ElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\ExpectedValues as EV;
+use __IDE\LanguageLevelTypeAware as LanguageAware;
+use __IDE\StubsElementAvailable as ElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 class Collator
 {

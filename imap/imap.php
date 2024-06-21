@@ -2,9 +2,9 @@
 //Modified by Mewburn Projects Pty Ltd
 
 // Start of imap v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
 
 /**
  * Open an IMAP stream to a mailbox
@@ -169,7 +169,7 @@ function imap_headerinfo(
     int $message_num,
     int $from_length = 0,
     int $subject_length = 0,
-    #[PhpStormStubsElementAvailable(to: '7.4')] $default_host = null
+    #[StubsElementAvailable(to: '7.4')] $default_host = null
 ): stdClass|false {}
 
 /**
@@ -494,8 +494,8 @@ function imap_fetchstructure(#[LanguageLevelTypeAware(['8.1' => 'IMAP\Connection
 #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
 function imap_gc(
     #[LanguageLevelTypeAware(['8.1' => 'IMAP\Connection'], default: 'resource')] $imap,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $flags = 0,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $flags
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] int $flags = 0,
+    #[StubsElementAvailable(from: '8.0')] int $flags
 ) {}
 
 /**
@@ -1384,7 +1384,7 @@ function imap_mail(string $to, string $subject, string $message, ?string $additi
  * <dt>fetchsubject</dt><dd>subject line formatted to fit subjectlength characters</dd>
  * </dl>
  */
-#[PhpStormStubsElementAvailable(to: '7.4')]
+#[StubsElementAvailable(to: '7.4')]
 function imap_header($stream_id, $msg_no, $from_length = 0, $subject_length = 0, $default_host = null) {}
 
 /**

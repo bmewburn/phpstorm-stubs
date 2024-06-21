@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of sysvshm v.
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Creates or open a shared memory segment

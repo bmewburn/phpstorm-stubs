@@ -1,6 +1,6 @@
 <?php
-
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Pure;
 
 /**
  * @link https://php.net/manual/en/class.reflectionenumbackedcase.php

@@ -1,11 +1,11 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The <b>ReflectionParameter</b> class retrieves
@@ -295,7 +295,7 @@ class ReflectionParameter implements Reflector
      * @link https://php.net/manual/en/reflectionparameter.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -304,6 +304,6 @@ class ReflectionParameter implements Reflector
      * @link https://php.net/manual/en/reflectionparameter.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     private function __clone(): void {}
 }

@@ -1,9 +1,9 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The ReflectionType class reports information about a function's parameters.
@@ -51,7 +51,7 @@ abstract class ReflectionType implements Stringable
      *
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -59,6 +59,6 @@ abstract class ReflectionType implements Stringable
      *
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     private function __clone(): void {}
 }

@@ -1,6 +1,6 @@
 <?php
-
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Pure;
 
 /**
  * Terminate apache process after this request

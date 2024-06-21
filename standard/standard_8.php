@@ -1,12 +1,12 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\ExpectedValues;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Generate a system log message
@@ -739,8 +739,8 @@ function key(object|array $array): string|int|null {}
  */
 #[Pure]
 function min(
-    #[PhpStormStubsElementAvailable(from: '8.0')] mixed $value,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
+    #[StubsElementAvailable(from: '8.0')] mixed $value,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
     mixed ...$values
 ): mixed {}
 
@@ -754,8 +754,8 @@ function min(
  */
 #[Pure]
 function max(
-    #[PhpStormStubsElementAvailable(from: '8.0')] mixed $value,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
+    #[StubsElementAvailable(from: '8.0')] mixed $value,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
     mixed ...$values
 ): mixed {}
 
@@ -870,7 +870,7 @@ function extract(
  * @return array the output array with all the variables added to it.
  */
 #[Pure]
-function compact(#[PhpStormStubsElementAvailable(from: '8.0')] $var_name, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $var_names, ...$var_names): array {}
+function compact(#[StubsElementAvailable(from: '8.0')] $var_name, #[StubsElementAvailable(from: '5.3', to: '7.4')] $var_names, ...$var_names): array {}
 
 /**
  * Fill an array with values
@@ -945,8 +945,8 @@ function range(
  */
 function array_multisort(
     &$array,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $sort_order = SORT_ASC,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $sort_flags = SORT_REGULAR,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $sort_order = SORT_ASC,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $sort_flags = SORT_REGULAR,
     &...$rest
 ): bool {}
 
@@ -965,7 +965,7 @@ function array_multisort(
  */
 function array_push(
     array &$array,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.2')] $values,
     mixed ...$values
 ): int {}
 
@@ -1007,7 +1007,7 @@ function array_shift(array &$array): mixed {}
  * </p>
  * @return int the number of elements in the array.
  */
-function array_unshift(array &$array, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] $values, mixed ...$values): int {}
+function array_unshift(array &$array, #[StubsElementAvailable(from: '5.3', to: '7.2')] $values, mixed ...$values): int {}
 
 /**
  * Remove a portion of the array and replace it with something else
@@ -1099,7 +1099,7 @@ function array_slice(array $array, int $offset, ?int $length, bool $preserve_key
  */
 #[Pure]
 function array_merge(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $array,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $arrays,
+    #[StubsElementAvailable(from: '5.3', to: '7.3')] $array,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $arrays,
     array ...$arrays
 ): array {}

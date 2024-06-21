@@ -2,11 +2,11 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of date v.5.3.2-0.dotdeb.1
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Parse about any English textual datetime description into a Unix timestamp
@@ -464,14 +464,14 @@ function gmdate(string $format, ?int $timestamp) {}
  */
 #[Pure(true)]
 function mktime(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $hour,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null,
+    #[StubsElementAvailable(from: '8.0')] int $hour,
     ?int $minute = null,
     ?int $second = null,
     ?int $month = null,
     ?int $day = null,
     ?int $year = null,
-    #[Deprecated('Use the new timezone handling functions instead', since: '5.3')] #[PhpStormStubsElementAvailable(from: '5.5', to: '5.6')] int $is_dst = -1
+    #[Deprecated('Use the new timezone handling functions instead', since: '5.3')] #[StubsElementAvailable(from: '5.5', to: '5.6')] int $is_dst = -1
 ): int|false {}
 
 /**
@@ -503,14 +503,14 @@ function mktime(
  */
 #[Pure(true)]
 function gmmktime(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $hour,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null,
+    #[StubsElementAvailable(from: '8.0')] int $hour,
     ?int $minute = null,
     ?int $second = null,
     ?int $month = null,
     ?int $day = null,
     ?int $year = null,
-    #[PhpStormStubsElementAvailable(from: '5.5', to: '5.6')] $is_dst = null
+    #[StubsElementAvailable(from: '5.5', to: '5.6')] $is_dst = null
 ): int|false {}
 
 /**
@@ -1270,7 +1270,7 @@ function date_time_set(
     int $hour,
     int $minute,
     int $second = 0,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $microsecond = 0
+    #[StubsElementAvailable(from: '7.1')] int $microsecond = 0
 ): DateTime {}
 
 /**

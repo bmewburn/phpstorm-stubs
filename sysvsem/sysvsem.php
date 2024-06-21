@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of sysvsem v.
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Get a semaphore id

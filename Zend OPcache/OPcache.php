@@ -1,7 +1,7 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
+use __IDE\ArrayShape;
 
 /**
  * (PHP 5 &gt;= 5.5.5, PECL ZendOpcache &gt;= 7.0.2 )<br/>

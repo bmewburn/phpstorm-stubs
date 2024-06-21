@@ -1,11 +1,11 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * @template T of object
@@ -278,7 +278,7 @@ class ReflectionClass implements Reflector
      */
     #[Pure]
     #[TentativeType]
-    public function getReflectionConstants(#[PhpStormStubsElementAvailable(from: '8.0')] ?int $filter = null): array {}
+    public function getReflectionConstants(#[StubsElementAvailable(from: '8.0')] ?int $filter = null): array {}
 
     /**
      * Checks if constant is defined
@@ -300,7 +300,7 @@ class ReflectionClass implements Reflector
      */
     #[Pure]
     #[TentativeType]
-    public function getConstants(#[PhpStormStubsElementAvailable(from: '8.0')] ?int $filter = null): array {}
+    public function getConstants(#[StubsElementAvailable(from: '8.0')] ?int $filter = null): array {}
 
     /**
      * Gets defined constant
@@ -429,7 +429,7 @@ class ReflectionClass implements Reflector
      * @return bool
      */
     #[Pure]
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function isReadOnly(): bool {}
 
     /**
@@ -674,7 +674,7 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -683,9 +683,9 @@ class ReflectionClass implements Reflector
      * @link https://php.net/manual/en/reflectionclass.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     private function __clone(): void {}
 
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     public function isEnum(): bool {}
 }

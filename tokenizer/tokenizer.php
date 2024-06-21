@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of tokenizer v.0.1
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Split given source into PHP tokens
@@ -29,7 +29,7 @@ use JetBrains\PhpStorm\Pure;
  * content of the original token in element 1 and the line number in element 2.
  */
 #[Pure]
-function token_get_all(string $code, #[PhpStormStubsElementAvailable(from: '7.0')] int $flags = 0): array {}
+function token_get_all(string $code, #[StubsElementAvailable(from: '7.0')] int $flags = 0): array {}
 
 /**
  * Get the symbolic name of a given PHP token

@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of SPL v.0.2
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * Exception that represents error in the program logic. This kind of
@@ -447,7 +447,7 @@ class IteratorIterator implements OuterIterator
      * @param Traversable $iterator
      * @param string|null $class [optional]
      */
-    public function __construct(Traversable $iterator, #[PhpStormStubsElementAvailable(from: '8.0')] ?string $class = null) {}
+    public function __construct(Traversable $iterator, #[StubsElementAvailable(from: '8.0')] ?string $class = null) {}
 
     /**
      * Get the inner iterator
@@ -1484,7 +1484,7 @@ class RecursiveTreeIterator extends RecursiveIteratorIterator
      * @param string $postfix
      */
     #[TentativeType]
-    public function setPostfix(#[PhpStormStubsElementAvailable(from: '7.3')] string $postfix): void {}
+    public function setPostfix(#[StubsElementAvailable(from: '7.3')] string $postfix): void {}
 
     /**
      * Set a part of the prefix
@@ -1549,8 +1549,8 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     public function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'object|array'], default: '')] $array = [],
-        #[PhpStormStubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
-        #[PhpStormStubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $iteratorClass = "ArrayIterator"
+        #[StubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
+        #[StubsElementAvailable(from: '5.3')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $iteratorClass = "ArrayIterator"
     ) {}
 
     /**
@@ -1683,7 +1683,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
-    public function asort(#[PhpStormStubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
+    public function asort(#[StubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
 
     /**
      * Sort the entries by key
@@ -1691,7 +1691,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
-    public function ksort(#[PhpStormStubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
+    public function ksort(#[StubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
 
     /**
      * Sort the entries with a user-defined comparison function and maintain key association
@@ -1842,8 +1842,8 @@ class ArrayIterator implements SeekableIterator, ArrayAccess, Serializable, Coun
      */
     public function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'object|array'], default: '')] $array = [],
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
-        #[PhpStormStubsElementAvailable(from: '7.0', to: '7.1')] $iterator_class = null
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = 0,
+        #[StubsElementAvailable(from: '7.0', to: '7.1')] $iterator_class = null
     ) {}
 
     /**
@@ -1953,7 +1953,7 @@ class ArrayIterator implements SeekableIterator, ArrayAccess, Serializable, Coun
      */
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
-    public function asort(#[PhpStormStubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
+    public function asort(#[StubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
 
     /**
      * Sort array by keys
@@ -1961,7 +1961,7 @@ class ArrayIterator implements SeekableIterator, ArrayAccess, Serializable, Coun
      */
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.3' => 'true'], default: 'bool')]
-    public function ksort(#[PhpStormStubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
+    public function ksort(#[StubsElementAvailable(from: '8.0')] int $flags = SORT_REGULAR) {}
 
     /**
      * User defined sort

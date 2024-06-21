@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // The Event class
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Immutable;
+use __IDE\Pure;
 
 /**
  * Event.

@@ -1,12 +1,12 @@
 <?php
 //Modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * @since 5.5
@@ -158,10 +158,10 @@ interface DateTimeInterface
     #[TentativeType]
     public function __wakeup(): void;
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array;
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void;
 }
 
@@ -312,7 +312,7 @@ class DateTimeImmutable implements DateTimeInterface
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $hour,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $minute,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $second = 0,
-        #[PhpStormStubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $microsecond = 0
+        #[StubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $microsecond = 0
     ): DateTimeImmutable {}
 
     /**
@@ -428,10 +428,10 @@ class DateTimeImmutable implements DateTimeInterface
      */
     public static function createFromInterface(DateTimeInterface $object): DateTimeImmutable {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 }
 
@@ -631,7 +631,7 @@ class DateTime implements DateTimeInterface
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $hour,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $minute,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $second = 0,
-        #[PhpStormStubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $microsecond = 0
+        #[StubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $microsecond = 0
     ): DateTime {}
 
     /**
@@ -733,10 +733,10 @@ class DateTime implements DateTimeInterface
      */
     public static function createFromInterface(DateTimeInterface $object): DateTime {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 }
 
@@ -808,10 +808,10 @@ class DateTimeZone
      */
     #[TentativeType]
     public function getTransitions(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $timestampBegin,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $timestampEnd,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampBegin = PHP_INT_MIN,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampEnd = PHP_INT_MAX
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampBegin,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampEnd,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampBegin = PHP_INT_MIN,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampEnd = PHP_INT_MAX
     ): array|false {}
 
     /**
@@ -844,10 +844,10 @@ class DateTimeZone
 
     public static function __set_state($an_array) {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 }
 
@@ -945,10 +945,10 @@ class DateInterval
 
     public static function __set_state($an_array) {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 }
 
@@ -1076,7 +1076,7 @@ class DatePeriod implements IteratorAggregate
     public function getStartDate(): DateTimeInterface {}
 
     #[TentativeType]
-    public static function __set_state(#[PhpStormStubsElementAvailable(from: '7.3')] array $array): DatePeriod {}
+    public static function __set_state(#[StubsElementAvailable(from: '7.3')] array $array): DatePeriod {}
 
     #[TentativeType]
     public function __wakeup(): void {}
@@ -1096,10 +1096,10 @@ class DatePeriod implements IteratorAggregate
      */
     public function getIterator(): Iterator {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 
     /**

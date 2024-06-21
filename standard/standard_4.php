@@ -1,11 +1,11 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Get the last occurred error
@@ -177,7 +177,7 @@ function serialize(mixed $value): string {}
  * In case the passed string is not unserializeable, false is returned and
  * E_NOTICE is issued.</p>
  */
-function unserialize(string $data, #[PhpStormStubsElementAvailable(from: '7.0')] array $options = []): mixed {}
+function unserialize(string $data, #[StubsElementAvailable(from: '7.0')] array $options = []): mixed {}
 
 /**
  * Dumps information about a variable
@@ -188,7 +188,7 @@ function unserialize(string $data, #[PhpStormStubsElementAvailable(from: '7.0')]
  * @param mixed ...$values [optional]
  * @return void
  */
-#[PhpStormStubsElementAvailable(from: '8.0')]
+#[StubsElementAvailable(from: '8.0')]
 function var_dump(mixed $value, mixed ...$values): void {}
 
 /**
@@ -199,7 +199,7 @@ function var_dump(mixed $value, mixed ...$values): void {}
  * </p>
  * @return void
  */
-#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')]
+#[StubsElementAvailable(from: '5.3', to: '7.4')]
 function var_dump(...$vars): void {}
 
 /**
@@ -228,8 +228,8 @@ function var_export(mixed $value, bool $return = false): ?string {}
  * @return void
  */
 function debug_zval_dump(
-    #[PhpStormStubsElementAvailable(from: '8.0')] mixed $value,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $values,
+    #[StubsElementAvailable(from: '8.0')] mixed $value,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $values,
     mixed ...$values
 ): void {}
 
@@ -452,7 +452,7 @@ function ini_get(string $option): string|false {}
  */
 #[Pure(true)]
 #[ArrayShape(["global_value" => "string", "local_value" => "string", "access" => "int"])]
-function ini_get_all(?string $extension, #[PhpStormStubsElementAvailable(from: '7.0')] bool $details = true): array|false {}
+function ini_get_all(?string $extension, #[StubsElementAvailable(from: '7.0')] bool $details = true): array|false {}
 
 /**
  * Sets the value of a configuration option

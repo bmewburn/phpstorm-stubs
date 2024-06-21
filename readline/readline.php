@@ -2,7 +2,7 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of readline v.5.5.3-1ubuntu2.1
-use JetBrains\PhpStorm\ArrayShape;
+use __IDE\ArrayShape;
 
 /**
  * Reads a line

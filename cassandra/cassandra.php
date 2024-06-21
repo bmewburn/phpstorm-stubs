@@ -466,7 +466,7 @@ namespace {
  */
 
 namespace Cassandra {
-    use JetBrains\PhpStorm\Deprecated;
+    use __IDE\Deprecated;
 
     /**
      * A PHP representation of a column
@@ -6151,7 +6151,7 @@ namespace Cassandra\SSLOptions {
  */
 
 namespace Cassandra\Exception {
-    use JetBrains\PhpStorm\Pure;
+    use __IDE\Pure;
 
     /**
      * ConfigurationException is raised when query is syntactically correct but

@@ -1,11 +1,11 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The <b>ReflectionProperty</b> class reports information about a classes
@@ -227,7 +227,7 @@ class ReflectionProperty implements Reflector
      * @param bool $accessible A boolean {@see true} to allow accessibility, or {@see false}
      * @return void No value is returned.
      */
-    #[PhpStormStubsElementAvailable(to: "8.0")]
+    #[StubsElementAvailable(to: "8.0")]
     #[TentativeType]
     public function setAccessible(#[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $accessible): void {}
 
@@ -240,7 +240,7 @@ class ReflectionProperty implements Reflector
      * @return void No value is returned.
      */
     #[Pure]
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     #[TentativeType]
     public function setAccessible(bool $accessible): void {}
 
@@ -301,7 +301,7 @@ class ReflectionProperty implements Reflector
      * @link https://php.net/manual/en/reflectionproperty.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -310,7 +310,7 @@ class ReflectionProperty implements Reflector
      * @link https://php.net/manual/en/reflectionproperty.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     private function __clone(): void {}
 
     /**

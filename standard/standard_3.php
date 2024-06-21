@@ -1,12 +1,12 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\ReturnTypeContract as TypeContract;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\ReturnTypeContract as TypeContract;
+use __IDE\Pure;
 
 /**
  * Gets time of last page modification
@@ -762,9 +762,9 @@ function long2ip(int $ip): string|false {}
  */
 #[Pure(true)]
 function getenv(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $varname,
-    #[PhpStormStubsElementAvailable(from: '7.1')] ?string $name = null,
-    #[PhpStormStubsElementAvailable(from: '5.6')] bool $local_only = false
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $varname,
+    #[StubsElementAvailable(from: '7.1')] ?string $name = null,
+    #[StubsElementAvailable(from: '5.6')] bool $local_only = false
 ): array|string|false {}
 
 /**
@@ -799,7 +799,7 @@ function putenv(string $assignment): bool {}
 function getopt(
     string $short_options,
     array $long_options = [],
-    #[PhpStormStubsElementAvailable(from: '7.1')] &$rest_index
+    #[StubsElementAvailable(from: '7.1')] &$rest_index
 ): array|false {}
 
 /**

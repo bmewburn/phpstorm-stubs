@@ -1,11 +1,11 @@
 <?php
 //Modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Retrieve information about the currently installed GD library
@@ -842,7 +842,7 @@ function imagerotate(
     GdImage $image,
     float $angle,
     int $background_color,
-    #[PhpStormStubsElementAvailable(to: '8.2')] bool $ignore_transparent = false
+    #[StubsElementAvailable(to: '8.2')] bool $ignore_transparent = false
 ): GdImage|false {}
 
 /**
@@ -1217,7 +1217,7 @@ function imagefilledpolygon(
  * </p>
  * @return bool true on success or false on failure.
  */
-#[PhpStormStubsElementAvailable(from: '8.0')]
+#[StubsElementAvailable(from: '8.0')]
 function imagefilledpolygon(
     GdImage $image,
     array $points,
@@ -1414,8 +1414,8 @@ function imagepolygon(
     GdImage $image,
     array $points,
     int $num_points_or_color,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?int $color = null
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
+    #[StubsElementAvailable(from: '8.0')] ?int $color = null
 ): bool {}
 
 /**
@@ -1634,7 +1634,7 @@ function imagedashedline(GdImage $image, int $x1, int $y1, int $x2, int $y2, int
  * corner seeing the text horizontally.
  */
 #[Pure]
-function imagettfbbox(float $size, float $angle, string $font_filename, string $string, #[PhpStormStubsElementAvailable(from: '8.0')] array $options = []): array|false {}
+function imagettfbbox(float $size, float $angle, string $font_filename, string $string, #[StubsElementAvailable(from: '8.0')] array $options = []): array|false {}
 
 /**
  * Write text to the image using TrueType fonts
@@ -1727,7 +1727,7 @@ function imagettfbbox(float $size, float $angle, string $font_filename, string $
  * corner when you see the text horizontally.
  * Returns false on error.
  */
-function imagettftext(GdImage $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, #[PhpStormStubsElementAvailable(from: '8.0')] array $options = []): array|false {}
+function imagettftext(GdImage $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, #[StubsElementAvailable(from: '8.0')] array $options = []): array|false {}
 
 /**
  * Give the bounding box of a text using fonts via freetype2
@@ -2237,11 +2237,11 @@ function imagexbm(GdImage $image, ?string $filename, ?int $foreground_color = nu
 function imagefilter(
     GdImage $image,
     int $filter,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg1 = null,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg2 = null,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg3 = null,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $arg4 = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ...$args
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $arg1 = null,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $arg2 = null,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $arg3 = null,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $arg4 = null,
+    #[StubsElementAvailable(from: '8.0')] ...$args
 ): bool {}
 
 /**
@@ -2324,8 +2324,8 @@ function imageopenpolygon(
     GdImage $image,
     array $points,
     #[Deprecated(since: "8.1")] int $num_points_or_color,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?int $color = null
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
+    #[StubsElementAvailable(from: '8.0')] ?int $color = null
 ): bool {}
 
 /**
@@ -3021,8 +3021,8 @@ function imageaffinematrixconcat(array $matrix1, array $matrix2): array|false {}
  */
 function imageaffinematrixget(
     int $type,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $options = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] $options
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $options = null,
+    #[StubsElementAvailable(from: '8.0')] $options
 ): array|false {}
 
 /**

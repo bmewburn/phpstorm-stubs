@@ -2,9 +2,9 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of gmp v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\Pure;
 
 /**
  * Create GMP number

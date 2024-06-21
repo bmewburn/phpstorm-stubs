@@ -2,10 +2,10 @@
 // Modified by Mewburn Projects Pty Ltd
 // Start of fileinfo v.1.0.5
 
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 class finfo
 {
@@ -22,7 +22,7 @@ class finfo
      * @param $options [optional]
      * @param $arg [optional]
      */
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')]
+    #[StubsElementAvailable(from: '5.3', to: '7.4')]
     public function finfo($options, $arg) {}
 
     /**

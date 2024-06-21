@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
+use __IDE\Pure;
 
 /**
  * @since 8.0

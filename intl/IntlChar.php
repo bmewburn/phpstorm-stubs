@@ -1,9 +1,9 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * <p>IntlChar provides access to a number of utility methods that can be used to access information about Unicode characters.</p>
@@ -925,8 +925,8 @@ class IntlChar
      */
     #[TentativeType]
     public static function enumCharTypes(
-        #[PhpStormStubsElementAvailable(from: '7.0', to: '7.4')] $callback = null,
-        #[PhpStormStubsElementAvailable(from: '8.0')] callable $callback
+        #[StubsElementAvailable(from: '7.0', to: '7.4')] $callback = null,
+        #[StubsElementAvailable(from: '8.0')] callable $callback
     ): void {}
 
     /**

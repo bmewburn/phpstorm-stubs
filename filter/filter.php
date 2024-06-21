@@ -1,7 +1,7 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 // Start of filter v.0.11.0
-use JetBrains\PhpStorm\Pure;
+use __IDE\Pure;
 
 /**
  * Gets a specific external variable by name and optionally filters it

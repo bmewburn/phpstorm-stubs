@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of mysql v.1.0
 // @deprecated 5.5 entire extension is deprecated in favor of mysqli
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * Open a connection to a MySQL Server

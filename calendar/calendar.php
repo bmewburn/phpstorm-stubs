@@ -2,8 +2,8 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of calendar v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use __IDE\ArrayShape;
+use __IDE\StubsElementAvailable;
 
 /**
  * Converts Julian Day Count to Gregorian date
@@ -171,7 +171,7 @@ function jdmonthname(int $julian_day, int $mode): string {}
  * @param int $mode [optional] Allows Easter dates to be calculated based on the Julian calendar when set to CAL_EASTER_ALWAYS_JULIAN
  * @return int The easter date as a unix timestamp.
  */
-function easter_date(?int $year, #[PhpStormStubsElementAvailable(from: '8.0')] int $mode = CAL_EASTER_DEFAULT): int {}
+function easter_date(?int $year, #[StubsElementAvailable(from: '8.0')] int $mode = CAL_EASTER_DEFAULT): int {}
 
 /**
  * Get number of days after March 21 on which Easter falls for a given year

@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
 
 const SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES = 32;
 const SODIUM_CRYPTO_AEAD_AES256GCM_NSECBYTES = 0;
@@ -99,61 +99,61 @@ const SODIUM_CRYPTO_CORE_RISTRETTO255_HASHBYTES = 64;
 const SODIUM_CRYPTO_CORE_RISTRETTO255_SCALARBYTES = 32;
 const SODIUM_CRYPTO_CORE_RISTRETTO255_NONREDUCEDSCALARBYTES = 64;
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_add(string $p, string $q): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_from_hash(string $s): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_is_valid_point(string $s): bool {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_random(): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_add(string $x, string $y): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_complement(string $s): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_invert(string $s): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_mul(string $x, string $y): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_negate(string $s): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_reduce(string $s): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_sub(string $x, string $y): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_scalar_random(): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_core_ristretto255_sub(string $p, string $q): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_scalarmult_ristretto255(string $n, string $p): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_scalarmult_ristretto255_base(string $n): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_stream_xchacha20(int $length, string $nonce, string $key): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_stream_xchacha20_xor(string $message, string $nonce, string $key): string {}
 
-#[PhpStormStubsElementAvailable('8.2')]
+#[StubsElementAvailable('8.2')]
 function sodium_crypto_stream_xchacha20_xor_ic(#[\SensitiveParameter] string $message, string $nonce, int $counter, #[\SensitiveParameter] string $key): string {}
 
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function sodium_crypto_stream_xchacha20_keygen(): string {}
 
 /**
@@ -657,7 +657,7 @@ function sodium_crypto_pwhash_scryptsalsa208sha256(
     string $salt,
     int $opslimit,
     int $memlimit,
-    #[PhpStormStubsElementAvailable(from: '7.2', to: '7.4')] $alg = null
+    #[StubsElementAvailable(from: '7.2', to: '7.4')] $alg = null
 ): string {}
 
 /**
@@ -1031,7 +1031,7 @@ function sodium_version_string(): string {}
  */
 function sodium_crypto_scalarmult_base(
     string $secret_key,
-    #[PhpStormStubsElementAvailable(from: '7.2', to: '7.4')] $string_2
+    #[StubsElementAvailable(from: '7.2', to: '7.4')] $string_2
 ): string {}
 
 /**
@@ -1132,7 +1132,7 @@ function sodium_crypto_secretstream_xchacha20poly1305_keygen(): string {}
  */
 function sodium_crypto_secretstream_xchacha20poly1305_init_push(string $key): array {}
 
-#[PhpStormStubsElementAvailable('7.2')]
+#[StubsElementAvailable('7.2')]
 function sodium_crypto_secretstream_xchacha20poly1305_push(string &$state, #[\SensitiveParameter] string $message, string $additional_data = "", int $tag = SODIUM_CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_MESSAGE): string {}
 
 /**
@@ -1145,7 +1145,7 @@ function sodium_crypto_secretstream_xchacha20poly1305_push(string &$state, #[\Se
  */
 function sodium_crypto_secretstream_xchacha20poly1305_init_pull(string $header, string $key): string {}
 
-#[PhpStormStubsElementAvailable('7.2')]
+#[StubsElementAvailable('7.2')]
 function sodium_crypto_secretstream_xchacha20poly1305_pull(string &$state, string $ciphertext, string $additional_data = ""): array|false {}
 
 /**

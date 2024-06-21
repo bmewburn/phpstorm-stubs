@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of posix v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Send a signal to a process
@@ -705,7 +705,7 @@ function posix_getpwuid(int $user_id): array|false {}
  * </table>
  */
 #[Pure]
-function posix_getrlimit(#[PhpStormStubsElementAvailable(from: '8.3')] ?int $resource = null): array|false {}
+function posix_getrlimit(#[StubsElementAvailable(from: '8.3')] ?int $resource = null): array|false {}
 
 /**
  * Retrieve the error number set by the last posix function that failed

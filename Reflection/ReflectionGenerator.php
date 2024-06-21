@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The ReflectionGenerator class reports information about a generator.

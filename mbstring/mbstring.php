@@ -2,11 +2,11 @@
 //modified by Mewburn Projects Pty Ltd
 // Start of mbstring v.
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Perform case folding on a string
@@ -201,7 +201,7 @@ function mb_substitute_character(string|int|null $substitute_character = null): 
  * </p>
  * @return bool true on success or false on failure.
  */
-#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')]
+#[StubsElementAvailable(from: '5.3', to: '7.4')]
 function mb_parse_str(string $string, &$result): bool {}
 
 /**
@@ -215,7 +215,7 @@ function mb_parse_str(string $string, &$result): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-#[PhpStormStubsElementAvailable(from: '8.0')]
+#[StubsElementAvailable(from: '8.0')]
 function mb_parse_str(string $string, &$result): bool {}
 
 /**
@@ -816,8 +816,8 @@ function mb_decode_mimeheader(string $string): string {}
 function mb_convert_variables(
     string $to_encoding,
     array|string $from_encoding,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] &$vars,
-    #[PhpStormStubsElementAvailable(from: '8.0')] mixed &$var,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] &$vars,
+    #[StubsElementAvailable(from: '8.0')] mixed &$var,
     mixed &...$vars
 ): string|false {}
 
@@ -856,7 +856,7 @@ function mb_encode_numericentity(string $string, array $map, ?string $encoding =
  */
 #[Pure]
 #[LanguageLevelTypeAware(['8.0' => 'string'], default: 'string|false|null')]
-function mb_decode_numericentity(string $string, array $map, ?string $encoding = null, #[PhpStormStubsElementAvailable(from: '7.2', to: '7.4')] $is_hex = false) {}
+function mb_decode_numericentity(string $string, array $map, ?string $encoding = null, #[StubsElementAvailable(from: '7.2', to: '7.4')] $is_hex = false) {}
 
 /**
  * Send encoded mail
@@ -1108,7 +1108,7 @@ function mb_eregi_replace(
     string $pattern,
     string $replacement,
     string $string,
-    #[PhpStormStubsElementAvailable(from: '7.0')] ?string $options = null
+    #[StubsElementAvailable(from: '7.0')] ?string $options = null
 ): string|false|null {}
 
 /**
@@ -1295,7 +1295,7 @@ function mberegi_replace(
     $pattern,
     $replacement,
     $string,
-    #[PhpStormStubsElementAvailable(from: '7.0')] string $option = "msri"
+    #[StubsElementAvailable(from: '7.0')] string $option = "msri"
 ): string {}
 
 /**

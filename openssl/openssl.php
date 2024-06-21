@@ -2,10 +2,10 @@
 //Modified by Mewburn Projects Pty Ltd
 
 // Start of openssl v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
 
 /**
  * Frees a private key
@@ -320,8 +320,8 @@ function openssl_x509_free(#[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificat
 ])]
 function openssl_x509_parse(
     #[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificate|string"], default: "resource|string")] $certificate,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] bool $shortname,
-    #[PhpStormStubsElementAvailable(from: '7.1')] bool $short_names = true
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] bool $shortname,
+    #[StubsElementAvailable(from: '7.1')] bool $short_names = true
 ): array|false {}
 
 /**
@@ -387,8 +387,8 @@ function openssl_x509_parse(
 function openssl_x509_checkpurpose(
     #[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificate|string"], default: "resource|string")] $certificate,
     int $purpose,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] array $ca_info,
-    #[PhpStormStubsElementAvailable(from: '7.1')] array $ca_info = [],
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] array $ca_info,
+    #[StubsElementAvailable(from: '7.1')] array $ca_info = [],
     ?string $untrusted_certificates_file
 ): int|bool {}
 
@@ -468,8 +468,8 @@ function openssl_pkcs12_export(
     &$output,
     #[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsymmetricKey|OpenSSLCertificate|array|string'], default: 'resource|array|string')] $private_key,
     string $passphrase,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $args,
-    #[PhpStormStubsElementAvailable(from: '7.1')] array $options = []
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $args,
+    #[StubsElementAvailable(from: '7.1')] array $options = []
 ): bool {}
 
 /**
@@ -680,7 +680,7 @@ function openssl_csr_sign(
  */
 function openssl_csr_get_subject(
     #[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificateSigningRequest|string"], default: "resource|string")] $csr,
-    #[PhpStormStubsElementAvailable(from: '7.1')] bool $short_names = true
+    #[StubsElementAvailable(from: '7.1')] bool $short_names = true
 ): array|false {}
 
 /**
@@ -693,7 +693,7 @@ function openssl_csr_get_subject(
 #[LanguageLevelTypeAware(["8.0" => "OpenSSLAsymmetricKey|false"], default: "resource|false")]
 function openssl_csr_get_public_key(
     #[LanguageLevelTypeAware(["8.0" => "OpenSSLCertificateSigningRequest|string"], default: "resource|string")] $csr,
-    #[PhpStormStubsElementAvailable(from: '7.1')] bool $short_names = true
+    #[StubsElementAvailable(from: '7.1')] bool $short_names = true
 ) {}
 
 /**
@@ -744,9 +744,9 @@ function openssl_encrypt(
     string $passphrase,
     int $options = 0,
     string $iv = "",
-    #[PhpStormStubsElementAvailable(from: '7.1')] &$tag,
-    #[PhpStormStubsElementAvailable(from: '7.1')] string $aad = "",
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $tag_length = 16
+    #[StubsElementAvailable(from: '7.1')] &$tag,
+    #[StubsElementAvailable(from: '7.1')] string $aad = "",
+    #[StubsElementAvailable(from: '7.1')] int $tag_length = 16
 ): string|false {}
 
 /**
@@ -781,8 +781,8 @@ function openssl_decrypt(
     string $passphrase,
     int $options = 0,
     string $iv = "",
-    #[PhpStormStubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.1' => 'string|null'], default: 'string')] $tag = null,
-    #[PhpStormStubsElementAvailable(from: '7.1')] string $aad = ""
+    #[StubsElementAvailable(from: '7.1')] #[LanguageLevelTypeAware(['8.1' => 'string|null'], default: 'string')] $tag = null,
+    #[StubsElementAvailable(from: '7.1')] string $aad = ""
 ): string|false {}
 
 /**
@@ -864,9 +864,9 @@ function openssl_seal(
     &$sealed_data,
     &$encrypted_keys,
     array $public_key,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] string $cipher_algo = '',
-    #[PhpStormStubsElementAvailable(from: '8.0')] string $cipher_algo,
-    #[PhpStormStubsElementAvailable(from: '7.0')] &$iv = null
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] string $cipher_algo = '',
+    #[StubsElementAvailable(from: '8.0')] string $cipher_algo,
+    #[StubsElementAvailable(from: '7.0')] &$iv = null
 ): int|false {}
 
 /**
@@ -888,9 +888,9 @@ function openssl_open(
     &$output,
     string $encrypted_key,
     #[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsymmetricKey|OpenSSLCertificate|array|string'], default: 'resource|array|string')] $private_key,
-    #[PhpStormStubsElementAvailable(from: '7.0', to: '7.4')] string $cipher_algo = '',
-    #[PhpStormStubsElementAvailable(from: '8.0')] string $cipher_algo,
-    #[PhpStormStubsElementAvailable(from: '7.0')] ?string $iv
+    #[StubsElementAvailable(from: '7.0', to: '7.4')] string $cipher_algo = '',
+    #[StubsElementAvailable(from: '8.0')] string $cipher_algo,
+    #[StubsElementAvailable(from: '7.0')] ?string $iv
 ): bool {}
 
 /**
@@ -949,7 +949,7 @@ function openssl_pkcs7_verify(
     array $ca_info = [],
     ?string $untrusted_certificates_filename,
     ?string $content,
-    #[PhpStormStubsElementAvailable("7.2")] ?string $output_filename
+    #[StubsElementAvailable("7.2")] ?string $output_filename
 ): int|bool {}
 
 /**

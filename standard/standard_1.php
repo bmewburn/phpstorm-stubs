@@ -1,12 +1,12 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\ExpectedValues;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Make a string uppercase
@@ -235,7 +235,7 @@ function basename(string $path, string $suffix = ''): string {}
  * /component removed.
  */
 #[Pure]
-function dirname(string $path, #[PhpStormStubsElementAvailable(from: '7.0')] int $levels = 1): string {}
+function dirname(string $path, #[StubsElementAvailable(from: '7.0')] int $levels = 1): string {}
 
 /**
  * Returns information about a file path
@@ -358,7 +358,7 @@ function stristr(string $haystack, string $needle, bool $before_needle = false):
  * </p>
  */
 #[Pure]
-function strrchr(string $haystack, string $needle, #[PhpStormStubsElementAvailable(from: '8.3')] bool $before_needle = false): string|false {}
+function strrchr(string $haystack, string $needle, #[StubsElementAvailable(from: '8.3')] bool $before_needle = false): string|false {}
 
 /**
  * Randomly shuffles a string
@@ -430,8 +430,8 @@ function str_split(string $string, int $length = 1): array|false {}
 #[Pure]
 function strpbrk(
     string $string,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $char_list = '',
-    #[PhpStormStubsElementAvailable(from: '7.1')] string $characters
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $char_list = '',
+    #[StubsElementAvailable(from: '7.1')] string $characters
 ): string|false {}
 
 /**
@@ -1107,8 +1107,8 @@ function join(array|string $separator = "", ?array $array): string {}
  */
 function setlocale(
     #[ExpectedValues([LC_ALL,  LC_COLLATE,  LC_CTYPE,  LC_MONETARY,  LC_NUMERIC,  LC_TIME,  LC_MESSAGES])] int $category,
-    #[PhpStormStubsElementAvailable(from: '8.0')] $locales,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $rest,
+    #[StubsElementAvailable(from: '8.0')] $locales,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $rest,
     ...$rest
 ): string|false {}
 

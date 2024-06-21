@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of http v.1.6.6
 
-use JetBrains\PhpStorm\Pure;
+use __IDE\Pure;
 
 class HttpException extends Exception
 {

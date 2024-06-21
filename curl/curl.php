@@ -1,11 +1,11 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 class CURLFile
 {
@@ -157,7 +157,7 @@ function curl_copy_handle(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], defa
  */
 #[ArrayShape(["version_number" => "string", "version" => "string", "ssl_version_number" => "int", "ssl_version" => "string", "libz_version" => "string", "host" => "string", "age" => "int", "features" => "int", "protocols" => "array"])]
 #[Pure]
-function curl_version(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $age = null): array|false {}
+function curl_version(#[StubsElementAvailable(from: '5.3', to: '7.4')] $age = null): array|false {}
 
 /**
  * Set an option for a cURL transfer
@@ -2733,8 +2733,8 @@ function curl_reset(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: '
  */
 function curl_multi_exec(
     #[LanguageLevelTypeAware(['8.0' => 'CurlMultiHandle'], default: 'resource')] $multi_handle,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] &$still_running = 0,
-    #[PhpStormStubsElementAvailable(from: '8.0')] &$still_running
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] &$still_running = 0,
+    #[StubsElementAvailable(from: '8.0')] &$still_running
 ): int {}
 
 /**

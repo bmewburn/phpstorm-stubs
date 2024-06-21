@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 namespace {
-    use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-    use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-    use JetBrains\PhpStorm\Pure;
+    use __IDE\LanguageLevelTypeAware;
+    use __IDE\StubsElementAvailable;
+    use __IDE\Pure;
 
     /**
      * Combined linear congruential generator
@@ -25,7 +25,7 @@ namespace {
      */
     function mt_srand(
         #[LanguageLevelTypeAware(['8.3' => 'int|null'], default: 'int')] $seed = null,
-        #[PhpStormStubsElementAvailable(from: '7.1')] int $mode = MT_RAND_MT19937
+        #[StubsElementAvailable(from: '7.1')] int $mode = MT_RAND_MT19937
     ): void {}
 
     /**
@@ -44,7 +44,7 @@ namespace {
      */
     function srand(
         #[LanguageLevelTypeAware(['8.3' => 'int|null'], default: 'int')] $seed = null,
-        #[PhpStormStubsElementAvailable(from: '7.1')] int $mode = MT_RAND_MT19937
+        #[StubsElementAvailable(from: '7.1')] int $mode = MT_RAND_MT19937
     ): void {}
 
     /**

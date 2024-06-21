@@ -2,13 +2,13 @@
 //modified by Mewburn Projects Pty Ltd
 // Start of standard v.5.3.2-0.dotdeb.1
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\ExpectedValues;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 class __PHP_Incomplete_Class
 {
@@ -128,7 +128,7 @@ class Directory
      * @link https://secure.php.net/manual/en/directory.close.php
      */
     #[TentativeType]
-    public function close(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
+    public function close(#[StubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
 
     /**
      * Rewind directory handle.
@@ -137,7 +137,7 @@ class Directory
      * @link https://secure.php.net/manual/en/directory.rewind.php
      */
     #[TentativeType]
-    public function rewind(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
+    public function rewind(#[StubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): void {}
 
     /**
      * Read entry from directory handle.
@@ -147,7 +147,7 @@ class Directory
      * @link https://secure.php.net/manual/en/directory.read.php
      */
     #[TentativeType]
-    public function read(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): string|false {}
+    public function read(#[StubsElementAvailable(from: '5.3', to: '7.4')] $dir_handle = null): string|false {}
 }
 
 /**
@@ -762,7 +762,7 @@ function htmlspecialchars_decode(string $string, int $flags = ENT_QUOTES|ENT_SUB
 function get_html_translation_table(
     int $table = 0,
     int $flags = ENT_QUOTES|ENT_SUBSTITUTE,
-    #[PhpStormStubsElementAvailable(from: '7.0')] string $encoding = "UTF-8"
+    #[StubsElementAvailable(from: '7.0')] string $encoding = "UTF-8"
 ): array {}
 
 /**
@@ -1262,7 +1262,7 @@ function php_sapi_name(): string|false {}
  * @return string the description, as a string.
  */
 #[Pure(true)]
-function php_uname(#[PhpStormStubsElementAvailable(from: '7.0')] string $mode = 'a'): string {}
+function php_uname(#[StubsElementAvailable(from: '7.0')] string $mode = 'a'): string {}
 
 /**
  * Return a list of .ini files parsed from the additional ini dir
@@ -1436,6 +1436,6 @@ function strcspn(string $string, string $characters, int $offset = 0, ?int $leng
  */
 function strtok(
     string $string,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] $token,
-    #[PhpStormStubsElementAvailable(from: '7.1')] ?string $token = null
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $token,
+    #[StubsElementAvailable(from: '7.1')] ?string $token = null
 ): string|false {}

@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of memcached v.3.1.5
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * Represents a connection to a set of memcached servers.
@@ -1560,7 +1560,7 @@ class Memcached
  */
 class MemcachedException extends RuntimeException
 {
-    #[\JetBrains\PhpStorm\Pure]
+    #[\__IDE\Pure]
     public function __construct($errmsg = "", $errcode = 0) {}
 }
 // End of memcached v.3.1.5

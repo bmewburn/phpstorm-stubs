@@ -1,10 +1,10 @@
 <?php
 //Modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\ExpectedValues;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\Pure;
 
 /**
  * (PHP 5.5.0)<br/>

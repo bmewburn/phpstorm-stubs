@@ -1,8 +1,8 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\TentativeType;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\TentativeType;
 
 /**
  * The reflection class.

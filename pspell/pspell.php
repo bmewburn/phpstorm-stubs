@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of pspell v.
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Load a new dictionary

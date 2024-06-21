@@ -1,10 +1,10 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of SPL v.0.2
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * The SplFileInfo class offers a high-level object oriented interface to
@@ -477,8 +477,8 @@ class FilesystemIterator extends DirectoryIterator
      */
     #[TentativeType]
     public function setFlags(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $flags = null,
-        #[PhpStormStubsElementAvailable(from: '8.0')] int $flags
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $flags = null,
+        #[StubsElementAvailable(from: '8.0')] int $flags
     ): void {}
 }
 
@@ -732,7 +732,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $separator = ',',
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $enclosure = '"',
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $escape = "\\",
-        #[PhpStormStubsElementAvailable('8.1')] string $eol = PHP_EOL
+        #[StubsElementAvailable('8.1')] string $eol = PHP_EOL
     ): int|false {}
 
     /**
@@ -1950,13 +1950,13 @@ class SplFixedArray implements Iterator, ArrayAccess, Countable, IteratorAggrega
     #[TentativeType]
     public function __wakeup(): void {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __serialize(): array {}
 
     /**
      * @param array $data
      */
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function __unserialize(array $data): void {}
 
     /**
@@ -2135,7 +2135,7 @@ class SplObjectStorage implements Countable, Iterator, Serializable, ArrayAccess
      * @return int The number of objects in the storage.
      */
     #[TentativeType]
-    public function count(#[PhpStormStubsElementAvailable(from: '8.0')] int $mode = COUNT_NORMAL): int {}
+    public function count(#[StubsElementAvailable(from: '8.0')] int $mode = COUNT_NORMAL): int {}
 
     /**
      * Rewind the iterator to the first storage element
@@ -2300,8 +2300,8 @@ class MultipleIterator implements Iterator
      * @param int $flags Defaults to MultipleIterator::MIT_NEED_ALL | MultipleIterator::MIT_KEYS_NUMERIC
      */
     public function __construct(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $flags,
-        #[PhpStormStubsElementAvailable(from: '8.0')] int $flags = MultipleIterator::MIT_NEED_ALL|MultipleIterator::MIT_KEYS_NUMERIC
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $flags,
+        #[StubsElementAvailable(from: '8.0')] int $flags = MultipleIterator::MIT_NEED_ALL|MultipleIterator::MIT_KEYS_NUMERIC
     ) {}
 
     /**

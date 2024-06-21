@@ -2,12 +2,12 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of PDO v.1.0.4dev
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * Represents an error raised by PDO. You should not throw a
@@ -1100,7 +1100,7 @@ class PDO
      * on failure.
      * @see PDOStatement::setFetchMode For a full description of the second and following parameters.
      */
-    #[PhpStormStubsElementAvailable(to: '7.4')]
+    #[StubsElementAvailable(to: '7.4')]
     public function query($query, $fetchMode = PDO::ATTR_DEFAULT_FETCH_MODE, $arg3 = null, $ctorargs = []) {}
 
     /**
@@ -1124,7 +1124,7 @@ class PDO
      * on failure.
      * @see PDOStatement::setFetchMode For a full description of the second and following parameters.
      */
-    #[PhpStormStubsElementAvailable('8.0')]
+    #[StubsElementAvailable('8.0')]
     public function query(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $query,
         #[LanguageLevelTypeAware(['8.0' => 'int|null'], default: '')] $fetchMode = null,
@@ -1742,7 +1742,7 @@ class PDOStatement implements IteratorAggregate
     #[TentativeType]
     public function fetchAll(
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $mode = PDO::FETCH_DEFAULT,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $fetch_argument = null,
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $fetch_argument = null,
         #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] ...$args
     ): array {}
 
@@ -1936,7 +1936,7 @@ class PDOStatement implements IteratorAggregate
      * @param array $params [optional] <p> Constructor arguments. </p>
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
-    #[PhpStormStubsElementAvailable(to: '7.4')]
+    #[StubsElementAvailable(to: '7.4')]
     public function setFetchMode($mode, $className = null, $params = []) {}
 
     /**
@@ -1952,7 +1952,7 @@ class PDOStatement implements IteratorAggregate
      * @param mixed ...$params <p> Constructor arguments. </p>
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
-    #[PhpStormStubsElementAvailable('8.0')]
+    #[StubsElementAvailable('8.0')]
     public function setFetchMode($mode, $className = null, ...$params) {}
 
     /**

@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * @since 7.1

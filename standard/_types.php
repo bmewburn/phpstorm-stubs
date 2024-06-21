@@ -1,7 +1,7 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 namespace {
-    use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+    use __IDE\LanguageLevelTypeAware;
 
     /**
      * Generator objects are returned from generators, cannot be instantiated via new.

@@ -2,8 +2,8 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of sysvmsg v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Create or attach to a message queue

@@ -2,10 +2,10 @@
 //modified by Mewburn Projects Pty Ltd
 // Start of Phar v.2.0.1
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * The PharException class provides a phar-specific exception class
@@ -60,7 +60,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $filename,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = FilesystemIterator::SKIP_DOTS|FilesystemIterator::UNIX_PATHS,
         #[LanguageLevelTypeAware(['8.0' => 'string|null'], default: '')] $alias = null,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $fileformat = null
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $fileformat = null
     ) {}
 
     public function __destruct() {}
@@ -76,8 +76,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      */
     #[TentativeType]
     public function addEmptyDir(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $directory = '',
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $directory
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $directory = '',
+        #[StubsElementAvailable(from: '8.0')] string $directory
     ): void {}
 
     /**
@@ -114,8 +114,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
     #[TentativeType]
     public function addFromString(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $localName,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $contents = '',
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $contents
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $contents = '',
+        #[StubsElementAvailable(from: '8.0')] string $contents
     ): void {}
 
     /**
@@ -322,7 +322,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * if none.
      */
     #[TentativeType]
-    public function count(#[PhpStormStubsElementAvailable(from: '8.0')] int $mode = COUNT_NORMAL): int {}
+    public function count(#[StubsElementAvailable(from: '8.0')] int $mode = COUNT_NORMAL): int {}
 
     /**
      * (PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
@@ -385,7 +385,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * or <b>NULL</b> if no meta-data is stored.
      */
     #[TentativeType]
-    public function getMetadata(#[PhpStormStubsElementAvailable(from: '8.0')] array $unserializeOptions = []): mixed {}
+    public function getMetadata(#[StubsElementAvailable(from: '8.0')] array $unserializeOptions = []): mixed {}
 
     /**
      * (PHP &gt;= 5.3.0, PECL phar &gt;= 1.0.0)<br/>
@@ -773,8 +773,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @return string the filename if valid, empty string otherwise.
      */
     final public static function running(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $returnPhar,
-        #[PhpStormStubsElementAvailable(from: '7.0')] bool $returnPhar = true
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $returnPhar,
+        #[StubsElementAvailable(from: '7.0')] bool $returnPhar = true
     ): string {}
 
     /**
@@ -1214,7 +1214,7 @@ class PharFileInfo extends SplFileInfo
      * or <b>NULL</b> if no meta-data is stored.
      */
     #[TentativeType]
-    public function getMetadata(#[PhpStormStubsElementAvailable(from: '8.0')] array $unserializeOptions = []): mixed {}
+    public function getMetadata(#[StubsElementAvailable(from: '8.0')] array $unserializeOptions = []): mixed {}
 
     /**
      * (PHP &gt;= 5.3.0, PECL phar &gt;= 1.0.0)<br/>

@@ -1,11 +1,11 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of soap v.
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The SoapClient class provides a client for SOAP 1.1, SOAP 1.2 servers. It can be used in WSDL
@@ -477,8 +477,8 @@ class SoapClient
      */
     #[TentativeType]
     public function __setSoapHeaders(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $headers,
-        #[PhpStormStubsElementAvailable(from: '7.0')] $headers = null
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $headers,
+        #[StubsElementAvailable(from: '7.0')] $headers = null
     ): bool {}
 }
 

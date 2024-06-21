@@ -2,10 +2,10 @@
 //Modified by Mewburn Projects Pty Ltd
 
 // Start of ldap v.
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware as PhpVersionAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable as Available;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware as PhpVersionAware;
+use __IDE\StubsElementAvailable as Available;
 use LDAP\Result;
 
 /**

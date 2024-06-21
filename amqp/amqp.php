@@ -1,11 +1,12 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 /**
  * Stubs for AMQP
  * https://pecl.php.net/package/amqp
  * https://github.com/pdezwart/php-amqp
  */
 
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * Passing in this constant as a flag will forcefully disable all other flags.

@@ -2,11 +2,11 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of Core v.5.3.6-13ubuntu3.2
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Gets the version of the current Zend engine
@@ -775,7 +775,7 @@ function get_declared_traits(): array {}
  * below).
  */
 #[Pure(true)]
-function get_defined_functions(#[PhpStormStubsElementAvailable(from: '7.1')] bool $exclude_disabled = true): array {}
+function get_defined_functions(#[StubsElementAvailable(from: '7.1')] bool $exclude_disabled = true): array {}
 
 /**
  * Returns an array of all defined variables
@@ -1058,7 +1058,7 @@ function debug_backtrace(int $options = DEBUG_BACKTRACE_PROVIDE_OBJECT, int $lim
  */
 function debug_print_backtrace(
     int $options = 0,
-    #[PhpStormStubsElementAvailable(from: '7.0')] int $limit = 0
+    #[StubsElementAvailable(from: '7.0')] int $limit = 0
 ): void {}
 
 /**

@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of SPL v.0.2
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Pure;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\Pure;
 
 /**
  * Return available SPL classes

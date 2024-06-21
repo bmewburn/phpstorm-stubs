@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of SQLite v.2.0-dev
-use JetBrains\PhpStorm\Pure;
+use __IDE\Pure;
 
 /**
  * @link https://php.net/manual/en/ref.sqlite.php

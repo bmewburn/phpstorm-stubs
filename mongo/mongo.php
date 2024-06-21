@@ -1,4 +1,5 @@
 <?php
+//modified by Mewburn Projects Pty Ltd
 /*
  * Mongo extension stubs
  * Gathered from https://secure.php.net/manual/en/book.mongo.php
@@ -7,7 +8,7 @@
  * MongoClient: https://github.com/djsipe/PHP-Stubs
  */
 
-use JetBrains\PhpStorm\Deprecated;
+use __IDE\Deprecated;
 
 /**
  * A connection between PHP and MongoDB. This class is used to create and manage connections

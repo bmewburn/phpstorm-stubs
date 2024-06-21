@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of zlib v.2.0
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\Pure;
 
 /**
  * Output a gz-file

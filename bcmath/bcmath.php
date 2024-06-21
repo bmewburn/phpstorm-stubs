@@ -1,8 +1,8 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Pure;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\Pure;
 
 /**
  * Add two arbitrary precision numbers
@@ -83,7 +83,7 @@ function bcmul(string $num1, string $num2, ?int $scale = null): string {}
  * <i>divisor</i> is 0.
  */
 #[Pure]
-#[PhpStormStubsElementAvailable(to: '7.4')]
+#[StubsElementAvailable(to: '7.4')]
 function bcdiv(string $num1, string $num2, ?int $scale = 0): ?string {}
 
 /**
@@ -105,7 +105,7 @@ function bcdiv(string $num1, string $num2, ?int $scale = 0): ?string {}
  * @throws \DivisionByZeroError if <i>divisor</i> is 0. Available since PHP 8.0.
  */
 #[Pure]
-#[PhpStormStubsElementAvailable('8.0')]
+#[StubsElementAvailable('8.0')]
 function bcdiv(string $num1, string $num2, ?int $scale = null): string {}
 
 /**
@@ -127,7 +127,7 @@ function bcdiv(string $num1, string $num2, ?int $scale = null): string {}
  * <i>divisor</i> is 0.
  */
 #[Pure]
-#[PhpStormStubsElementAvailable(to: '7.4')]
+#[StubsElementAvailable(to: '7.4')]
 function bcmod(string $num1, string $num2, ?int $scale = 0): ?string {}
 
 /**
@@ -149,7 +149,7 @@ function bcmod(string $num1, string $num2, ?int $scale = 0): ?string {}
  * @throws \DivisionByZeroError if <i>divisor</i> is 0. Available since PHP 8.0.
  */
 #[Pure]
-#[PhpStormStubsElementAvailable('8.0')]
+#[StubsElementAvailable('8.0')]
 function bcmod(string $num1, string $num2, ?int $scale = null): string {}
 
 /**
@@ -196,8 +196,8 @@ function bcsqrt(string $num, ?int $scale) {}
  */
 #[LanguageLevelTypeAware(['7.3' => 'int'], default: 'bool')]
 function bcscale(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $scale,
-    #[PhpStormStubsElementAvailable(from: '7.3')] #[LanguageLevelTypeAware(['8.0' => 'int|null'], default: 'int')] $scale = null
+    #[StubsElementAvailable(from: '5.3', to: '7.2')] int $scale,
+    #[StubsElementAvailable(from: '7.3')] #[LanguageLevelTypeAware(['8.0' => 'int|null'], default: 'int')] $scale = null
 ) {}
 
 /**

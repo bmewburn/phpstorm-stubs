@@ -1,10 +1,10 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of SimpleXML v.0.1
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * Represents an element in an XML document.
@@ -242,8 +242,8 @@ class SimpleXMLElement implements Traversable, ArrayAccess, Countable, Iterator,
     #[TentativeType]
     public function addAttribute(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $qualifiedName,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $value = null,
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $value,
+        #[StubsElementAvailable(from: '5.3', to: '7.4')] $value = null,
+        #[StubsElementAvailable(from: '8.0')] string $value,
         #[LanguageLevelTypeAware(['8.0' => 'string|null'], default: '')] $namespace = null
     ): void {}
 

@@ -1,9 +1,9 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of dba v.
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
 
 /** @since 8.2 */
 const DBA_LMDB_USE_SUB_DIR = 0;
@@ -127,10 +127,10 @@ const DBA_LMDB_NO_SUB_DIR = 0;
  * @param mixed ...$handler_params [optional]
  * @return resource|false a positive handle on success or <b>FALSE</b> on failure.
  */
-#[PhpStormStubsElementAvailable(from: '5.3', to: '8.1')]
+#[StubsElementAvailable(from: '5.3', to: '8.1')]
 function dba_open($path, $mode, $handler, ...$handler_params) {}
 
-#[PhpStormStubsElementAvailable(from: '8.2')]
+#[StubsElementAvailable(from: '8.2')]
 function dba_open(string $path, string $mode, ?string $handler = null, int $permission = 0o644, int $map_size = 0, ?int $flags = null) {}
 
 /**
@@ -154,10 +154,10 @@ function dba_open(string $path, string $mode, ?string $handler = null, int $perm
  * @param mixed ...$handler_params [optional]
  * @return resource|false a positive handle on success or <b>FALSE</b> on failure.
  */
-#[PhpStormStubsElementAvailable(from: '5.3', to: '8.1')]
+#[StubsElementAvailable(from: '5.3', to: '8.1')]
 function dba_popen($path, $mode, $handler, ...$handler_params) {}
 
-#[PhpStormStubsElementAvailable(from: '8.2')]
+#[StubsElementAvailable(from: '8.2')]
 function dba_popen(string $path, string $mode, ?string $handler = null, int $permission = 0o644, int $map_size = 0, ?int $flags = null) {}
 
 /**

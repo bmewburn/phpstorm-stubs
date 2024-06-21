@@ -1,6 +1,6 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
 
 /**
  * Returns the full list of error codes.

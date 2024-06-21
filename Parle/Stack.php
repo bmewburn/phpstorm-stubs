@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 namespace Parle;
 
-use JetBrains\PhpStorm\Immutable;
+use __IDE\Immutable;
 
 /**
  * @template TValue

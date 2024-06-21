@@ -1,6 +1,6 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * @link https://php.net/manual/en/class.reflectionenum.php

@@ -1,8 +1,8 @@
 <?php
-
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\ExpectedValues;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Ev is a singleton providing access to the default loop and to some common operations.

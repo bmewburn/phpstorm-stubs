@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\TentativeType;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\LanguageLevelTypeAware;
+use __IDE\TentativeType;
 
 /**
  * <b>SessionHandlerInterface</b> is an interface which defines

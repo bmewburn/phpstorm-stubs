@@ -1,7 +1,7 @@
 <?php
-
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+//modified by Mewburn Projects Pty Ltd
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * The <b>ReflectionObject</b> class reports

@@ -5,11 +5,11 @@
  * @link https://php.net/manual/en/book.mysqli.php
  */
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\ArrayShape;
+use __IDE\Deprecated;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * mysqli_sql_exception
@@ -596,7 +596,7 @@ class mysqli
     #[TentativeType]
     public function query(
         string $query,
-        #[PhpStormStubsElementAvailable(from: '7.1')] int $result_mode = MYSQLI_STORE_RESULT
+        #[StubsElementAvailable(from: '7.1')] int $result_mode = MYSQLI_STORE_RESULT
     ): mysqli_result|bool {}
 
     /**
@@ -934,14 +934,14 @@ final class mysqli_warning
      * The __construct purpose
      * @link https://php.net/manual/en/mysqli-warning.construct.php
      */
-    #[PhpStormStubsElementAvailable(from: '8.0')]
+    #[StubsElementAvailable(from: '8.0')]
     private function __construct() {}
 
     /**
      * The __construct purpose
      * @link https://php.net/manual/en/mysqli-warning.construct.php
      */
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')]
+    #[StubsElementAvailable(from: '5.3', to: '7.4')]
     protected function __construct() {}
 
     /**
@@ -995,8 +995,8 @@ class mysqli_result implements IteratorAggregate
      * @param int $result_mode [optional]
      */
     public function __construct(
-        #[PhpStormStubsElementAvailable(from: '8.0')] mysqli $mysql,
-        #[PhpStormStubsElementAvailable(from: '8.0')] int $result_mode = MYSQLI_STORE_RESULT
+        #[StubsElementAvailable(from: '8.0')] mysqli $mysql,
+        #[StubsElementAvailable(from: '8.0')] int $result_mode = MYSQLI_STORE_RESULT
     ) {}
 
     /**
@@ -1234,7 +1234,7 @@ class mysqli_result implements IteratorAggregate
      * @return array an array of associative or numeric arrays holding result rows.
      */
     #[TentativeType]
-    public function fetch_all(#[PhpStormStubsElementAvailable(from: '7.0')] int $mode = MYSQLI_NUM): array {}
+    public function fetch_all(#[StubsElementAvailable(from: '7.0')] int $mode = MYSQLI_NUM): array {}
 
     /**
      * Fetch the next row of a result set as an associative, a numeric array, or both
@@ -1309,7 +1309,7 @@ class mysqli_result implements IteratorAggregate
      * @return string|int|float|false|null a single column from
      * the next row of a result set or false if there are no more rows.
      */
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     public function fetch_column(int $column = 0): string|int|float|false|null {}
 
     /**
@@ -1549,7 +1549,7 @@ class mysqli_stmt
      * @return bool true on success or false on failure.
      */
     #[TentativeType]
-    public function execute(#[PhpStormStubsElementAvailable('8.1')] ?array $params = null): bool {}
+    public function execute(#[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
     /**
      * Fetch results from a prepared statement into the bound variables
@@ -1854,7 +1854,7 @@ function mysqli_error(mysqli $mysql): string {}
  * as there are bound parameters in the SQL statement being executed. Each value is treated as a string.
  * @return bool true on success or false on failure.
  */
-function mysqli_stmt_execute(mysqli_stmt $statement, #[PhpStormStubsElementAvailable('8.1')] ?array $params = null): bool {}
+function mysqli_stmt_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
 /**
  * Executes a prepared statement
@@ -1866,7 +1866,7 @@ function mysqli_stmt_execute(mysqli_stmt $statement, #[PhpStormStubsElementAvail
  * @return bool
  */
 #[Deprecated(since: '5.3')]
-function mysqli_execute(mysqli_stmt $statement, #[PhpStormStubsElementAvailable('8.1')] ?array $params = null): bool {}
+function mysqli_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
 /**
  * @param mysqli $mysql
@@ -1924,7 +1924,7 @@ function mysqli_fetch_lengths(mysqli_result $result): array|false {}
  */
 function mysqli_fetch_all(
     mysqli_result $result,
-    #[PhpStormStubsElementAvailable(from: '7.0')] int $mode = MYSQLI_NUM
+    #[StubsElementAvailable(from: '7.0')] int $mode = MYSQLI_NUM
 ): array {}
 
 /**
@@ -1987,7 +1987,7 @@ function mysqli_fetch_row(mysqli_result $result): array|false|null {}
  * @return string|int|float|false|null a single column from
  * the next row of a result set or false if there are no more rows.
  */
-#[PhpStormStubsElementAvailable('8.1')]
+#[StubsElementAvailable('8.1')]
 function mysqli_fetch_column(mysqli_result $result, int $column = 0): string|int|float|false|null {}
 
 /**
@@ -2067,8 +2067,8 @@ function mysqli_get_charset(mysqli $mysql): ?object {}
  */
 #[LanguageLevelTypeAware(['8.0' => 'string'], default: '?string')]
 function mysqli_get_client_info(
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.1')] mysqli $mysql,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?mysqli $mysql = null
+    #[StubsElementAvailable(from: '5.3', to: '7.1')] mysqli $mysql,
+    #[StubsElementAvailable(from: '8.0')] ?mysqli $mysql = null
 ) {}
 
 /**
@@ -2076,7 +2076,7 @@ function mysqli_get_client_info(
  * @link https://php.net/manual/en/mysqli.get-client-version.php
  * @return int
  */
-function mysqli_get_client_version(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $link): int {}
+function mysqli_get_client_version(#[StubsElementAvailable(from: '5.3', to: '7.3')] $link): int {}
 
 /**
  * Returns a string representing the type of connection used
@@ -2226,9 +2226,9 @@ function mysqli_more_results(mysqli $mysql): bool {}
  */
 function mysqli_multi_query(
     mysqli $mysql,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] string $query,
-    #[PhpStormStubsElementAvailable(from: '7.1', to: '7.4')] string $query = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] string $query
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] string $query,
+    #[StubsElementAvailable(from: '7.1', to: '7.4')] string $query = null,
+    #[StubsElementAvailable(from: '8.0')] string $query
 ): bool {}
 
 /**
@@ -2349,7 +2349,7 @@ function mysqli_report(int $flags): bool {}
 function mysqli_query(
     mysqli $mysql,
     string $query,
-    #[PhpStormStubsElementAvailable(from: '7.1')] int $result_mode = MYSQLI_STORE_RESULT
+    #[StubsElementAvailable(from: '7.1')] int $result_mode = MYSQLI_STORE_RESULT
 ): mysqli_result|bool {}
 
 /**
@@ -2386,9 +2386,9 @@ function mysqli_real_escape_string(mysqli $mysql, string $string): string {}
  */
 function mysqli_real_query(
     mysqli $mysql,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.0')] string $query,
-    #[PhpStormStubsElementAvailable(from: '7.1', to: '7.4')] string $query = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] string $query
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] string $query,
+    #[StubsElementAvailable(from: '7.1', to: '7.4')] string $query = null,
+    #[StubsElementAvailable(from: '8.0')] string $query
 ): bool {}
 
 /**
@@ -2560,7 +2560,7 @@ function mysqli_stmt_send_long_data(mysqli_stmt $statement, int $param_num, stri
 function mysqli_stmt_bind_param(
     mysqli_stmt $statement,
     string $types,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
     mixed &...$vars
 ): bool {}
 
@@ -2573,7 +2573,7 @@ function mysqli_stmt_bind_param(
  */
 function mysqli_stmt_bind_result(
     mysqli_stmt $statement,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
     mixed &...$vars
 ): bool {}
 
@@ -2836,7 +2836,7 @@ function mysqli_client_encoding(mysqli $mysql): string {}
 function mysqli_escape_string(
     mysqli $mysql,
     string $string,
-    #[PhpStormStubsElementAvailable(from: '7.1', to: '7.4')] $resultmode = null
+    #[StubsElementAvailable(from: '7.1', to: '7.4')] $resultmode = null
 ): string {}
 
 /**
@@ -2890,9 +2890,9 @@ function mysqli_send_long_data(mysqli_stmt $statement, int $param_num, string $d
  * @return bool
  */
 function mysqli_set_opt(
-    #[PhpStormStubsElementAvailable(from: '8.0')] mysqli $mysql,
-    #[PhpStormStubsElementAvailable(from: '8.0')] int $option,
-    #[PhpStormStubsElementAvailable(from: '8.0')] $value
+    #[StubsElementAvailable(from: '8.0')] mysqli $mysql,
+    #[StubsElementAvailable(from: '8.0')] int $option,
+    #[StubsElementAvailable(from: '8.0')] $value
 ): bool {}
 
 /**

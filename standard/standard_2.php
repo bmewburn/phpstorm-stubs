@@ -1,11 +1,11 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\ReturnTypeContract as TypeContract;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\ReturnTypeContract as TypeContract;
+use __IDE\Pure;
 
 /**
  * Query language and locale information
@@ -233,8 +233,8 @@ function ord(string $character): int {}
  */
 function parse_str(
     string $string,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] &$result = [],
-    #[PhpStormStubsElementAvailable(from: '8.0')] &$result
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] &$result = [],
+    #[StubsElementAvailable(from: '8.0')] &$result
 ): void {}
 
 /**
@@ -341,7 +341,7 @@ function strchr(string $haystack, string $needle, bool $before_needle = false): 
 #[Pure]
 function sprintf(
     string $format,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $values,
+    #[StubsElementAvailable(from: '5.3', to: '5.6')] $values,
     mixed ...$values
 ): string {}
 

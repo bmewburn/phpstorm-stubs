@@ -1,10 +1,10 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of xmlwriter v.0.1
 
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 class XMLWriter
 {
@@ -1274,10 +1274,10 @@ function xmlwriter_write_dtd_entity(
     #[LanguageLevelTypeAware(["8.0" => "XMLWriter"], default: "resource")] $writer,
     string $name,
     string $content,
-    #[PhpStormStubsElementAvailable(from: '8.0')] bool $isParam = false,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?string $publicId = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?string $systemId = null,
-    #[PhpStormStubsElementAvailable(from: '8.0')] ?string $notationData = null
+    #[StubsElementAvailable(from: '8.0')] bool $isParam = false,
+    #[StubsElementAvailable(from: '8.0')] ?string $publicId = null,
+    #[StubsElementAvailable(from: '8.0')] ?string $systemId = null,
+    #[StubsElementAvailable(from: '8.0')] ?string $notationData = null
 ): bool {}
 
 /**

@@ -2,11 +2,11 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of Core v.5.3.6-13ubuntu3.2
-use JetBrains\PhpStorm\ExpectedValues;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\ExpectedValues;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * Created by typecasting to object.
@@ -294,7 +294,7 @@ class Exception implements Throwable
      * @link https://php.net/manual/en/exception.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable(from: "5.4", to: "8.0")]
+    #[StubsElementAvailable(from: "5.4", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -303,7 +303,7 @@ class Exception implements Throwable
      * @link https://php.net/manual/en/exception.clone.php
      * @return void
      */
-    #[PhpStormStubsElementAvailable("8.1")]
+    #[StubsElementAvailable("8.1")]
     private function __clone(): void {}
 
     /**
@@ -505,7 +505,7 @@ class Error implements Throwable
      * @return void
      * @link https://php.net/manual/en/error.clone.php
      */
-    #[PhpStormStubsElementAvailable(from: "7.0", to: "8.0")]
+    #[StubsElementAvailable(from: "7.0", to: "8.0")]
     final private function __clone(): void {}
 
     /**
@@ -514,7 +514,7 @@ class Error implements Throwable
      * @return void
      * @link https://php.net/manual/en/error.clone.php
      */
-    #[PhpStormStubsElementAvailable('8.1')]
+    #[StubsElementAvailable('8.1')]
     private function __clone(): void {}
 
     #[TentativeType]

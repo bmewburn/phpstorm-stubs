@@ -1,12 +1,12 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 
-use JetBrains\PhpStorm\Deprecated;
-use JetBrains\PhpStorm\Immutable;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
-use JetBrains\PhpStorm\Pure;
+use __IDE\Deprecated;
+use __IDE\Immutable;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
+use __IDE\Pure;
 
 /**
  * The <b>ReflectionMethod</b> class reports
@@ -201,8 +201,8 @@ class ReflectionMethod extends ReflectionFunctionAbstract
     #[Pure]
     #[TentativeType]
     public function getClosure(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '7.3')] $object,
-        #[PhpStormStubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'object|null'], default: '')] $object = null
+        #[StubsElementAvailable(from: '5.3', to: '7.3')] $object,
+        #[StubsElementAvailable(from: '7.4')] #[LanguageLevelTypeAware(['8.0' => 'object|null'], default: '')] $object = null
     ): Closure {}
 
     /**
@@ -287,7 +287,7 @@ class ReflectionMethod extends ReflectionFunctionAbstract
      * @return void No value is returned.
      * @since 5.3.2
      */
-    #[PhpStormStubsElementAvailable(to: "8.0")]
+    #[StubsElementAvailable(to: "8.0")]
     #[TentativeType]
     public function setAccessible(#[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $accessible): void {}
 
@@ -300,11 +300,11 @@ class ReflectionMethod extends ReflectionFunctionAbstract
      * @return void No value is returned.
      */
     #[Pure]
-    #[PhpStormStubsElementAvailable(from: "8.1")]
+    #[StubsElementAvailable(from: "8.1")]
     #[TentativeType]
     public function setAccessible(bool $accessible): void {}
 
-    #[PhpStormStubsElementAvailable(from: '8.2')]
+    #[StubsElementAvailable(from: '8.2')]
     public function hasPrototype(): bool {}
 
     /**

@@ -1,7 +1,7 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of geoip v.1.1.0
-use JetBrains\PhpStorm\Pure;
+use __IDE\Pure;
 
 /**
  * (PECL geoip &gt;= 0.2.0)<br/>

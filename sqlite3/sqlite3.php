@@ -2,10 +2,10 @@
 //modified by Mewburn Projects Pty Ltd
 
 // Start of sqlite3 v.0.7-dev
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\ArrayShape;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\StubsElementAvailable;
+use __IDE\TentativeType;
 
 /**
  * @since 8.3
@@ -79,10 +79,10 @@ class SQLite3
     #[TentativeType]
     public function open(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $filename,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $flags,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
     ): void {}
 
     /**
@@ -264,7 +264,7 @@ class SQLite3
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $name,
         #[LanguageLevelTypeAware(['8.0' => 'callable'], default: '')] $callback,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $argCount = -1,
-        #[PhpStormStubsElementAvailable(from: '7.1')] int $flags = 0
+        #[StubsElementAvailable(from: '7.1')] int $flags = 0
     ): bool {}
 
     /**
@@ -332,7 +332,7 @@ class SQLite3
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $column,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $rowid,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $database = 'main',
-        #[PhpStormStubsElementAvailable(from: '7.2')] int $flags = SQLITE3_OPEN_READONLY
+        #[StubsElementAvailable(from: '7.2')] int $flags = SQLITE3_OPEN_READONLY
     ) {}
 
     /**
@@ -343,8 +343,8 @@ class SQLite3
      */
     #[TentativeType]
     public function enableExceptions(
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $enable,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $enable = false
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $enable,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $enable = false
     ): bool {}
 
     /**
@@ -368,10 +368,10 @@ class SQLite3
      */
     public function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $filename,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $flags,
-        #[PhpStormStubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
-        #[PhpStormStubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
+        #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
     ) {}
 
     /**
@@ -387,8 +387,8 @@ class SQLite3
      */
     #[TentativeType]
     public function enableExtendedResultCodes(
-        #[PhpStormStubsElementAvailable(from: '7.4', to: '7.4')] bool $enable,
-        #[PhpStormStubsElementAvailable(from: '8.0')] bool $enable = true
+        #[StubsElementAvailable(from: '7.4', to: '7.4')] bool $enable,
+        #[StubsElementAvailable(from: '8.0')] bool $enable = true
     ): bool {}
 
     /**
@@ -523,7 +523,7 @@ class SQLite3Stmt
      */
     private function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'SQLite3'], default: '')] $sqlite3,
-        #[PhpStormStubsElementAvailable(from: '8.0')] string $query
+        #[StubsElementAvailable(from: '8.0')] string $query
     ) {}
 
     /**
