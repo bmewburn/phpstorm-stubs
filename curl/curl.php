@@ -2767,10 +2767,10 @@ function curl_multi_info_read($multi_handle, &$queued_messages): array|false {}
  * @param int &$queued_messages [optional] <p>
  * Number of messages that are still in the queue
  * </p>
- * @return array{msg:int, result:int, handle:CurlMultiHandle}|false On success, returns an associative array for the message, false on failure.
+ * @return array{msg:int, result:int, handle:CurlHandle}|false On success, returns an associative array for the message, false on failure.
  */
 #[Pure]
-#[ArrayShape(["msg" => "int", "result" => "int", "handle" => "CurlMultiHandle"])]
+#[ArrayShape(["msg" => "int", "result" => "int", "handle" => "CurlHandle"])]
 #[StubsElementAvailable(from: '8.0')]
 function curl_multi_info_read(CurlMultiHandle $multi_handle, &$queued_messages): array|false {}
 
