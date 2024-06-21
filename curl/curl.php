@@ -2749,7 +2749,7 @@ function curl_multi_getcontent(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'],
 /**
  * Get information about the current transfers
  * @link https://php.net/manual/en/function.curl-multi-info-read.php
- * @param CurlMultiHandle|resource $multi_handle
+ * @param resource $multi_handle
  * @param int &$queued_messages [optional] <p>
  * Number of messages that are still in the queue
  * </p>
@@ -2757,7 +2757,22 @@ function curl_multi_getcontent(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'],
  */
 #[Pure]
 #[ArrayShape(["msg" => "int", "result" => "int", "handle" => "resource"])]
-function curl_multi_info_read(#[LanguageLevelTypeAware(['8.0' => 'CurlMultiHandle'], default: 'resource')] $multi_handle, &$queued_messages): array|false {}
+#[StubsElementAvailable(to: '7.4')]
+function curl_multi_info_read($multi_handle, &$queued_messages): array|false {}
+
+/**
+ * Get information about the current transfers
+ * @link https://php.net/manual/en/function.curl-multi-info-read.php
+ * @param CurlMultiHandle $multi_handle
+ * @param int &$queued_messages [optional] <p>
+ * Number of messages that are still in the queue
+ * </p>
+ * @return array{msg:int, result:int, handle:CurlMultiHandle}|false On success, returns an associative array for the message, false on failure.
+ */
+#[Pure]
+#[ArrayShape(["msg" => "int", "result" => "int", "handle" => "CurlMultiHandle"])]
+#[StubsElementAvailable(from: '8.0')]
+function curl_multi_info_read(CurlMultiHandle $multi_handle, &$queued_messages): array|false {}
 
 /**
  * Close a set of cURL handles
