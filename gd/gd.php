@@ -149,7 +149,7 @@ function gd_info(): array {}
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function imagearc(GdImage $image, int $center_x, int $center_y, int $width, int $height, int $start_angle, int $end_angle, int $color): bool {}
+function imagearc(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $center_x, int $center_y, int $width, int $height, int $start_angle, int $end_angle, int $color): bool {}
 
 /**
  * Draw an ellipse
@@ -173,7 +173,7 @@ function imagearc(GdImage $image, int $center_x, int $center_y, int $width, int 
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function imageellipse(GdImage $image, int $center_x, int $center_y, int $width, int $height, int $color): bool {}
+function imageellipse(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $center_x, int $center_y, int $width, int $height, int $color): bool {}
 
 /**
  * Draw a character horizontally
@@ -246,7 +246,7 @@ function imagecharup(
  * @return int|false the index of the color or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorat(GdImage $image, int $x, int $y): int|false {}
+function imagecolorat(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x, int $y): int|false {}
 
 /**
  * Allocate a color for an image
@@ -257,7 +257,7 @@ function imagecolorat(GdImage $image, int $x, int $y): int|false {}
  * @param int $blue <p>Value of blue component.</p>
  * @return int|false A color identifier or <b>FALSE</b> if the allocation failed.
  */
-function imagecolorallocate(GdImage $image, int $red, int $green, int $blue): int|false {}
+function imagecolorallocate(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue): int|false {}
 
 /**
  * Copy the palette from one image to another
@@ -270,7 +270,7 @@ function imagecolorallocate(GdImage $image, int $red, int $green, int $blue): in
  * </p>
  * @return void No value is returned.
  */
-function imagepalettecopy(GdImage $dst, GdImage $src): void {}
+function imagepalettecopy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst, GdImage $src): void {}
 
 /**
  * Create a new image from the image stream in the string
@@ -296,7 +296,7 @@ function imagecreatefromstring(string $data): GdImage|false {}
  * the specified one or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorclosest(GdImage $image, int $red, int $green, int $blue): int {}
+function imagecolorclosest(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue): int {}
 
 /**
  * Get the index of the color which has the hue, white and blackness
@@ -309,7 +309,7 @@ function imagecolorclosest(GdImage $image, int $red, int $green, int $blue): int
  * the hue, white and blackness nearest the given color or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorclosesthwb(GdImage $image, int $red, int $green, int $blue): int {}
+function imagecolorclosesthwb(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue): int {}
 
 /**
  * De-allocate a color for an image
@@ -320,7 +320,7 @@ function imagecolorclosesthwb(GdImage $image, int $red, int $green, int $blue): 
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function imagecolordeallocate(GdImage $image, int $color): bool {}
+function imagecolordeallocate(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $color): bool {}
 
 /**
  * Get the index of the specified color or its closest possible alternative
@@ -332,7 +332,7 @@ function imagecolordeallocate(GdImage $image, int $color): bool {}
  * @return int|false a color index or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorresolve(GdImage $image, int $red, int $green, int $blue): int {}
+function imagecolorresolve(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue): int {}
 
 /**
  * Get the index of the specified color
@@ -345,7 +345,7 @@ function imagecolorresolve(GdImage $image, int $red, int $green, int $blue): int
  * color does not exist, or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorexact(GdImage $image, int $red, int $green, int $blue): int {}
+function imagecolorexact(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue): int {}
 
 /**
  * Set the color for the specified palette index
@@ -363,7 +363,7 @@ function imagecolorexact(GdImage $image, int $red, int $green, int $blue): int {
  * @return bool|null
  */
 #[LanguageLevelTypeAware(['8.2' => 'null|false'], default: 'null|bool')]
-function imagecolorset(GdImage $image, int $color, int $red, int $green, int $blue, int $alpha = 0): ?bool {}
+function imagecolorset(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $color, int $red, int $green, int $blue, int $alpha = 0): ?bool {}
 
 /**
  * Define a color as transparent
@@ -378,7 +378,7 @@ function imagecolorset(GdImage $image, int $color, int $red, int $green, int $bl
  * is not specified, and the image has no transparent color, the
  * returned identifier will be -1.
  */
-function imagecolortransparent(GdImage $image, ?int $color = null): int {}
+function imagecolortransparent(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?int $color = null): int {}
 
 /**
  * Find out the number of colors in an image's palette
@@ -391,7 +391,7 @@ function imagecolortransparent(GdImage $image, ?int $color = null): int {}
  * truecolor images, or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorstotal(GdImage $image): int {}
+function imagecolorstotal(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): int {}
 
 /**
  * Get the colors for an index
@@ -406,7 +406,7 @@ function imagecolorstotal(GdImage $image): int {}
 #[Pure]
 #[LanguageLevelTypeAware(['8.0' => 'array'], default: 'array|false')]
 #[ArrayShape(["red" => "int", "green" => "int", "blue" => "int", "alpha" => "int"])]
-function imagecolorsforindex(GdImage $image, int $color) {}
+function imagecolorsforindex(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $color) {}
 
 /**
  * Copy part of an image
@@ -437,7 +437,7 @@ function imagecolorsforindex(GdImage $image, int $color) {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecopy(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height): bool {}
+function imagecopy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height): bool {}
 
 /**
  * Copy and merge part of an image
@@ -475,7 +475,7 @@ function imagecopy(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecopymerge(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height, int $pct): bool {}
+function imagecopymerge(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height, int $pct): bool {}
 
 /**
  * Copy and merge part of an image with gray scale
@@ -513,7 +513,7 @@ function imagecopymerge(GdImage $dst_image, GdImage $src_image, int $dst_x, int 
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecopymergegray(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height, int $pct): bool {}
+function imagecopymergegray(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $src_width, int $src_height, int $pct): bool {}
 
 /**
  * Copy and resize part of an image
@@ -546,7 +546,7 @@ function imagecopymergegray(GdImage $dst_image, GdImage $src_image, int $dst_x, 
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecopyresized(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $dst_width, int $dst_height, int $src_width, int $src_height): bool {}
+function imagecopyresized(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $dst_width, int $dst_height, int $src_width, int $src_height): bool {}
 
 /**
  * Create a new palette based image
@@ -584,7 +584,7 @@ function imagecreatetruecolor(int $width, int $height): GdImage|false {}
  * otherwise.
  */
 #[Pure]
-function imageistruecolor(GdImage $image): bool {}
+function imageistruecolor(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): bool {}
 
 /**
  * Convert a true color image to a palette image
@@ -600,7 +600,7 @@ function imageistruecolor(GdImage $image): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagetruecolortopalette(GdImage $image, bool $dither, int $num_colors): bool {}
+function imagetruecolortopalette(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, bool $dither, int $num_colors): bool {}
 
 /**
  * Set the thickness for line drawing
@@ -611,7 +611,7 @@ function imagetruecolortopalette(GdImage $image, bool $dither, int $num_colors):
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesetthickness(GdImage $image, int $thickness): bool {}
+function imagesetthickness(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $thickness): bool {}
 
 /**
  * Draw a partial arc and fill it
@@ -646,7 +646,7 @@ function imagesetthickness(GdImage $image, int $thickness): bool {}
  * IMG_ARC_PIE</p>
  * @return bool true on success or false on failure.
  */
-function imagefilledarc(GdImage $image, int $center_x, int $center_y, int $width, int $height, int $start_angle, int $end_angle, int $color, int $style): bool {}
+function imagefilledarc(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $center_x, int $center_y, int $width, int $height, int $start_angle, int $end_angle, int $color, int $style): bool {}
 
 /**
  * Draw a filled ellipse
@@ -670,7 +670,7 @@ function imagefilledarc(GdImage $image, int $center_x, int $center_y, int $width
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagefilledellipse(GdImage $image, int $center_x, int $center_y, int $width, int $height, int $color): bool {}
+function imagefilledellipse(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $center_x, int $center_y, int $width, int $height, int $color): bool {}
 
 /**
  * Set the blending mode for an image
@@ -682,7 +682,7 @@ function imagefilledellipse(GdImage $image, int $center_x, int $center_y, int $w
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagealphablending(GdImage $image, bool $enable): bool {}
+function imagealphablending(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, bool $enable): bool {}
 
 /**
  * Set the flag to save full alpha channel information (as opposed to single-color transparency) when saving PNG images
@@ -693,7 +693,7 @@ function imagealphablending(GdImage $image, bool $enable): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesavealpha(GdImage $image, bool $enable): bool {}
+function imagesavealpha(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, bool $enable): bool {}
 
 /**
  * Allocate a color for an image
@@ -715,7 +715,7 @@ function imagesavealpha(GdImage $image, bool $enable): bool {}
  * </p>
  * @return int|false A color identifier or false if the allocation failed.
  */
-function imagecolorallocatealpha(GdImage $image, int $red, int $green, int $blue, int $alpha): int|false {}
+function imagecolorallocatealpha(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue, int $alpha): int|false {}
 
 /**
  * Get the index of the specified color + alpha or its closest possible alternative
@@ -738,7 +738,7 @@ function imagecolorallocatealpha(GdImage $image, int $red, int $green, int $blue
  * @return int|false a color index or <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorresolvealpha(GdImage $image, int $red, int $green, int $blue, int $alpha): int {}
+function imagecolorresolvealpha(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue, int $alpha): int {}
 
 /**
  * Get the index of the closest color to the specified color + alpha
@@ -762,7 +762,7 @@ function imagecolorresolvealpha(GdImage $image, int $red, int $green, int $blue,
  * <b>FALSE</b> on failure
  */
 #[Pure]
-function imagecolorclosestalpha(GdImage $image, int $red, int $green, int $blue, int $alpha): int {}
+function imagecolorclosestalpha(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue, int $alpha): int {}
 
 /**
  * Get the index of the specified color + alpha
@@ -788,7 +788,7 @@ function imagecolorclosestalpha(GdImage $image, int $red, int $green, int $blue,
  */
 #[Pure]
 #[LanguageLevelTypeAware(['8.0' => 'int'], default: 'int|false')]
-function imagecolorexactalpha(GdImage $image, int $red, int $green, int $blue, int $alpha) {}
+function imagecolorexactalpha(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $red, int $green, int $blue, int $alpha) {}
 
 /**
  * Copy and resize part of an image with resampling
@@ -821,7 +821,7 @@ function imagecolorexactalpha(GdImage $image, int $red, int $green, int $blue, i
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecopyresampled(GdImage $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $dst_width, int $dst_height, int $src_width, int $src_height): bool {}
+function imagecopyresampled(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $dst_image, GdImage $src_image, int $dst_x, int $dst_y, int $src_x, int $src_y, int $dst_width, int $dst_height, int $src_width, int $src_height): bool {}
 
 /**
  * Rotate an image with a given angle
@@ -855,7 +855,7 @@ function imagerotate(
  * </p>
  * @return bool true on success or false on failure.
  */
-function imageantialias(GdImage $image, bool $enable): bool {}
+function imageantialias(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, bool $enable): bool {}
 
 /**
  * Set the tile image for filling
@@ -866,7 +866,7 @@ function imageantialias(GdImage $image, bool $enable): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesettile(GdImage $image, GdImage $tile): bool {}
+function imagesettile(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, GdImage $tile): bool {}
 
 /**
  * Set the brush image for line drawing
@@ -877,7 +877,7 @@ function imagesettile(GdImage $image, GdImage $tile): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesetbrush(GdImage $image, GdImage $brush): bool {}
+function imagesetbrush(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, GdImage $brush): bool {}
 
 /**
  * Set the style for line drawing
@@ -890,7 +890,7 @@ function imagesetbrush(GdImage $image, GdImage $brush): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesetstyle(GdImage $image, array $style): bool {}
+function imagesetstyle(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, array $style): bool {}
 
 /**
  * Create a new image from file or URL
@@ -1038,7 +1038,7 @@ function imagecreatefromgd2part(string $filename, int $x, int $y, int $width, in
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagepng(GdImage $image, $file = null, int $quality = -1, int $filters = -1): bool {}
+function imagepng(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null, int $quality = -1, int $filters = -1): bool {}
 
 /**
  * Output a WebP image to browser or file
@@ -1054,7 +1054,7 @@ function imagepng(GdImage $image, $file = null, int $quality = -1, int $filters 
  * @return bool true on success or false on failure.
  * @since 5.4
  */
-function imagewebp(GdImage $image, $file = null, int $quality = -1): bool {}
+function imagewebp(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null, int $quality = -1): bool {}
 
 /**
  * Output image to browser or file
@@ -1066,7 +1066,7 @@ function imagewebp(GdImage $image, $file = null, int $quality = -1): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagegif(GdImage $image, $file = null): bool {}
+function imagegif(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null): bool {}
 
 /**
  * Output image to browser or file
@@ -1087,7 +1087,7 @@ function imagegif(GdImage $image, $file = null): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagejpeg(GdImage $image, $file = null, int $quality = -1): bool {}
+function imagejpeg(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null, int $quality = -1): bool {}
 
 /**
  * Output image to browser or file
@@ -1104,7 +1104,7 @@ function imagejpeg(GdImage $image, $file = null, int $quality = -1): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagewbmp(GdImage $image, $file = null, ?int $foreground_color = null): bool {}
+function imagewbmp(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null, ?int $foreground_color = null): bool {}
 
 /**
  * Output GD image to browser or file. <br/>
@@ -1117,7 +1117,7 @@ function imagewbmp(GdImage $image, $file = null, ?int $foreground_color = null):
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagegd(GdImage $image, ?string $file = null): bool {}
+function imagegd(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?string $file = null): bool {}
 
 /**
  * Output GD2 image to browser or file
@@ -1137,7 +1137,7 @@ function imagegd(GdImage $image, ?string $file = null): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagegd2(GdImage $image, ?string $file = null, int $chunk_size = 128, int $mode = IMG_GD2_RAW): bool {}
+function imagegd2(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?string $file = null, int $chunk_size = 128, int $mode = IMG_GD2_RAW): bool {}
 
 /**
  * Destroy an image
@@ -1145,7 +1145,7 @@ function imagegd2(GdImage $image, ?string $file = null, int $chunk_size = 128, i
  * @param resource|GdImage $image
  * @return bool true on success or false on failure.
  */
-function imagedestroy(GdImage $image): bool {}
+function imagedestroy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): bool {}
 
 /**
  * Apply a gamma correction to a GD image
@@ -1159,7 +1159,7 @@ function imagedestroy(GdImage $image): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagegammacorrect(GdImage $image, float $input_gamma, float $output_gamma): bool {}
+function imagegammacorrect(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, float $input_gamma, float $output_gamma): bool {}
 
 /**
  * Flood fill
@@ -1177,7 +1177,7 @@ function imagegammacorrect(GdImage $image, float $input_gamma, float $output_gam
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagefill(GdImage $image, int $x, int $y, int $color): bool {}
+function imagefill(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x, int $y, int $color): bool {}
 
 /**
  * Draw a filled polygon
@@ -1246,7 +1246,7 @@ function imagefilledpolygon(
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagefilledrectangle(GdImage $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
+function imagefilledrectangle(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
 
 /**
  * Flood fill to specific color
@@ -1268,7 +1268,7 @@ function imagefilledrectangle(GdImage $image, int $x1, int $y1, int $x2, int $y2
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagefilltoborder(GdImage $image, int $x, int $y, int $border_color, int $color): bool {}
+function imagefilltoborder(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x, int $y, int $border_color, int $color): bool {}
 
 /**
  * Get font width
@@ -1299,7 +1299,7 @@ function imagefontheight(#[LanguageLevelTypeAware(['8.1' => 'GdFont|int'], defau
  * @return bool 1 if the interlace bit is set for the image,
  * 0 if it is not
  */
-function imageinterlace(GdImage $image, ?bool $enable = null): bool {}
+function imageinterlace(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?bool $enable = null): bool {}
 
 /**
  * Draw a line
@@ -1323,7 +1323,7 @@ function imageinterlace(GdImage $image, ?bool $enable = null): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imageline(GdImage $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
+function imageline(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
 
 /**
  * Load a new font
@@ -1441,7 +1441,7 @@ function imagepolygon(
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagerectangle(GdImage $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
+function imagerectangle(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
 
 /**
  * Set a single pixel
@@ -1459,7 +1459,7 @@ function imagerectangle(GdImage $image, int $x1, int $y1, int $x2, int $y2, int 
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagesetpixel(GdImage $image, int $x, int $y, int $color): bool {}
+function imagesetpixel(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x, int $y, int $color): bool {}
 
 /**
  * Draw a string horizontally
@@ -1529,7 +1529,7 @@ function imagestringup(
  * errors.
  */
 #[Pure]
-function imagesx(GdImage $image): int {}
+function imagesx(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): int {}
 
 /**
  * Get image height
@@ -1539,7 +1539,7 @@ function imagesx(GdImage $image): int {}
  * errors.
  */
 #[Pure]
-function imagesy(GdImage $image): int {}
+function imagesy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): int {}
 
 /**
  * Draw a dashed line
@@ -1566,7 +1566,7 @@ function imagesy(GdImage $image): int {}
  * @see imageline()
  */
 #[Deprecated("Use combination of imagesetstyle() and imageline() instead")]
-function imagedashedline(GdImage $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
+function imagedashedline(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
 
 /**
  * Give the bounding box of a text using TrueType fonts
@@ -1727,7 +1727,7 @@ function imagettfbbox(float $size, float $angle, string $font_filename, string $
  * corner when you see the text horizontally.
  * Returns false on error.
  */
-function imagettftext(GdImage $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, #[StubsElementAvailable(from: '8.0')] array $options = []): array|false {}
+function imagettftext(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, #[StubsElementAvailable(from: '8.0')] array $options = []): array|false {}
 
 /**
  * Give the bounding box of a text using fonts via freetype2
@@ -1925,7 +1925,7 @@ function imageftbbox(float $size, float $angle, string $font_filename, string $s
  * </tr>
  * Returns false on error.
  */
-function imagefttext(GdImage $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, array $options = []): array|false {}
+function imagefttext(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, float $size, float $angle, int $x, int $y, int $color, string $font_filename, string $text, array $options = []): array|false {}
 
 /**
  * Load a PostScript Type 1 font from file
@@ -2190,7 +2190,7 @@ function image2wbmp($image, $filename = null, $threshold = null) {}
  * imagealphablending)</p>
  * @return bool true on success or false on failure.
  */
-function imagelayereffect(GdImage $image, int $effect): bool {}
+function imagelayereffect(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $effect): bool {}
 
 /**
  * Makes the colors of the palette version of an image more closely match the true color version
@@ -2204,7 +2204,7 @@ function imagelayereffect(GdImage $image, int $effect): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagecolormatch(GdImage $image1, GdImage $image2): bool {}
+function imagecolormatch(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image1, GdImage $image2): bool {}
 
 /**
  * Output XBM image to browser or file
@@ -2221,7 +2221,7 @@ function imagecolormatch(GdImage $image1, GdImage $image2): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function imagexbm(GdImage $image, ?string $filename, ?int $foreground_color = null): bool {}
+function imagexbm(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?string $filename, ?int $foreground_color = null): bool {}
 
 /**
  * Applies a filter to an image
@@ -2259,7 +2259,7 @@ function imagefilter(
  * </p>
  * @return bool true on success or false on failure.
  */
-function imageconvolution(GdImage $image, array $matrix, float $divisor, float $offset): bool {}
+function imageconvolution(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, array $matrix, float $divisor, float $offset): bool {}
 
 /**
  * @param resource|GdImage $image An image resource, returned by one of the image creation functions, such as {@see imagecreatetruecolor()}.
@@ -2270,7 +2270,7 @@ function imageconvolution(GdImage $image, array $matrix, float $divisor, float $
  * @since 7.2
  */
 #[LanguageLevelTypeAware(['8.2' => 'array|true'], default: 'array|bool')]
-function imageresolution(GdImage $image, ?int $resolution_x = null, ?int $resolution_y = null): array|bool {}
+function imageresolution(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, ?int $resolution_x = null, ?int $resolution_y = null): array|bool {}
 
 /**
  * <b>imagesetclip()</b> sets the current clipping rectangle, i.e. the area beyond which no pixels will be drawn.
@@ -2284,7 +2284,7 @@ function imageresolution(GdImage $image, ?int $resolution_x = null, ?int $resolu
  * @see imagegetclip()
  * @since 7.2
  */
-function imagesetclip(GdImage $image, int $x1, int $y1, int $x2, int $y2): bool {}
+function imagesetclip(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2): bool {}
 
 /**
  * <b>imagegetclip()</b> retrieves the current clipping rectangle, i.e. the area beyond which no pixels will be drawn.
@@ -2301,7 +2301,7 @@ function imagesetclip(GdImage $image, int $x1, int $y1, int $x2, int $y2): bool 
  * @see imagesetclip()
  * @since 7.2
  */
-function imagegetclip(GdImage $image): array {}
+function imagegetclip(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): array {}
 
 /**
  * <b>imageopenpolygon()</b> draws an open polygon on the given <b>image.</b> Contrary to {@see imagepolygon()}, no line is drawn between the last and the first point.
@@ -2351,7 +2351,7 @@ function imagecreatefrombmp(string $filename): GdImage|false {}
  * @link https://php.net/manual/en/function.imagebmp.php
  * @since 7.2
  */
-function imagebmp(GdImage $image, $file = null, bool $compressed = true): bool {}
+function imagebmp(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, $file = null, bool $compressed = true): bool {}
 
 /**
  * @param string $filename
@@ -2390,7 +2390,7 @@ function imagegrabwindow($handle, $client_area = null) {}
  * @return int
  */
 #[Pure]
-function imagegetinterpolation(GdImage $image): int {}
+function imagegetinterpolation(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): int {}
 
 /**
  * Used as a return value by {@see imagetypes()}
@@ -2988,7 +2988,7 @@ define('IMG_WEBP_LOSSLESS', 101);
  * @return bool Returns true on success or false on failure. However, if libgd fails to output the image, this function returns true.
  * @since 8.1
  */
-function imageavif(GdImage $image, string|null $file = null, int $quality = -1, int $speed = -1): bool {}
+function imageavif(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, string|null $file = null, int $quality = -1, int $speed = -1): bool {}
 
 /**
  * Return an image containing the affine tramsformed src image, using an optional clipping area
@@ -2999,7 +2999,7 @@ function imageavif(GdImage $image, string|null $file = null, int $quality = -1, 
  * @param array|null $clip [optional] <p>Array with keys "x", "y", "width" and "height".</p>
  * @return resource|GdImage|false Return affined image resource on success or FALSE on failure.
  */
-function imageaffine(GdImage $image, array $affine, ?array $clip = null): GdImage|false {}
+function imageaffine(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, array $affine, ?array $clip = null): GdImage|false {}
 
 /**
  * Concat two matrices (as in doing many ops in one go)
@@ -3035,7 +3035,7 @@ function imageaffinematrixget(
  * @return resource|GdImage|false Return cropped image resource on success or FALSE on failure.
  * @since 5.5
  */
-function imagecrop(GdImage $image, array $rectangle): GdImage|false {}
+function imagecrop(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, array $rectangle): GdImage|false {}
 
 /**
  * Crop an image automatically using one of the available modes
@@ -3056,7 +3056,7 @@ function imagecrop(GdImage $image, array $rectangle): GdImage|false {}
  * @return resource|GdImage|false Return cropped image resource on success or <b>FALSE</b> on failure.
  * @since 5.5
  */
-function imagecropauto(GdImage $image, int $mode = IMG_CROP_DEFAULT, float $threshold = .5, int $color = -1): GdImage|false {}
+function imagecropauto(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $mode = IMG_CROP_DEFAULT, float $threshold = .5, int $color = -1): GdImage|false {}
 
 /**
  * Flips an image using a given mode
@@ -3098,7 +3098,7 @@ function imagecropauto(GdImage $image, int $mode = IMG_CROP_DEFAULT, float $thre
  * @return bool Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * @since 5.5
  */
-function imageflip(GdImage $image, int $mode): bool {}
+function imageflip(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $mode): bool {}
 
 /**
  * Converts a palette based image to true color
@@ -3109,7 +3109,7 @@ function imageflip(GdImage $image, int $mode): bool {}
  * @return bool Returns <b>TRUE</b> if the convertion was complete, or if the source image already is a true color image, otherwise <b>FALSE</b> is returned.
  * @since 5.5
  */
-function imagepalettetotruecolor(GdImage $image): bool {}
+function imagepalettetotruecolor(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image): bool {}
 
 /**
  * @param resource|GdImage $image <p>
@@ -3123,7 +3123,7 @@ function imagepalettetotruecolor(GdImage $image): bool {}
  * @since 5.5
  * Scale an image using the given new width and height
  */
-function imagescale(GdImage $image, int $width, int $height = -1, int $mode = IMG_BILINEAR_FIXED): GdImage|false {}
+function imagescale(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $width, int $height = -1, int $mode = IMG_BILINEAR_FIXED): GdImage|false {}
 
 /**
  * Set the interpolation method
@@ -3202,7 +3202,7 @@ function imagescale(GdImage $image, int $width, int $height = -1, int $mode = IM
  * @return bool Returns TRUE on success or FALSE on failure.
  * @since 5.5
  */
-function imagesetinterpolation(GdImage $image, int $method = IMG_BILINEAR_FIXED): bool {}
+function imagesetinterpolation(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $method = IMG_BILINEAR_FIXED): bool {}
 
 /**
  * @since 8.0
