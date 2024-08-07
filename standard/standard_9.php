@@ -703,10 +703,12 @@ function array_product(array $array): int|float {}
  * current value from <b>array</b> is returned into
  * the result array. Array keys are preserved.
  * @link https://php.net/manual/en/function.array-filter.php
- * @param array $array <p>
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array <p>
  * The array to iterate over
  * </p>
- * @param callable|null $callback [optional] <p>
+ * @param (callable(TValue $value): bool)|(callable(TValue $value, TKey $key): bool)|null $callback [optional] <p>
  * The callback function to use
  * </p>
  * <p>
@@ -727,7 +729,7 @@ function array_product(array $array): int|float {}
  * arguments to <i>callback</i> instead of the value</span>
  * </li>
  * </ul>
- * @return array the filtered array.
+ * @return array<TKey, TValue> the filtered array.
  * @meta
  */
 function array_filter(array $array, ?callable $callback, int $mode = 0): array {}
