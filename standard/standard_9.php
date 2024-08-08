@@ -91,10 +91,11 @@ function array_keys(array $array, mixed $filter_value, bool $strict = false): ar
 /**
  * Return all the values of an array
  * @link https://php.net/manual/en/function.array-values.php
- * @param array $array <p>
+ * @template TValue
+ * @param array<int|string, TValue> $array <p>
  * The array.
  * </p>
- * @return array an indexed array of values.
+ * @return TValue[] an indexed array of values.
  * @meta
  */
 #[Pure]
@@ -127,13 +128,14 @@ function array_column(array $array, string|int|null $column_key, string|int|null
 /**
  * Return an array with elements in reverse order
  * @link https://php.net/manual/en/function.array-reverse.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The input array.
  * </p>
  * @param bool $preserve_keys [optional] <p>
  * If set to true keys are preserved.
  * </p>
- * @return array the reversed array.
+ * @return TArray the reversed array.
  * @meta
  */
 #[Pure]
@@ -142,20 +144,22 @@ function array_reverse(array $array, bool $preserve_keys = false): array {}
 /**
  * Iteratively reduce the array to a single value using a callback function
  * @link https://php.net/manual/en/function.array-reduce.php
- * @param array $array <p>
+ * @template TCarry
+ * @template TItem
+ * @param array<int|string, TItem> $array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param callable(TCarry, TItem):TCarry $callback <p>
  * The callback function. Signature is <pre>callback ( mixed $carry , mixed $item ) : mixed</pre>
  * <blockquote>mixed <var>$carry</var> <p>The return value of the previous iteration; on the first iteration it holds the value of <var>$initial</var>.</p></blockquote>
  * <blockquote>mixed <var>$item</var> <p>Holds the current iteration value of the <var>$input</var></p></blockquote>
  * </p>
- * @param mixed $initial [optional] <p>
+ * @param TCarry $initial [optional] <p>
  * If the optional initial is available, it will
  * be used at the beginning of the process, or as a final result in case
  * the array is empty.
  * </p>
- * @return mixed the resulting value.
+ * @return TCarry the resulting value.
  * <p>
  * If the array is empty and initial is not passed,
  * array_reduce returns null.
@@ -212,14 +216,15 @@ function array_flip(array $array): array {}
 /**
  * Changes the case of all keys in an array
  * @link https://php.net/manual/en/function.array-change-key-case.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to work on
  * </p>
  * @param int $case <p>
  * Either CASE_UPPER or
  * CASE_LOWER (default)
  * </p>
- * @return array an array with its keys lower or uppercased
+ * @return TArray an array with its keys lower or uppercased
  * @meta
  */
 #[Pure]
@@ -244,7 +249,8 @@ function array_rand(array $array, int $num = 1): array|string|int {}
 /**
  * Removes duplicate values from an array
  * @link https://php.net/manual/en/function.array-unique.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The input array.
  * </p>
  * @param int $flags [optional] <p>
@@ -269,7 +275,7 @@ function array_rand(array $array, int $num = 1): array|string|int {}
  * based on the current locale
  * </li>
  * </ul>
- * @return array the filtered array.
+ * @return TArray the filtered array.
  * @meta
  */
 #[Pure]
@@ -278,11 +284,12 @@ function array_unique(array $array, int $flags = SORT_STRING): array {}
 /**
  * Computes the intersection of arrays
  * @link https://php.net/manual/en/function.array-intersect.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array with main values to check.
  * </p>
  * @param array ...$arrays arrays to compare values against.
- * @return array an array containing all the values of
+ * @return TArray an array containing all the values of
  * <code>array</code> that are present in all the arguments.
  * Note that keys are preserved.
  * @meta
@@ -293,11 +300,12 @@ function array_intersect(array $array, #[StubsElementAvailable(from: '5.3', to: 
 /**
  * Computes the intersection of arrays using keys for comparison
  * @link https://php.net/manual/en/function.array-intersect-key.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array with main keys to check.
  * </p>
  * @param array ...$arrays
- * @return array an array containing all the entries of
+ * @return TArray an array containing all the entries of
  * <code>array</code>  which have keys that are present in all the
  * arguments.
  * @meta
@@ -308,7 +316,8 @@ function array_intersect_key(array $array, #[StubsElementAvailable(from: '5.3', 
 /**
  * Computes the intersection of arrays using a callback function on the keys for comparison
  * @link https://php.net/manual/en/function.array-intersect-ukey.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * Initial array for comparison of the arrays.
  * </p>
  * @param array $array2 <p>
@@ -318,7 +327,7 @@ function array_intersect_key(array $array, #[StubsElementAvailable(from: '5.3', 
  * User supplied callback function to do the comparison.
  * </p>
  * @param ...$rest [optional]
- * @return array an array containing all the values of
+ * @return TArray an array containing all the values of
  * <code>array</code> which have matching keys that are present
  * in all the arguments.
  * @meta
@@ -333,7 +342,8 @@ function array_intersect_ukey(
 /**
  * Computes the intersection of arrays, compares data by a callback function
  * @link https://php.net/manual/en/function.array-uintersect.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -349,7 +359,7 @@ function array_intersect_ukey(
  * the first argument is considered to be respectively less than, equal
  * to, or greater than the second.
  * </p>
- * @return array an array containing all the values of <code>array</code>
+ * @return TArray an array containing all the values of <code>array</code>
  * that are present in all the arguments.
  * @meta
  */
@@ -363,11 +373,12 @@ function array_uintersect(
 /**
  * Computes the intersection of arrays with additional index check
  * @link https://php.net/manual/en/function.array-intersect-assoc.php
- * @param array $array <p>
+ * @template TArray
+ * @param TArray $array <p>
  * The array with main values to check.
  * </p>
  * @param array $arrays
- * @return array an associative array containing all the values in
+ * @return TArray an associative array containing all the values in
  * <code>array</code> that are present in all of the arguments.
  * @meta
  */
@@ -377,7 +388,8 @@ function array_intersect_assoc(array $array, #[StubsElementAvailable(from: '5.3'
 /**
  * Computes the intersection of arrays with additional index check, compares data by a callback function
  * @link https://php.net/manual/en/function.array-uintersect-assoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -391,7 +403,7 @@ function array_intersect_assoc(array $array, #[StubsElementAvailable(from: '5.3'
  * second.
  * </p>
  * @param array ...$rest
- * @return array an array containing all the values of
+ * @return TArray an array containing all the values of
  * <code>array</code> that are present in all the arguments.
  * @meta
  */
@@ -405,7 +417,8 @@ function array_uintersect_assoc(
 /**
  * Computes the intersection of arrays with additional index check, compares indexes by a callback function
  * @link https://php.net/manual/en/function.array-intersect-uassoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * Initial array for comparison of the arrays.
  * </p>
  * @param array $array2 <p>
@@ -415,7 +428,7 @@ function array_uintersect_assoc(
  * User supplied callback function to do the comparison.
  * </p>
  * @param array ...$rest
- * @return array the values of <code>array</code> whose values exist in all of the arguments.
+ * @return TArray the values of <code>array</code> whose values exist in all of the arguments.
  * @meta
  */
 function array_intersect_uassoc(
@@ -428,7 +441,8 @@ function array_intersect_uassoc(
 /**
  * Computes the intersection of arrays with additional index check, compares data and indexes by separate callback functions
  * @link https://php.net/manual/en/function.array-uintersect-uassoc.php
- * @param array $array <p>
+ * @template TArray
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -445,7 +459,7 @@ function array_intersect_uassoc(
  * Key comparison callback function.
  * </p>
  * @param array ...$rest
- * @return array an array containing all the values and keys of
+ * @return TArray an array containing all the values and keys of
  * array1 that are present in all the arguments.
  * @meta
  */
@@ -461,11 +475,12 @@ function array_uintersect_uassoc(
 /**
  * Computes the difference of arrays
  * @link https://php.net/manual/en/function.array-diff.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to compare from
  * </p>
  * @param array ...$arrays
- * @return array an array containing all the entries from
+ * @return TArray an array containing all the entries from
  * <code>array</code> that are not present in any of the other
  * arrays. Keys in the array <code>array</code> are preserved.
  * @meta
@@ -476,13 +491,14 @@ function array_diff(array $array, #[StubsElementAvailable(from: '5.3', to: '7.4'
 /**
  * Computes the difference of arrays using keys for comparison
  * @link https://php.net/manual/en/function.array-diff-key.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to compare from
  * </p>
  * @param array $arrays <p>
  * An array to compare against
  * </p>
- * @return array an array containing all the entries from
+ * @return TArray an array containing all the entries from
  * <code>array</code> whose keys are absent from all of the other arrays.
  * @meta
  */
@@ -492,7 +508,8 @@ function array_diff_key(array $array, #[StubsElementAvailable(from: '5.3', to: '
 /**
  * Computes the difference of arrays using a callback function on the keys for comparison
  * @link https://php.net/manual/en/function.array-diff-ukey.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to compare from
  * </p>
  * @param array $array2 <p>
@@ -505,7 +522,7 @@ function array_diff_key(array $array, #[StubsElementAvailable(from: '5.3', to: '
  * be respectively less than, equal to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the entries from
+ * @return TArray an array containing all the entries from
  * <code>array</code> that are not present in any of the other arrays.
  * @meta
  */
@@ -519,7 +536,8 @@ function array_diff_ukey(
 /**
  * Computes the difference of arrays by using a callback function for data comparison
  * @link https://php.net/manual/en/function.array-udiff.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -535,7 +553,7 @@ function array_diff_ukey(
  * to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the values of
+ * @return TArray an array containing all the values of
  * <code>array</code> that are not present in any of the other arguments.
  * @meta
  */
@@ -549,13 +567,14 @@ function array_udiff(
 /**
  * Computes the difference of arrays with additional index check
  * @link https://php.net/manual/en/function.array-diff-assoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to compare from
  * </p>
  * @param array $arrays <p>
  * An array to compare against
  * </p>
- * @return array an array containing all the values from
+ * @return TArray an array containing all the values from
  * <code>array</code> that are not present in any of the other arrays.
  * @meta
  */
@@ -569,7 +588,8 @@ function array_diff_assoc(
 /**
  * Computes the difference of arrays with additional index check, compares data by a callback function
  * @link https://php.net/manual/en/function.array-udiff-assoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -585,7 +605,7 @@ function array_diff_assoc(
  * to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array returns an array containing all the values from <code>array</code>
+ * @return TArray returns an array containing all the values from <code>array</code>
  * that are not present in any of the other arguments.
  * Note that the keys are used in the comparison unlike
  * array_diff and array_udiff.
@@ -605,7 +625,8 @@ function array_udiff_assoc(
 /**
  * Computes the difference of arrays with additional index check which is performed by a user supplied callback function
  * @link https://php.net/manual/en/function.array-diff-uassoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The array to compare from
  * </p>
  * @param array $array2 <p>
@@ -618,7 +639,7 @@ function array_udiff_assoc(
  * be respectively less than, equal to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the values and keys from
+ * @return TArray an array containing all the values and keys from
  * <code>array</code> that are not present in any of the other arrays.
  * @meta
  */
@@ -632,7 +653,8 @@ function array_diff_uassoc(
 /**
  * Computes the difference of arrays with additional index check, compares data and indexes by a callback function
  * @link https://php.net/manual/en/function.array-udiff-uassoc.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The first array.
  * </p>
  * @param array $array2 <p>
@@ -661,7 +683,7 @@ function array_diff_uassoc(
  * the indices by using an internal function.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the values and keys from
+ * @return TArray an array containing all the values and keys from
  * <code>array</code> that are not present in any of the other
  * arguments.
  * @meta
@@ -735,19 +757,19 @@ function array_product(array $array): int|float {}
 function array_filter(array $array, ?callable $callback, int $mode = 0): array {}
 
 /**
- * @template R
- * @template T
+ * @template TReturn
+ * @template TItem
  * 
  * Applies the callback to the elements of the given arrays
  * @link https://php.net/manual/en/function.array-map.php
- * @param (callable(T):R)|null $callback <p>
+ * @param (callable(TItem):TReturn)|null $callback <p>
  * Callback function to run for each element in each array.
  * </p>
- * @param array<array-key, T> $array <p>
+ * @param array<array-key, TItem> $array <p>
  * An array to run through the callback function.
  * </p>
- * @param array<array-key, T> ...$arrays
- * @return array<array-key, R> an array containing all the elements of arr1
+ * @param array<array-key, TItem> ...$arrays
+ * @return array<array-key, TReturn> an array containing all the elements of arr1
  * after applying the callback function to each one.
  * @meta
  */
@@ -780,14 +802,16 @@ function array_chunk(array $array, int $length, bool $preserve_keys = false): ar
 /**
  * Creates an array by using one array for keys and another for its values
  * @link https://php.net/manual/en/function.array-combine.php
- * @param array $keys <p>
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<int|string, TKey> $keys <p>
  * Array of keys to be used. Illegal values for key will be
  * converted to string.
  * </p>
- * @param array $values <p>
+ * @param array<int|string, TValue> $values <p>
  * Array of values to be used
  * </p>
- * @return array|false the combined array, false if the number of elements
+ * @return array<TKey, TValue>|false the combined array, false if the number of elements
  * for each array isn't equal or if the arrays are empty.
  * @meta
  */

@@ -650,13 +650,14 @@ function count(Countable|array $value, int $mode = COUNT_NORMAL): int {}
 /**
  * Set the internal pointer of an array to its last element
  * @link https://php.net/manual/en/function.end.php
- * @param array|object &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue>|object &$array <p>
  * The array. This array is passed by reference because it is modified by
  * the function. This means you must pass it a real variable and not
  * a function returning an array because only actual variables may be
  * passed by reference.
  * </p>
- * @return mixed|false the value of the last element or false for empty array.
+ * @return TValue|false the value of the last element or false for empty array.
  * @meta
  */
 function end(object|array &$array): mixed {}
@@ -664,10 +665,11 @@ function end(object|array &$array): mixed {}
 /**
  * Rewind the internal array pointer
  * @link https://php.net/manual/en/function.prev.php
- * @param array|object &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue>|object &$array <p>
  * The input array.
  * </p>
- * @return mixed|false the array value in the previous place that's pointed to by
+ * @return TValue|false the array value in the previous place that's pointed to by
  * the internal array pointer, or false if there are no more
  * elements.
  * @meta
@@ -677,10 +679,11 @@ function prev(object|array &$array): mixed {}
 /**
  * Advance the internal array pointer of an array
  * @link https://php.net/manual/en/function.next.php
- * @param array|object &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue>|object &$array <p>
  * The array being affected.
  * </p>
- * @return mixed|false the array value in the next place that's pointed to by the
+ * @return TValue|false the array value in the next place that's pointed to by the
  * internal array pointer, or false if there are no more elements.
  * @meta
  */
@@ -689,10 +692,11 @@ function next(object|array &$array): mixed {}
 /**
  * Set the internal pointer of an array to its first element
  * @link https://php.net/manual/en/function.reset.php
- * @param array|object &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue>|object &$array <p>
  * The input array.
  * </p>
- * @return mixed|false the value of the first array element, or false if the array is
+ * @return TValue|false the value of the first array element, or false if the array is
  * empty.
  * @meta
  */
@@ -701,10 +705,11 @@ function reset(object|array &$array): mixed {}
 /**
  * Return the current element in an array
  * @link https://php.net/manual/en/function.current.php
- * @param array|object $array <p>
+ * @template TValue
+ * @param array<int|string, TValue>|object $array <p>
  * The array.
  * </p>
- * @return mixed|false The current function simply returns the
+ * @return TValue|false The current function simply returns the
  * value of the array element that's currently being pointed to by the
  * internal pointer. It does not move the pointer in any way. If the
  * internal pointer points beyond the end of the elements list or the array is
@@ -972,10 +977,11 @@ function array_push(
 /**
  * Pop the element off the end of array
  * @link https://php.net/manual/en/function.array-pop.php
- * @param array &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue> &$array <p>
  * The array to get the value from.
  * </p>
- * @return mixed|null the last value of array.
+ * @return TValue|null the last value of array.
  * If array is empty (or is not an array),
  * null will be returned.
  * @meta
@@ -985,10 +991,11 @@ function array_pop(array &$array): mixed {}
 /**
  * Shift an element off the beginning of array
  * @link https://php.net/manual/en/function.array-shift.php
- * @param array &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue> &$array <p>
  * The input array.
  * </p>
- * @return mixed|null the shifted value, or null if array is
+ * @return TValue|null the shifted value, or null if array is
  * empty or is not an array.
  * @meta
  */
@@ -1058,7 +1065,8 @@ function array_splice(array &$array, int $offset, ?int $length, mixed $replaceme
 /**
  * Extract a slice of the array
  * @link https://php.net/manual/en/function.array-slice.php
- * @param array $array <p>
+ * @template TArray of array
+ * @param TArray $array <p>
  * The input array.
  * </p>
  * @param int $offset <p>
@@ -1081,7 +1089,7 @@ function array_splice(array &$array, int $offset, ?int $length, mixed $replaceme
  * array indices by default. You can change this behaviour by setting
  * preserve_keys to true.
  * </p>
- * @return array the slice.
+ * @return TArray the slice.
  * @meta
  */
 #[Pure]
@@ -1091,10 +1099,11 @@ function array_slice(array $array, int $offset, ?int $length, bool $preserve_key
  * Merges the elements of one or more arrays together (if the input arrays have the same string keys, then the later value for that key will overwrite the previous one; if the arrays contain numeric keys, the later value will be appended)
  * Since 7.4.0 this function can be called without any parameter, and it will return empty array.
  * @link https://php.net/manual/en/function.array-merge.php
+ * @template TArray of array
  * @param array ...$arrays <p>
  * Variable list of arrays to merge.
  * </p>
- * @return array the resulting array.
+ * @return TArray the resulting array.
  * @meta
  */
 #[Pure]

@@ -775,6 +775,7 @@ function rtrim(string $string, string $characters = " \n\r\t\v\0"): string {}
 /**
  * Replace all occurrences of the search string with the replacement string
  * @link https://php.net/manual/en/function.str-replace.php
+ * @template TSubject of string|string[]
  * @param string|string[] $search <p>
  * The value being searched for, otherwise known as the needle.
  * An array may be used to designate multiple needles.
@@ -783,7 +784,7 @@ function rtrim(string $string, string $characters = " \n\r\t\v\0"): string {}
  * The replacement value that replaces found search
  * values. An array may be used to designate multiple replacements.
  * </p>
- * @param string|string[] $subject <p>
+ * @param TSubject $subject <p>
  * The string or array being searched and replaced on,
  * otherwise known as the haystack.
  * </p>
@@ -794,7 +795,7 @@ function rtrim(string $string, string $characters = " \n\r\t\v\0"): string {}
  * well.
  * </p>
  * @param int &$count [optional] If passed, this will hold the number of matched and replaced needles.
- * @return string|string[] This function returns a string or an array with the replaced values.
+ * @return TSubject This function returns a string or an array with the replaced values.
  */
 function str_replace(array|string $search, array|string $replace, array|string $subject, &$count): array|string {}
 

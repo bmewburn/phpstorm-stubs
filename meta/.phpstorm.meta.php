@@ -60,45 +60,45 @@ namespace PHPSTORM_META {
       return "sql_injection_subst $argNum";
   }
 
-  override(\array_shift(0), elementType(0));
-  override(\array_filter(0), type(0));
-  override(\array_reverse(0), type(0));
-  override(\array_pop(0), elementType(0));
-  override(\array_reduce(0), type(2));
-  override(\array_slice(0), type(0));
-  override(\array_diff(0), type(0));
-  override(\array_diff_assoc(0), type(0));
-  override(\array_diff_uassoc(0), type(0));
-  override(\array_diff_key(0), type(0));
-  override(\array_diff_ukey(0), type(0));
-  override(\array_udiff(0), type(0));
-  override(\array_udiff_assoc(0), type(0));
-  override(\array_udiff_uassoc(0), type(0));
-  override(\array_merge(0), type(0));
+  //override(\array_shift(0), elementType(0));
+  //override(\array_filter(0), type(0));
+  //override(\array_reverse(0), type(0));
+  //override(\array_pop(0), elementType(0));
+  //override(\array_reduce(0), type(2));
+  //override(\array_slice(0), type(0));
+  //override(\array_diff(0), type(0));
+  //override(\array_diff_assoc(0), type(0));
+  //override(\array_diff_uassoc(0), type(0));
+  //override(\array_diff_key(0), type(0));
+  //override(\array_diff_ukey(0), type(0));
+  //override(\array_udiff(0), type(0));
+  //override(\array_udiff_assoc(0), type(0));
+  //override(\array_udiff_uassoc(0), type(0));
+  //override(\array_merge(0), type(0));
 
-  override(\current(0), elementType(0));
-  override(\reset(0), elementType(0));
-  override(\end(0), elementType(0));
-  override(\prev(0), elementType(0));
-  override(\next(0), elementType(0));
+  //override(\current(0), elementType(0));
+  //override(\reset(0), elementType(0));
+  //override(\end(0), elementType(0));
+  //override(\prev(0), elementType(0));
+  //override(\next(0), elementType(0));
 
-  override(\array_change_key_case(0), type(0));
-  override(\array_unique(0), type(0));
+  //override(\array_change_key_case(0), type(0));
+  //override(\array_unique(0), type(0));
 
-  override(\array_intersect(0), type(0));
-  override(\array_intersect_assoc(0), type(0));
-  override(\array_intersect_key(0), type(0));
-  override(\array_intersect_uassoc(0), type(0));
-  override(\array_intersect_ukey(0), type(0));
-  override(\array_uintersect(0), type(0));
-  override(\array_uintersect_assoc(0), type(0));
-  override(\array_uintersect_uassoc(0), type(0));
+  //override(\array_intersect(0), type(0));
+  //override(\array_intersect_assoc(0), type(0));
+  //override(\array_intersect_key(0), type(0));
+  //override(\array_intersect_uassoc(0), type(0));
+  //override(\array_intersect_ukey(0), type(0));
+  //override(\array_uintersect(0), type(0));
+  //override(\array_uintersect_assoc(0), type(0));
+  //override(\array_uintersect_uassoc(0), type(0));
 
 //should be changed later to map values when map type is supported
-  override(\array_values(0), type(0));
-  override(\array_combine(0), type(1));
+  //override(\array_values(0), type(0));
+  //override(\array_combine(0), type(1));
 
-  override(\str_replace(0), type(2));
+  //override(\str_replace(0), type(2));
 
   override(\DOMDocument::importNode(0), type(0));
   override(\DOMNode::appendChild(0), type(0));
