@@ -1302,6 +1302,7 @@ class DOMDocument extends DOMNode implements DOMParentNode
 /**
  * The DOMNodeList class
  * @link https://php.net/manual/en/class.domnodelist.php
+ * @implements IteratorAggregate<int, DOMNode|DOMNameSpaceNode> 
  */
 class DOMNodeList implements IteratorAggregate, Countable
 {
@@ -1335,7 +1336,7 @@ class DOMNodeList implements IteratorAggregate, Countable
     public function count(): int {}
 
     /**
-     * @return Iterator
+     * @return Iterator<int, DOMNode|DOMNameSpaceNode>
      * @since 8.0
      */
     public function getIterator(): Iterator {}
