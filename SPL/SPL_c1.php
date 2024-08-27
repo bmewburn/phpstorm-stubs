@@ -1987,7 +1987,7 @@ class SplFixedArray implements Iterator, ArrayAccess, Countable, IteratorAggrega
      */
     public function getIterator(): Iterator {}
 
-    #[PhpStormStubsElementAvailable(from: '8.1')]
+    #[StubsElementAvailable(from: '8.1')]
     public function jsonSerialize(): array {}
 }
 

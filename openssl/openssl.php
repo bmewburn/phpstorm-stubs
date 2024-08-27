@@ -669,7 +669,7 @@ function openssl_csr_sign(
     int $days,
     ?array $options,
     int $serial = 0,
-    #[PhpStormStubsElementAvailable(from: '8.4')] ?string $serial_hex = null
+    #[StubsElementAvailable(from: '8.4')] ?string $serial_hex = null
 ) {}
 
 /**

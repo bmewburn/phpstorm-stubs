@@ -153,10 +153,10 @@ class DOMNode
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
     public $textContent;
 
-    #[PhpStormStubsElementAvailable(from: '8.3')]
+    #[StubsElementAvailable(from: '8.3')]
     public bool $isConnected;
 
-    #[PhpStormStubsElementAvailable(from: '8.3')]
+    #[StubsElementAvailable(from: '8.3')]
     public ?DOMElement $parentElement;
 
     /**
