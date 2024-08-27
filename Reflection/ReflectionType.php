@@ -1,6 +1,5 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
-use __IDE\Deprecated;
 use __IDE\StubsElementAvailable;
 use __IDE\TentativeType;
 use __IDE\Pure;
@@ -43,7 +42,6 @@ abstract class ReflectionType implements Stringable
      * @since 7.0
      * @see ReflectionNamedType::getName()
      */
-    #[Deprecated(since: "7.1")]
     public function __toString(): string {}
 
     /**

@@ -132,7 +132,7 @@ function floor(int|float $num) {}
  * @return float The rounded value
  */
 #[Pure]
-function round(int|float $num, int $precision = 0, int $mode = PHP_ROUND_HALF_UP): float {}
+function round(int|float $num, int $precision = 0, #[LanguageLevelTypeAware(['8.4' => 'RoundingMode|int'], default: 'int')] $mode = RoundingMode::HalfAwayFromZero): float {}
 
 /**
  * Sine
@@ -745,7 +745,8 @@ function ip2long(string $ip): int|false {}
  * @return string|false the Internet IP address as a string.
  */
 #[Pure]
-function long2ip(int $ip): string|false {}
+#[LanguageLevelTypeAware(['8.4' => 'string'], default: 'string|false')]
+function long2ip(int $ip) {}
 
 /**
  * Gets the value of an environment variable

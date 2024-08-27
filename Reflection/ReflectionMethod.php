@@ -285,7 +285,6 @@ class ReflectionMethod extends ReflectionFunctionAbstract
      * @link https://php.net/manual/en/reflectionmethod.setaccessible.php
      * @param bool $accessible {@see true} to allow accessibility, or {@see false}
      * @return void No value is returned.
-     * @since 5.3.2
      */
     #[StubsElementAvailable(to: "8.0")]
     #[TentativeType]

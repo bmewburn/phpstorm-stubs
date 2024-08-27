@@ -1,6 +1,7 @@
 <?php
 //modified by Mewburn Projects Pty Ltd
 namespace {
+    use __IDE\Deprecated;
     use __IDE\LanguageLevelTypeAware;
     use __IDE\StubsElementAvailable;
     use __IDE\Pure;
@@ -10,6 +11,7 @@ namespace {
      * @link https://php.net/manual/en/function.lcg-value.php
      * @return float A pseudo random float value in the range of (0, 1)
      */
+    #[Deprecated("The function is deprecated", since: "8.4")]
     function lcg_value(): float {}
 
     /**
@@ -250,7 +252,7 @@ namespace Random
     /**
      * @since 8.3
      */
-    enum IntervalBoundary
+    enum IntervalBoundary implements \UnitEnum
     {
         public string $name;
 

@@ -1562,10 +1562,7 @@ function imagesy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $i
  * imagecolorallocate.
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
- * @see imagesetstyle()
- * @see imageline()
  */
-#[Deprecated("Use combination of imagesetstyle() and imageline() instead")]
 function imagedashedline(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image, int $x1, int $y1, int $x2, int $y2, int $color): bool {}
 
 /**

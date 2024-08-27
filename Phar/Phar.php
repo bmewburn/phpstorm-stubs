@@ -183,6 +183,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @link https://php.net/manual/en/phar.decompressfiles.php
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function decompressFiles() {}
 
     /**
@@ -308,6 +310,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @return bool returns <b>TRUE</b> on success, but it is safer to encase method call in a
      * try/catch block and assume success if no exception is thrown.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function copy(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $to,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $from
@@ -334,6 +338,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @return bool returns <b>TRUE</b> on success, but it is better to check for thrown exception,
      * and assume success if none is thrown.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function delete(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $localName) {}
 
     /**
@@ -343,6 +349,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @return bool returns <b>TRUE</b> on success, but it is better to check for thrown exception,
      * and assume success if none is thrown.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function delMetadata() {}
 
     /**
@@ -623,6 +631,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * </p>
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function setStub(
         $stub,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $length
@@ -817,7 +827,8 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * @throws PharException
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
-    final public static function unlinkArchive(string $filename): bool {}
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    final public static function unlinkArchive(string $filename) {}
 
     /**
      * (PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
@@ -1160,6 +1171,8 @@ class PharFileInfo extends SplFileInfo
      * @param int $compression
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function compress(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $compression) {}
 
     /**
@@ -1168,6 +1181,8 @@ class PharFileInfo extends SplFileInfo
      * @link https://php.net/manual/en/pharfileinfo.decompress.php
      * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function decompress() {}
 
     /**
@@ -1181,6 +1196,8 @@ class PharFileInfo extends SplFileInfo
      * archive. Files within <b>PharData</b> archives do not have
      * this restriction.
      */
+    #[LanguageLevelTypeAware(['8.4' => 'true'], default: 'bool')]
+    #[TentativeType]
     public function delMetadata() {}
 
     /**
