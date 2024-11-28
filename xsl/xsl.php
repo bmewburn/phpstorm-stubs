@@ -1,8 +1,8 @@
 <?php
-
+//modified by Mewburn Projects Pty Ltd
 // Start of xsl v.0.1
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use JetBrains\PhpStorm\Internal\TentativeType;
+use __IDE\LanguageLevelTypeAware;
+use __IDE\TentativeType;
 
 /**
  * @link https://php.net/manual/en/class.xsltprocessor.php
