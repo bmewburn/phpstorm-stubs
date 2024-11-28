@@ -698,7 +698,7 @@ function user_error(string $message, int $error_level = E_USER_NOTICE) {}
  * );
  * ```
  */
-function set_error_handler(?callable $callback, int $error_levels = E_ALL|E_STRICT) {}
+function set_error_handler(?callable $callback, int $error_levels = E_ALL) {}
 
 /**
  * Restores the previous error handler function
@@ -1132,3 +1132,13 @@ function gc_mem_caches(): int {}
  */
 #[Pure(true)]
 function get_resources(?string $type): array {}
+
+/**
+ * @since 8.4
+ */
+function exit(string|int $status = 0): never {}
+
+/**
+ * @since 8.4
+ */
+function die(string|int $status = 0): never {}

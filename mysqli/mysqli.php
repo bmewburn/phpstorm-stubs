@@ -364,12 +364,40 @@ class mysqli
     public function get_charset(): ?object {}
 
     /**
-     * @param mysqli $mysql
-     * @param string $query
-     * @param array|null $params
-     * @return mysqli_result|bool
-     * @see mysqli_execute_query
+     * <p>Prepares the SQL query, binds parameters, and executes it. The
+     * mysqli::execute_query() method is a shortcut for mysqli::prepare(),
+     * mysqli_stmt::bind_param(), mysqli_stmt::execute(), and
+     * mysqli_stmt::get_result().</p>
+     * <p>The statement template can contain zero or more question mark (?)
+     * parameter markers⁠—also called placeholders. The parameter values must be
+     * provided as an array using params parameter.</p>
+     * <p>A prepared statement is created under the hood but it's never exposed
+     * outside of the function. It's impossible to access properties of the
+     * statement as one would do with the mysqli_stmt object. Due to this
+     * limitation, the status information is copied to the mysqli object and is
+     * available using its methods, e.g. mysqli_affected_rows() or
+     * mysqli_error().</p>
+     *
+     * @param string $query The query, as a string. It must consist of a single SQL
+     * statement. The SQL statement may contain zero or more parameter markers
+     * represented by question mark (?) characters at the appropriate positions.
+     * <b>Note:</b> The markers are legal only in certain places in SQL statements.
+     * For example, they are permitted in the VALUES() list of an INSERT statement
+     * (to specify column values for a row), or in a comparison with a column in a
+     * WHERE clause to specify a comparison value. However, they are not permitted
+     * for identifiers (such as table or column names).
+     *
+     * @param array|null $params An optional list array with as many elements as
+     * there are bound parameters in the SQL statement being executed. Each value
+     * is treated as a string.
+     *
+     * @return mysqli_result|bool Returns false on failure. For successful queries
+     * which produce a result set, such as SELECT, SHOW, DESCRIBE or EXPLAIN,
+     * returns a mysqli_result object. For other successful queries, returns true.
+     *
      * @since 8.2
+     *
+     * @link https://www.php.net/manual/en/mysqli.execute-query.php
      */
     public function execute_query(string $query, ?array $params = null): mysqli_result|bool {}
 
@@ -419,6 +447,7 @@ class mysqli
      * @param int $process_id
      * @return bool true on success or false on failure.
      */
+    #[Deprecated("The function is deprecated", since: "8.4")]
     #[TentativeType]
     public function kill(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $process_id): bool {}
 
@@ -527,6 +556,7 @@ class mysqli
      * @link https://php.net/manual/en/mysqli.ping.php
      * @return bool true on success or false on failure.
      */
+    #[Deprecated("The function is deprecated", since: "8.4")]
     #[TentativeType]
     public function ping(): bool {}
 
@@ -903,7 +933,9 @@ class mysqli
      * statement should have produced a non-empty result set.
      */
     #[TentativeType]
-    public function store_result(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $mode = 0): mysqli_result|false {}
+    public function store_result(
+        #[Deprecated(since: '8.4'), LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $mode = 0
+    ): mysqli_result|false {}
 
     /**
      * Returns whether thread safety is given or not
@@ -927,6 +959,7 @@ class mysqli
      * @return bool TRUE if the refresh was a success, otherwise FALSE
      * @since 5.3
      */
+    #[Deprecated("The function is deprecated", since: "8.4")]
     #[TentativeType]
     public function refresh(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags): bool {}
 }
@@ -1901,11 +1934,43 @@ function mysqli_stmt_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.
 function mysqli_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
 /**
- * @param mysqli $mysql
- * @param string $query
- * @param array|null $params
- * @return mysqli_result|bool
+ * <p>Prepares the SQL query, binds parameters, and executes it. The
+ * mysqli::execute_query() method is a shortcut for mysqli::prepare(),
+ * mysqli_stmt::bind_param(), mysqli_stmt::execute(), and
+ * mysqli_stmt::get_result().</p>
+ * <p>The statement template can contain zero or more question mark (?)
+ * parameter markers⁠—also called placeholders. The parameter values must be
+ * provided as an array using params parameter.</p>
+ * <p>A prepared statement is created under the hood but it's never exposed
+ * outside of the function. It's impossible to access properties of the
+ * statement as one would do with the mysqli_stmt object. Due to this
+ * limitation, the status information is copied to the mysqli object and is
+ * available using its methods, e.g. mysqli_affected_rows() or
+ * mysqli_error().</p>
+ *
+ * @param mysqli $mysql A mysqli object returned by mysqli_connect() or
+ * mysqli_init()
+ *
+ * @param string $query The query, as a string. It must consist of a single SQL
+ *  statement. The SQL statement may contain zero or more parameter markers
+ *  represented by question mark (?) characters at the appropriate positions.
+ *  <b>Note:</b> The markers are legal only in certain places in SQL statements.
+ *  For example, they are permitted in the VALUES() list of an INSERT statement
+ *  (to specify column values for a row), or in a comparison with a column in a
+ *  WHERE clause to specify a comparison value. However, they are not permitted
+ *  for identifiers (such as table or column names).
+ *
+ * @param ?array $params An optional list array with as many elements as there
+ *  are bound parameters in the SQL statement being executed. Each value is
+ *  treated as a string.
+ *
+ * @return mysqli_result|bool Returns false on failure. For successful queries
+ *  which produce a result set, such as SELECT, SHOW, DESCRIBE or EXPLAIN,
+ *  returns a mysqli_result object. For other successful queries, returns true.
+ *
  * @since 8.2
+ *
+ * @link https://www.php.net/manual/en/mysqli.execute-query.php
  */
 function mysqli_execute_query(mysqli $mysql, string $query, ?array $params = null): mysqli_result|bool {}
 
@@ -2097,7 +2162,7 @@ function mysqli_get_charset(mysqli $mysql): ?object {}
  * @param mysqli|null $mysql A link identifier returned by mysqli_connect() or mysqli_init()
  * @return string|null A string that represents the MySQL client library version
  */
-#[LanguageLevelTypeAware(['8.0' => 'string'], default: '?string')]
+#[LanguageLevelTypeAware(['8.0' => 'string'], default: 'string|null')]
 function mysqli_get_client_info(
     #[StubsElementAvailable(from: '5.3', to: '7.1')] mysqli $mysql,
     #[StubsElementAvailable(from: '8.0')] ?mysqli $mysql = null
@@ -2788,7 +2853,7 @@ function mysqli_stmt_store_result(mysqli_stmt $statement): bool {}
  * @param int $mode [optional] The option that you want to set
  * @return mysqli_result|false
  */
-function mysqli_store_result(mysqli $mysql, int $mode = 0): mysqli_result|false {}
+function mysqli_store_result(mysqli $mysql, #[Deprecated(since: "8.4")] int $mode = 0): mysqli_result|false {}
 
 /**
  * Returns the thread ID for the current connection
@@ -3584,6 +3649,9 @@ define('MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT', 64);
 define('MYSQLI_CLIENT_CAN_HANDLE_EXPIRED_PASSWORDS', 4194304);
 define('MYSQLI_OPT_CAN_HANDLE_EXPIRED_PASSWORDS', 37);
 define('MYSQLI_OPT_READ_TIMEOUT', 11);
+/**
+ * @deprecated 8.4
+ */
 define('MYSQLI_STORE_RESULT_COPY_DATA', 16);
 define('MYSQLI_TYPE_JSON', 245);
 define('MYSQLI_TRANS_COR_AND_CHAIN', 1);
@@ -3596,3 +3664,8 @@ define('MYSQLI_REFRESH_REPLICA', 64);
  * @since 8.1
  */
 define('MYSQLI_IS_MARIADB', 0);
+
+/**
+ * @since 8.4
+ */
+define('MYSQLI_TYPE_VECTOR', 242);

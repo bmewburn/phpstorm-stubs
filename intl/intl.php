@@ -917,14 +917,17 @@ class NumberFormatter
      * @deprecated 8.3
      */
     public const TYPE_CURRENCY = 4;
+
     /**
      * @since 8.4
      */
     public const ROUND_TOWARD_ZERO = 2;
+
     /**
      * @since 8.4
      */
     public const ROUND_AWAY_FROM_ZERO = 3;
+
     /**
      * @since 8.4
      */
@@ -2536,18 +2539,22 @@ class Spoofchecker
     public const SINGLE_SCRIPT_RESTRICTIVE = 536870912;
     public const MIXED_NUMBERS = 1;
     public const HIDDEN_OVERLAY = 2;
+
     /**
      * @since 8.4
      */
     public const IGNORE_SPACE = 1;
+
     /**
      * @since 8.4
      */
     public const CASE_INSENSITIVE = 2;
+
     /**
      * @since 8.4
      */
     public const ADD_CASE_MAPPINGS = 4;
+
     /**
      * @since 8.4
      */
@@ -7324,7 +7331,7 @@ class IntlBreakIterator implements IteratorAggregate
     #[Pure]
     #[TentativeType]
     public function getPartsIterator(
-        #[LanguageAware(['8.3' => 'string', '8.0' => 'int'], default: '')] #[EV([IntlPartsIterator::KEY_SEQUENTIAL, IntlPartsIterator::KEY_LEFT, IntlPartsIterator::KEY_RIGHT])] $type = IntlPartsIterator::KEY_SEQUENTIAL
+        #[LanguageAware(['8.0' => 'int', '8.3' => 'string'], default: '')] #[EV([IntlPartsIterator::KEY_SEQUENTIAL, IntlPartsIterator::KEY_LEFT, IntlPartsIterator::KEY_RIGHT])] $type = IntlPartsIterator::KEY_SEQUENTIAL
     ): IntlPartsIterator {}
 
     /**

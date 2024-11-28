@@ -167,11 +167,6 @@ interface DateTimeInterface
     /**
      * @since 8.4
      */
-    public function createFromTimestamp();
-
-    /**
-     * @since 8.4
-     */
     public function getMicrosecond(): int;
 
     /**
@@ -624,6 +619,7 @@ class DateTime implements DateTimeInterface
      * @param DateInterval $interval
      * @return static
      * @link https://php.net/manual/en/datetime.sub.php
+     * @throws DateInvalidOperationException
      */
     #[TentativeType]
     public function sub(DateInterval $interval): DateTime {}

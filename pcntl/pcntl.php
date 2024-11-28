@@ -97,8 +97,7 @@ function pcntl_waitpid(
     int $process_id,
     &$status,
     int $flags = 0,
-    #[StubsElementAvailable(from: '7.0')] &$resource_usage
-= []
+    #[StubsElementAvailable(from: '7.0')] &$resource_usage = []
 ): int {}
 
 /**
