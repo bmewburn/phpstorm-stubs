@@ -190,6 +190,7 @@ interface ChildNode
     public function replaceWith(Node|string ...$nodes): void;
 }
 /**
+ * @implements \BackedEnum<string>
  * @since 8.4
  */
 enum AdjacentPosition implements \BackedEnum, \UnitEnum

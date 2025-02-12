@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @implements BackedEnum<string>
  * @since 8.4
  */
 enum PropertyHookType implements BackedEnum, UnitEnum
