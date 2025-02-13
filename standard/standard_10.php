@@ -1,24 +1,53 @@
 <?php
 /**
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array
+ * @param (callable(TValue $value, TKey $key): bool)|(callable(TValue $value): bool) $callback
+ * @return TValue|null
+ * 
  * @since 8.4
  */
 function array_find(array $array, callable $callback): mixed {}
+
 /**
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array
+ * @param (callable(TValue $value, TKey $key): bool)|(callable(TValue $value): bool) $callback
+ * @return TKey|null
+ * 
  * @since 8.4
  */
 function array_find_key(array $array, callable $callback): mixed {}
+
 /**
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array
+ * @param (callable(TValue $value, TKey $key): bool)|(callable(TValue $value): bool) $callback
+ * @return bool
+ * 
  * @since 8.4
  */
 function array_any(array $array, callable $callback): bool {}
+
 /**
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array
+ * @param (callable(TValue $value, TKey $key): bool)|(callable(TValue $value): bool) $callback
+ * @return bool
+ * 
  * @since 8.4
  */
 function array_all(array $array, callable $callback): bool {}
+
 /**
  * @since 8.4
  */
 function http_get_last_response_headers(): ?array {}
+
 /**
  * @since 8.4
  */
