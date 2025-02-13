@@ -498,10 +498,11 @@ function rsort(array &$array, int $flags = SORT_REGULAR) {}
 /**
  * Sort an array by values using a user-defined comparison function
  * @link https://php.net/manual/en/function.usort.php
- * @param array &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue> &$array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param callable(TValue $a, TValue $b): int $callback <p>
  * The comparison function must return an integer less than, equal to, or
  * greater than zero if the first argument is considered to be
  * respectively less than, equal to, or greater than the second.
@@ -514,10 +515,11 @@ function usort(array &$array, callable $callback) {}
 /**
  * Sort an array with a user-defined comparison function and maintain index association
  * @link https://php.net/manual/en/function.uasort.php
- * @param array &$array <p>
+ * @template TValue
+ * @param array<int|string, TValue> &$array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param callable(TValue $a, TValue $b): int $callback <p>
  * See usort and uksort for
  * examples of user-defined comparison functions.
  * </p>
@@ -528,10 +530,11 @@ function uasort(array &$array, callable $callback) {}
 /**
  * Sort an array by keys using a user-defined comparison function
  * @link https://php.net/manual/en/function.uksort.php
- * @param array &$array <p>
+ * @template TKey
+ * @param array<TKey, mixed> &$array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param callable(TKey $a, TKey $b): int $callback <p>
  * The callback comparison function.
  * </p>
  * <p>
@@ -559,10 +562,14 @@ function shuffle(array &$array) {}
 /**
  * Apply a user function to every member of an array
  * @link https://php.net/manual/en/function.array-walk.php
- * @param array|object &$array <p>
+ * @template TKey of int|string
+ * @template TValue
+ * @template TArg
+ * 
+ * @param array<TKey, TValue>|object &$array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param (callable(TValue $value, TKey $key): void)|(callable(TValue $value, TKey $key, TArg $arg): void) $callback <p>
  * Typically, funcname takes on two parameters.
  * The array parameter's value being the first, and
  * the key/index second.
@@ -581,22 +588,26 @@ function shuffle(array &$array) {}
  * the array that array_walk is applied to is
  * changed, the behavior of this function is undefined, and unpredictable.
  * </p>
- * @param mixed $arg [optional] <p>
+ * @param TArg $arg [optional] <p>
  * If the optional userdata parameter is supplied,
  * it will be passed as the third parameter to the callback
  * funcname.
  * </p>
  */
 #[LanguageLevelTypeAware(['8.2' => 'true'], default: 'bool')]
-function array_walk(object|array &$array, callable $callback, mixed $arg) {}
+function array_walk(object|array &$array, callable $callback, mixed $arg = null) {}
 
 /**
  * Apply a user function recursively to every member of an array
  * @link https://php.net/manual/en/function.array-walk-recursive.php
+ * @template TKey of int|string
+ * @template TValue
+ * @template TArg
+ * 
  * @param array|object &$array <p>
  * The input array.
  * </p>
- * @param callable $callback <p>
+ * @param (callable(TValue $value, TKey $key): void)|(callable(TValue $value, TKey $key, TArg $arg): void) $callback <p>
  * Typically, funcname takes on two parameters.
  * The input parameter's value being the first, and
  * the key/index second.
@@ -609,14 +620,14 @@ function array_walk(object|array &$array, callable $callback, mixed $arg) {}
  * any changes made to those elements will be made in the
  * original array itself.
  * </p>
- * @param mixed $arg [optional] <p>
+ * @param TArg $arg [optional] <p>
  * If the optional userdata parameter is supplied,
  * it will be passed as the third parameter to the callback
  * funcname.
  * </p>
  */
 #[LanguageLevelTypeAware(['8.2' => 'true'], default: 'bool')]
-function array_walk_recursive(object|array &$array, callable $callback, mixed $arg) {}
+function array_walk_recursive(object|array &$array, callable $callback, mixed $arg = null) {}
 
 /**
  * Counts all elements in an array, or something in an object.
