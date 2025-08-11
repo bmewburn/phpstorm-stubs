@@ -730,7 +730,7 @@ function array_product(array $array): int|float {}
  * @param array<TKey, TValue> $array <p>
  * The array to iterate over
  * </p>
- * @param (callable(TValue $value): bool)|(callable(TValue $value, TKey $key): bool)|null $callback [optional] <p>
+ * @param ($mode is 1 ? (callable(TValue $value, TKey $key): bool) : ($mode is 2 ? (callable(TKey $key): bool) : (callable(TValue $value): bool)))|null $callback [optional] <p>
  * The callback function to use
  * </p>
  * <p>
