@@ -668,11 +668,13 @@ final class Closure
      * This method is a static version of Closure::bindTo().
      * See the documentation of that method for more information.
      * @link https://secure.php.net/manual/en/closure.bind.php
+     * @template T of object
      * @param Closure $closure The anonymous functions to bind.
-     * @param object|null $newThis The object to which the given anonymous function should be bound, or NULL for the closure to be unbound.
+     * @param T|null $newThis The object to which the given anonymous function should be bound, or NULL for the closure to be unbound.
      * @param object|class-string|null $newScope The class scope to which associate the closure is to be associated, or 'static' to keep the current one.
      * If an object is given, the type of the object will be used instead.
      * This determines the visibility of protected and private methods of the bound object.
+     * @param-closure-this T $newThis
      * @return Closure|null Returns the newly created Closure object or null on failure
      */
     #[Pure]
