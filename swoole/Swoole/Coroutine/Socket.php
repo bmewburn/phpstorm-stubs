@@ -140,7 +140,8 @@ class Socket
     public function sendAll($data, $timeout = null) {}
 
     /**
-     * @param mixed $peername
+     * @param mixed &$peername
+     * @param-out mixed $peername
      * @param mixed|null $timeout
      * @return mixed
      */

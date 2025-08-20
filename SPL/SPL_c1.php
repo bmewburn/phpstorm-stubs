@@ -791,6 +791,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
      * @param int &$wouldBlock [optional] <p>
      * Set to 1 if the lock would block (EWOULDBLOCK errno condition).
      * </p>
+     * @param-out int $wouldBlock
      * @return bool true on success or false on failure.
      */
     #[TentativeType]

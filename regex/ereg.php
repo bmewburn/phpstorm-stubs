@@ -25,6 +25,7 @@ use __IDE\Deprecated;
  * $regs[0] will contain a copy of the complete string
  * matched.
  * </p>
+ * @param-out array $regs
  * @return int the length of the matched string if a match for
  * <i>pattern</i> was found in <i>string</i>,
  * or <b>FALSE</b> if no matches were found or an error occurred.
@@ -85,6 +86,7 @@ function ereg_replace($pattern, $replacement, $string) {}
  * second, and so on. $regs[0] will contain a copy of the complete string
  * matched.
  * </p>
+ * @param-out array $regs
  * @return int the length of the matched string if a match for
  * <i>pattern</i> was found in <i>string</i>,
  * or <b>FALSE</b> if no matches were found or an error occurred.

@@ -89,6 +89,7 @@ function header_register_callback(callable $callback): bool {}
  * Some programs use these APP markers to embed text information in images. <br>
  * A very common one is to embed » IPTC information in the APP13 marker. <br>
  * You can use the iptcparse() function to parse the binary APP13 marker into something readable.
+ * @param-out array $image_info
  * @return array{0:int, 1:int, 2:int, 3:string, bits:int, channels:int, mime:string}|false Returns an array with 7 elements.<br>
  * Index 0 and 1 contains respectively the width and the height of the image.<br>
  * Index 2 is one of the <b>IMAGETYPE_XXX</b> constants indicating the type of the image.<br>

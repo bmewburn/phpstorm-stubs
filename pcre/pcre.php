@@ -22,6 +22,7 @@ use __IDE\Pure;
  * will have the text that matched the first captured parenthesized
  * subpattern, and so on.
  * </p>
+ * @param-out string[] $matches
  * @param int $flags [optional] <p>
  * <i>flags</i> can be the following flag:
  * <b>PREG_OFFSET_CAPTURE</b>
@@ -176,6 +177,7 @@ function preg_match(string $pattern, string $subject, &$matches, int $flags = 0,
  * @param string[][] &$matches [optional] <p>
  * Array of all matches in multi-dimensional array ordered according to flags.
  * </p>
+ * @param-out string[][] $matches
  * @param int $flags <p>
  * Can be a combination of the following flags (note that it doesn't make
  * sense to use <b>PREG_PATTERN_ORDER</b> together with
@@ -302,6 +304,7 @@ function preg_match_all(string $pattern, string $subject, &$matches, int $flags 
  * If specified, this variable will be filled with the number of
  * replacements done.
  * </p>
+ * @param-out int $count
  * @return string|string[]|null <b>preg_replace</b> returns an array if the
  * <i>subject</i> parameter is an array, or a string
  * otherwise.
@@ -375,6 +378,7 @@ function preg_replace(array|string $pattern, array|string $replacement, array|st
  * If specified, this variable will be filled with the number of
  * replacements done.
  * </p>
+ * @param-out int $count
  * @param int $flags [optional]
  * @return string|string[]|null <b>preg_replace_callback</b> returns an array if the
  * <i>subject</i> parameter is an array, or a string
@@ -400,6 +404,7 @@ function preg_replace_callback(
  * @param string|string[] $subject
  * @param int $limit [optional]
  * @param int &$count [optional]
+ * @param-out int $count
  * @param int $flags [optional]
  * @return string|string[]|null  <p>preg_replace_callback_array() returns an array if the subject parameter is an array, or a string otherwise. On errors the return value is NULL</p>
  * <p>If matches are found, the new subject will be returned, otherwise subject will be returned unchanged.</p>
@@ -420,6 +425,7 @@ function preg_replace_callback_array(
  * @param string|string[] $subject
  * @param int $limit [optional]
  * @param int &$count [optional]
+ * @param-out int $count
  * @return string|string[]|null an array if the <i>subject</i>
  * parameter is an array, or a string otherwise.
  * </p>

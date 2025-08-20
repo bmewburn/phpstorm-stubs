@@ -2849,6 +2849,7 @@ class RedisCluster
      * Scan the keyspace for keys.
      *
      * @param  int          &$iterator Iterator, initialized to NULL.
+     * @param-out int $iterator
      * @param  string|array $node      Node identified by key or host/port array
      * @param  string       $pattern   Pattern to match.
      * @param  int          $count     Count of keys per iteration (only a suggestion to Redis).
@@ -2874,6 +2875,7 @@ class RedisCluster
      *
      * @param   string $key      The set to search.
      * @param   int    &$iterator LONG (reference) to the iterator as we go.
+     * @param-out int $iterator
      * @param   null   $pattern  String, optional pattern to match against.
      * @param   int    $count    How many members to return at a time (Redis might return a different amount).
      *
@@ -2898,6 +2900,7 @@ class RedisCluster
      *
      * @param   string $key      String, the set to scan.
      * @param   int    &$iterator Long (reference), initialized to NULL.
+     * @param-out int $iterator
      * @param   string $pattern  String (optional), the pattern to match.
      * @param   int    $count    How many keys to return per iteration (Redis might return a different number).
      *
@@ -2922,6 +2925,7 @@ class RedisCluster
      *
      * @param   string $key
      * @param   int    &$iterator
+     * @param-out int $iterator
      * @param   string $pattern Optional pattern to match against.
      * @param   int    $count   How many keys to return in a go (only a sugestion to Redis).
      *

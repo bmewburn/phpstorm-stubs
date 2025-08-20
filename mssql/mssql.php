@@ -471,6 +471,7 @@ function mssql_init($sp_name, $link_identifier = null) {}
  * reference, to retrieve OUTPUT and RETVAL values after
  * the procedure execution.
  * </p>
+ * @param-out mixed $var
  * @param int $type <p>
  * One of: SQLTEXT,
  * SQLVARCHAR, SQLCHAR,

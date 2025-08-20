@@ -14,6 +14,7 @@ use __IDE\Pure;
  * @param string|null &$error <p>
  * Output parameter to put any error messages in.
  * </p>
+ * @param-out string|null $error
  * @param bool $check_account_management <p>
  * Call <b>pam_acct_mgmt()</b> to check account expiration and access. (Requires root access!)
  * </p>
@@ -40,6 +41,7 @@ function pam_auth(string $username, string $password, ?string &$error = null, bo
  * @param string|null &$error <p>
  * Output parameter to put any error messages in.
  * </p>
+ * @param-out string|null $error
  * @param string $service_name <p>
  * PAM service name to use. (Defaults to "php")
  * </p>

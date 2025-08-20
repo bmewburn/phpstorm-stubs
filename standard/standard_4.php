@@ -725,9 +725,11 @@ function header_remove(?string $name = null): void {}
  * and line number where output started in the file
  * and line variables.
  * </p>
+ * @param-out string $filename
  * @param int &$line [optional] <p>
  * The line number where the output started.
  * </p>
+ * @param-out int $line
  * @return bool headers_sent will return false if no HTTP headers
  * have already been sent or true otherwise.
  */
@@ -968,7 +970,9 @@ function checkdnsrr(string $hostname, string $type = 'MX'): bool {}
  * @link https://php.net/manual/en/function.dns-get-mx.php
  * @param string $hostname
  * @param array &$hosts
+ * @param-out array $hosts
  * @param array &$weights [optional]
+ * @param-out array $weights
  * @return bool
  */
 function dns_get_mx(string $hostname, &$hosts, &$weights): bool {}
@@ -983,10 +987,12 @@ function dns_get_mx(string $hostname, &$hosts, &$weights): bool {}
  * A list of the MX records found is placed into the array
  * mxhosts.
  * </p>
+ * @param-out array $hosts
  * @param array &$weights [optional] <p>
  * If the weight array is given, it will be filled
  * with the weight information gathered.
  * </p>
+ * @param-out array $weights
  * @return bool true if any records are found; returns false if no records
  * were found or if an error occurred.
  */
@@ -1031,10 +1037,12 @@ function getmxrr(string $hostname, &$hosts, &$weights): bool {}
  * Passed by reference and, if given, will be populated with Resource
  * Records for the Authoritative Name Servers.
  * </p>
+ * @param-out array $authoritative_name_servers
  * @param array &$additional_records [optional] <p>
  * Passed by reference and, if given, will be populated with any
  * Additional Records.
  * </p>
+ * @param-out array $additional_records
  * @param bool $raw [optional] <p>
  * In case of raw mode, we query only the requested type
  * instead of looping type by type before going with the additional info stuff.

@@ -1192,9 +1192,10 @@ class Redis
      * @see https://redis.io/commands/hscan
      * @see https://redis.io/commands/scan
      * @param string $key The hash to query.
-     * @param int|null $iterator The scan iterator, which should be initialized to NULL before the first call.
+     * @param int|null &$iterator The scan iterator, which should be initialized to NULL before the first call.
      *                          This value will be updated after every call to hscan, until it reaches zero
      *                          meaning the scan is complete.
+     * @param-out int $iterator
      * @param string|null $pattern An optional glob-style pattern to filter fields with.
      * @param int $count An optional hint to Redis about how many fields and values to return per HSCAN.
      * @return Redis|array|bool An array with a subset of fields and values.
@@ -1995,11 +1996,12 @@ class Redis
      * keys with a nonzero iterator.  This can happen when matching against a pattern that very few
      * keys match inside a key space with a great many keys.  The following example demonstrates how
      * to use Redis::scan() with the option disabled and enabled.
-     * @param int|null $iterator The cursor returned by Redis for every subsequent call to SCAN.  On
+     * @param int|null &$iterator The cursor returned by Redis for every subsequent call to SCAN.  On
      *                         the initial invocation of the call, it should be initialized by the
      *                         caller to NULL.  Each time SCAN is invoked, the iterator will be
      *                         updated to a new number, until finally Redis will set the value to
      *                         zero, indicating that the scan is complete.
+     * @param-out int $iterator
      * @param string|null $pattern An optional glob-style pattern for matching key names.  If passed as
      *                         NULL, it is the equivalent of sending '*' (match every key).
      * @param int $count A hint to redis that tells it how many keys to return in a single
@@ -2305,10 +2307,11 @@ class Redis
      * @see https://redis.io/commands/scan
      * @see Redis::setOption()
      * @param string $key The Redis SET key in question.
-     * @param int|null $iterator A reference to an iterator which should be initialized to NULL that
+     * @param int|null &$iterator A reference to an iterator which should be initialized to NULL that
      *                          PhpRedis will update with the value returned from Redis after each
      *                          subsequent call to SSCAN.  Once this cursor is zero you know all
      *                          members have been traversed.
+     * @param-out int $iterator
      * @param string|null $pattern An optional glob style pattern to match against, so Redis only
      *                          returns the subset of members matching this pattern.
      * @param int $count A hint to Redis as to how many members it should scan in one command
@@ -3318,9 +3321,10 @@ class Redis
     /**
      * Scan the members of a sorted set incrementally, using a cursor
      * @param string $key The sorted set to scan.
-     * @param int|null $iterator A reference to an iterator that should be initialized to NULL initially, that
+     * @param int|null &$iterator A reference to an iterator that should be initialized to NULL initially, that
      *                           will be updated after each subsequent call to ZSCAN.  Once the iterator
      *                           has returned to zero the scan is complete
+     * @param-out int $iterator
      * @param string|null $pattern An optional glob-style pattern that limits which members are returned during
      *                           the scanning process.
      * @param int $count A hint for Redis that tells it how many elements it should test before returning

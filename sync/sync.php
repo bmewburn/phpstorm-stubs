@@ -90,6 +90,7 @@ class SyncSemaphore
      * Increases the count of a SyncSemaphore object.
      *
      * @param int &$prevcount Returns the previous count of the semaphore.
+     * @param-out int $prevcount
      * @return bool TRUE if the unlock operation was successful, FALSE otherwise.
      * @see SyncSemaphore::lock()
      * @link https://php.net/manual/en/syncsemaphore.unlock.php

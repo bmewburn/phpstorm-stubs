@@ -2724,6 +2724,7 @@ function curl_reset(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: '
  * @param int &$still_running <p>
  * A reference to a flag to tell whether the operations are still running.
  * </p>
+ * @param-out int $still_running
  * @return int A cURL code defined in the cURL Predefined Constants.
  * <p>
  * This only returns errors regarding the whole multi stack. There might still have
@@ -2753,6 +2754,7 @@ function curl_multi_getcontent(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'],
  * @param int &$queued_messages [optional] <p>
  * Number of messages that are still in the queue
  * </p>
+ * @param-out int $queued_messages
  * @return array{msg:int, result:int, handle:resource}|false On success, returns an associative array for the message, false on failure.
  */
 #[Pure]
@@ -2767,6 +2769,7 @@ function curl_multi_info_read($multi_handle, &$queued_messages): array|false {}
  * @param int &$queued_messages [optional] <p>
  * Number of messages that are still in the queue
  * </p>
+ * @param-out int $queued_messages
  * @return array{msg:int, result:int, handle:CurlHandle}|false On success, returns an associative array for the message, false on failure.
  */
 #[Pure]

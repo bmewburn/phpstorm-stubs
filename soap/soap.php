@@ -314,6 +314,7 @@ class SoapClient
      * @param array &$outputHeaders [optional] <p>
      * If supplied, this array will be filled with the headers from the SOAP response.
      * </p>
+     * @param-out array $outputHeaders
      * @return mixed SOAP functions may return one, or multiple values. If only one value is returned
      * by the SOAP function, the return value of __soapCall will be
      * a simple value (e.g. an integer, a string, etc). If multiple values are

@@ -336,6 +336,7 @@ function is_scalar(mixed $value): bool {}
  * that someClass::SomeMethod() is a callable static method, this is not
  * the case.
  * </p>
+ * @param-out string $callable_name
  * @return bool <b>TRUE</b> if $var is callable, <b>FALSE</b>
  * otherwise.
  */

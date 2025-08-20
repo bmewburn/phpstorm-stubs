@@ -707,6 +707,7 @@ class Rand
      * @param int $num
      * @param bool $must_be_strong
      * @param bool &$returned_strong_result
+     * @param-out bool $returned_strong_result
      * @return string
      */
     public static function generate($num, $must_be_strong = true, &$returned_strong_result = true) {}

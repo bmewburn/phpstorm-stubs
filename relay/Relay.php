@@ -3007,7 +3007,8 @@ class Relay
     /**
      * Scan the keyspace for matching keys.
      *
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out  mixed  $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @param  string|null  $type
@@ -3020,7 +3021,8 @@ class Relay
      * Iterates fields of Hash types and their associated values.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false
@@ -3032,7 +3034,8 @@ class Relay
      * Iterates elements of Sets types.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false
@@ -3044,7 +3047,8 @@ class Relay
      * Iterates elements of Sorted Set types and their associated scores.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false

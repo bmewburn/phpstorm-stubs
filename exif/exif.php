@@ -113,13 +113,16 @@ function exif_tagname(int $index): string|false {}
  * @param int &$width [optional] <p>
  * The return width of the returned thumbnail.
  * </p>
+ * @param-out int $width
  * @param int &$height [optional] <p>
  * The returned height of the returned thumbnail.
  * </p>
+ * @param-out int $height
  * @param int &$image_type [optional] <p>
  * The returned image type of the returned thumbnail. This is either
  * TIFF or JPEG.
  * </p>
+ * @param-out int $image_type
  * @return string|false the embedded thumbnail, or <b>FALSE</b> if the image contains no
  * thumbnail.
  */

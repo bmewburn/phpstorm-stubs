@@ -48,6 +48,7 @@ function msg_get_queue(int $key, int $permissions = 0666) {}
  * later on.
  * </p>
  * @param int &$error_code [optional]
+ * @param-out int $error_code
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * <p>
  * Upon successful completion the message queue data structure is updated as
@@ -78,6 +79,7 @@ function msg_send(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"], defaul
  * The type of the message that was received will be stored in this
  * parameter.
  * </p>
+ * @param-out int $received_message_type
  * @param int $max_message_size <p>
  * The maximum size of message to be accepted is specified by the
  * <i>maxsize</i>; if the message in the queue is larger
@@ -88,6 +90,7 @@ function msg_send(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"], defaul
  * The received message will be stored in <i>message</i>,
  * unless there were errors receiving the message.
  * </p>
+ * @param-out mixed $message
  * @param bool $unserialize [optional] <p>
  * If set to
  * <b>TRUE</b>, the message is treated as though it was serialized using the

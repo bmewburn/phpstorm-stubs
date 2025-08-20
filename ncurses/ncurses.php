@@ -75,12 +75,12 @@ function ncurses_init_pair($pair, $fg, $bg) {}
  * @link https://php.net/manual/en/function.ncurses-color-content.php
  * @param int $color <p>
  * </p>
- * @param int &$r <p>
- * </p>
- * @param int &$g <p>
- * </p>
- * @param int &$b <p>
- * </p>
+ * @param int &$r <p></p>
+ * @param-out int $r
+ * @param int &$g <p></p>
+ * @param-out int $g
+ * @param int &$b <p></p>
+ * @param-out int $b
  * @return int
  */
 function ncurses_color_content($color, &$r, &$g, &$b) {}

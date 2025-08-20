@@ -279,6 +279,7 @@ function wincache_ucache_clear() {}
  * otherwise the function fails and returns FALSE.</p>
  * @param bool|null &$success [optional]
  * <p>Will be set to TRUE on success and FALSE on failure.</p>
+ * @param-out bool $success
  * @return int|false Returns the decremented value on success and FALSE on failure.
  */
 function wincache_ucache_dec($key, $dec_by = 1, &$success) {}
@@ -314,6 +315,7 @@ function wincache_ucache_exists($key) {}
  * value will be an array of values of each element in the key array.</p>
  * @param bool|null &$success [optional]
  * <p>Will be set to TRUE on success and FALSE on failure.</p>
+ * @param-out bool $success
  * @return mixed <p>If key is a string, the function returns the value of the variable
  * stored with that key. The success is set to TRUE on success and to FALSE on failure.</p>
  * <p>The key is an array, the parameter success is always set to TRUE. The returned array
@@ -335,6 +337,7 @@ function wincache_ucache_get($key, &$success) {}
  * otherwise the function fails and returns FALSE.</p>
  * @param bool|null &$success [optional]
  * <p>Will be set to TRUE on success and FALSE on failure.</p>
+ * @param-out bool $success
  * @return int|false Returns the incremented value on success and FALSE on failure.
  */
 function wincache_ucache_inc($key, $inc_by = 1, &$success) {}

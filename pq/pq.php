@@ -92,6 +92,7 @@ class COPY
      * Receive data from the server during pq\Result::COPY_OUT state.
      *
      * @param string &$data Data read from the server.
+     * @param-out string $data
      * @throws \pq\Exception\InvalidArgumentException
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
@@ -1177,6 +1178,7 @@ class LOB
      *
      * @param int $length The amount of bytes to read from the *large object*.
      * @param int &$read The amount of bytes actually read from the *large object*.
+     * @param-out int $read
      * @throws \pq\Exception\InvalidArgumentException
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
@@ -1584,6 +1586,7 @@ class Statement
      *
      * @param int $param_no The parameter index to bind to.
      * @param mixed &$param_ref The variable to bind.
+     * @param-out mixed $param_ref
      * @throws \pq\Exception\InvalidArgumentException
      * @throws \pq\Exception\BadMethodCallException
      */

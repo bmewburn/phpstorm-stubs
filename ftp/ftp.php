@@ -210,6 +210,7 @@ function ftp_chmod(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default
  * A textual representation of the servers response will be returned by
  * reference in <i>result</i> if a variable is provided.
  * </p>
+ * @param-out string $response
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function ftp_alloc(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default: 'resource')] $ftp, int $size, &$response): bool {}

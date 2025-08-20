@@ -217,6 +217,7 @@ class MemcachePool
      * The lowest byte of the int is reserved for pecl/memcache internal usage (e.g. to indicate
      * compression and serialization status).
      * </p>
+     * @param-out int|array $flags
      * @return string|array|false <p>
      * Returns the string associated with the <b>key</b> or
      * an array of found key-value pairs when <b>key</b> is an {@link https://php.net/manual/en/language.types.array.php array}.

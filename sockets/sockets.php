@@ -328,6 +328,7 @@ function socket_create_listen(int $port, int $backlog = 128): Socket|false {}
  * @param array &$pair <p>
  * Reference to an array in which the two socket resources will be inserted.
  * </p>
+ * @param-out array $pair
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function socket_create_pair(int $domain, int $type, int $protocol, &$pair): bool {}
@@ -487,9 +488,11 @@ function socket_read(Socket $socket, int $length, int $mode = PHP_BINARY_READ): 
  * path (e.g. /var/run/daemon.sock) in the
  * <i>address</i> parameter.
  * </p>
+ * @param-out string $address
  * @param int &$port [optional] <p>
  * If provided, this will hold the associated port.
  * </p>
+ * @param-out int $port
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure. <b>socket_getsockname</b> may also return
  * <b>FALSE</b> if the socket type is not any of <b>AF_INET</b>,
  * <b>AF_INET6</b>, or <b>AF_UNIX</b>, in which
@@ -519,10 +522,12 @@ function socket_getsockname(Socket $socket, &$address, &$port = null): bool {}
  * path (e.g. /var/run/daemon.sock) in the
  * <i>address</i> parameter.
  * </p>
+ * @param-out string $address
  * @param int &$port [optional] <p>
  * If given, this will hold the port associated to
  * <i>address</i>.
  * </p>
+ * @param-out int $port
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure. <b>socket_getpeername</b> may also return
  * <b>FALSE</b> if the socket type is not any of <b>AF_INET</b>,
  * <b>AF_INET6</b>, or <b>AF_UNIX</b>, in which
@@ -615,6 +620,7 @@ function socket_bind(Socket $socket, string $address, int $port = 0): bool {}
  * connection is reset, or if no data is
  * available, <i>buf</i> will be set to <b>NULL</b>.
  * </p>
+ * @param-out string $data
  * @param int $length <p>
  * Up to <i>len</i> bytes will be fetched from remote host.
  * </p>
@@ -744,6 +750,7 @@ function socket_sendmsg(
  * The data received will be fetched to the variable specified with
  * <i>buf</i>.
  * </p>
+ * @param-out string $data
  * @param int $length <p>
  * Up to <i>len</i> bytes will be fetched from remote host.
  * </p>
@@ -792,12 +799,14 @@ function socket_sendmsg(
  * unconnected sockets, <i>name</i> is the IP address of,
  * the remote host, or <b>NULL</b> if the socket is connection-oriented.
  * </p>
+ * @param-out string $address
  * @param int &$port [optional] <p>
  * This argument only applies to <b>AF_INET</b> and
  * <b>AF_INET6</b> sockets, and specifies the remote port
  * from which the data is received. If the socket is connection-oriented,
  * <i>port</i> will be <b>NULL</b>.
  * </p>
+ * @param-out int $port
  * @return int|false <b>socket_recvfrom</b> returns the number of bytes received,
  * or <b>FALSE</b> if there was an error. The actual error code can be retrieved by
  * calling <b>socket_last_error</b>. This error code may be

@@ -38,6 +38,7 @@ function openssl_pkey_new(?array $options) {}
  * @link https://php.net/manual/en/function.openssl-pkey-export.php
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $key
  * @param string &$output
+ * @param-out string $output
  * @param string|null $passphrase [optional] <p>
  * The key is optionally protected by <i>passphrase</i>.
  * </p>
@@ -416,6 +417,7 @@ function openssl_x509_check_private_key(
  * @param string &$output <p>
  * On success, this will hold the PEM.
  * </p>
+ * @param-out string $output
  * @param bool $no_text [optional]
  * @return bool true on success or false on failure.
  */
@@ -453,6 +455,7 @@ function openssl_x509_verify(
  * @param string &$output <p>
  * On success, this will hold the PKCS#12.
  * </p>
+ * @param-out string $output
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $private_key <p>
  * Private key component of PKCS#12 file.
  * </p>
@@ -498,6 +501,7 @@ function openssl_pkcs12_export_to_file(#[LanguageLevelTypeAware(["8.0" => "OpenS
  * @param array &$certificates <p>
  * On success, this will hold the Certificate Store Data.
  * </p>
+ * @param-out array $certificates
  * @param string $passphrase <p>
  * Encryption password for unlocking the PKCS#12 file.
  * </p>
@@ -614,6 +618,7 @@ function openssl_csr_new(
  * @link https://php.net/manual/en/function.openssl-csr-export.php
  * @param OpenSSLCertificateSigningRequest|string|resource $csr
  * @param string &$output
+ * @param-out string $output
  * @param bool $no_text [optional]
  * @return bool true on success or false on failure.
  */
@@ -736,6 +741,7 @@ function openssl_digest(string $data, string $digest_algo, bool $binary = false)
  * A non-NULL Initialization Vector.
  * </p>
  * @param string &$tag [optional] <p>The authentication tag passed by reference when using AEAD cipher mode (GCM or CCM).</p>
+ * @param-out string $tag
  * @param string $aad [optional] <p>Additional authentication data.</p>
  * @param int $tag_length [optional] <p>
  * The length of the authentication tag. Its value can be between 4 and 16 for GCM mode.
@@ -817,6 +823,7 @@ function openssl_cipher_key_length(string $cipher_algo): int|false {}
  * If the call was successful the signature is returned in
  * <i>signature</i>.
  * </p>
+ * @param-out string $signature
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $private_key
  * @param string|int $algorithm [optional] <p>
  * For more information see the list of Signature Algorithms.
@@ -854,10 +861,13 @@ function openssl_verify(
  * @link https://php.net/manual/en/function.openssl-seal.php
  * @param string $data
  * @param string &$sealed_data
+ * @param-out string $sealed_data
  * @param array &$encrypted_keys
+ * @param-out array $encrypted_keys
  * @param array $public_key
  * @param string $cipher_algo
  * @param string &$iv
+ * @param-out string $iv
  * @return int|false the length of the sealed data on success, or false on error.
  * If successful the sealed data is returned in
  * <i>sealed_data</i>, and the envelope keys in
@@ -881,6 +891,7 @@ function openssl_seal(
  * If the call is successful the opened data is returned in this
  * parameter.
  * </p>
+ * @param-out string $output
  * @param string $encrypted_key
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $private_key
  * @param string $cipher_algo The cipher method.
@@ -1049,6 +1060,7 @@ function openssl_pkcs7_encrypt(
  * @link https://php.net/manual/en/function.openssl-private-encrypt.php
  * @param string $data
  * @param string &$encrypted_data
+ * @param-out string $encrypted_data
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $private_key
  * @param int $padding [optional] <p>
  * <i>padding</i> can be one of
@@ -1069,6 +1081,7 @@ function openssl_private_encrypt(
  * @link https://php.net/manual/en/function.openssl-private-decrypt.php
  * @param string $data
  * @param string &$decrypted_data
+ * @param-out string $decrypted_data
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $private_key <p>
  * <i>key</i> must be the private key corresponding that
  * was used to encrypt the data.
@@ -1096,6 +1109,7 @@ function openssl_private_decrypt(
  * @param string &$encrypted_data <p>
  * This will hold the result of the encryption.
  * </p>
+ * @param-out string $encrypted_data
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $public_key <p>
  * The public key.
  * </p>
@@ -1120,6 +1134,7 @@ function openssl_public_encrypt(
  * @link https://php.net/manual/en/function.openssl-public-decrypt.php
  * @param string $data
  * @param string &$decrypted_data
+ * @param-out string $decrypted_data
  * @param OpenSSLAsymmetricKey|OpenSSLCertificate|array|string $public_key <p>
  * <i>key</i> must be the public key corresponding that
  * was used to encrypt the data.
@@ -1201,6 +1216,7 @@ function openssl_pkey_derive(
  * if the algorithm used was "cryptographically strong", e.g., safe for usage with GPG,
  * passwords, etc. true if it did, otherwise false
  * </p>
+ * @param-out bool $strong_result
  * @return string|false the generated string of bytes on success, or false on failure.
  */
 #[LanguageLevelTypeAware(["7.4" => "string"], default: "string|false")]
@@ -1246,6 +1262,7 @@ function openssl_get_curve_names(): array|false {}
 /**
  * @param string $data
  * @param array &$certificates
+ * @param-out array $certificates
  * @return bool
  * @since 7.2
  */
@@ -1312,6 +1329,7 @@ function openssl_cms_decrypt(string $input_filename, string $output_filename, $c
  * Exports the CMS file to an array of PEM certificates.
  * @param string $input_filename
  * @param array &$certificates
+ * @param-out array $certificates
  * @return bool
  * @since 8.0
  */

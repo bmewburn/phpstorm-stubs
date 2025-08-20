@@ -31,9 +31,11 @@ use __IDE\Pure;
  * connect() call. This is most likely due to a
  * problem initializing the socket.
  * </p>
+ * @param-out int $error_code
  * @param string &$error_message [optional] <p>
  * The error message as a string.
  * </p>
+ * @param-out string $error_message
  * @param float|null $timeout [optional] <p>
  * The connection timeout, in seconds.
  * </p>
@@ -66,7 +68,9 @@ function fsockopen(
  * @param string $hostname
  * @param int $port
  * @param int &$error_code [optional]
+ * @param-out int $error_code
  * @param string &$error_message [optional]
+ * @param-out string $error_message
  * @param float|null $timeout [optional]
  * @return resource|false
  */

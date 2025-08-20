@@ -129,6 +129,7 @@ class Zookeeper
      * @param string $data
      * @param int $version
      * @param array  &$stat
+     * @param-out array $stat
      * @return bool
      * @throws ZookeeperException
      * @throws ZookeeperNoNodeException when path does not exist
@@ -141,6 +142,7 @@ class Zookeeper
      * @param string $path
      * @param callable $watcher_cb
      * @param array    &$stat
+     * @param-out array $stat
      * @param int $max_size
      * @return string
      * @throws ZookeeperException

@@ -418,6 +418,7 @@ function oci_unregister_taf_callback($connection) {}
  * @param mixed &$variable <p>
  * The PHP variable that will contain the returned column value.
  * </p>
+ * @param-out mixed $variable
  * @param int $type [optional] <p>
  * The data type to be returned. Generally not needed. Note that
  * Oracle-style data conversions are not performed. For example,
@@ -448,6 +449,7 @@ function oci_define_by_name($statement, $column_name, &$variable, $type = SQLT_C
  * @param mixed &$variable <p>
  * The PHP variable to be associated with <i>bv_name</i>
  * </p>
+ * @param-out mixed $variable
  * @param int $maxlength [optional] <p>
  * Sets the maximum length for the data. If you set it to -1, this
  * function will use the current length
@@ -494,6 +496,7 @@ function oci_bind_by_name($statement, $bv_name, &$variable, $maxlength = -1, $ty
  * @param array &$var_array <p>
  * An array.
  * </p>
+ * @param-out array $var_array
  * @param int $max_table_length <p>
  * Sets the maximum length both for incoming and result arrays.
  * </p>
@@ -859,6 +862,7 @@ function oci_fetch_array($statement, $mode = null) {}
  * @link https://php.net/manual/en/function.ocifetchinto.php
  * @param resource $statement_resource
  * @param array &$result
+ * @param-out array $result
  * @param int $mode [optional]
  * @return int|bool
  */
@@ -884,6 +888,7 @@ function ocifetchinto($statement_resource, &$result, $mode = null) {}
  * See {@see oci_fetch_array} for more information
  * on how data and types are fetched.
  * </p>
+ * @param-out array $output
  * @param int $skip [optional] <p>
  * The number of initial rows to discard when fetching the
  * result. The default value is 0, so the first row onwards is
@@ -1741,6 +1746,7 @@ function ocifreecursor($statement_resource) {}
  * @param resource $statement
  * @param string $column_name
  * @param mixed &$variable
+ * @param-out mixed $variable
  * @param int $maximum_length [optional]
  * @param int $type [optional]
  * @return bool Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.
@@ -1755,6 +1761,7 @@ function ocibindbyname($statement, $column_name, &$variable, $maximum_length = -
  * @param resource $statement <p>A valid OCI8 statement identifier created by {@see oci_parse()} and executed by {@see oci_execute()}, or a REF CURSOR statement identifier.</p>
  * @param string $column_name <p>The column name used in the query. Use uppercase for Oracle's default, non-case sensitive column names. Use the exact column name case for case-sensitive column names.</p>
  * @param mixed &$variable <p>The PHP variable that will contain the returned column value.</p>
+ * @param-out mixed $variable
  * @param int $type [optional] <p>The data type to be returned. Generally not needed. Note that Oracle-style data conversions are not performed. For example, SQLT_INT will be ignored and the returned data type will still be SQLT_CHR.
  * You can optionally use {@see oci_new_descriptor()} to allocate LOB/ROWID/BFILE descriptors.</p>
  * @return bool Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.
@@ -1876,6 +1883,7 @@ function ocifetch($statement_resource) {}
  * @link https://php.net/manual/en/function.ocifetchstatement.php
  * @param resource $statement_resource
  * @param array &$output
+ * @param-out array $output
  * @param int $skip [optional]
  * @param int $maximum_rows [optional]
  * @param int $flags [optional]

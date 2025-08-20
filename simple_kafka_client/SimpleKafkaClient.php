@@ -31,8 +31,10 @@ abstract class SimpleKafkaClient
     /**
      * @param string $topic
      * @param int $partition
-     * @param int $low is passed as reference, contains result after call
-     * @param int $high is passed as reference, contains result after call
+     * @param int &$low is passed as reference, contains result after call
+     * @param-out int $low
+     * @param int &$high is passed as reference, contains result after call
+     * @param-out int $high
      * @param int $timeoutMs
      * @throws Exception
      */

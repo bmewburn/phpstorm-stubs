@@ -14,6 +14,7 @@ class SQLiteDatabase
      * @param string $filename <p>The filename of the SQLite database. If the file does not exist, SQLite will attempt to create it. PHP must have write permissions to the file if data is inserted, the database schema is modified or to create the database if it does not exist.</p>
      * @param int $mode [optional] <p>The mode of the file. Intended to be used to open the database in read-only mode. Presently, this parameter is ignored by the sqlite library. The default value for mode is the octal value 0666 and this is the recommended value.</p>
      * @param string &$error_message [optional] <p>Passed by reference and is set to hold a descriptive error message explaining why the database could not be opened if there was an error.</p>
+     * @param-out string $error_message
      */
     final public function __construct($filename, $mode = 0666, &$error_message) {}
 
@@ -29,6 +30,7 @@ class SQLiteDatabase
      * @param int $result_type [optional]
      * <p>The optional <i>result_type</i> parameter accepts a constant and determines how the returned array will be indexed. Using <b>SQLITE_ASSOC</b> will return only associative indices (named fields) while <b>SQLITE_NUM</b> will return only numerical indices (ordinal field numbers). <b>SQLITE_BOTH</b> will return both associative and numerical indices. <b>SQLITE_BOTH</b> is the default for this function.</p>
      * @param string &$error_message [optional] <p>The specified variable will be filled if an error occurs. This is specially important because SQL syntax errors can't be fetched using the {@see sqlite_last_error()} function.</p>
+     * @param-out string $error_message
      * @return resource|false <p>
      * This function will return a result handle or <b>FALSE</b> on failure.
      * For queries that return rows, the result handle can then be used with
@@ -62,6 +64,7 @@ class SQLiteDatabase
      * </p>
      * @param string &$error_message [optional] <p>The specified variable will be filled if an error occurs. This is specially important because SQL syntax errors can't be fetched using the
      * {@see sqlite_last_error()} function.</p>
+     * @param-out string $error_message
      * @return bool <p>
      * This function will return a boolean result; <b>TRUE</b> for success or <b>FALSE</b> for failure.
      * If you need to run a query that returns rows, see {@see sqlite_query()}.
@@ -135,6 +138,7 @@ class SQLiteDatabase
      * <b>SQLITE_BOTH</b> will return both associative and numerical indices. <b>SQLITE_BOTH</b> is the default for this function.
      * </p>
      * @param string &$error_message [optional]
+     * @param-out string $error_message
      * @return resource Returns a result handle or <b>FALSE</b> on failure.
      * {@see sqlite_unbuffered_query()} returns a sequential forward-only result set that can only be used to read each row, one after the other.
      */
@@ -572,6 +576,7 @@ final class SQLiteException extends RuntimeException
  * Passed by reference and is set to hold a descriptive error message
  * explaining why the database could not be opened if there was an error.
  * </p>
+ * @param-out string $error_message
  * @return resource|false a resource (database handle) on success, false on error.
  */
 function sqlite_open($filename, $mode = null, &$error_message = null) {}
@@ -596,6 +601,7 @@ function sqlite_open($filename, $mode = null, &$error_message = null) {}
  * Passed by reference and is set to hold a descriptive error message
  * explaining why the database could not be opened if there was an error.
  * </p>
+ * @param-out string $error_message
  * @return resource|false <p>a resource (database handle) on success, false on error.</p>
  */
 function sqlite_popen($filename, $mode = null, &$error_message = null) {}
@@ -637,6 +643,7 @@ function sqlite_close($dbhandle) {}
  * the
  * {@see sqlite_last_error} function.
  * </p>
+ * @param-out string $error_msg
  * @return resource|false  This function will return a result handle or <b>FALSE</b> on failure.
  * For queries that return rows, the result handle can then be used with
  * functions such as
@@ -679,6 +686,7 @@ function sqlite_query($query, $dbhandle, $result_type = SQLITE_BOTH, &$error_msg
  * the
  * {@see sqlite_last_error} function.
  * </p>
+ * @param-out string $error_msg
  * @return bool <p>This function will return a boolean result; true for success or false for failure.
  * If you need to run a query that returns rows, see sqlite_query.</p>
  */
@@ -1088,6 +1096,7 @@ function sqlite_error_string($error_code) {}
  * specially important because SQL syntax errors can't be fetched using
  * the sqlite_last_error function.
  * </p>
+ * @param-out string $error_msg
  * @return SQLiteUnbuffered|false a result handle or false on failure.
  * <p>
  * sqlite_unbuffered_query returns a sequential
@@ -1160,6 +1169,7 @@ function sqlite_create_function($dbhandle, $function_name, $callback, $num_args 
  * Passed by reference and is set to hold a descriptive error message
  * explaining why the database could not be opened if there was an error.
  * </p>
+ * @param-out string $error_message
  * @return SQLiteDatabase|null a SQLiteDatabase object on success, null on error.
  */
 function sqlite_factory($filename, $mode = null, &$error_message = null) {}

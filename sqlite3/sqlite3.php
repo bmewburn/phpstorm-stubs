@@ -470,6 +470,7 @@ class SQLite3Stmt
      * @param mixed &$var <p>
      * The parameter to bind to a statement variable.
      * </p>
+     * @param-out mixed $var
      * @param int $type [optional] <p>
      * The data type of the parameter to bind.
      * </p>

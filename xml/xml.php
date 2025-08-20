@@ -394,9 +394,11 @@ function xml_parse(#[LanguageLevelTypeAware(["8.0" => "XMLParser"], default: "re
  * @param array &$values <p>
  * An array containing the values of the XML data
  * </p>
+ * @param-out array $values
  * @param array &$index [optional] <p>
  * An array containing pointers to the location of the appropriate values in the $values.
  * </p>
+ * @param-out array $index
  * @return int <b>xml_parse_into_struct</b> returns 0 for failure and 1 for
  * success. This is not the same as <b>FALSE</b> and <b>TRUE</b>, be careful with
  * operators such as ===.

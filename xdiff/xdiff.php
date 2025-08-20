@@ -161,7 +161,8 @@ function xdiff_string_diff(string $old_data, string $new_data, int $context = 3,
  * @param string $old_data First string with data. It acts as "old" data.
  * @param string $new_data1 Second string with data. It acts as modified version of old_data.
  * @param string $new_data2 Third string with data. It acts as modified version of old_data.
- * @param ?string $error If provided then rejected parts are stored inside this variable.
+ * @param ?string &$error If provided then rejected parts are stored inside this variable.
+ * @param-out ?string $error
  * @return bool|string the merged string, false if an internal error happened, or true if merged string is empty.
  */
 function xdiff_string_merge3(string $old_data, string $new_data1, string $new_data2, ?string &$error) {}
@@ -183,7 +184,8 @@ function xdiff_string_patch_binary(string $str, string $patch) {}
  * functions or compatible tools.
  * @param ?int $flags flags can be either XDIFF_PATCH_NORMAL (default mode, normal patch) or XDIFF_PATCH_REVERSE
  * (reversed patch). Starting from version 1.5.0, you can also use binary OR to enable XDIFF_PATCH_IGNORESPACE flag.
- * @param ?string $error If provided then rejected parts are stored inside this variable.
+ * @param ?string &$error If provided then rejected parts are stored inside this variable.
+ * @param-out ?string $error
  * @return string|false the patched string, or false on error.
  */
 function xdiff_string_patch(string $str, string $patch, #[ExpectedValues([XDIFF_PATCH_NORMAL|XDIFF_PATCH_REVERSE|XDIFF_PATCH_IGNORESPACE])] ?int $flags, ?string &$error) {}

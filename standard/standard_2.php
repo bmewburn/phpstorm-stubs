@@ -229,6 +229,7 @@ function ord(string $character): int {}
  * variables are stored in this variable as array elements instead.<br/>
  * Since 7.2.0 this parameter is not optional.
  * </p>
+ * @param-out array $result
  * @return void
  */
 function parse_str(
@@ -660,12 +661,14 @@ function unlink(string $filename, $context): bool {}
  * unset on the array before passing it to
  * exec.
  * </p>
+ * @param-out array $output
  * @param int &$result_code [optional] <p>
  * If the result_code argument is present
  * along with the output argument, then the
  * return status of the executed command will be written to this
  * variable.
  * </p>
+ * @param-out int $result_code
  * @return string|false The last line from the result of the command. If you need to execute a
  * command and have all the data from the command passed directly back without
  * any interference, use the passthru function.
@@ -687,6 +690,7 @@ function exec(string $command, &$output, &$result_code): string|false {}
  * return status of the executed command will be written to this
  * variable.
  * </p>
+ * @param-out int $result_code
  * @return string|false the last line of the command output on success, and false
  * on failure.
  */
@@ -724,6 +728,7 @@ function escapeshellarg(string $arg): string {}
  * If the result_code argument is present, the
  * return status of the Unix command will be placed here.
  * </p>
+ * @param-out int $result_code
  * @return bool|null null on success or false on failure.
  */
 #[LanguageLevelTypeAware(['8.2' => 'null|false'], default: 'null|bool')]
@@ -780,6 +785,7 @@ function shell_exec(string $command): string|false|null {}
  * Will be set to an indexed array of file pointers that correspond to
  * PHP's end of any pipes that are created.
  * </p>
+ * @param-out array $pipes
  * @param string|null $cwd [optional] <p>
  * The initial working dir for the command. This must be an
  * absolute directory path, or null

@@ -1586,6 +1586,7 @@ namespace {
          * @param mixed &$var <p>
          * Name of the PHP variable to bind to the SQL statement parameter.
          * </p>
+         * @param-out mixed $var
          * @param int $type [optional] <p>
          * Explicit data type for the parameter using the PDO::PARAM_*
          * constants.
@@ -1623,6 +1624,7 @@ namespace {
          * @param mixed &$var <p>
          * Name of the PHP variable to which the column will be bound.
          * </p>
+         * @param-out mixed $var
          * @param int $type [optional] <p>
          * Data type of the parameter, specified by the PDO::PARAM_* constants.
          * </p>

@@ -68,6 +68,7 @@ function pcntl_fork(): int {}
  * <b>pcntl_wtermsig</b> and
  * <b>pcntl_wstopsig</b>.
  * </p>
+ * @param-out int $status
  * @param int $flags [optional] <p>
  * The value of <i>options</i> is the value of zero
  * or more of the following two global constants
@@ -89,6 +90,7 @@ function pcntl_fork(): int {}
  * </table>
  * </p>
  * @param array &$resource_usage
+ * @param-out array $resource_usage
  * @return int <b>pcntl_waitpid</b> returns the process ID of the
  * child which exited, -1 on error or zero if <b>WNOHANG</b> was used and no
  * child was available
@@ -114,6 +116,7 @@ function pcntl_waitpid(
  * <b>pcntl_wtermsig</b> and
  * <b>pcntl_wstopsig</b>.
  * </p>
+ * @param-out int $status
  * @param int $flags [optional] <p>
  * If wait3 is available on your system (mostly BSD-style systems), you can
  * provide the optional <i>flags</i> parameter. If this
@@ -139,6 +142,7 @@ function pcntl_waitpid(
  * </table>
  * </p>
  * @param array &$resource_usage
+ * @param-out array $resource_usage
  * @return int <b>pcntl_wait</b> returns the process ID of the
  * child which exited, -1 on error or zero if WNOHANG was provided as an
  * option (on wait3-available systems) and no child was available.
@@ -388,6 +392,7 @@ function pcntl_setpriority(int $priority, ?int $process_id, int $mode = PRIO_PRO
  * The <i>old_signals</i> parameter is set to an array
  * containing the list of the previously blocked signals.
  * </p>
+ * @param-out array $old_signals
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function pcntl_sigprocmask(int $mode, array $signals, &$old_signals): bool {}
@@ -428,6 +433,7 @@ function pcntl_sigprocmask(int $mode, array $signals, &$old_signals): bool {}
  * band: Band event
  * fd: File descriptor number
  * </p>
+ * @param-out array $info
  * @return int|false On success, <b>pcntl_sigwaitinfo</b> returns a signal number.
  */
 function pcntl_sigwaitinfo(array $signals, &$info = []): int|false {}
@@ -443,6 +449,7 @@ function pcntl_sigwaitinfo(array $signals, &$info = []): int|false {}
  * informations about the signal. See
  * <b>pcntl_sigwaitinfo</b>.
  * </p>
+ * @param-out array $info
  * @param int $seconds [optional] <p>
  * Timeout in seconds.
  * </p>

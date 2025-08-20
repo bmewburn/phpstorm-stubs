@@ -315,6 +315,7 @@ function enchant_dict_describe($dict) {}
  * If the word is not correctly spelled, this variable will
  * contain an array of suggestions.
  * </p>
+ * @param-out array $suggestions
  * @return bool <b>TRUE</b> if the word is correctly spelled or <b>FALSE</b>
  */
 function enchant_dict_quick_check($dict, $word, ?array &$suggestions = null) {}

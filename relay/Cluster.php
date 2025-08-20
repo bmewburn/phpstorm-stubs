@@ -981,7 +981,8 @@ class Cluster
      * Iterates fields of Hash types and their associated values.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false
@@ -1599,7 +1600,8 @@ class Cluster
     /**
      * Scan the keyspace for matching keys.
      *
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  array|string  $key_or_address
      * @param  mixed  $match
      * @param  int  $count
@@ -1878,7 +1880,8 @@ class Cluster
      * Iterates elements of Sets types.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false
@@ -2546,7 +2549,8 @@ class Cluster
      * Iterates elements of Sorted Set types and their associated scores.
      *
      * @param  mixed  $key
-     * @param  mixed  $iterator
+     * @param  mixed  &$iterator
+     * @param-out mixed $iterator
      * @param  mixed  $match
      * @param  int  $count
      * @return array|false

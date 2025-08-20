@@ -306,7 +306,7 @@ function rpmvercmp(string $evr1, string $evr2) {}
  * @param null|string &$error [optional] <p>
  * If provided, will receive the possible error message, and will avoid a runtime warning.
  * </p>
- *
+ * @param-out null|string $error
  * @return array|null <p>
  * An array of information or <b>NULL</b> on error.
  * </p>

@@ -746,10 +746,13 @@ class mysqli
      * @link https://php.net/manual/en/mysqli.poll.php
      * @param array &$read <p>
      * </p>
+     * @param-out array $read
      * @param array &$error <p>
      * </p>
+     * @param-out array $error
      * @param array &$reject <p>
      * </p>
+     * @param-out array $reject
      * @param int $seconds <p>
      * Number of seconds to wait, must be non-negative.
      * </p>
@@ -1569,7 +1572,9 @@ class mysqli_stmt
      * The number of variables and length of string
      * types must match the parameters in the statement.
      * </p>
+     * @param-out mixed $var1
      * @param mixed &...$_ [optional]
+     * @param-out mixed $_
      * @return bool true on success or false on failure.
      */
     public function bind_param($types, &$var1, &...$_) {}
@@ -1578,7 +1583,9 @@ class mysqli_stmt
      * Binds variables to a prepared statement for result storage
      * @link https://php.net/manual/en/mysqli-stmt.bind-result.php
      * @param mixed &$var1 The variable to be bound.
+     * @param-out mixed $var1
      * @param mixed &...$_ The variables to be bound.
+     * @param-out mixed ...$_
      * @return bool true on success or false on failure.
      */
     public function bind_result(&$var1, &...$_) {}
@@ -2654,7 +2661,9 @@ function mysqli_stmt_send_long_data(mysqli_stmt $statement, int $param_num, stri
  * The number of variables and length of string
  * types must match the parameters in the statement.
  * </p>
+ * @param-out mixed $var1
  * @param mixed &...$vars
+ * @param-out mixed $vars
  * @return bool true on success or false on failure.
  */
 function mysqli_stmt_bind_param(
@@ -2912,6 +2921,7 @@ function mysqli_bind_param(mysqli_stmt $statement, string $types) {}
  * @param mysqli_stmt $statement
  * @param string $types
  * @param mixed &$var1
+ * @param-out mixed $var1
  * @removed 5.4
  */
 #[Deprecated(since: '5.3')]

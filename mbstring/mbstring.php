@@ -199,6 +199,7 @@ function mb_substitute_character(string|int|null $substitute_character = null): 
  * @param array &$result [optional] <p>
  * An array containing decoded and character encoded converted values.
  * </p>
+ * @param-out array $result
  * @return bool true on success or false on failure.
  */
 #[StubsElementAvailable(from: '5.3', to: '7.4')]
@@ -213,6 +214,7 @@ function mb_parse_str(string $string, &$result): bool {}
  * @param array &$result <p>
  * An array containing decoded and character encoded converted values.
  * </p>
+ * @param-out array $result
  * @return bool true on success or false on failure.
  */
 #[StubsElementAvailable(from: '8.0')]
@@ -989,6 +991,7 @@ function mb_regex_set_options(?string $options): string {}
  * @param string[] &$matches [optional] <p>
  * Contains a substring of the matched string.
  * </p>
+ * @param-out string[] $matches
  * @return bool
  */
 function mb_ereg(string $pattern, string $string, &$matches): bool {}
@@ -1005,6 +1008,7 @@ function mb_ereg(string $pattern, string $string, &$matches): bool {}
  * @param string[] &$matches [optional] <p>
  * Contains a substring of the matched string.
  * </p>
+ * @param-out string[] $matches
  * @return bool|int
  */
 #[LanguageLevelTypeAware(["8.0" => "bool"], default: "false|int")]

@@ -1020,6 +1020,7 @@ class NumberFormatter
      * Offset in the string at which to begin parsing. On return, this value
      * will hold the offset at which parsing ended.
      * </p>
+     * @param-out int $offset
      * @return mixed The value of the parsed number or <b>FALSE</b> on error.
      */
     #[TentativeType]
@@ -1057,10 +1058,12 @@ class NumberFormatter
      * Parameter to receive the currency name (3-letter ISO 4217 currency
      * code).
      * </p>
+     * @param-out string $currency
      * @param int &$offset [optional] <p>
      * Offset in the string at which to begin parsing. On return, this value
      * will hold the offset at which parsing ended.
      * </p>
+     * @param-out int $offset
      * @return float|false The parsed numeric value or <b>FALSE</b> on error.
      */
     #[TentativeType]
@@ -2229,6 +2232,7 @@ class IntlDateFormatter
      * This variable will contain the end position if the parse fails.
      * If $parse_pos > strlen($value), the parse fails immediately.
      * </p>
+     * @param-out int $offset
      * @return int|float|false timestamp parsed value
      */
     #[TentativeType]
@@ -2247,6 +2251,7 @@ class IntlDateFormatter
      * otherwise it will contain the position at which parsing ended .
      * If $parse_pos > strlen($value), the parse fails immediately.
      * </p>
+     * @param-out int $offset
      * @return array|false Localtime compatible array of integers : contains 24 hour clock value in tm_hour field
      */
     #[TentativeType]
@@ -2576,6 +2581,7 @@ class Spoofchecker
      * </p>
      * @param string &$errorCode [optional] <p>
      * </p>
+     * @param-out string $errorCode
      * @return bool
      */
     #[TentativeType]
@@ -2591,6 +2597,7 @@ class Spoofchecker
      * </p>
      * @param int &$errorCode [optional] <p>
      * </p>
+     * @param-out int $errorCode
      * @return bool
      */
     #[TentativeType]
@@ -3642,6 +3649,7 @@ class IntlTimeZone
      * @link https://secure.php.net/manual/en/intltimezone.getcanonicalid.php
      * @param string $timezoneId
      * @param bool &$isSystemId [optional]
+     * @param-out bool $isSystemId
      * @return string|false the timezone ID or <b>FALSE</b> on failure
      */
     #[TentativeType]
@@ -3738,11 +3746,13 @@ class IntlTimeZone
      * @param int &$rawOffset
      *   output parameter to receive the raw offset, that is, the offset not
      *   including DST adjustments
+     * @param-out int $rawOffset
      * @param int &$dstOffset
      *   output parameter to receive the DST offset, that is, the offset to be added
      *   to `rawOffset' to obtain the total offset between local and GMT time. If
      *   DST is not in effect, this value is zero; otherwise it is a positive value,
      *   typically one hour.
+     * @param-out int $dstOffset
      * @return bool boolean indication of success
      */
     #[TentativeType]
@@ -4112,6 +4122,7 @@ function numfmt_format(NumberFormatter $formatter, int|float $num, int $type = 0
  * Offset in the string at which to begin parsing. On return, this value
  * will hold the offset at which parsing ended.
  * </p>
+ * @param-out int $offset
  * @return int|float|false The value of the parsed number or <b>FALSE</b> on error.
  */
 #[Pure]
@@ -4143,10 +4154,12 @@ function numfmt_format_currency(NumberFormatter $formatter, float $amount, strin
  * Parameter to receive the currency name (3-letter ISO 4217 currency
  * code).
  * </p>
+ * @param-out string $currency
  * @param int &$offset [optional] <p>
  * Offset in the string at which to begin parsing. On return, this value
  * will hold the offset at which parsing ended.
  * </p>
+ * @param-out int $offset
  * @return float|false The parsed numeric value or <b>FALSE</b> on error.
  */
 function numfmt_parse_currency(NumberFormatter $formatter, string $string, &$currency, &$offset = null): float|false {}
@@ -5060,6 +5073,7 @@ function datefmt_format_object($datetime, $format = null, ?string $locale = null
  * This variable will contain the end position if the parse fails.
  * If $parse_pos > strlen($value), the parse fails immediately.
  * </p>
+ * @param-out int $offset
  * @return int|float|false timestamp parsed value
  */
 function datefmt_parse(IntlDateFormatter $formatter, string $string, &$offset = null): int|float|false {}
@@ -5078,6 +5092,7 @@ function datefmt_parse(IntlDateFormatter $formatter, string $string, &$offset = 
  * otherwise it will contain the position at which parsing ended .
  * If $parse_pos > strlen($value), the parse fails immediately.
  * </p>
+ * @param-out int $offset
  * @return array|false Localtime compatible array of integers : contains 24 hour clock value in tm_hour field
  */
 function datefmt_localtime(IntlDateFormatter $formatter, string $string, &$offset = null): array|false {}
@@ -5297,6 +5312,7 @@ function grapheme_stristr(string $haystack, string $needle, bool $beforeNeedle =
  * Reference to a value that will be set to the next starting position.
  * When the call returns, this may point to the first byte position past the end of the string.
  * </p>
+ * @param-out int $next
  * @return string|false A string starting at offset $start and ending on a default grapheme cluster
  * boundary that conforms to the $size and $extract_type specified.
  */
@@ -5326,6 +5342,7 @@ function grapheme_extract(string $haystack, int $size, int $type = 0, int $offse
  * either has or would have changed the result and 'errors',
  * which is an int representing a bitset of the error constants IDNA_ERROR_*.
  * </p>
+ * @param-out array $idna_info
  * @return string|false The ACE encoded version of the domain name or <b>FALSE</b> on failure.
  */
 function idn_to_ascii(string $domain, int $flags = 0, int $variant = INTL_IDNA_VARIANT_UTS46, &$idna_info): string|false {}
@@ -5352,6 +5369,7 @@ function idn_to_ascii(string $domain, int $flags = 0, int $variant = INTL_IDNA_V
  * either has or would have changed the result and 'errors',
  * which is an int representing a bitset of the error constants IDNA_ERROR_*.
  * </p>
+ * @param-out array $idna_info
  * @return string|false The UTF-8 encoded version of the domain name or <b>FALSE</b> on failure.
  * RFC 3490 4.2 states though "ToUnicode never fails. If any step fails, then the original input
  * sequence is returned immediately in that step."
@@ -6352,6 +6370,7 @@ function intltz_from_date_time_zone(DateTimeZone $timezone): ?IntlTimeZone {}
  * @link https://secure.php.net/manual/en/intltimezone.getcanonicalid.php
  * @param string $timezoneId
  * @param bool &$isSystemId [optional]
+ * @param-out bool $isSystemId
  * @return string|false
  * @since 5.5
  */
@@ -6453,7 +6472,9 @@ function intltz_get_id(IntlTimeZone $timezone): string|false {}
  * @param float $timestamp
  * @param bool $local
  * @param int &$rawOffset
+ * @param-out int $rawOffset
  * @param int &$dstOffset
+ * @param-out int $dstOffset
  * @return bool
  * @since 5.5
  */
@@ -7634,6 +7655,7 @@ class UConverter
      * @param string $source
      * @param string $codePoint
      * @param int &$error
+     * @param-out int $error
      * @return array|string|int|null
      */
     #[TentativeType]
@@ -7798,6 +7820,7 @@ class UConverter
      * @param string $source
      * @param string $codeUnits
      * @param int &$error
+     * @param-out int $error
      * @return array|string|int|null
      */
     #[TentativeType]

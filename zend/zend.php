@@ -157,7 +157,7 @@ class ZendAPI_Queue
      * @param int $index Get jobs starting from the $index-th place.
      * @param int $count Get only $count jobs.
      * @param int &$total Pass by reference. Return the total number of jobs statisifed the query criteria.
-     *
+     * @param-out int $total
      * @return array of jobs.
      */
     public function getHistoricJobs($status, $start_time, $end_time, $index, $count, &$total) {}

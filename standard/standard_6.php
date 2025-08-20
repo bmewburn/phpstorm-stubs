@@ -295,9 +295,11 @@ function stream_filter_remove($stream_filter): bool {}
  * @param int &$error_code [optional] <p>
  * Will be set to the system level error number if connection fails.
  * </p>
+ * @param-out int $error_code
  * @param string &$error_message [optional] <p>
  * Will be set to the system level error message if the connection fails.
  * </p>
+ * @param-out string $error_message
  * @param float|null $timeout [optional] <p>
  * Number of seconds until the connect() system call
  * should timeout.
@@ -361,9 +363,11 @@ function stream_socket_client(string $address, &$error_code, &$error_message, ?f
  * Note that the errno and
  * errstr arguments will always be passed by reference.
  * </p>
+ * @param-out int $error_code
  * @param string &$error_message [optional] <p>
  * See errno description.
  * </p>
+ * @param-out string $error_message
  * @param int $flags [optional] <p>
  * A bitmask field which may be set to any combination of socket creation
  * flags.
@@ -394,6 +398,7 @@ function stream_socket_server(string $address, &$error_code, &$error_message, in
  * Can also be determined later using
  * stream_socket_get_name.
  * </p>
+ * @param-out string $peer_name
  * @return resource|false Returns a stream to the accepted socket connection or FALSE on failure.
  */
 function stream_socket_accept($socket, ?float $timeout, &$peer_name) {}
@@ -446,6 +451,7 @@ function stream_socket_get_name($socket, bool $remote): string|false {}
  * If address is provided it will be populated with
  * the address of the remote socket.
  * </p>
+ * @param-out string $address
  * @return string|false the read data, as a string, or false on error
  */
 function stream_socket_recvfrom($socket, int $length, int $flags = 0, &$address): string|false {}
@@ -678,6 +684,7 @@ function fputcsv(
  * The optional third argument is set to 1 if the lock would block
  * (EWOULDBLOCK errno condition).
  * </p>
+ * @param-out int $would_block
  * @return bool true on success or false on failure.
  */
 function flock($stream, int $operation, &$would_block): bool {}

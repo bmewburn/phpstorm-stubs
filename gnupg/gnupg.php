@@ -105,7 +105,7 @@ class gnupg
      * @param string $text
      * @param string $signature
      * @param string &$plaintext
-     *
+     * @param-out string $plaintext
      * @return array|false On success, this function returns information about the signature.
      *               On failure, this function returns false.
      */
@@ -179,7 +179,7 @@ class gnupg
      *
      * @param string $enctext
      * @param string &$plaintext
-     *
+     * @param-out string $plaintext
      * @return array|false On success, this function returns information about the signature and
      *               fills the  parameter with the decrypted text.
      *               On failure, this function returns false.
@@ -375,6 +375,7 @@ function gnupg_clearsignkeys($res) {}
  * @param string $text The signed text.
  * @param string|false $signature The signature. To verify a clearsigned text, set signature to false.
  * @param string &$plaintext The plain text. If this optional parameter is passed, it is filled with the plain text.
+ * @param-out string $plaintext
  * @return array|false On success, this function returns information about the signature.
  * On failure, this function returns false.
  */
@@ -499,6 +500,7 @@ function gnupg_encryptsign($res, $text) {}
  * @param resource $res The gnupg identifier, from a call to gnupg_init() or gnupg.
  * @param string $enctext The text being decrypted.
  * @param string &$plaintext The parameter plaintext gets filled with the decrypted text.
+ * @param-out string $plaintext
  * @return array|false On success, this function returns information about the signature and fills the plaintext parameter
  * with the decrypted text. On failure, this function returns false.
  */

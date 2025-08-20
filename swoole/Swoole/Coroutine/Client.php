@@ -72,8 +72,10 @@ class Client
 
     /**
      * @param mixed $length
-     * @param mixed $address
-     * @param mixed|null $port
+     * @param mixed &$address
+     * @param-out mixed $address
+     * @param mixed|null &$port
+     * @param-out mixed|null $port
      * @return mixed
      */
     public function recvfrom($length, &$address, &$port = null) {}

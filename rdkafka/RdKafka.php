@@ -63,8 +63,10 @@ abstract class RdKafka
     /**
      * @param string $topic
      * @param int $partition
-     * @param int $low
-     * @param int $high
+     * @param int &$low
+     * @param-out int $low
+     * @param int &$high
+     * @param-out int $high
      * @param int $timeout_ms
      *
      * @return void

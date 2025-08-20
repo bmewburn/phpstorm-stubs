@@ -2637,6 +2637,7 @@ class Yaf_View_Simple implements Yaf_View_Interface
      *
      * @param string $name A string name which will be used to access the value in the template.
      * @param mixed &$value mixed value
+     * @param-out mixed $value
      *
      * @return Yaf_View_Simple
      */

@@ -29,6 +29,7 @@ function xmlrpc_decode($xml, $encoding = "iso-8859-1") {}
  * @link https://php.net/manual/en/function.xmlrpc-decode-request.php
  * @param string $xml
  * @param string &$method
+ * @param-out string $method
  * @param string $encoding [optional]
  * @return mixed
  */
@@ -67,6 +68,7 @@ function xmlrpc_get_type($value) {}
  * @param string &$value <p>
  * Value to set the type
  * </p>
+ * @param-out string $value
  * @param string $type <p>
  * 'base64' or 'datetime'
  * </p>
