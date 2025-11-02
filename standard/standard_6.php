@@ -668,7 +668,7 @@ function fputcsv(
     string $separator = ",",
     string $enclosure = '"',
     #[StubsElementAvailable(from: '7.0')] string $escape = "\\",
-    #[StubsElementAvailable('8.1')] string $eol = PHP_EOL
+    #[StubsElementAvailable('8.1')] string $eol = "\n"
 ): int|false {}
 
 /**
