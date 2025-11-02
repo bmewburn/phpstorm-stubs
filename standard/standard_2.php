@@ -334,7 +334,7 @@ function strchr(string $haystack, string $needle, bool $before_needle = false): 
  * (- or +) to be used on a number. By default, only the - sign is used
  * on a number if it's negative. This specifier forces positive numbers
  * to have the + sign attached as well, and was added in PHP 4.3.0.</p>
- * @param string|int|float ...$values <p>
+ * @param mixed ...$values <p>
  * </p>
  * @return string a string produced according to the formatting string
  * format.
@@ -487,8 +487,8 @@ function fscanf($stream, string $format, #[TypeContract(exists: "int|false|null"
  * fragment - after the hashmark #
  * </p>
  * <p>
- * If the component parameter is specified a
- * string is returned instead of an array.
+ * If the component parameter is specified a string is returned instead of an array.
+ * If the requested component doesn't exist within the given URL, null will be returned.
  */
 #[ArrayShape(["scheme" => "string", "host" => "string", "port" => "int", "user" => "string", "pass" => "string", "query" => "string", "path" => "string", "fragment" => "string"])]
 #[Pure]
@@ -740,7 +740,7 @@ function passthru(string $command, &$result_code): ?bool {}
  * @param string $command <p>
  * The command that will be executed.
  * </p>
- * @return string|false|null The output from the executed command or NULL if an error occurred or the command produces no output.
+ * @return string|false|null A string containing the output from the executed command, false if the pipe cannot be established or null if an error occurs or the command produces no output.
  */
 function shell_exec(string $command): string|false|null {}
 

@@ -4,8 +4,8 @@
 declare(strict_types=1);
 
 namespace Swoole\Coroutine {
-    function run(callable $func, mixed ...$params): bool { }
-    function go(callable $func, mixed ...$params): int|false { }
+    function run(callable $func, mixed ...$params): bool {}
+    function go(callable $func, mixed ...$params): int|false {}
 }
 
 namespace {
@@ -423,5 +423,4 @@ namespace {
      * @see \Swoole\Timer::clearAll()
      */
     function swoole_timer_clear_all() {}
-
 }

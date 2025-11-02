@@ -23,7 +23,7 @@ class ReflectionMethod extends ReflectionFunctionAbstract
     public $name;
 
     /**
-     * @var string Fully qualified class name where this method was defined
+     * @var class-string Fully qualified class name where this method was defined
      */
     #[Immutable]
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]

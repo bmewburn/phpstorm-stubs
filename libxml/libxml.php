@@ -4,6 +4,7 @@
 use __IDE\Deprecated;
 use __IDE\StubsElementAvailable;
 use __IDE\Pure;
+use __IDE\LanguageLevelTypeAware;
 
 /**
  * Contains various information about errors thrown by libxml. The error codes
@@ -144,7 +145,8 @@ function libxml_disable_entity_loader(bool $disable = true): bool {}
  * @return bool
  * @since 5.4
  */
-function libxml_set_external_entity_loader(?callable $resolver_function): bool {}
+#[LanguageLevelTypeAware(['8.5' => 'true'], default: 'bool')]
+function libxml_set_external_entity_loader(?callable $resolver_function) {}
 
 /**
  * Returns the currently installed external entity loader, i.e. the value which was passed to

@@ -963,6 +963,7 @@ namespace {
          * <b>PDO::prepare</b> returns <b>FALSE</b> or emits
          * <b>PDOException</b> (depending on error handling).
          * </p>
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          * <p>
          * Emulated prepared statements does not communicate with the database server
          * so <b>PDO::prepare</b> does not check the statement.
@@ -1036,6 +1037,7 @@ namespace {
          * @param int $attribute
          * @param mixed $value
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function setAttribute(
@@ -1070,6 +1072,7 @@ namespace {
          * <code>
          * $db->exec() or die(print_r($db->errorInfo(), true));
          * </code>
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function exec(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $statement): int|false {}
@@ -1095,7 +1098,8 @@ namespace {
          * parameter is set to <b>PDO::FETCH_CLASS</b>.
          * </p>
          * @return PDOStatement|false <b>PDO::query</b> returns a PDOStatement object, or <b>FALSE</b>
-         * on failure.
+         * on failure or emits <b>PDOException</b> (depending on error handling)
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          * @see PDOStatement::setFetchMode For a full description of the second and following parameters.
          */
         #[StubsElementAvailable(to: '7.4')]
@@ -1119,7 +1123,8 @@ namespace {
          * parameter is set to <b>PDO::FETCH_CLASS</b>.
          * </p>
          * @return PDOStatement|false <b>PDO::query</b> returns a PDOStatement object, or <b>FALSE</b>
-         * on failure.
+         * on failure or emits <b>PDOException</b> (depending on error handling).
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          * @see PDOStatement::setFetchMode For a full description of the second and following parameters.
          */
         #[StubsElementAvailable('8.0')]
@@ -1250,6 +1255,7 @@ namespace {
          * </p>
          * @return mixed A successful call returns the value of the requested PDO attribute.
          * An unsuccessful call returns null.
+         * @throws PDOException when the underlying driver does not support the requested attribute.
          */
         #[TentativeType]
         public function getAttribute(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $attribute): mixed {}
@@ -1492,6 +1498,7 @@ namespace {
         public function pgsqlGetPid() {}
 
         /**
+         * @throws PDOException if the attempt to connect to the requested database fails, regardless of which PDO::ATTR_ERRMODE is currently set.
          * @since 8.4
          */
         public static function connect(string $dsn, ?string $username = null, ?string $password = null, ?array $options = null): static {}
@@ -1564,6 +1571,7 @@ namespace {
          * @param int $cursorOffset [optional]
          * @return mixed The return value of this function on success depends on the fetch type. In
          * all cases, <b>FALSE</b> is returned on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function fetch(
@@ -1602,6 +1610,7 @@ namespace {
          * @param mixed $driverOptions [optional] <p>
          * </p>
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function bindParam(
@@ -1635,6 +1644,7 @@ namespace {
          * Optional parameter(s) for the driver.
          * </p>
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function bindColumn(
@@ -1664,6 +1674,7 @@ namespace {
          * constants.
          * </p>
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function bindValue(
@@ -1677,6 +1688,7 @@ namespace {
          * Returns the number of rows affected by the last SQL statement
          * @link https://php.net/manual/en/pdostatement.rowcount.php
          * @return int the number of rows.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function rowCount(): int {}
@@ -1696,6 +1708,7 @@ namespace {
          * <p>
          * There is no way to return another column from the same row if you
          * use <b>PDOStatement::fetchColumn</b> to retrieve data.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function fetchColumn(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $column = 0): mixed {}
@@ -1768,6 +1781,7 @@ namespace {
          * </p>
          * @return T|stdClass|null an instance of the required class with property names that
          * correspond to the column names or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function fetchObject(
@@ -1822,6 +1836,7 @@ namespace {
          * @param int $attribute
          * @param mixed $value
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function setAttribute(
@@ -1846,6 +1861,7 @@ namespace {
          * @return int the number of columns in the result set represented by the
          * PDOStatement object. If there is no result set,
          * <b>PDOStatement::columnCount</b> returns 0.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function columnCount(): int {}
@@ -1940,6 +1956,7 @@ namespace {
          * </p>
          * @param mixed ...$args <p> Constructor arguments. </p>
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         public function setFetchMode($mode, ...$args) {}
 
@@ -1948,6 +1965,7 @@ namespace {
          * Advances to the next rowset in a multi-rowset statement handle
          * @link https://php.net/manual/en/pdostatement.nextrowset.php
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function nextRowset(): bool {}
@@ -1957,6 +1975,7 @@ namespace {
          * Closes the cursor, enabling the statement to be executed again.
          * @link https://php.net/manual/en/pdostatement.closecursor.php
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+         * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
          */
         #[TentativeType]
         public function closeCursor(): bool {}
@@ -2009,7 +2028,7 @@ namespace Pdo {
      * @since 8.4
      */
     class Sqlite extends PDO
-{
+    {
         public const int DETERMINISTIC = 0;
         public const int OPEN_READONLY = 1;
         public const int OPEN_READWRITE = 0;
@@ -2017,6 +2036,34 @@ namespace Pdo {
         public const int ATTR_OPEN_FLAGS = 0;
         public const int ATTR_READONLY_STATEMENT = 0;
         public const int ATTR_EXTENDED_RESULT_CODES = 0;
+        public const IGNORE = 0;
+        public const DENY = 0;
+        public const OK = 0;
+        public const EXPLAIN_MODE_EXPLAIN_QUERY_PLAN = 0;
+        public const EXPLAIN_MODE_EXPLAIN = 0;
+        public const EXPLAIN_MODE_PREPARED = 0;
+        public const ATTR_EXPLAIN_STATEMENT = 0;
+        public const ATTR_BUSY_STATEMENT = 0;
+
+        /**
+         * @since 8.5
+         */
+        public const ATTR_TRANSACTION_MODE = 1005;
+
+        /**
+         * @since 8.5
+         */
+        public const TRANSACTION_MODE_DEFERRED = 0;
+
+        /**
+         * @since 8.5
+         */
+        public const TRANSACTION_MODE_IMMEDIATE = 1;
+
+        /**
+         * @since 8.5
+         */
+        public const TRANSACTION_MODE_EXCLUSIVE = 2;
 
         public function createAggregate(
             string $name,
@@ -2044,13 +2091,18 @@ namespace Pdo {
             ?string $dbname = "main",
             int $flags = \Pdo\Sqlite::OPEN_READONLY
         ) {}
+
+        /**
+         * @since 8.5
+         */
+        public function setAuthorizer(?callable $callback): void {}
     }
 
     /**
      * @since 8.4
      */
     class Mysql extends PDO
-{
+    {
         public const int ATTR_USE_BUFFERED_QUERY = 0;
         public const int ATTR_LOCAL_INFILE = 0;
         public const int ATTR_INIT_COMMAND = 0;
@@ -2094,6 +2146,7 @@ namespace Pdo {
             string $nullAs = "\\\\N",
             ?string $fields = null
         ): bool {}
+
         public function copyFromFile(
             string $tableName,
             string $filename,
@@ -2101,12 +2154,14 @@ namespace Pdo {
             string $nullAs = "\\\\N",
             ?string $fields = null
         ): bool {}
+
         public function copyToArray(
             string $tableName,
             string $separator = "\t",
             string $nullAs = "\\\\N",
             ?string $fields = null
         ): array|false {}
+
         public function copyToFile(
             string $tableName,
             string $filename,
@@ -2114,16 +2169,23 @@ namespace Pdo {
             string $nullAs = "\\\\N",
             ?string $fields = null
         ): bool {}
+
         public function escapeIdentifier(string $input): string {}
+
         public function getNotify(int $fetchMode = \PDO::FETCH_DEFAULT, int $timeoutMilliseconds = 0): array|false {}
-        public function getPid(): int{}
+
+        public function getPid(): int {}
+
         public function lobCreate(): string|false {}
+
         /**
          * Opens an existing large object stream. Must be called inside a transaction.
          * @return resource|false
          */
         public function lobOpen(string $oid, string $mode = "rb") {}
+
         public function lobUnlink(string $oid): bool {}
+
         public function setNoticeCallback(?callable $callback): void {}
     }
 }

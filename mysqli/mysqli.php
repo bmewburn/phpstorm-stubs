@@ -1938,6 +1938,7 @@ function mysqli_stmt_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.
  * as there are bound parameters in the SQL statement being executed. Each value is treated as a string.
  * @return bool
  */
+#[Deprecated(since: '8.5')]
 function mysqli_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
 /**

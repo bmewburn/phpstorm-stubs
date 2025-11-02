@@ -114,6 +114,7 @@ interface DateTimeInterface
      * Returns the formatted date string on success or <b>FALSE</b> on failure.
      * Since PHP8, it always returns <b>STRING</b>.
      */
+    #[Pure(true)]
     #[TentativeType]
     public function format(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format): string;
 
@@ -168,11 +169,6 @@ interface DateTimeInterface
      * @since 8.4
      */
     public function getMicrosecond(): int;
-
-    /**
-     * @since 8.4
-     */
-    public function setMicrosecond();
 }
 
 /**
@@ -233,6 +229,7 @@ class DateTimeImmutable implements DateTimeInterface
      * @link https://secure.php.net/manual/en/datetimeimmutable.add.php
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::add() does not modify the object itself")]
     public function add(DateInterval $interval): DateTimeImmutable {}
 
     /**
@@ -245,6 +242,25 @@ class DateTimeImmutable implements DateTimeInterface
      * @return DateTimeImmutable|false
      */
     #[TentativeType]
+    #[StubsElementAvailable(from: '5.5', to: '7.4')]
+    public static function createFromFormat(
+        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format,
+        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $datetime,
+        #[LanguageLevelTypeAware(['8.0' => 'DateTimeZone|null'], default: 'DateTimeZone')] $timezone = null
+    ): DateTimeImmutable|false {}
+
+    /**
+     * (PHP 5 &gt;=5.5.0)<br/>
+     * Returns new DateTimeImmutable object formatted according to the specified format
+     * @link https://secure.php.net/manual/en/datetimeimmutable.createfromformat.php
+     * @param string $format
+     * @param string $datetime
+     * @param null|DateTimeZone $timezone [optional]
+     * @return DateTimeImmutable|false
+     * @throws ValueError when the datetime contains NULL-bytes.
+     */
+    #[TentativeType]
+    #[StubsElementAvailable(from: '8.0')]
     public static function createFromFormat(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $datetime,
@@ -284,7 +300,8 @@ class DateTimeImmutable implements DateTimeInterface
     #[StubsElementAvailable(from:'5.5', to: '8.2')]
     #[Pure]
     #[TentativeType]
-    #[LanguageLevelTypeAware(['8.4' => 'DateTimeImmutable'], default: 'DateTimeImmutable|false')]
+    #[LanguageLevelTypeAware(['8.4' => 'DateTimeImmutable'], default: 'static|false')]
+    #[\NoDiscard(message: "as DateTimeImmutable::modify() does not modify the object itself")]
     public function modify(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $modifier) {}
 
     /**
@@ -324,6 +341,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::setDate() does not modify the object itself")]
     public function setDate(
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $year,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $month,
@@ -341,6 +359,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::setISODate() does not modify the object itself")]
     public function setISODate(
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $year,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $week,
@@ -359,6 +378,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::setTime() does not modify the object itself")]
     public function setTime(
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $hour,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $minute,
@@ -375,6 +395,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::setTimestamp() does not modify the object itself")]
     public function setTimestamp(#[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestamp): DateTimeImmutable {}
 
     /**
@@ -389,6 +410,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::setTimezone() does not modify the object itself")]
     public function setTimezone(DateTimeZone $timezone): DateTimeImmutable {}
 
     /**
@@ -403,6 +425,7 @@ class DateTimeImmutable implements DateTimeInterface
      * Returns the {@link https://secure.php.net/manual/en/class.datetimeimmutable.php DateTimeImmutable} object for method chaining or <b>FALSE</b> on failure.
      */
     #[TentativeType]
+    #[\NoDiscard(message: "as DateTimeImmutable::sub() does not modify the object itself")]
     public function sub(DateInterval $interval): DateTimeImmutable {}
 
     /**
@@ -431,6 +454,7 @@ class DateTimeImmutable implements DateTimeInterface
      * @return string
      * Returns the formatted date string on success or <b>FALSE</b> on failure.
      */
+    #[Pure(true)]
     #[TentativeType]
     public function format(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format): string {}
 
@@ -475,7 +499,7 @@ class DateTimeImmutable implements DateTimeInterface
 
     /**
      * @param DateTimeInterface $object
-     * @return DateTimeImmutable
+     * @return static
      * @since 8.0
      */
     public static function createFromInterface(DateTimeInterface $object): DateTimeImmutable {}
@@ -500,6 +524,7 @@ class DateTimeImmutable implements DateTimeInterface
     /**
      * @since 8.4
      */
+    #[\NoDiscard(message: "as DateTimeImmutable::setMicrosecond() does not modify the object itself")]
     public function setMicrosecond(int $microsecond): static {}
 }
 
@@ -655,6 +680,7 @@ class DateTime implements DateTimeInterface
      * @return string
      * @link https://php.net/manual/en/datetime.format.php
      */
+    #[Pure(true)]
     #[TentativeType]
     public function format(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format): string {}
 
@@ -667,7 +693,7 @@ class DateTime implements DateTimeInterface
      */
     #[StubsElementAvailable(from: '5.3', to: '8.2')]
     #[TentativeType]
-    #[LanguageLevelTypeAware(['8.4' => 'DateTime'], default: 'DateTime|false')]
+    #[LanguageLevelTypeAware(['8.4' => 'DateTime'], default: 'static|false')]
     public function modify(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $modifier) {}
 
     /**
@@ -680,7 +706,7 @@ class DateTime implements DateTimeInterface
      */
     #[StubsElementAvailable(from: '8.3')]
     #[TentativeType]
-    #[LanguageLevelTypeAware(['8.4' => 'DateTime'], default: 'DateTime|false')]
+    #[LanguageLevelTypeAware(['8.4' => 'DateTime'], default: 'static|false')]
     public function modify(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $modifier) {}
 
     /**
@@ -822,6 +848,24 @@ class DateTime implements DateTimeInterface
      * @link https://php.net/manual/en/datetime.createfromformat.php
      */
     #[TentativeType]
+    #[StubsElementAvailable(from: '5.3', to: '7.4')]
+    public static function createFromFormat(
+        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format,
+        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $datetime,
+        #[LanguageLevelTypeAware(['8.0' => 'DateTimeZone|null'], default: 'DateTimeZone')] $timezone = null
+    ): DateTime|false {}
+
+    /**
+     * Parse a string into a new DateTime object according to the specified format
+     * @param string $format Format accepted by date().
+     * @param string $datetime String representing the time.
+     * @param null|DateTimeZone $timezone A DateTimeZone object representing the desired time zone.
+     * @return DateTime|false
+     * @link https://php.net/manual/en/datetime.createfromformat.php
+     * @throws ValueError when the datetime contains NULL-bytes.
+     */
+    #[TentativeType]
+    #[StubsElementAvailable(from: '8.0')]
     public static function createFromFormat(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $format,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $datetime,
@@ -847,7 +891,7 @@ class DateTime implements DateTimeInterface
 
     /**
      * @param DateTimeInterface $object
-     * @return DateTime
+     * @return static
      * @since 8.0
      */
     public static function createFromInterface(DateTimeInterface $object): DateTime {}

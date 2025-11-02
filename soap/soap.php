@@ -432,7 +432,8 @@ class SoapClient
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $location,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $action,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $version,
-        #[LanguageLevelTypeAware(["8.0" => 'bool'], default: 'int')] $oneWay = false
+        #[LanguageLevelTypeAware(["8.0" => 'bool'], default: 'int')] $oneWay = false,
+        #[StubsElementAvailable(from: '8.5')] ?string $uriParserClass = null
     ): ?string {}
 
     /**
@@ -792,6 +793,7 @@ class SoapServer
      * </p>
      * @param string $name [optional] <p>
      * The name of the fault. This can be used to select a name from a WSDL file.
+     * @param string $lang [optional] since 8.5
      * </p>
      * @return void No value is returned.
      * @since 5.0.1
@@ -802,7 +804,8 @@ class SoapServer
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $string,
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $actor = '',
         #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $details = null,
-        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $name = ''
+        #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $name = '',
+        #[StubsElementAvailable('8.5')] string $lang = ''
     ): void {}
 
     /**
@@ -878,6 +881,11 @@ class SoapFault extends Exception
     public string|null $_name;
 
     /**
+     * @since 8.5
+     */
+    public string $lang = "";
+
+    /**
      * SoapFault constructor
      * @link https://php.net/manual/en/soapfault.soapfault.php
      * @param string $code <p>
@@ -908,7 +916,8 @@ class SoapFault extends Exception
         #[LanguageLevelTypeAware(['8.0' => 'string|null'], default: '')] $actor = null,
         #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $details = null,
         #[LanguageLevelTypeAware(['8.0' => 'string|null'], default: '')] $name = null,
-        #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $headerFault = null
+        #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $headerFault = null,
+        #[StubsElementAvailable('8.5')] string $lang = ''
     ) {}
 
     /**

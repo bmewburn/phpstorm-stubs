@@ -286,6 +286,11 @@ class DocumentFragment extends Node implements ParentNode
     public ?Element $lastElementChild;
     public int $childElementCount;
 
+    /**
+     * @since 8.5
+     */
+    public \Dom\HTMLCollection $children;
+
     public function appendXml(string $data): bool {}
 
     public function append(Node|string ...$nodes): void {}
@@ -313,6 +318,11 @@ class Document extends Node implements ParentNode
     public string $inputEncoding;
     public ?DocumentType $doctype;
     public ?Element $documentElement;
+
+    /**
+     * @since 8.5
+     */
+    public \Dom\HTMLCollection $children;
 
     public function getElementsByTagName(string $qualifiedName): HTMLCollection {}
 
@@ -367,6 +377,11 @@ class Document extends Node implements ParentNode
 
     /** @return NodeList<Element> */
     public function querySelectorAll(string $selectors): NodeList {}
+
+    /**
+     * @since 8.5
+     */
+    public function getElementsByClassName(string $classNames): HTMLCollection {}
     public ?HTMLElement $body;
     public ?HTMLElement $head;
     public string $title;
@@ -474,6 +489,11 @@ class Element extends Node implements ParentNode, ChildNode
     public string $id;
     public string $className;
 
+    /**
+     * @since 8.5
+     */
+    public \Dom\HTMLCollection $children;
+
     /** @readonly */
     public TokenList $classList;
 
@@ -562,6 +582,16 @@ class Element extends Node implements ParentNode, ChildNode
     public function getDescendantNamespaces(): array {}
 
     public function rename(?string $namespaceURI, string $qualifiedName): void {}
+
+    /**
+     * @since 8.5
+     */
+    public function getElementsByClassName(string $classNames): HTMLCollection {}
+
+    /**
+     * @since 8.5
+     */
+    public function insertAdjacentHTML(\Dom\AdjacentPosition $where, string $string): void {}
 }
 /**
  * @since 8.4

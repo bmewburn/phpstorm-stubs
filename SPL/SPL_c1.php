@@ -907,7 +907,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
     #[TentativeType]
     public function fwrite(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $data,
-        #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $length = 0
+        #[LanguageLevelTypeAware(['8.0' => 'int', '8.5' => 'int|null'], default: '')] $length = null
     ): int|false {}
 
     /**
@@ -1511,6 +1511,19 @@ abstract class SplHeap implements Iterator, Countable
      */
     #[TentativeType]
     public function __debugInfo(): array {}
+
+    /**
+     * @return array
+     * @since 8.5
+     */
+    #[TentativeType]
+    public function __serialize(): array {}
+
+    /**
+     * @since 8.5
+     */
+    #[TentativeType]
+    public function __unserialize(array $data): void {}
 }
 
 /**
@@ -1813,6 +1826,19 @@ class SplPriorityQueue implements Iterator, Countable
      */
     #[TentativeType]
     public function __debugInfo(): array {}
+
+    /**
+     * @return array
+     * @since 8.5
+     */
+    #[TentativeType]
+    public function __serialize(): array {}
+
+    /**
+     * @since 8.5
+     */
+    #[TentativeType]
+    public function __unserialize(array $data): void {}
 }
 
 /**

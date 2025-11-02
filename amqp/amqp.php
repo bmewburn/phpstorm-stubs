@@ -937,7 +937,7 @@ class AMQPConnection
     /**
      * Set path to the CA cert file in PEM format
      *
-     * @param string $cacert
+     * @param string|null $cacert
      *
      * @return void
      */
@@ -953,7 +953,7 @@ class AMQPConnection
     /**
      * Set path to the client certificate in PEM format
      *
-     * @param string $cert
+     * @param string|null $cert
      *
      * @return void
      */
@@ -1162,9 +1162,9 @@ class AMQPExchange
      *
      * Bind an exchange to another exchange using the specified routing key.
      *
-     * @param string $exchangeName Name of the exchange to bind.
-     * @param string $routingKey   The routing key to use for binding.
-     * @param array  $arguments     Additional binding arguments.
+     * @param string $exchangeName    Name of the exchange to bind.
+     * @param string|null $routingKey The routing key to use for binding.
+     * @param array  $arguments       Additional binding arguments.
      *
      * @throws AMQPExchangeException   On failure.
      * @throws AMQPChannelException    If the channel is not open.
@@ -1172,16 +1172,16 @@ class AMQPExchange
      *
      * @return void
      */
-    public function bind($exchangeName, $routingKey = '', array $arguments = []) {}
+    public function bind($exchangeName, $routingKey = null, array $arguments = []) {}
 
     /**
      * Remove binding to another exchange.
      *
      * Remove a routing key binding on an another exchange from the given exchange.
      *
-     * @param string $exchangeName Name of the exchange to bind.
-     * @param string $routingKey   The routing key to use for binding.
-     * @param array  $arguments     Additional binding arguments.
+     * @param string $exchangeName    Name of the exchange to bind.
+     * @param string|null $routingKey The routing key to use for binding.
+     * @param array  $arguments       Additional binding arguments.
      *
      * @throws AMQPExchangeException   On failure.
      * @throws AMQPChannelException    If the channel is not open.
@@ -1189,7 +1189,7 @@ class AMQPExchange
      *
      * @return void
      */
-    public function unbind($exchangeName, $routingKey = '', array $arguments = []) {}
+    public function unbind($exchangeName, $routingKey = null, array $arguments = []) {}
 
     /**
      * Declare a new exchange on the broker.
@@ -1216,11 +1216,11 @@ class AMQPExchange
     /**
      * Delete the exchange from the broker.
      *
-     * @param string  $exchangeName Optional name of exchange to delete.
-     * @param int $flags        Optionally AMQP_IFUNUSED can be specified
-     *                              to indicate the exchange should not be
-     *                              deleted until no clients are connected to
-     *                              it.
+     * @param string|null $exchangeName Optional name of exchange to delete.
+     * @param int|null    $flags        Optionally AMQP_IFUNUSED can be specified
+     *                                  to indicate the exchange should not be
+     *                                  deleted until no clients are connected to
+     *                                  it.
      *
      * @throws AMQPExchangeException   On failure.
      * @throws AMQPChannelException    If the channel is not open.
@@ -1228,7 +1228,7 @@ class AMQPExchange
      *
      * @return void
      */
-    public function delete($exchangeName = null, $flags = AMQP_NOPARAM) {}
+    public function delete($exchangeName = null, $flags = null) {}
 
     /**
      * Get the argument associated with the given key.
@@ -1311,8 +1311,8 @@ class AMQPExchange
     /**
      * Set the value for the given key.
      *
-     * @param string         $argumentName   Name of the argument to set.
-     * @param string|int $argumentValue Value of the argument to set.
+     * @param string                     $argumentName  Name of the argument to set.
+     * @param bool|int|float|string|null $argumentValue Value of the argument to set.
      *
      * @return void
      */
@@ -1330,7 +1330,7 @@ class AMQPExchange
      *
      * @param array $arguments An array of key/value pairs of arguments.
      *
-     * @return bool TRUE on success or FALSE on failure.
+     * @return void
      */
     public function setArguments(array $arguments) {}
 
@@ -1349,7 +1349,7 @@ class AMQPExchange
     /**
      * Set the name of the exchange.
      *
-     * @param string $exchangeName The name of the exchange to set as string.
+     * @param string|null $exchangeName The name of the exchange to set as string.
      *
      * @return void
      */
@@ -1361,7 +1361,7 @@ class AMQPExchange
      * Set the type of the exchange. This can be any of AMQP_EX_TYPE_DIRECT,
      * AMQP_EX_TYPE_FANOUT, AMQP_EX_TYPE_HEADERS or AMQP_EX_TYPE_TOPIC.
      *
-     * @param string $exchangeType The type of exchange as a string.
+     * @param string|null $exchangeType The type of exchange as a string.
      *
      * @return void
      */
@@ -1432,7 +1432,7 @@ class AMQPQueue
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
      *
-     * @return bool
+     * @return void
      */
     public function bind($exchangeName, $routingKey = null, array $arguments = []) {}
 
@@ -1451,7 +1451,7 @@ class AMQPQueue
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
      *
-     * @return bool
+     * @return void
      */
     public function cancel($consumer_tag = '') {}
 
@@ -1527,7 +1527,7 @@ class AMQPQueue
      *
      * This includes its entire contents of unread or unacknowledged messages.
      *
-     * @param int $flags        Optionally AMQP_IFUNUSED can be specified
+     * @param int|null $flags       Optionally AMQP_IFUNUSED can be specified
      *                              to indicate the queue should not be
      *                              deleted until no clients are connected to
      *                              it.
@@ -1537,7 +1537,7 @@ class AMQPQueue
      *
      * @return int The number of deleted messages.
      */
-    public function delete($flags = AMQP_NOPARAM) {}
+    public function delete($flags = null) {}
 
     /**
      * Retrieve the next message from the queue.
@@ -1550,11 +1550,11 @@ class AMQPQueue
      * automatically be marked as acknowledged by the broker as soon as the
      * frames are sent to the client.
      *
-     * @param int $flags A bitmask of supported flags for the
-     *                       method call. Currently, the only the
-     *                       supported flag is AMQP_AUTOACK. If this
-     *                       value is not provided, it will use the
-     *                       value of ini-setting amqp.auto_ack.
+     * @param int|null $flags A bitmask of supported flags for the
+     *                        method call. Currently, the only the
+     *                        supported flag is AMQP_AUTOACK. If this
+     *                        value is not provided, it will use the
+     *                        value of ini-setting amqp.auto_ack.
      *
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
@@ -1593,16 +1593,16 @@ class AMQPQueue
      * undefined.
      *
      * @param int $deliveryTag Delivery tag of last message to reject.
-     * @param int $flags        AMQP_REQUEUE to requeue the message(s),
+     * @param int|null $flags       AMQP_REQUEUE to requeue the message(s),
      *                              AMQP_MULTIPLE to nack all previous
      *                              unacked messages as well.
      *
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
      *
-     * @return bool
+     * @return void
      */
-    public function nack($deliveryTag, $flags = AMQP_NOPARAM) {}
+    public function nack($deliveryTag, $flags = null) {}
 
     /**
      * Mark one message as explicitly not acknowledged.
@@ -1619,7 +1619,7 @@ class AMQPQueue
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
      *
-     * @return bool
+     * @return void
      */
     public function reject($deliveryTag, $flags = null) {}
 
@@ -1708,7 +1708,7 @@ class AMQPQueue
      *                       AMQP_DURABLE, AMQP_PASSIVE,
      *                       AMQP_EXCLUSIVE, AMQP_AUTODELETE.
      *
-     * @return bool
+     * @return void
      */
     public function setFlags($flags = null) {}
 
@@ -1717,7 +1717,7 @@ class AMQPQueue
      *
      * @param string $name The name of the queue.
      *
-     * @return bool
+     * @return void
      */
     public function setName($name) {}
 
@@ -1733,7 +1733,7 @@ class AMQPQueue
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
      *
-     * @return bool
+     * @return void
      */
     public function unbind($exchangeName, $routingKey = null, array $arguments = []) {}
 
