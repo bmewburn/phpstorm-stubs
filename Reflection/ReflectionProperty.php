@@ -267,6 +267,7 @@ class ReflectionProperty implements Reflector
     #[Pure]
     #[StubsElementAvailable(from: "8.1")]
     #[TentativeType]
+    #[Deprecated(since: '8.5')]
     public function setAccessible(bool $accessible): void {}
 
     /**

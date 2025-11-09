@@ -2100,6 +2100,7 @@ class SplObjectStorage implements Countable, SeekableIterator, Serializable, Arr
      * @return void
      */
     #[TentativeType]
+    #[Deprecated(since: '8.5')]
     public function attach(
         #[LanguageLevelTypeAware(['8.0' => 'object'], default: '')] $object,
         #[LanguageLevelTypeAware(['8.0' => 'mixed'], default: '')] $info = null
@@ -2114,6 +2115,7 @@ class SplObjectStorage implements Countable, SeekableIterator, Serializable, Arr
      * @return void
      */
     #[TentativeType]
+    #[Deprecated(since: '8.5')]
     public function detach(#[LanguageLevelTypeAware(['8.0' => 'object'], default: '')] $object): void {}
 
     /**
@@ -2125,6 +2127,7 @@ class SplObjectStorage implements Countable, SeekableIterator, Serializable, Arr
      * @return bool true if the object is in the storage, false otherwise.
      */
     #[TentativeType]
+    #[Deprecated(since: '8.5')]
     public function contains(#[LanguageLevelTypeAware(['8.0' => 'object'], default: '')] $object): bool {}
 
     /**
