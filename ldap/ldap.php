@@ -1095,11 +1095,13 @@ function ldap_get_option(
 /**
  * Set the value of the given option
  * @link https://php.net/manual/en/function.ldap-set-option.php
- * @param resource $ldap <p>
+ * @param resource|null $ldap <p>
  * An LDAP link identifier, returned by <b>ldap_connect</b>.
  * </p>
  * @param int $option <p>
  * The parameter <i>option</i> can be one of:
+ * </p>
+ * <table>
  * <tr valign="top">
  * <td>Option</td>
  * <td>Type</td>
@@ -1170,7 +1172,7 @@ function ldap_get_option(
  * <td>array</td>
  * <td></td>
  * </tr>
- * </p>
+ * </table>
  * <p>
  * <b>LDAP_OPT_SERVER_CONTROLS</b> and
  * <b>LDAP_OPT_CLIENT_CONTROLS</b> require a list of
@@ -1192,7 +1194,7 @@ function ldap_get_option(
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function ldap_set_option(
-    #[PhpVersionAware(['8.1' => 'LDAP\Connection|null'], default: 'resource')] $ldap,
+    #[PhpVersionAware(['8.1' => 'LDAP\Connection|null'], default: 'resource|null')] $ldap,
     int $option,
     $value
 ): bool {}
