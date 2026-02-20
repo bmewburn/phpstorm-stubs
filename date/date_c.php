@@ -301,7 +301,6 @@ class DateTimeImmutable implements DateTimeInterface
     #[Pure]
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.4' => 'DateTimeImmutable'], default: 'static|false')]
-    #[\NoDiscard(message: "as DateTimeImmutable::modify() does not modify the object itself")]
     public function modify(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $modifier) {}
 
     /**
@@ -318,6 +317,7 @@ class DateTimeImmutable implements DateTimeInterface
     #[Pure]
     #[TentativeType]
     #[LanguageLevelTypeAware(['8.4' => 'DateTimeImmutable'], default: 'DateTimeImmutable|false')]
+    #[\NoDiscard(message: "as DateTimeImmutable::modify() does not modify the object itself")]
     public function modify(#[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $modifier) {}
 
     /**
@@ -379,6 +379,7 @@ class DateTimeImmutable implements DateTimeInterface
      */
     #[TentativeType]
     #[\NoDiscard(message: "as DateTimeImmutable::setTime() does not modify the object itself")]
+    #[Pure]
     public function setTime(
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $hour,
         #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $minute,

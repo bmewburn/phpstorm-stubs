@@ -2321,7 +2321,7 @@ class Request extends \http\Message
      * @throws \http\Exception\InvalidArgumentException
      * @throws \http\Exception\UnexpectedValueException
      */
-    public function __construct(string $meth = null, string $url = null, array $headers = null, http\Message\Body $body = null) {}
+    public function __construct(string $meth = null, string $url = null, array $headers = null, \http\Message\Body $body = null) {}
 
     /**
      * Add querystring data.
@@ -3220,7 +3220,7 @@ class Response extends \http\Message
      * @throws \http\Exception\InvalidArgumentException
      * @return \http\Env\Response self.
      */
-    public function setEnvRequest(http\Message $env_request) {}
+    public function setEnvRequest(\http\Message $env_request) {}
 
     /**
      * Set a custom ETag.
@@ -3475,7 +3475,7 @@ class Body implements \Serializable
      * @throws \http\Exception\RuntimeException
      * @return \http\Message\Body self.
      */
-    public function addPart(http\Message $part) {}
+    public function addPart(\http\Message $part) {}
 
     /**
      * Append plain bytes to the message body.
@@ -3668,7 +3668,7 @@ class Parser
      * @throws \http\Exception\InvalidArgumentException
      * @return int http\Message\Parser::STATE_* constant.
      */
-    public function parse(string $data, int $flags, http\Message $message) {}
+    public function parse(string $data, int $flags, \http\Message $message) {}
 
     /**
      * Parse a stream.
@@ -3680,5 +3680,5 @@ class Parser
      * @throws \http\Exception\UnexpectedValueException
      * @return int http\Message\Parser::STATE_* constant.
      */
-    public function stream($stream, int $flags, http\Message $message) {}
+    public function stream($stream, int $flags, \http\Message $message) {}
 }

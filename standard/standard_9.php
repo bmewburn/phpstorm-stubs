@@ -755,7 +755,7 @@ function array_product(array $array): int|float {}
  * @return array<TKey, TValue> the filtered array.
  * @meta
  */
-function array_filter(array $array, ?callable $callback, int $mode = 0): array {}
+function array_filter(array $array, ?callable $callback = null, int $mode = 0): array {}
 
 /**
  * @template TReturn
@@ -927,7 +927,7 @@ function key_exists($key, array $array): bool {}
 /**
  * Checks if assertion is <b>FALSE</b>
  * @link https://php.net/manual/en/function.assert.php
- * @param Throwable|string|null $assertion <p>
+ * @param mixed $assertion <p>
  * The assertion.
  * In PHP 5, this must be either a string to be evaluated or a boolean to be tested.
  * In PHP 7, this may also be any expression that returns a value,

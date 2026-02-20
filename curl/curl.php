@@ -964,9 +964,9 @@ function curl_version(#[StubsElementAvailable(from: '5.3', to: '7.4')] $age = nu
  * page only if it has been modified since the time specified in
  * <b>CURLOPT_TIMEVALUE</b>. If it hasn't been modified,
  * a <em>"304 Not Modified"</em> header will be returned
- * assuming <b>CURLOPT_HEADER</code></strong> is <strong><code>TRUE</b>.
- * Use <code class="parameter">CURL_TIMECOND_IFUNMODSINCE</code> for the reverse
- * effect. <code class="parameter">CURL_TIMECOND_IFMODSINCE</code> is the
+ * assuming <b>CURLOPT_HEADER</b> is <b>TRUE</b>.
+ * Use <b>CURL_TIMECOND_IFUNMODSINCE</b> for the reverse
+ * effect. <b>CURL_TIMECOND_IFMODSINCE</b> is the
  * default.
  * </td>
  * <td style="vertical-align: top;">
@@ -1262,7 +1262,7 @@ function curl_version(#[StubsElementAvailable(from: '5.3', to: '7.4')] $age = nu
  * files can be sent using <a href="class.curlfile.php" class="classname">CURLFile</a>. The
  * <em>@</em> prefix can be disabled for safe passing of
  * values beginning with <em>@</em> by setting the
- * <b>CURLOPT_SAFE_UPLOAD</code></strong> option to <strong><code>TRUE</b>.
+ * <b>CURLOPT_SAFE_UPLOAD</b> option to <b>TRUE</b>.
  * </span>
  * </td>
  * <td style="vertical-align: top;">
@@ -1684,7 +1684,7 @@ function curl_version(#[StubsElementAvailable(from: '5.3', to: '7.4')] $age = nu
  * files can be sent using <a href="class.curlfile.php" class="classname">CURLFile</a>. The
  * <em>@</em> prefix can be disabled for safe passing of
  * values beginning with <em>@</em> by setting the
- * <b>CURLOPT_SAFE_UPLOAD</code></strong> option to <strong><code>TRUE</b>.
+ * <b>CURLOPT_SAFE_UPLOAD</b> option to <b>TRUE</b>.
  * </span>
  * </td>
  * <td style="vertical-align: top;">
