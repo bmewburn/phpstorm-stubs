@@ -114,7 +114,7 @@ function pg_close(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|null'], d
  */
 function pg_connect_poll(
     #[StubsElementAvailable(from: '5.6', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection
 ): int {}
 
 /**
@@ -278,7 +278,7 @@ function pg_ping(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|null'], de
  */
 function pg_parameter_status(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $name
 ): string|false {}
 
@@ -328,7 +328,7 @@ function pg_transaction_status(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connect
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_query(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $query
 ) {}
 
@@ -368,7 +368,7 @@ function pg_query(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_query_params(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $query,
     array $params
 ) {}
@@ -397,7 +397,7 @@ function pg_query_params(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_prepare(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $statement_name,
     string $query
 ) {}
@@ -430,7 +430,7 @@ function pg_prepare(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_execute(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $statement_name,
     array $params
 ) {}
@@ -1026,7 +1026,7 @@ function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Result'], defa
 #[ArrayShape(["message" => "string", "pid" => "int", "payload" => "string"])]
 function pg_get_notify(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     int $mode = 1
 ): array|false {}
 
@@ -1040,7 +1040,7 @@ function pg_get_notify(
  */
 function pg_get_pid(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
 ): int {}
 
 /**
@@ -1135,7 +1135,7 @@ function pg_last_notice(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], 
  */
 function pg_put_line(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $query
 ): bool {}
 
@@ -1287,7 +1287,7 @@ function pg_lo_create(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], de
  */
 function pg_lo_unlink(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     int $oid
 ): bool {}
 
@@ -1311,7 +1311,7 @@ function pg_lo_unlink(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob|false'], default: 'resource|false')]
 function pg_lo_open(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     int $oid,
     string $mode
 ) {}
@@ -1392,7 +1392,7 @@ function pg_lo_read_all(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob'], default
  * <b>FALSE</b> on failure.
  */
 function pg_lo_import(
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
     string $pathname,
     $object_id = null
@@ -1417,7 +1417,7 @@ function pg_lo_import(
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function pg_lo_export(
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
     int $oid,
     string $pathname
@@ -1483,7 +1483,7 @@ function pg_lo_truncate(
  */
 function pg_escape_string(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $string
 ): string {}
 
@@ -1504,7 +1504,7 @@ function pg_escape_string(
  */
 function pg_escape_bytea(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $string
 ): string {}
 
@@ -1525,7 +1525,7 @@ function pg_escape_bytea(
  */
 function pg_escape_identifier(
     #[StubsElementAvailable(from: '5.4', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $string
 ): string|false {}
 
@@ -1546,7 +1546,7 @@ function pg_escape_identifier(
  */
 function pg_escape_literal(
     #[StubsElementAvailable(from: '5.4', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $string
 ): string|false {}
 
@@ -1582,7 +1582,7 @@ function pg_unescape_bytea(string $string): string {}
  */
 function pg_set_error_verbosity(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     int $verbosity
 ): int|false {}
 
@@ -1623,7 +1623,7 @@ function pg_client_encoding(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection
  */
 function pg_set_client_encoding(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $encoding
 ): int {}
 
@@ -1819,7 +1819,7 @@ function pg_select(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Result|false'], default: 'resource|false')]
 function pg_exec(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $query
 ) {}
 
@@ -1960,7 +1960,7 @@ function pg_locreate(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], def
  */
 function pg_lounlink(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     $oid
 ): bool {}
 
@@ -1973,7 +1973,7 @@ function pg_lounlink(
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob|false'], default: 'resource|false')]
 function pg_loopen(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     $oid,
     string $mode
 ) {}
@@ -2011,7 +2011,7 @@ function pg_lowrite(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Lob'], default: 'r
  */
 function pg_loimport(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     $filename,
     $oid
 ): string|int|false {}
@@ -2025,7 +2025,7 @@ function pg_loimport(
  */
 function pg_loexport(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     $oid,
     $filename
 ): bool {}
@@ -2045,7 +2045,7 @@ function pg_clientencoding(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection|
  */
 function pg_setclientencoding(
     #[StubsElementAvailable(from: '5.3', to: '8.0')] $connection = null,
-    #[StubsElementAvailable(from: '8.1')] #[LanguageLevelTypeAware(['8.1' => 'PgSql\Connection'], default: 'resource')] $connection,
+    #[StubsElementAvailable(from: '8.1')] PgSql\Connection $connection,
     string $encoding
 ): int {}
 
