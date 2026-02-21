@@ -784,7 +784,9 @@ function array_map(
 /**
  * Split an array into chunks
  * @link https://php.net/manual/en/function.array-chunk.php
- * @param array $array <p>
+ * @template TKey of int|string
+ * @template TValue
+ * @param array<TKey, TValue> $array <p>
  * The array to work on
  * </p>
  * @param int $length <p>
@@ -794,7 +796,8 @@ function array_map(
  * When set to true keys will be preserved.
  * Default is false which will reindex the chunk numerically
  * </p>
- * @return array a multidimensional numerically indexed array, starting with zero,
+ * @return ($preserve_keys is true ? array<int, array<TKey, TValue>> : array<int, array<int, TValue>>) 
+ * a multidimensional numerically indexed array, starting with zero,
  * with each dimension containing size elements.
  */
 #[Pure]
