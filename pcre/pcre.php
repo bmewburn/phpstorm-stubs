@@ -305,7 +305,7 @@ function preg_match_all(string $pattern, string $subject, &$matches, int $flags 
  * replacements done.
  * </p>
  * @param-out int $count
- * @return string|string[]|null <b>preg_replace</b> returns an array if the
+ * @return ($subject is array ? string[]|null : string|null) <b>preg_replace</b> returns an array if the
  * <i>subject</i> parameter is an array, or a string
  * otherwise.
  * </p>
