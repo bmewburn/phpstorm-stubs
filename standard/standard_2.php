@@ -474,7 +474,12 @@ function fscanf($stream, string $format, #[TypeContract(exists: "int|false|null"
  * or PHP_URL_FRAGMENT to retrieve just a specific
  * URL component as a string.
  * </p>
- * @return array{scheme:string, host:string, port:int, user:string, pass:string, query:string, path:string, fragment:string}|string|int|null|false On seriously malformed URLs, parse_url() may return FALSE.
+ * @return (
+ *  $component is -1 
+ *    ? array{scheme:string, host:string, port:int, user:string, pass:string, query:string, path:string, fragment:string}|false 
+ *    : ($component is 2 ? int|null|false : string|null|false)
+ * ) 
+ * On seriously malformed URLs, parse_url() may return FALSE.
  * If the component parameter is omitted, an associative array is returned.
  * At least one element will be present within the array. Potential keys within this array are:
  * scheme - e.g. http
