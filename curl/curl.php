@@ -105,9 +105,23 @@ final class CurlSharePersistentHandle
  * to its value. You can manually set this using the
  * curl_setopt function.
  * </p>
+ * @return ($url is null ? resource : resource|false)
  */
-#[LanguageLevelTypeAware(['8.0' => 'CurlHandle|false'], default: 'resource|false')]
-function curl_init(?string $url) {}
+#[StubsElementAvailable(to: '7.4')]
+function curl_init(?string $url = null) {}
+
+/**
+ * Initialize a cURL session
+ * @link https://php.net/manual/en/function.curl-init.php
+ * @param string|null $url [optional] <p>
+ * If provided, the CURLOPT_URL option will be set
+ * to its value. You can manually set this using the
+ * curl_setopt function.
+ * </p>
+ * @return ($url is null ? CurlHandle : CurlHandle|false)
+ */
+#[StubsElementAvailable(from: '8.0')]
+function curl_init(?string $url = null): CurlHandle|false {}
 
 /**
  * Copy a cURL handle along with all of its preferences
