@@ -243,7 +243,7 @@ function dirname(string $path, #[StubsElementAvailable(from: '7.0')] int $levels
  * @param string $path <p>
  * The path being checked.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PATHINFO_DIRNAME|PATHINFO_BASENAME|PATHINFO_EXTENSION|PATHINFO_FILENAME $flags [optional] <p>
  * You can specify which elements are returned with optional parameter
  * options. It composes from
  * PATHINFO_DIRNAME,
@@ -1060,7 +1060,7 @@ function join(array|string $separator = "", ?array $array): string {}
 /**
  * Set locale information
  * @link https://php.net/manual/en/function.setlocale.php
- * @param int $category <p>
+ * @param LC_ALL|LC_COLLATE|LC_CTYPE|LC_MONETARY|LC_NUMERIC|LC_TIME|LC_MESSAGES $category <p>
  * <em>category</em> is a named constant specifying the
  * category of the functions affected by the locale setting:
  * </p><ul>

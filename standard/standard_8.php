@@ -848,7 +848,7 @@ function array_search(mixed $needle, array $haystack, bool $strict = false): str
  * imported into the symbol table. Prefixes are automatically separated from
  * the array key by an underscore character.
  * </p>
- * @param int $flags <p>
+ * @param EXTR_OVERWRITE|EXTR_SKIP|EXTR_PREFIX_SAME|EXTR_PREFIX_ALL|EXTR_PREFIX_INVALID|EXTR_IF_EXISTS|EXTR_PREFIX_IF_EXISTS|EXTR_REFS $flags <p>
  * The way invalid/numeric keys and collisions are treated is determined
  * by the extract_type. It can be one of the
  * following values:

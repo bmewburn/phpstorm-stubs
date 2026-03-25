@@ -10,7 +10,7 @@ use __IDE\StubsElementAvailable;
  * @param resource $ftp
  * @param string $remote_filename
  * @param string $local_filename
- * @param int $mode Optional since PHP 7.3
+ * @param FTP_ASCII|FTP_BINARY $mode Optional since PHP 7.3
  * @return bool
  * @since 7.2
  */
@@ -289,7 +289,7 @@ function ftp_pasv(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default:
  * @param string $remote_filename <p>
  * The remote file path.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>
@@ -318,7 +318,7 @@ function ftp_get(
  * @param string $remote_filename <p>
  * The remote file path.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Since PHP 7.3 parameter is optional
  * </p>
  * @param int $offset [optional] <p>
@@ -347,7 +347,7 @@ function ftp_fget(
  * @param string $local_filename <p>
  * The local file path.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
@@ -374,7 +374,7 @@ function ftp_put(
  * @param resource $stream <p>
  * An open file pointer on the local file. Reading stops at end of file.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
@@ -475,7 +475,7 @@ function ftp_close(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], default
  * @param resource $ftp <p>
  * The link identifier of the FTP connection.
  * </p>
- * @param int $option <p>
+ * @param FTP_TIMEOUT_SEC|FTP_AUTOSEEK|FTP_USEPASVADDRESS $option <p>
  * Currently, the following options are supported:
  * <table>
  * <tr valign="top">
@@ -514,7 +514,7 @@ function ftp_set_option(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], de
  * @param resource $ftp <p>
  * The link identifier of the FTP connection.
  * </p>
- * @param int $option <p>
+ * @param FTP_TIMEOUT_SEC|FTP_AUTOSEEK $option <p>
  * Currently, the following options are supported:
  * <table>
  * <tr valign="top">
@@ -549,11 +549,11 @@ function ftp_get_option(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], de
  * @param string $remote_filename <p>
  * The remote file path.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start downloading from.</p>
- * @return int <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
+ * @return FTP_FAILED|FTP_FINISHED|FTP_MOREDATA <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([FTP_FAILED, FTP_FINISHED, FTP_MOREDATA])]
@@ -578,11 +578,11 @@ function ftp_nb_fget(
  * @param string $remote_filename <p>
  * The remote file path.
  * </p>
- * @param int $mode  <p>
+ * @param FTP_ASCII|FTP_BINARY $mode  <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start downloading from.</p>
- * @return int|false <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
+ * @return FTP_FAILED|FTP_FINISHED|FTP_MOREDATA <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([FTP_FAILED, FTP_FINISHED, FTP_MOREDATA])]
@@ -602,7 +602,7 @@ function ftp_nb_get(
  * @param resource $ftp <p>
  * The link identifier of the FTP connection.
  * </p>
- * @return int <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
+ * @return FTP_FAILED|FTP_FINISHED|FTP_MOREDATA <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([FTP_FAILED, FTP_FINISHED, FTP_MOREDATA])]
@@ -620,11 +620,11 @@ function ftp_nb_continue(#[LanguageLevelTypeAware(['8.1' => 'FTP\Connection'], d
  * @param string $local_filename <p>
  * The local file path.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
- * @return int|false <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
+ * @return FTP_FAILED|FTP_FINISHED|FTP_MOREDATA <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([FTP_FAILED, FTP_FINISHED, FTP_MOREDATA])]
@@ -649,11 +649,11 @@ function ftp_nb_put(
  * @param resource $stream <p>
  * An open file pointer on the local file. Reading stops at end of file.
  * </p>
- * @param int $mode <p>
+ * @param FTP_ASCII|FTP_BINARY $mode <p>
  * The transfer mode. Must be either <b>FTP_ASCII</b> or <b>FTP_BINARY</b>. Optional since PHP 7.3
  * </p>
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
- * @return int <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
+ * @return FTP_FAILED|FTP_FINISHED|FTP_MOREDATA <b>FTP_FAILED</b> or <b>FTP_FINISHED</b>
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([FTP_FAILED, FTP_FINISHED, FTP_MOREDATA])]

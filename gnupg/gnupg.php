@@ -477,7 +477,7 @@ function gnupg_getprotocol($res) {}
  * Sets the mode for signing
  * @link https://www.php.net/manual/en/function.gnupg-setsignmode.php
  * @param resource $res The gnupg identifier, from a call to gnupg_init() or gnupg.
- * @param int $signmode The mode for signing. Takes a constant indicating what type of signature should be produced.
+ * @param GNUPG_SIG_MODE_NORMAL|GNUPG_SIG_MODE_DETACH|GNUPG_SIG_MODE_CLEAR $signmode The mode for signing. Takes a constant indicating what type of signature should be produced.
  * The possible values are GNUPG_SIG_MODE_NORMAL, GNUPG_SIG_MODE_DETACH and GNUPG_SIG_MODE_CLEAR.
  * By default GNUPG_SIG_MODE_CLEAR is used.
  * @return bool Returns true on success or false on failure.
@@ -533,7 +533,7 @@ function gnupg_listsignatures($res, $kyeid) {}
  * Sets the mode for error_reporting
  * @link https://www.php.net/manual/en/function.gnupg-seterrormode.php
  * @param resource $res The gnupg identifier, from a call to gnupg_init() or gnupg.
- * @param int $errnmode The error mode. takes a constant indicating what type of error_reporting should be used.
+ * @param GNUPG_ERROR_WARNING|GNUPG_ERROR_EXCEPTION|GNUPG_ERROR_SILENT $errnmode The error mode. takes a constant indicating what type of error_reporting should be used.
  * The possible values are GNUPG_ERROR_WARNING, GNUPG_ERROR_EXCEPTION and GNUPG_ERROR_SILENT. By default GNUPG_ERROR_SILENT is used.
  */
 function gnupg_seterrormode($res, #[ExpectedValues([GNUPG_ERROR_WARNING|GNUPG_ERROR_EXCEPTION|GNUPG_ERROR_SILENT])] $errnmode) {}

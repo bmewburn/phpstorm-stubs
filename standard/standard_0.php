@@ -1063,7 +1063,7 @@ function image_type_to_extension(int $image_type, bool $include_dot = true): str
 /**
  * Outputs information about PHP's configuration
  * @link https://php.net/manual/en/function.phpinfo.php
- * @param int $flags [optional] <p>
+ * @param INFO_GENERAL|INFO_CREDITS|INFO_CONFIGURATION|INFO_MODULES|INFO_ENVIRONMENT|INFO_VARIABLES|INFO_LICENSE|INFO_ALL $flags [optional] <p>
  * The output may be customized by passing one or more of the
  * following constants bitwise values summed
  * together in the optional what parameter.
@@ -1255,7 +1255,7 @@ function zend_logo_guid(): string {}
 /**
  * Returns the type of interface between web server and PHP
  * @link https://php.net/manual/en/function.php-sapi-name.php
- * @return string|false the interface type, as a lowercase string, or false on failure.
+ * @return 'cli'|'phpdbg'|'embed'|'apache'|'apache2handler'|'cgi-fcgi'|'cli-server'|'fpm-fcgi'|'litespeed' the interface type, as a lowercase string, or false on failure.
  * <p>
  * Although not exhaustive, the possible return values include
  * aolserver, apache,

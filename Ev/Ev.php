@@ -727,7 +727,7 @@ final class EvIo extends EvWatcher
     public $fd;
 
     /**
-     * @var int Ev::READ and/or Ev::WRITE. See the bit masks.
+     * @var Ev::READ|Ev::WRITE Ev::READ and/or Ev::WRITE. See the bit masks.
      */
     #[Immutable]
     #[ExpectedValues(flags: [Ev::READ, Ev::WRITE])]
@@ -1302,7 +1302,7 @@ final class EvFork extends EvWatcher
 final class EvLoop
 {
     /**
-     * @var int The Ev::BACKEND_* flag indicating the event backend in use.
+     * @var Ev::BACKEND_ALL|Ev::BACKEND_DEVPOLL|Ev::BACKEND_EPOLL|Ev::BACKEND_KQUEUE|Ev::BACKEND_MASK|Ev::BACKEND_POLL|Ev::BACKEND_PORT|Ev::BACKEND_SELECT The Ev::BACKEND_* flag indicating the event backend in use.
      */
     #[Immutable]
     #[ExpectedValues(flags: [Ev::BACKEND_ALL, Ev::BACKEND_DEVPOLL, Ev::BACKEND_EPOLL, Ev::BACKEND_KQUEUE, Ev::BACKEND_MASK, Ev::BACKEND_POLL, Ev::BACKEND_PORT, Ev::BACKEND_SELECT])]

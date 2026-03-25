@@ -87,7 +87,7 @@ function strval(mixed $value): string {}
  * @param mixed $value <p>
  * The variable being type checked.
  * </p>
- * @return string Possibles values for the returned string are:
+ * @return "boolean"|"integer"|"double"|"string"|"array"|"object"|"resource"|"NULL"|"unknown type"|"resource (closed)" Possibles values for the returned string are:
  * "boolean"
  * "integer"
  * "double" (for historical reasons "double" is
@@ -113,7 +113,7 @@ function gettype(mixed $value): string {}
  * @param mixed &$var <p>
  * The variable being converted.
  * </p>
- * @param string $type <p>
+ * @param "bool"|"boolean"|"int"|"integer"|"float"|"double"|"string"|"array"|"object"|"null" $type <p>
  * Possibles values of <b>type</b> are:
  * </p><ul>
  * <li>

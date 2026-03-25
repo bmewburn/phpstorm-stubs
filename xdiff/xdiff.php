@@ -89,7 +89,7 @@ function xdiff_file_patch_binary(string $file, string $patch, string $dest): boo
  * @param string $patch The unified patch file. It has to be created using xdiff_string_diff(), xdiff_file_diff()
  * functions or compatible tools.
  * @param string $dest Path of the resulting file.
- * @param int $flags Can be either XDIFF_PATCH_NORMAL (default mode, normal patch) or XDIFF_PATCH_REVERSE
+ * @param XDIFF_PATCH_NORMAL|XDIFF_PATCH_REVERSE|XDIFF_PATCH_IGNORESPACE $flags Can be either XDIFF_PATCH_NORMAL (default mode, normal patch) or XDIFF_PATCH_REVERSE
  * (reversed patch). Starting from version 1.5.0, you can also use binary OR to enable XDIFF_PATCH_IGNORESPACE flag.
  * @return bool|string false if an internal error happened, string with rejected chunks if patch couldn't be applied
  * or true if patch has been successfully applied.
@@ -182,7 +182,7 @@ function xdiff_string_patch_binary(string $str, string $patch) {}
  * @param string $str The original string.
  * @param string $patch The unified patch string. It has to be created using xdiff_string_diff(), xdiff_file_diff()
  * functions or compatible tools.
- * @param ?int $flags flags can be either XDIFF_PATCH_NORMAL (default mode, normal patch) or XDIFF_PATCH_REVERSE
+ * @param XDIFF_PATCH_NORMAL|XDIFF_PATCH_REVERSE|XDIFF_PATCH_IGNORESPACE $flags flags can be either XDIFF_PATCH_NORMAL (default mode, normal patch) or XDIFF_PATCH_REVERSE
  * (reversed patch). Starting from version 1.5.0, you can also use binary OR to enable XDIFF_PATCH_IGNORESPACE flag.
  * @param ?string &$error If provided then rejected parts are stored inside this variable.
  * @param-out ?string $error

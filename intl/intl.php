@@ -309,7 +309,7 @@ class Collator
      * @param string[] &$array <p>
      * Array of strings to sort.
      * </p>
-     * @param int $flags [optional] <p>
+     * @param Collator::SORT_REGULAR $flags [optional] <p>
      * Optional sorting type, one of the following:
      * </p>
      * <p>
@@ -342,7 +342,7 @@ class Collator
      * Sort array maintaining index association
      * @link https://php.net/manual/en/collator.asort.php
      * @param string[] &$array <p>Array of strings to sort.</p>
-     * @param int $flags [optional] <p>
+     * @param Collator::SORT_REGULAR $flags [optional] <p>
      * Optional sorting type, one of the following:
      * <b>Collator::SORT_REGULAR</b>
      * - compare items normally (don't change types)
@@ -398,7 +398,7 @@ class Collator
      * (PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
      * Set collation strength
      * @link https://php.net/manual/en/collator.setstrength.php
-     * @param int $strength <p>Strength to set.</p>
+     * @param Collator::PRIMARY $strength <p>Strength to set.</p>
      * <p>
      * Possible values are:
      * <b>Collator::PRIMARY</b>
@@ -423,7 +423,7 @@ class Collator
      * (PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
      * Get the locale name of the collator
      * @link https://php.net/manual/en/collator.getlocale.php
-     * @param int $type <p>
+     * @param Locale::VALID_LOCALE|Locale::ACTUAL_LOCALE $type <p>
      * You can choose between valid and actual locale (
      * <b>Locale::VALID_LOCALE</b> and
      * <b>Locale::ACTUAL_LOCALE</b>,
@@ -942,7 +942,7 @@ class NumberFormatter
     /**
      * @link https://www.php.net/manual/en/class.numberformatter.php
      * @param string $locale
-     * @param int $style
+     * @param NumberFormatter::DECIMAL|NumberFormatter::PATTERN_DECIMAL|NumberFormatter::DECIMAL|NumberFormatter::CURRENCY|NumberFormatter::PERCENT|NumberFormatter::SCIENTIFIC|NumberFormatter::SPELLOUT|NumberFormatter::ORDINAL|NumberFormatter::DURATION|NumberFormatter::PATTERN_RULEBASED|NumberFormatter::CURRENCY_ACCOUNTING|NumberFormatter::DEFAULT_STYLE|NumberFormatter::IGNORE $style
      * @param string $pattern [optional]
      */
     #[Pure]
@@ -963,7 +963,7 @@ class NumberFormatter
      * @param string $locale <p>
      * Locale in which the number would be formatted (locale name, e.g. en_CA).
      * </p>
-     * @param int $style <p>
+     * @param NumberFormatter::DECIMAL|NumberFormatter::PATTERN_DECIMAL|NumberFormatter::DECIMAL|NumberFormatter::CURRENCY|NumberFormatter::PERCENT|NumberFormatter::SCIENTIFIC|NumberFormatter::SPELLOUT|NumberFormatter::ORDINAL|NumberFormatter::DURATION|NumberFormatter::PATTERN_RULEBASED|NumberFormatter::CURRENCY_ACCOUNTING|NumberFormatter::DEFAULT_STYLE|NumberFormatter::IGNORE $style <p>
      * Style of the formatting, one of the
      * format style constants. If
      * <b>NumberFormatter::PATTERN_DECIMAL</b>
@@ -1203,7 +1203,7 @@ class NumberFormatter
      * (PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
      * Get formatter locale
      * @link https://php.net/manual/en/numberformatter.getlocale.php
-     * @param int $type [optional] <p>
+     * @param Locale::VALID_LOCALE|Locale::ACTUAL_LOCALE $type [optional] <p>
      * You can choose between valid and actual locale (
      * <b>Locale::VALID_LOCALE</b>,
      * <b>Locale::ACTUAL_LOCALE</b>,
@@ -2437,7 +2437,7 @@ class Transliterator
      * @param string $id <p>
      * The id.
      * </p>
-     * @param int $direction [optional] <p>
+     * @param Transliterator::FORWARD|Transliterator::REVERSE $direction [optional] <p>
      * The direction, defaults to
      * Transliterator::FORWARD.
      * May also be set to
@@ -2459,7 +2459,7 @@ class Transliterator
      * @param string $rules <p>
      * The rules.
      * </p>
-     * @param int $direction [optional] <p>
+     * @param Transliterator::FORWARD|Transliterator::REVERSE $direction [optional] <p>
      * The direction, defaults to
      * {@see Transliterator::FORWARD}.
      * May also be set to
@@ -7379,7 +7379,7 @@ class IntlBreakIterator implements IteratorAggregate
      * (PHP 5 &gt;=5.5.0)<br/>
      * Create iterator for navigating fragments between boundaries
      * @link https://secure.php.net/manual/en/intlbreakiterator.getpartsiterator.php
-     * @param int $type [optional]
+     * @param IntlPartsIterator::KEY_SEQUENTIAL|IntlPartsIterator::KEY_LEFT|IntlPartsIterator::KEY_RIGHT $type [optional]
      * <p>
      * Optional key type. Possible values are:
      * </p><ul>

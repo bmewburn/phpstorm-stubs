@@ -1017,7 +1017,7 @@ function assert_options(int $option, mixed $value): mixed {}
  * @param string $version2 <p>
  * Second version number.
  * </p>
- * @param string|null $operator [optional] <p>
+ * @param "<"|"lt"|"<="|"le"|">"|"gt"|">="|"ge"|"=="|"="|"eq"|"!="|"<>"|"ne" $operator [optional] <p>
  * If you specify the third optional operator
  * argument, you can test for a particular relationship. The
  * possible operators are: &lt;,
@@ -1032,7 +1032,7 @@ function assert_options(int $option, mixed $value): mixed {}
  * <p>
  * This parameter is case-sensitive, so values should be lowercase.
  * </p>
- * @return int|bool By default, version_compare returns
+ * @return -1|0|1|false|true By default, version_compare returns
  * -1 if the first version is lower than the second,
  * 0 if they are equal, and
  * 1 if the second is lower.
@@ -1076,7 +1076,7 @@ function version_compare(
  * @param string $version2 <p>
  * Second version number.
  * </p>
- * @param string|null $operator [optional] <p>
+ * @param "<"|"lt"|"<="|"le"|">"|"gt"|">="|"ge"|"=="|"="|"eq"|"!="|"<>"|"ne" $operator [optional] <p>
  * If you specify the third optional operator
  * argument, you can test for a particular relationship. The
  * possible operators are: &lt;,
@@ -1091,7 +1091,7 @@ function version_compare(
  * <p>
  * This parameter is case-sensitive, so values should be lowercase.
  * </p>
- * @return int|bool|null By default, version_compare returns
+ * @return -1|0|1|false|true|null By default, version_compare returns
  * -1 if the first version is lower than the second,
  * 0 if they are equal, and
  * 1 if the second is lower.
