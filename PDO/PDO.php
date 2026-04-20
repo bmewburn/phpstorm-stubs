@@ -2076,7 +2076,7 @@ namespace {
 }
 
 namespace Pdo {
-    use JetBrains\PhpStorm\Deprecated;
+    use __IDE\Deprecated;
     use PDO;
 
     /**

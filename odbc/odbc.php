@@ -138,10 +138,10 @@ function odbc_commit($odbc): bool {}
  */
 function odbc_connect(
     string $dsn,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '8.3')] string $user,
-    #[PhpStormStubsElementAvailable(from: '8.4')] ?string $user = null,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '8.3')] string $password,
-    #[PhpStormStubsElementAvailable(from: '8.4')] ?string $password = null,
+    #[StubsElementAvailable(from: '5.3', to: '8.3')] string $user,
+    #[StubsElementAvailable(from: '8.4')] ?string $user = null,
+    #[StubsElementAvailable(from: '5.3', to: '8.3')] string $password,
+    #[StubsElementAvailable(from: '8.4')] ?string $password = null,
     int $cursor_option = SQL_CUR_USE_DRIVER
 ) {}
 
@@ -487,10 +487,10 @@ function odbc_num_rows($statement): int {}
  */
 function odbc_pconnect(
     string $dsn,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '8.3')] string $user,
-    #[PhpStormStubsElementAvailable(from: '8.4')] ?string $user = null,
-    #[PhpStormStubsElementAvailable(from: '5.3', to: '8.3')] string $password,
-    #[PhpStormStubsElementAvailable(from: '8.4')] ?string $password = null,
+    #[StubsElementAvailable(from: '5.3', to: '8.3')] string $user,
+    #[StubsElementAvailable(from: '8.4')] ?string $user = null,
+    #[StubsElementAvailable(from: '5.3', to: '8.3')] string $password,
+    #[StubsElementAvailable(from: '8.4')] ?string $password = null,
     int $cursor_option = SQL_CUR_USE_DRIVER
 ) {}
 

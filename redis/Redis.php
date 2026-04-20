@@ -1,6 +1,6 @@
 <?php
 
-use JetBrains\PhpStorm\Language;
+use __IDE\Language;
 
 /**
  * Helper autocomplete for php redis extension

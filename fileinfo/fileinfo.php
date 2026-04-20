@@ -176,7 +176,7 @@ function finfo_file(#[LanguageLevelTypeAware(['8.1' => 'finfo'], default: 'resou
  * @return string|false a textual description of the <i>string</i>
  * argument, or <b>FALSE</b> if an error occurred.
  */
-function finfo_buffer(#[LanguageLevelTypeAware(['8.1' => 'finfo'], default: 'resource')] $finfo, string $string, int $flags = FILEINFO_NONE, #[\JetBrains\PhpStorm\Deprecated('Deprecated: it has no effect', since: '8.5')] $context = null): string|false {}
+function finfo_buffer(#[LanguageLevelTypeAware(['8.1' => 'finfo'], default: 'resource')] $finfo, string $string, int $flags = FILEINFO_NONE, #[Deprecated('Deprecated: it has no effect', since: '8.5')] $context = null): string|false {}
 
 /**
  * Detect MIME Content-type for a file

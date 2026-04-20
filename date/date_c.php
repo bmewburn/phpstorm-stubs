@@ -7,6 +7,7 @@ use __IDE\LanguageLevelTypeAware;
 use __IDE\StubsElementAvailable;
 use __IDE\TentativeType;
 use __IDE\Pure;
+use __IDE\Deprecated;
 
 /**
  * @since 5.5
@@ -74,7 +75,7 @@ interface DateTimeInterface
     /**
      * @since 7.2
      */
-    #[\JetBrains\PhpStorm\Deprecated(since: '8.5')]
+    #[Deprecated(since: '8.5')]
     public const RFC7231 = 'D, d M Y H:i:s \G\M\T';
 
     /**
