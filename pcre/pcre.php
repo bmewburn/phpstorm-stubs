@@ -23,7 +23,7 @@ use __IDE\Pure;
  * subpattern, and so on.
  * </p>
  * @param-out string[] $matches
- * @param int $flags [optional] <p>
+ * @param PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL $flags [optional] <p>
  * <i>flags</i> can be the following flag:
  * <b>PREG_OFFSET_CAPTURE</b>
  * <blockquote>
@@ -178,7 +178,7 @@ function preg_match(string $pattern, string $subject, &$matches, int $flags = 0,
  * Array of all matches in multi-dimensional array ordered according to flags.
  * </p>
  * @param-out string[][] $matches
- * @param int $flags <p>
+ * @param PREG_PATTERN_ORDER|PREG_SET_ORDER|PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL $flags <p>
  * Can be a combination of the following flags (note that it doesn't make
  * sense to use <b>PREG_PATTERN_ORDER</b> together with
  * <b>PREG_SET_ORDER</b>):
@@ -452,7 +452,7 @@ function preg_filter(array|string $pattern, array|string $replacement, array|str
  * and, as is standard across PHP, you can use <b>NULL</b> to skip to the
  * <i>flags</i> parameter.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PREG_SPLIT_NO_EMPTY|PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_OFFSET_CAPTURE $flags [optional] <p>
  * <i>flags</i> can be any combination of the following
  * flags (combined with the | bitwise operator):
  * <b>PREG_SPLIT_NO_EMPTY</b>
@@ -492,7 +492,7 @@ function preg_quote(string $str, ?string $delimiter = null): string {}
  * @param array $array <p>
  * The input array.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PREG_GREP_INVERT $flags [optional] <p>
  * If set to <b>PREG_GREP_INVERT</b>, this function returns
  * the elements of the input array that do not match
  * the given <i>pattern</i>.

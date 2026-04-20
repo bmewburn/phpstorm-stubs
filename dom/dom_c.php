@@ -1288,7 +1288,7 @@ class DOMDocument extends DOMNode implements DOMParentNode
      * @param string $source <p>
      * A string containing the schema.
      * </p>
-     * @param int $flags [optional] <p>A bitmask of Libxml schema validation flags. Currently the only supported value is <b>LIBXML_SCHEMA_CREATE</b>.
+     * @param LIBXML_SCHEMA_CREATE $flags [optional] <p>A bitmask of Libxml schema validation flags. Currently the only supported value is <b>LIBXML_SCHEMA_CREATE</b>.
      * Available since PHP 5.5.2 and Libxml 2.6.14.</p>
      * @return bool true on success or false on failure.
      */

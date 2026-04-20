@@ -10,7 +10,7 @@ use __IDE\Pure;
  * @param string $code <p>
  * The PHP source to parse.
  * </p>
- * @param int $flags
+ * @param TOKEN_PARSE $flags
  * <p>
  * <p>
  * Valid flags:

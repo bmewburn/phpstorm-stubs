@@ -74,7 +74,7 @@ class JsonIncrementalParser
  * JSON - it will also encode and decode scalar types and <b>NULL</b>. The JSON standard
  * only supports these values when they are nested inside an array or an object.
  * </p>
- * @param int $flags [optional] <p>
+ * @param JSON_HEX_QUOT|JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_FORCE_OBJECT|JSON_PRESERVE_ZERO_FRACTION|JSON_UNESCAPED_UNICODE|JSON_PARTIAL_OUTPUT_ON_ERROR|JSON_UNESCAPED_LINE_TERMINATORS|JSON_THROW_ON_ERROR $flags [optional] <p>
  * Bitmask consisting of <b>JSON_HEX_QUOT</b>,
  * <b>JSON_HEX_TAG</b>,
  * <b>JSON_HEX_AMP</b>,
@@ -114,7 +114,7 @@ function json_encode(mixed $value, int $flags = 0, int $depth = 512): string|fal
  * @param int $depth [optional] <p>
  * Maximum nesting depth of the structure being decoded. The value must be greater than 0, and less than or equal to 2147483647.
  * </p>
- * @param int $flags [optional] <p>
+ * @param JSON_BIGINT_AS_STRING|JSON_OBJECT_AS_ARRAY|JSON_THROW_ON_ERROR $flags [optional] <p>
  * Bitmask of JSON decode options:<br/>
  * {@see JSON_BIGINT_AS_STRING} decodes large integers as their original string value.<br/>
  * {@see JSON_INVALID_UTF8_IGNORE} ignores invalid UTF-8 characters,

@@ -80,7 +80,7 @@ function imap_reopen(
  * Close an IMAP stream
  * @link https://php.net/manual/en/function.imap-close.php
  * @param resource $imap
- * @param int $flags [optional] <p>
+ * @param CL_EXPUNGE $flags [optional] <p>
  * If set to <b>CL_EXPUNGE</b>, the function will silently
  * expunge the mailbox before closing, removing all messages marked for
  * deletion. You can achieve the same thing by using

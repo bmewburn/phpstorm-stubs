@@ -328,7 +328,7 @@ final class Ev
      * which reference the loop( EvWatcher::keepalive() is TRUE), in which case the return value will be FALSE. The
      * return value can generally be interpreted as if TRUE, there is more work left to do.
      *
-     * @param int $flags One of the Ev::FLAG_* flags
+     * @param \Ev::FLAG_AUTO|\Ev::FLAG_NOENV|\Ev::FLAG_FORKCHECK|\Ev::FLAG_NOINOTIFY|\Ev::FLAG_SIGNALFD|\Ev::FLAG_NOSIGMASK $flags One of the Ev::FLAG_* flags
      */
     final public static function run(int $flags = self::FLAG_AUTO) {}
 
@@ -1353,7 +1353,7 @@ final class EvLoop
     public $depth;
 
     /**
-     * @param int $flags
+     * @param \Ev::FLAG_AUTO|\Ev::FLAG_NOENV|\Ev::FLAG_FORKCHECK|\Ev::FLAG_NOINOTIFY|\Ev::FLAG_SIGNALFD|\Ev::FLAG_NOSIGMASK $flags
      * @param mixed $data
      * @param float $io_interval
      * @param float $timeout_interval
@@ -1505,7 +1505,7 @@ final class EvLoop
      * watchers which reference the loop (EvWatcher::keepalive() is TRUE), in which case the return value will be FALSE.
      * The return value can generally be interpreted as if TRUE, there is more work left to do.
      *
-     * @param int $flags One of the Ev::RUN_* flags.
+     * @param \Ev::RUN_NOWAIT|\Ev::RUN_ONCE $flags One of the Ev::RUN_* flags.
      */
     public function run(int $flags = Ev::FLAG_AUTO) {}
 
@@ -1572,7 +1572,7 @@ final class EvLoop
      * If the default event loop is not created, EvLoop::defaultLoop() creates it with the specified parameters.
      * Otherwise, it just returns the object representing previously created instance ignoring all the parameters.
      *
-     * @param int $flags
+     * @param \Ev::FLAG_AUTO|\Ev::FLAG_NOENV|\Ev::FLAG_FORKCHECK|\Ev::FLAG_NOINOTIFY|\Ev::FLAG_SIGNALFD|\Ev::FLAG_NOSIGMASK $flags
      * @param mixed $data
      * @param float $io_interval
      * @param float $timeout_interval

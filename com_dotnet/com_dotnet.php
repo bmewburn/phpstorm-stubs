@@ -187,7 +187,7 @@ function variant_cat($left, $right) {}
  * (PHP 5, PHP 7)<br/>
  * Compares two variants
  * @link https://php.net/manual/en/function.variant-cmp.php
- * @param mixed $left
+ * @param NORM_IGNORECASE|NORM_IGNORENONSPACE|NORM_IGNORESYMBOLS|NORM_IGNOREWIDTH|NORM_IGNOREKANATYPE|NORM_IGNOREKASHIDA $left
  * @param mixed $right
  * @param int $lcid [optional]
  * @param int $flags [optional]

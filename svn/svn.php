@@ -226,7 +226,7 @@ function svn_ls($repos_url, $revision_no = SVN_REVISION_HEAD, $recurse = false, 
  * @param int $limit [optional] <p>
  * Number of logs to retrieve.
  * </p>
- * @param int $flags [optional] <p>
+ * @param SVN_OMIT_MESSAGES|SVN_DISCOVER_CHANGED_PATHS|SVN_STOP_ON_COPY $flags [optional] <p>
  * Any combination of <b>SVN_OMIT_MESSAGES</b>,
  * <b>SVN_DISCOVER_CHANGED_PATHS</b> and
  * <b>SVN_STOP_ON_COPY</b>.
@@ -459,7 +459,7 @@ function svn_add($path, $recursive = true, $force = false) {}
  * Local path to file or directory to retrieve status of.
  * </p>
  * Relative paths will be resolved as if the current working directory was the one that contains the PHP binary. To use the calling script&#x00027;s working directory, use <b>realpath</b> or dirname(__FILE__).
- * @param int $flags [optional] <p>
+ * @param \Svn::NON_RECURSIVE|\Svn::ALL|\Svn::SHOW_UPDATES|\Svn::NO_IGNORE|\Svn::IGNORE_EXTERNALS $flags [optional] <p>
  * Any combination of <b>SVN_NON_RECURSIVE</b>,
  * <b>SVN_ALL</b> (regardless of modification status),
  * <b>SVN_SHOW_UPDATES</b> (entries will be added for items

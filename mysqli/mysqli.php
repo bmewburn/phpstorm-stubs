@@ -12,6 +12,11 @@ use __IDE\StubsElementAvailable;
 use __IDE\TentativeType;
 
 /**
+ * @type-alias _MysqliAttributesSetArgSet = MYSQLI_STMT_ATTR_UPDATE_MAX_LENGTH | MYSQLI_STMT_ATTR_CURSOR_TYPE | MYSQLI_STMT_ATTR_PREFETCH_ROWS
+ * @type-alias _MysqliOptionsArgSet = MYSQLI_OPT_CONNECT_TIMEOUT | MYSQLI_OPT_LOCAL_INFILE | MYSQLI_INIT_COMMAND | MYSQLI_READ_DEFAULT_FILE | MYSQLI_READ_DEFAULT_GROUP | MYSQLI_SERVER_PUBLIC_KEY | MYSQLI_OPT_NET_CMD_BUFFER_SIZE | MYSQLI_OPT_NET_READ_BUFFER_SIZE | MYSQLI_OPT_INT_AND_FLOAT_NATIVE | MYSQLI_OPT_SSL_VERIFY_SERVER_CERT
+ */
+
+/**
  * mysqli_sql_exception
  */
 final class mysqli_sql_exception extends RuntimeException
@@ -228,7 +233,7 @@ class mysqli
     /**
      * Starts a transaction
      * @link https://secure.php.net/manual/en/mysqli.begin-transaction.php
-     * @param int $flags [optional]
+     * @param MYSQLI_TRANS_START_READ_ONLY|MYSQLI_TRANS_START_READ_WRITE|MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT $flags [optional]
      * @param string $name [optional]
      * @return bool true on success or false on failure.
      * @since 5.5
@@ -291,7 +296,7 @@ class mysqli
     /**
      * Commits the current transaction
      * @link https://php.net/manual/en/mysqli.commit.php
-     * @param int $flags A bitmask of MYSQLI_TRANS_COR_* constants.
+     * @param MYSQLI_TRANS_COR_AND_CHAIN|MYSQLI_TRANS_COR_AND_NO_CHAIN|MYSQLI_TRANS_COR_NO_RELEASE|MYSQLI_TRANS_COR_RELEASE $flags A bitmask of MYSQLI_TRANS_COR_* constants.
      * @param string|null $name If provided then COMMIT $name is executed.
      * @return bool true on success or false on failure.
      */
@@ -503,7 +508,7 @@ class mysqli
     /**
      * Set options
      * @link https://php.net/manual/en/mysqli.options.php
-     * @param int $option <p>
+     * @param _MysqliOptionsArgSet $option <p>
      * The option that you want to set. It can be one of the following values:
      * <table>
      * <tr valign="top">
@@ -675,7 +680,7 @@ class mysqli
      * MySQL database is determined by the <i>host</i>
      * parameter.
      * </p>
-     * @param int $flags [optional] <p>
+     * @param MYSQLI_CLIENT_COMPRESS|MYSQLI_CLIENT_FOUND_ROWS|MYSQLI_CLIENT_IGNORE_SPACE|MYSQLI_CLIENT_INTERACTIVE|MYSQLI_CLIENT_SSL|MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT $flags [optional] <p>
      * With the parameter <i>flags</i> you can set different
      * connection options:
      * </p>
@@ -818,7 +823,7 @@ class mysqli
     /**
      * Rolls back current transaction
      * @link https://php.net/manual/en/mysqli.rollback.php
-     * @param int $flags [optional] A bitmask of MYSQLI_TRANS_COR_* constants.
+     * @param MYSQLI_TRANS_COR_AND_CHAIN|MYSQLI_TRANS_COR_AND_NO_CHAIN|MYSQLI_TRANS_COR_NO_RELEASE|MYSQLI_TRANS_COR_RELEASE $flags [optional] A bitmask of MYSQLI_TRANS_COR_* constants.
      * @param string $name [optional] If provided then ROLLBACK $name is executed.
      * @return bool true on success or false on failure.
      * @since 5.5 Added flags and name parameters.
@@ -1485,7 +1490,7 @@ class mysqli_stmt
     /**
      * Used to modify the behavior of a prepared statement
      * @link https://php.net/manual/en/mysqli-stmt.attr-set.php
-     * @param int $attribute <p>
+     * @param _MysqliAttributesSetArgSet $attribute <p>
      * The attribute that you want to set. It can have one of the following values:
      * <table>
      * <tr valign="top">
@@ -1780,7 +1785,7 @@ function mysqli_autocommit(mysqli $mysql, bool $enable): bool {}
  * Starts a transaction
  * @link https://secure.php.net/manual/en/mysqli.begin-transaction.php
  * @param mysqli $mysql A link identifier returned by mysqli_connect() or mysqli_init()
- * @param int $flags [optional]
+ * @param MYSQLI_TRANS_START_READ_ONLY|MYSQLI_TRANS_START_READ_WRITE|MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT $flags [optional]
  * @param string|null $name [optional]
  * @return bool true on success or false on failure.
  * @since 5.5
@@ -2367,7 +2372,7 @@ function mysqli_num_rows(mysqli_result $result): string|int {}
  * Set options
  * @link https://php.net/manual/en/mysqli.options.php
  * @param mysqli $mysql A link identifier returned by mysqli_connect() or mysqli_init()
- * @param int $option
+ * @param _MysqliOptionsArgSet $option
  * @param string|int $value
  * @return bool
  */
@@ -2407,7 +2412,7 @@ function mysqli_prepare(mysqli $mysql, string $query): mysqli_stmt|false {}
 /**
  * Enables or disables internal report functions
  * @link https://php.net/manual/en/function.mysqli-report.php
- * @param int $flags <p>
+ * @param MYSQLI_REPORT_OFF|MYSQLI_REPORT_ERROR|MYSQLI_REPORT_STRICT|MYSQLI_REPORT_INDEX|MYSQLI_REPORT_ALL $flags <p>
  * <table>
  * <tr valign="top">
  * <td>Name</td>
@@ -2471,7 +2476,7 @@ function mysqli_query(
  * @param string|null $database [optional]
  * @param int|null $port [optional]
  * @param string|null $socket [optional]
- * @param int $flags
+ * @param MYSQLI_CLIENT_COMPRESS|MYSQLI_CLIENT_FOUND_ROWS|MYSQLI_CLIENT_IGNORE_SPACE|MYSQLI_CLIENT_INTERACTIVE|MYSQLI_CLIENT_SSL|MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT $flags
  * @return bool
  */
 function mysqli_real_connect(mysqli $mysql, ?string $hostname, ?string $username, ?string $password, ?string $database, ?int $port, ?string $socket, int $flags = 0): bool {}
@@ -2579,7 +2584,7 @@ function mysqli_stmt_attr_get(mysqli_stmt $statement, int $attribute): false|int
  * Used to modify the behavior of a prepared statement
  * @link https://php.net/manual/en/mysqli-stmt.attr-set.php
  * @param mysqli_stmt $statement
- * @param int $attribute
+ * @param _MysqliAttributesSetArgSet $attribute
  * @param int $value
  * @return bool
  */

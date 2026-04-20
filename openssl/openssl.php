@@ -929,7 +929,7 @@ function openssl_pbkdf2(string $password, string $salt, int $key_length, int $it
  * @param string $input_filename <p>
  * Path to the message.
  * </p>
- * @param int $flags <p>
+ * @param PKCS7_TEXT|PKCS7_BINARY|PKCS7_NOINTERN|PKCS7_NOVERIFY|PKCS7_NOCHAIN|PKCS7_NOCERTS|PKCS7_NOATTR|PKCS7_DETACHED|PKCS7_NOSIGS $flags <p>
  * <i>flags</i> can be used to affect how the signature is
  * verified - see PKCS7 constants
  * for more information.
@@ -1001,7 +1001,7 @@ function openssl_pkcs7_decrypt(
  * <b>openssl_pkcs7_encrypt</b> for more information about
  * the format of this parameter).
  * </p>
- * @param int $flags [optional] <p>
+ * @param PKCS7_TEXT|PKCS7_BINARY|PKCS7_NOINTERN|PKCS7_NOVERIFY|PKCS7_NOCHAIN|PKCS7_NOCERTS|PKCS7_NOATTR|PKCS7_DETACHED|PKCS7_NOSIGS $flags [optional] <p>
  * <i>flags</i> can be used to alter the output - see PKCS7 constants.
  * </p>
  * @param string|null $untrusted_certificates_filename [optional] <p>
@@ -1038,7 +1038,7 @@ function openssl_pkcs7_sign(
  * keyed by header name, or an indexed array, where each element contains
  * a single header line.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PKCS7_TEXT|PKCS7_BINARY|PKCS7_NOINTERN|PKCS7_NOVERIFY|PKCS7_NOCHAIN|PKCS7_NOCERTS|PKCS7_NOATTR|PKCS7_DETACHED|PKCS7_NOSIGS $flags [optional] <p>
  * <i>flags</i> can be used to specify options that affect
  * the encoding process - see PKCS7
  * constants.

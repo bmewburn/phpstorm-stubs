@@ -28,7 +28,7 @@ use __IDE\LanguageLevelTypeAware;
  * 32'. This parameter is largely untested, so be careful when
  * using.
  * </p>
- * @param int $mode <p>
+ * @param PSPELL_FAST|PSPELL_NORMAL|PSPELL_BAD_SPELLERS|PSPELL_RUN_TOGETHER $mode <p>
  * The mode parameter is the mode in which spellchecker will work.
  * There are several modes available:
  * <b>PSPELL_FAST</b> - Fast mode (least number of
@@ -67,7 +67,7 @@ function pspell_new(string $language, string $spelling = "", string $jargon = ""
  * cp1252, machine unsigned 16,
  * machine unsigned 32.
  * </p>
- * @param int $mode <p>
+ * @param PSPELL_FAST|PSPELL_NORMAL|PSPELL_BAD_SPELLERS|PSPELL_RUN_TOGETHER $mode <p>
  * The mode in which spellchecker will work. There are several modes available:
  * <b>PSPELL_FAST</b> - Fast mode (least number of
  * suggestions)</p>

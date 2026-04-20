@@ -904,7 +904,7 @@ final class Attribute
     public const IS_REPEATABLE = 64;
 
     /**
-     * @param Attribute::TARGET_CLASS|Attribute::TARGET_FUNCTION|Attribute::TARGET_METHOD|Attribute::TARGET_PROPERTY|Attribute::TARGET_CLASS_CONSTANT|Attribute::TARGET_PARAMETER|Attribute::TARGET_CONSTANT|Attribute::TARGET_ALL|Attribute::IS_REPEATABLE $flags A value in the form of a bitmask indicating the places
+     * @param \Attribute::IS_REPEATABLE|\Attribute::TARGET_CLASS|\Attribute::TARGET_ALL|\Attribute::TARGET_METHOD|\Attribute::TARGET_PARAMETER|\Attribute::TARGET_PROPERTY|\Attribute::TARGET_FUNCTION|\Attribute::TARGET_CLASS_CONSTANT|Attribute::TARGET_CONSTANT $flags A value in the form of a bitmask indicating the places
      * where attributes can be defined.
      */
     public function __construct(#[ExpectedValues(flagsFromClass: Attribute::class)] int $flags = Attribute::TARGET_ALL) {}

@@ -209,7 +209,7 @@ function apc_bin_dump($files = null, $user_vars = null) {}
  * @param string[]|null $files The file names being dumped.
  * @param string[]|null $user_vars The user variables being dumped.
  * @param string $filename The filename where the dump is being saved.
- * @param int $flags Flags passed to the filename stream. See the file_put_contents() documentation for details.
+ * @param FILE_USE_INCLUDE_PATH|FILE_APPEND|LOCK_EX $flags Flags passed to the filename stream. See the file_put_contents() documentation for details.
  * @param resource $context The context passed to the filename stream. See the file_put_contents() documentation for details.
  * @return int|false The number of bytes written to the file, otherwise FALSE if APC
  * is not enabled, filename is an invalid file name, filename can't be opened,

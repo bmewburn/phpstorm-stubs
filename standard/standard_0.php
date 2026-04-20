@@ -10,6 +10,11 @@ use __IDE\StubsElementAvailable;
 use __IDE\TentativeType;
 use __IDE\Pure;
 
+/**
+ * @type-alias _EncodingsArgSet = 'BASE64' | 'UUENCODE' | 'HTML-ENTITIES' | 'Quoted-Printable' | '7bit' | '8bit' | 'UCS-4' | 'UCS-4BE' | 'UCS-4LE' | 'UCS-2' | 'UCS-2BE' | 'UCS-2LE' | 'UTF-32' | 'UTF-32BE' | 'UTF-32LE' | 'UTF-16' | 'UTF-16BE' | 'UTF-16LE' | 'UTF-8' | 'UTF-7' | 'UTF7-IMAP' | 'ASCII' | 'EUC-JP' | 'SJIS' | 'eucJP-win' | 'EUC-JP-2004' | 'SJIS-Mobile#DOCOMO' | 'SJIS-Mobile#KDDI' | 'SJIS-Mobile#SOFTBANK' | 'SJIS-mac' | 'SJIS-2004' | 'UTF-8-Mobile#DOCOMO' | 'UTF-8-Mobile#KDDI-A' | 'UTF-8-Mobile#KDDI-B' | 'UTF-8-Mobile#SOFTBANK' | 'CP932' | 'CP51932' | 'JIS' | 'ISO-2022-JP' | 'ISO-2022-JP-MS' | 'GB18030' | 'Windows-1252' | 'Windows-1254' | 'ISO-8859-1' | 'ISO-8859-2' | 'ISO-8859-3' | 'ISO-8859-4' | 'ISO-8859-5' | 'ISO-8859-6' | 'ISO-8859-7' | 'ISO-8859-8' | 'ISO-8859-9' | 'ISO-8859-10' | 'ISO-8859-13' | 'ISO-8859-14' | 'ISO-8859-15' | 'ISO-8859-16' | 'EUC-CN' | 'CP936' | 'HZ' | 'EUC-TW' | 'BIG-5' | 'BIG5' | 'BIG5-HKSCS' | 'CP950' | 'EUC-KR' | 'UHC' | 'ISO-2022-KR' | 'Windows-1251' | 'CP866' | 'KOI8-R' | 'KOI8-U' | 'ArmSCII-8' | 'CP850' | 'ISO-2022-JP-2004' | 'ISO-2022-JP-MOBILE#KDDI' | 'CP50220' | 'CP50221' | 'CP50222' | 'HTML' | 'html' | 'qprint' | 'binary' | 'ISO-10646-UCS-4' | 'UCS4' | 'byte4be' | 'byte4le' | 'ISO-10646-UCS-2' | 'UCS2' | 'UNICODE' | 'byte2be' | 'byte2le' | 'utf32' | 'utf16' | 'utf8' | 'utf7' | 'mUTF-7' | 'ANSI_X3.4-1968' | 'iso-ir-6' | 'ANSI_X3.4-1986' | 'ISO_646.irv:1991' | 'US-ASCII' | 'ISO646-US' | 'us' | 'IBM367' | 'IBM-367' | 'cp367' | 'csASCII' | 'EUC' | 'EUC_JP' | 'eucJP' | 'x-euc-jp' | 'x-sjis' | 'SHIFT-JIS' | 'Shift_JIS' | 'eucJP-open' | 'eucJP-ms' | 'EUC_JP-2004' | 'SJIS-DOCOMO' | 'shift_jis-imode' | 'x-sjis-emoji-docomo' | 'SJIS-KDDI' | 'shift_jis-kddi' | 'x-sjis-emoji-kddi' | 'SJIS-SOFTBANK' | 'shift_jis-softbank' | 'x-sjis-emoji-softbank' | 'MacJapanese' | 'MacRoman' | 'x-Mac-Japanese' | 'SJIS2004' | 'Shift_JIS-2004' | 'UTF-8-DOCOMO' | 'UTF8-DOCOMO' | 'UTF-8-Mobile#KDDI' | 'UTF-8-KDDI' | 'UTF8-KDDI' | 'UTF-8-SOFTBANK' | 'UTF8-SOFTBANK' | 'MS932' | 'Windows-31J' | 'MS_Kanji' | 'SJIS-win' | 'SJIS-ms' | 'SJIS-open' | 'cp51932' | 'ISO2022JPMS' | 'gb-18030' | 'gb-18030-2000' | 'cp1252' | 'CP1254' | 'CP-1254' | 'WINDOWS-1254' | 'ISO8859-1' | 'latin1' | 'ISO8859-2' | 'latin2' | 'ISO8859-3' | 'latin3' | 'ISO8859-4' | 'latin4' | 'ISO8859-5' | 'cyrillic' | 'ISO8859-6' | 'arabic' | 'ISO8859-7' | 'greek' | 'ISO8859-8' | 'hebrew' | 'ISO8859-9' | 'latin5' | 'ISO8859-10' | 'latin6' | 'ISO8859-13' | 'ISO8859-14' | 'latin8' | 'ISO8859-15' | 'ISO8859-16' | 'CN-GB' | 'EUC_CN' | 'eucCN' | 'x-euc-cn' | 'gb2312' | 'CP-936' | 'GBK' | 'EUC_TW' | 'eucTW' | 'x-euc-tw' | 'CN-BIG5' | 'BIG-FIVE' | 'BIGFIVE' | 'EUC_KR' | 'eucKR' | 'x-euc-kr' | 'CP949' | 'CP1251' | 'CP-1251' | 'WINDOWS-1251' | 'CP-866' | 'IBM866' | 'IBM-866' | 'KOI8R' | 'KOI8U' | 'ArmSCII8' | 'ARMSCII-8' | 'ARMSCII8' | 'CP-850' | 'IBM850' | 'IBM-850' | 'ISO-2022-JP-KDDI' | 'cp50220raw' | 'cp50220-raw' | 'JIS-ms'
+ * @type-alias _ImagetypesArgSet = IMAGETYPE_GIF | IMAGETYPE_JPEG | IMAGETYPE_PNG | IMAGETYPE_SWF | IMAGETYPE_PSD | IMAGETYPE_BMP | IMAGETYPE_TIFF_II | IMAGETYPE_TIFF_MM | IMAGETYPE_JPC | IMAGETYPE_JP2 | IMAGETYPE_JPX | IMAGETYPE_JB2 | IMAGETYPE_SWC | IMAGETYPE_IFF | IMAGETYPE_WBMP | IMAGETYPE_XBM | IMAGETYPE_ICO | IMAGETYPE_WEBP
+ */
+
 final class __PHP_Incomplete_Class
 {
     /**
@@ -375,7 +380,7 @@ function wordwrap(string $string, int $width = 75, string $break = "\n", bool $c
  * @param string $string <p>
  * The {@link https://secure.php.net/manual/en/language.types.string.php string} being converted.
  * </p>
- * @param int $flags [optional] <p>
+ * @param ENT_COMPAT|ENT_QUOTES|ENT_NOQUOTES|ENT_IGNORE|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML401|ENT_XML1|ENT_XHTML|ENT_HTML5 $flags [optional] <p>
  * A bitmask of one or more of the following flags, which specify how to handle quotes,
  * invalid code unit sequences and the used document type. The default is
  * <em><b>ENT_COMPAT | ENT_HTML401</b></em>.
@@ -464,7 +469,7 @@ function wordwrap(string $string, int $width = 75, string $break = "\n", bool $c
  * </tbody>
  *
  * </table>
- * @param string|null $encoding <p>
+ * @param _EncodingsArgSet|null $encoding <p>
  * Defines encoding used in conversion.
  * If omitted, the default value for this argument is ISO-8859-1 in
  * versions of PHP prior to 5.4.0, and UTF-8 from PHP 5.4.0 onwards.
@@ -494,7 +499,7 @@ function htmlspecialchars(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE
  * @param string $string <p>
  * The input string.
  * </p>
- * @param int $flags [optional] <p>
+ * @param ENT_COMPAT|ENT_QUOTES|ENT_NOQUOTES|ENT_IGNORE|ENT_SUBSTITUTE|ENT_DISALLOWED|ENT_HTML401|ENT_XML1|ENT_XHTML|ENT_HTML5 $flags [optional] <p>
  * Like htmlspecialchars, the optional second
  * quote_style parameter lets you define what will
  * be done with 'single' and "double" quotes. It takes on one of three
@@ -518,7 +523,7 @@ function htmlspecialchars(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE
  * </tr>
  * </table>
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Like htmlspecialchars, it takes an optional
  * third argument charset which defines character
  * set used in conversion.
@@ -539,7 +544,7 @@ function htmlentities(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?s
  * @param string $string <p>
  * The input string.
  * </p>
- * @param int $flags [optional] <p>
+ * @param ENT_COMPAT|ENT_QUOTES|ENT_NOQUOTES|ENT_HTML401|ENT_XML1|ENT_XHTML|ENT_HTML5 $flags [optional] <p>
  * The optional second quote_style parameter lets
  * you define what will be done with 'single' and "double" quotes. It takes
  * on one of three constants with the default being
@@ -563,7 +568,7 @@ function htmlentities(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?s
  * </tr>
  * </table>
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * The ISO-8859-1 character set is used as default for the optional third
  * charset. This defines the character set used in
  * conversion.
@@ -579,7 +584,7 @@ function html_entity_decode(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITU
  * @param string $string <p>
  * The string to decode
  * </p>
- * @param int $flags [optional] <p>
+ * @param ENT_COMPAT|ENT_QUOTES|ENT_NOQUOTES|ENT_HTML401|ENT_XML1|ENT_XHTML|ENT_HTML5 $flags [optional] <p>
  * The quote style. One of the following constants:
  * <table>
  * <tr valign="top">
@@ -621,7 +626,7 @@ function htmlspecialchars_decode(string $string, int $flags = ENT_QUOTES|ENT_SUB
  * See the description
  * of these modes in htmlspecialchars.
  * </p>
- * @param string $encoding [optional] <p>
+ * @param _EncodingsArgSet $encoding [optional] <p>
  * Encoding to use.
  * If omitted, the default value for this argument is ISO-8859-1 in
  * versions of PHP prior to 5.4.0, and UTF-8 from PHP 5.4.0 onwards.
@@ -961,7 +966,7 @@ function getimagesize(string $filename, &$image_info): array|false {}
 /**
  * Get Mime-Type for image-type returned by getimagesize, exif_read_data, exif_thumbnail, exif_imagetype
  * @link https://php.net/manual/en/function.image-type-to-mime-type.php
- * @param int $image_type <p>
+ * @param _ImagetypesArgSet $image_type <p>
  * One of the IMAGETYPE_XXX constants.
  * </p>
  * @return string The returned values are as follows
@@ -1048,7 +1053,7 @@ function image_type_to_mime_type(int $image_type): string {}
 /**
  * Get file extension for image type
  * @link https://php.net/manual/en/function.image-type-to-extension.php
- * @param int $image_type <p>
+ * @param _ImagetypesArgSet $image_type <p>
  * One of the IMAGETYPE_XXX constant.
  * </p>
  * @param bool $include_dot [optional] <p>
@@ -1149,7 +1154,7 @@ function phpinfo(#[ExpectedValues(flags: [INFO_GENERAL, INFO_CREDITS, INFO_CONFI
 /**
  * Gets the current PHP version
  * @link https://php.net/manual/en/function.phpversion.php
- * @param string|null $extension [optional] <p>
+ * @param 'amqp'|'apache'|'apc'|'apd'|'bbcode'|'bcmath'|'bcompiler'|'bz2'|'cairo'|'calendar'|'chdb'|'classkit'|'com'|'crack'|'ctype'|'cubrid'|'curl'|'cyrus'|'dba'|'dbase'|'dbplus'|'dbx'|'dio'|'dom'|'dotnet'|'eio'|'enchant'|'ev'|'event'|'exif'|'expect'|'fam'|'fbsql'|'fdf'|'fileinfo'|'filepro'|'filter'|'fribidi'|'ftp'|'gearman'|'gender'|'geoip'|'gettext'|'gmagick'|'gmp'|'gnupg'|'gupnp'|'haru'|'htscanner'|'pecl_http'|'hyperwave'|'hwapi'|'interbase'|'ibm_db2'|'iconv'|'id3'|'informix'|'iisfunc'|'gd'|'imagick'|'imap'|'include'|'ingres'|'inotify'|'intl'|'java'|'json'|'judy'|'kadm5'|'ktaglib'|'lapack'|'ldap'|'libevent'|'libxml'|'lua'|'lzf'|'mailparse'|'maxdb'|'mbstring'|'mcrypt'|'mcve'|'memcache'|'memcached'|'memtrack'|'mhash'|'ming'|'mnogosearch'|'mongo'|'mqseries'|'msession'|'msql'|'mssql'|'mysql'|'mysqli'|'mysqlnd'|'mysqlnd_memcache'|'mysqlnd_ms'|'mysqlnd_mux'|'mysqlnd_qc'|'mysqlnd_uh'|'ncurses'|'net_gopher'|'newt'|'notes'|'nsapi'|'oauth'|'oci8'|'oggvorbis'|'openal'|'openssl'|'ovrimos'|'paradox'|'parsekit'|'pcntl'|'pcre'|'pdflib'|'pdo'|'pdo_4d'|'pdo_cubrid'|'pdo_dblib'|'pdo_firebird'|'pdo_ibm'|'pdo_informix'|'pdo_mysql'|'pdo_oci'|'pdo_odbc'|'pdo_pgsql'|'pdo_sqlite'|'pdo_sqlsrv'|'phar'|'posix'|'printer'|'proctitle'|'ps'|'pspell'|'pthreads'|'qtdom'|'quickhash'|'radius'|'rar'|'readline'|'recode'|'rpmreader'|'rrd'|'runkit'|'sam'|'sca'|'scream'|'sca_sdo'|'sysvmsg'|'session'|'session_pgsql'|'shmop'|'simplexml'|'snmp'|'soap'|'sockets'|'solr'|'sphinx'|'spl_types'|'spplus'|'sqlite'|'sqlite3'|'sqlsrv'|'ssdeep'|'ssh2'|'stats'|'stomp'|'svm'|'svn'|'swf'|'swish'|'sybase'|'taint'|'tcpwrap'|'tidy'|'tokenizer'|'tokyo_tyrant'|'trader'|'odbc'|'v8js'|'varnish'|'vpopmail'|'w32api'|'wddx'|'weakref'|'win32ps'|'win32service'|'wincache'|'xattr'|'xdiff'|'xhprof'|'xml'|'xmlreader'|'xmlrpc'|'xmlwriter'|'xsl'|'xslt'|'yaf'|'yaml'|'yaz'|'zip'|'zlib'|null $extension [optional] <p>
  * An optional extension name.
  * </p>
  * @return string|false If the optional extension parameter is

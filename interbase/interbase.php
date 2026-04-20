@@ -42,6 +42,16 @@
  * </p>
  * @return resource|false an InterBase link identifier on success, or false on error.
  */
+
+/**
+ * @type-alias _InterbaseBackupOptionsArgSet = \IBASE_BKP_IGNORE_CHECKSUMS | \IBASE_BKP_IGNORE_LIMBO | \IBASE_BKP_METADATA_ONLY | \IBASE_BKP_NO_GARBAGE_COLLECT | \IBASE_BKP_OLD_DESCRIPTIONS | \IBASE_BKP_NON_TRANSPORTABLE | \IBASE_BKP_CONVERT
+ * @type-alias _InterbaseDbInfoActionsArgSet = \IBASE_STS_DATA_PAGES | \IBASE_STS_DB_LOG | \IBASE_STS_HDR_PAGES | \IBASE_STS_IDX_PAGES | \IBASE_STS_SYS_RELATIONS
+ * @type-alias _InterbaseFetchFlagsArgSet = \IBASE_TEXT | \IBASE_FETCH_BLOBS | \IBASE_FETCH_ARRAYS | \IBASE_UNIXTIME
+ * @type-alias _InterbaseMaintainDbActionsArgSet = \IBASE_PRP_PAGE_BUFFERS | \IBASE_PRP_SWEEP_INTERVAL | \IBASE_PRP_SHUTDOWN_DB | \IBASE_PRP_DENY_NEW_TRANSACTIONS | \IBASE_PRP_DENY_NEW_ATTACHMENTS | \IBASE_PRP_RESERVE_SPACE | \IBASE_PRP_RES_USE_FULL | \IBASE_PRP_RES | \IBASE_PRP_WRITE_MODE | \IBASE_PRP_WM_ASYNC | \IBASE_PRP_WM_SYNC | \IBASE_PRP_ACCESS_MODE | \IBASE_PRP_AM_READONLY | \IBASE_PRP_AM_READWRITE | \IBASE_PRP_SET_SQL_DIALECT | \IBASE_PRP_ACTIVATE | \IBASE_PRP_DB_ONLINE | \IBASE_RPR_CHECK_DB | \IBASE_RPR_IGNORE_CHECKSUM | \IBASE_RPR_KILL_SHADOWS | \IBASE_RPR_MEND_DB | \IBASE_RPR_VALIDATE_DB | \IBASE_RPR_FULL | \IBASE_RPR_SWEEP_DB
+ * @type-alias _InterbaseRestoreOptionsArgSet = \IBASE_RES_DEACTIVATE_IDX | \IBASE_RES_NO_SHADOW | \IBASE_RES_NO_VALIDITY | \IBASE_RES_ONE_AT_A_TIME | \IBASE_RES_REPLACE | \IBASE_RES_CREATE | \IBASE_RES_USE_ALL_SPACE | \IBASE_PRP_PAGE_BUFFERS | \IBASE_PRP_SWEEP_INTERVAL
+ * @type-alias _InterbaseServerInfoActionsArgSet = \IBASE_SVC_SERVER_VERSION | \IBASE_SVC_IMPLEMENTATION | \IBASE_SVC_GET_ENV | \IBASE_SVC_GET_ENV_LOCK | \IBASE_SVC_GET_ENV_MSG | \IBASE_SVC_USER_DBPATH | \IBASE_SVC_SVR_DB_INFO | \IBASE_SVC_GET_USERS
+ * @type-alias _InterbaseTransactionBehaviorSetArgSet = \IBASE_DEFAULT | \IBASE_READ | \IBASE_WRITE | \IBASE_CONSISTENCY | \IBASE_CONCURRENCY | \IBASE_COMMITTED | \IBASE_REC_VERSION | \IBASE_REC_NO_VERSION | \IBASE_WAIT | \IBASE_NOWAIT
+ */
 function ibase_connect($database = null, $username = null, $password = null, $charset = null, $buffers = null, $dialect = null, $role = null, $sync = null) {}
 
 /**
@@ -140,7 +150,7 @@ function ibase_query($link_identifier = null, $query, $bind_args = null) {}
  * @param resource $result_identifier <p>
  * An InterBase result identifier.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -160,7 +170,7 @@ function ibase_fetch_row($result_identifier, $fetch_flag = null) {}
  * @param resource $result <p>
  * The result handle.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -181,7 +191,7 @@ function ibase_fetch_assoc($result, $fetch_flag = null) {}
  * An InterBase result identifier obtained either by
  * ibase_query or ibase_execute.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -333,7 +343,7 @@ function ibase_param_info($query, $param_number) {}
 /**
  * Begin a transaction
  * @link https://php.net/manual/en/function.ibase-trans.php
- * @param int $trans_args [optional] <p>
+ * @param _InterbaseTransactionBehaviorSetArgSet $trans_args [optional] <p>
  * trans_args can be a combination of
  * IBASE_READ,
  * IBASE_WRITE,
@@ -603,7 +613,7 @@ function ibase_service_detach($service_handle) {}
  * @param resource $service_handle
  * @param string $source_db
  * @param string $dest_file
- * @param int $options [optional]
+ * @param _InterbaseBackupOptionsArgSet $options [optional]
  * @param bool $verbose [optional]
  * @return mixed
  */
@@ -615,7 +625,7 @@ function ibase_backup($service_handle, $source_db, $dest_file, $options = null, 
  * @param resource $service_handle
  * @param string $source_file
  * @param string $dest_db
- * @param int $options [optional]
+ * @param _InterbaseRestoreOptionsArgSet $options [optional]
  * @param bool $verbose [optional]
  * @return mixed
  */
@@ -626,7 +636,7 @@ function ibase_restore($service_handle, $source_file, $dest_db, $options = null,
  * @link https://php.net/manual/en/function.ibase-maintain-db.php
  * @param resource $service_handle
  * @param string $db
- * @param int $action
+ * @param _InterbaseMaintainDbActionsArgSet $action
  * @param int $argument [optional]
  * @return bool true on success or false on failure.
  */
@@ -637,7 +647,7 @@ function ibase_maintain_db($service_handle, $db, $action, $argument = null) {}
  * @link https://php.net/manual/en/function.ibase-db-info.php
  * @param resource $service_handle
  * @param string $db
- * @param int $action
+ * @param _InterbaseDbInfoActionsArgSet $action
  * @param int $argument [optional]
  * @return string
  */
@@ -647,7 +657,7 @@ function ibase_db_info($service_handle, $db, $action, $argument = null) {}
  * Request information about a database server
  * @link https://php.net/manual/en/function.ibase-server-info.php
  * @param resource $service_handle
- * @param int $action
+ * @param _InterbaseServerInfoActionsArgSet $action
  * @return string
  */
 function ibase_server_info($service_handle, $action) {}
@@ -845,7 +855,7 @@ function fbird_query($link_identifier = null, $query, $bind_args = null) {}
  * @param resource $result_identifier <p>
  * An InterBase result identifier.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -866,7 +876,7 @@ function fbird_fetch_row($result_identifier, $fetch_flag = null) {}
  * @param resource $result <p>
  * The result handle.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -888,7 +898,7 @@ function fbird_fetch_assoc($result, $fetch_flag = null) {}
  * An InterBase result identifier obtained either by
  * fbird_query or fbird_execute.
  * </p>
- * @param int $fetch_flag [optional] <p>
+ * @param _InterbaseFetchFlagsArgSet $fetch_flag [optional] <p>
  * fetch_flag is a combination of the constants
  * IBASE_TEXT and IBASE_UNIXTIME
  * ORed together. Passing IBASE_TEXT will cause this
@@ -1051,7 +1061,7 @@ function fbird_param_info($query, $param_number) {}
  * This is an alias of ibase_trans
  * Begin a transaction
  * @link https://php.net/manual/en/function.fbird-trans.php
- * @param int $trans_args [optional] <p>
+ * @param _InterbaseTransactionBehaviorSetArgSet $trans_args [optional] <p>
  * trans_args can be a combination of
  * IBASE_READ,
  * IBASE_WRITE,
@@ -1342,7 +1352,7 @@ function fbird_service_detach($service_handle) {}
  * @param resource $service_handle
  * @param string $source_db
  * @param string $dest_file
- * @param int $options [optional]
+ * @param _InterbaseBackupOptionsArgSet $options [optional]
  * @param bool $verbose [optional]
  * @return mixed
  */
@@ -1355,7 +1365,7 @@ function fbird_backup($service_handle, $source_db, $dest_file, $options = null, 
  * @param resource $service_handle
  * @param string $source_file
  * @param string $dest_db
- * @param int $options [optional]
+ * @param _InterbaseRestoreOptionsArgSet $options [optional]
  * @param bool $verbose [optional]
  * @return mixed
  */
@@ -1367,7 +1377,7 @@ function fbird_restore($service_handle, $source_file, $dest_db, $options = null,
  * @link https://php.net/manual/en/function.fbird-maintain-db.php
  * @param resource $service_handle
  * @param string $db
- * @param int $action
+ * @param _InterbaseMaintainDbActionsArgSet $action
  * @param int $argument [optional]
  * @return bool true on success or false on failure.
  */
@@ -1379,7 +1389,7 @@ function fbird_maintain_db($service_handle, $db, $action, $argument = null) {}
  * @link https://php.net/manual/en/function.fbird-db-info.php
  * @param resource $service_handle
  * @param string $db
- * @param int $action
+ * @param _InterbaseDbInfoActionsArgSet $action
  * @param int $argument [optional]
  * @return string
  */
@@ -1390,7 +1400,7 @@ function fbird_db_info($service_handle, $db, $action, $argument = null) {}
  * Request information about a database server
  * @link https://php.net/manual/en/function.fbird-server-info.php
  * @param resource $service_handle
- * @param int $action
+ * @param _InterbaseServerInfoActionsArgSet $action
  * @return string
  */
 function fbird_server_info($service_handle, $action) {}

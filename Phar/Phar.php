@@ -46,7 +46,7 @@ class Phar extends RecursiveDirectoryIterator implements RecursiveIterator, Seek
      * Path to an existing Phar archive or to-be-created archive. The file name's
      * extension must contain .phar.
      * </p>
-     * @param int $flags [optional] <p>
+     * @param \FilesystemIterator::KEY_AS_PATHNAME|\FilesystemIterator::CURRENT_AS_FILEINFO $flags [optional] <p>
      * Flags to pass to parent class <b>RecursiveDirectoryIterator</b>.
      * </p>
      * @param string $alias [optional] <p>
@@ -1005,7 +1005,7 @@ class PharData extends Phar
      * @param string $filename <p>
      * Path to an existing tar/zip archive or to-be-created archive
      * </p>
-     * @param int $flags [optional] <p>
+     * @param \FilesystemIterator::KEY_AS_PATHNAME|\FilesystemIterator::CURRENT_AS_FILEINFO $flags [optional] <p>
      * Flags to pass to <b>Phar</b> parent class
      * <b>RecursiveDirectoryIterator</b>.
      * </p>

@@ -131,7 +131,7 @@ final class Event
      * pending.
      * Detects whether event is pending or scheduled.
      *
-     * @param int $flags
+     * @param \Event::READ|\Event::WRITE|\Event::TIMEOUT|\Event::SIGNAL $flags
      *
      * @return bool
      *
@@ -330,7 +330,7 @@ final class EventBase
      * loop.
      * Dispatch pending events.
      *
-     * @param int $flags
+     * @param \EventBase::LOOP_ONCE|\EventBase::LOOP_NONBLOCK|\EventBase::NOLOCK|\EventBase::STARTUP_IOCP|\EventBase::NO_CACHE_TIME|\EventBase::EPOLL_USE_CHANGELIST $flags
      *
      * @return bool
      *

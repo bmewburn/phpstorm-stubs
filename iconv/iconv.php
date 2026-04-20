@@ -310,7 +310,7 @@ function iconv_mime_encode(string $field_name, string $field_value, array $optio
  * @param string $string <p>
  * The encoded header, as a string.
  * </p>
- * @param int $mode [optional] <p>
+ * @param ICONV_MIME_DECODE_STRICT|ICONV_MIME_DECODE_CONTINUE_ON_ERROR $mode [optional] <p>
  * <i>mode</i> determines the behaviour in the event
  * <b>iconv_mime_decode</b> encounters a malformed
  * MIME header field. You can specify any combination
@@ -361,7 +361,7 @@ function iconv_mime_decode(string $string, int $mode = 0, ?string $encoding = nu
  * @param string $headers <p>
  * The encoded headers, as a string.
  * </p>
- * @param int $mode [optional] <p>
+ * @param ICONV_MIME_DECODE_STRICT|ICONV_MIME_DECODE_CONTINUE_ON_ERROR $mode [optional] <p>
  * <i>mode</i> determines the behaviour in the event
  * <b>iconv_mime_decode_headers</b> encounters a malformed
  * MIME header field. You can specify any combination

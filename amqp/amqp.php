@@ -1217,7 +1217,7 @@ class AMQPExchange
      * Delete the exchange from the broker.
      *
      * @param string|null $exchangeName Optional name of exchange to delete.
-     * @param int|null    $flags        Optionally AMQP_IFUNUSED can be specified
+     * @param AMQP_NOPARAM|AMQP_IFUNUSED|null    $flags        Optionally AMQP_IFUNUSED can be specified
      *                                  to indicate the exchange should not be
      *                                  deleted until no clients are connected to
      *                                  it.
@@ -1288,7 +1288,7 @@ class AMQPExchange
      * @param string  $message     The message to publish.
      * @param string|null $routingKey The optional routing key to which to
      *                             publish to.
-     * @param int|null $flags       One or more of AMQP_MANDATORY and
+     * @param AMQP_NOPARAM|AMQP_MANDATORY|AMQP_IMMEDIATE|null $flags       One or more of AMQP_MANDATORY and
      *                             AMQP_IMMEDIATE.
      * @param array   $headers  One of content_type, content_encoding,
      *                             message_id, user_id, app_id, delivery_mode,
@@ -1337,7 +1337,7 @@ class AMQPExchange
     /**
      * Set the flags on an exchange.
      *
-     * @param int|null $flags A bitmask of flags. This call currently only
+     * @param AMQP_PASSIVE|AMQP_DURABLE|AMQP_AUTODELETE|AMQP_INTERNAL|null $flags A bitmask of flags. This call currently only
      *                       considers the following flags:
      *                       AMQP_DURABLE, AMQP_PASSIVE
      *                       (and AMQP_DURABLE, if librabbitmq version >= 0.5.3)
@@ -1412,7 +1412,7 @@ class AMQPQueue
      *
      * @param int $deliveryTag The message delivery tag of which to
      *                              acknowledge receipt.
-     * @param int|null $flags        The only valid flag that can be passed is
+     * @param AMQP_NOPARAM|AMQP_MULTIPLE|null $flags        The only valid flag that can be passed is
      *                              AMQP_MULTIPLE.
      *
      * @throws AMQPChannelException    If the channel is not open.
@@ -1476,7 +1476,7 @@ class AMQPQueue
      *                              be made available to the first real callback
      *                              registered. That allows one to have a single
      *                              callback consuming from multiple queues.
-     * @param int|null $flags        A bitmask of any of the flags: AMQP_AUTOACK,
+     * @param AMQP_NOPARAM|AMQP_AUTOACK|AMQP_JUST_CONSUME|AMQP_NOLOCAL|null $flags        A bitmask of any of the flags: AMQP_AUTOACK,
      *                              AMQP_JUST_CONSUME. Note: when AMQP_JUST_CONSUME
      *                              flag used all other flags are ignored and
      *                              $consumerTag parameter has no sense.
@@ -1527,7 +1527,7 @@ class AMQPQueue
      *
      * This includes its entire contents of unread or unacknowledged messages.
      *
-     * @param int|null $flags       Optionally AMQP_IFUNUSED can be specified
+     * @param AMQP_NOPARAM|AMQP_IFUNUSED|AMQP_IFEMPTY|null $flags       Optionally AMQP_IFUNUSED can be specified
      *                              to indicate the queue should not be
      *                              deleted until no clients are connected to
      *                              it.
@@ -1550,7 +1550,7 @@ class AMQPQueue
      * automatically be marked as acknowledged by the broker as soon as the
      * frames are sent to the client.
      *
-     * @param int|null $flags A bitmask of supported flags for the
+     * @param AMQP_NOPARAM|AMQP_AUTOACK|null $flags A bitmask of supported flags for the
      *                        method call. Currently, the only the
      *                        supported flag is AMQP_AUTOACK. If this
      *                        value is not provided, it will use the
@@ -1593,7 +1593,7 @@ class AMQPQueue
      * undefined.
      *
      * @param int $deliveryTag Delivery tag of last message to reject.
-     * @param int|null $flags       AMQP_REQUEUE to requeue the message(s),
+     * @param AMQP_NOPARAM|AMQP_REQUEUE|AMQP_MULTIPLE|null $flags       AMQP_REQUEUE to requeue the message(s),
      *                              AMQP_MULTIPLE to nack all previous
      *                              unacked messages as well.
      *
@@ -1614,7 +1614,7 @@ class AMQPQueue
      * flag are not eligible.
      *
      * @param int $deliveryTag Delivery tag of the message to reject.
-     * @param int|null $flags        AMQP_REQUEUE to requeue the message(s).
+     * @param AMQP_NOPARAM|AMQP_REQUEUE|null $flags        AMQP_REQUEUE to requeue the message(s).
      *
      * @throws AMQPChannelException    If the channel is not open.
      * @throws AMQPConnectionException If the connection to the broker was lost.
@@ -1704,7 +1704,7 @@ class AMQPQueue
     /**
      * Set the flags on the queue.
      *
-     * @param int|null $flags A bitmask of flags:
+     * @param AMQP_NOPARAM|AMQP_DURABLE|AMQP_PASSIVE|AMQP_EXCLUSIVE|AMQP_AUTODELETE|null $flags A bitmask of flags:
      *                       AMQP_DURABLE, AMQP_PASSIVE,
      *                       AMQP_EXCLUSIVE, AMQP_AUTODELETE.
      *

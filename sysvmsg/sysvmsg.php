@@ -103,7 +103,7 @@ function msg_send(#[LanguageLevelTypeAware(["8.0" => "SysvMessageQueue"], defaul
  * If <i>unserialize</i> is <b>FALSE</b>, the message will be
  * returned as a binary-safe string.
  * </p>
- * @param int $flags [optional] <p>
+ * @param MSG_IPC_NOWAIT|MSG_EXCEPT|MSG_NOERROR $flags [optional] <p>
  * The optional <i>flags</i> allows you to pass flags to the
  * low-level msgrcv system call. It defaults to 0, but you may specify one
  * or more of the following values (by adding or ORing them together).

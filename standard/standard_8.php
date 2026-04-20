@@ -9,6 +9,10 @@ use __IDE\StubsElementAvailable;
 use __IDE\Pure;
 
 /**
+ * @type-alias _SortFlagsArgSet = SORT_REGULAR | SORT_NUMERIC | SORT_STRING | SORT_LOCALE_STRING | SORT_NATURAL | SORT_FLAG_CASE
+ */
+
+/**
  * Generate a system log message
  * @link https://php.net/manual/en/function.syslog.php
  * @param int $priority <p>
@@ -199,7 +203,7 @@ function metaphone(string $string, int $max_phonemes = 0) {}
  * Default value 0 means that the function is called only in the end,
  * other special value 1 sets chunk_size to 4096.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PHP_OUTPUT_HANDLER_CLEANABLE|PHP_OUTPUT_HANDLER_FLUSHABLE|PHP_OUTPUT_HANDLER_REMOVABLE|PHP_OUTPUT_HANDLER_STDFLAGS $flags [optional] <p>
  * The flags parameter is a bitmask that controls the operations that can be performed on the output buffer.
  * The default is to allow output buffers to be cleaned, flushed and removed, which can be set explicitly via
  * PHP_OUTPUT_HANDLER_CLEANABLE | PHP_OUTPUT_HANDLER_FLUSHABLE | PHP_OUTPUT_HANDLER_REMOVABLE, or PHP_OUTPUT_HANDLER_STDFLAGS as shorthand.
@@ -392,7 +396,7 @@ function ob_list_handlers(): array {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * You may modify the behavior of the sort using the optional
  * parameter sort_flags, for details
  * see sort.
@@ -407,7 +411,7 @@ function ksort(array &$array, int $flags = SORT_REGULAR) {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * You may modify the behavior of the sort using the optional parameter
  * sort_flags, for details see
  * sort.
@@ -442,7 +446,7 @@ function natcasesort(array &$array) {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * You may modify the behavior of the sort using the optional
  * parameter sort_flags, for details
  * see sort.
@@ -457,7 +461,7 @@ function asort(array &$array, int $flags = SORT_REGULAR) {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * You may modify the behavior of the sort using the optional parameter
  * sort_flags, for details see
  * sort.
@@ -472,7 +476,7 @@ function arsort(array &$array, int $flags = SORT_REGULAR) {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * The optional second parameter sort_flags
  * may be used to modify the sorting behavior using these values.
  * </p>
@@ -490,7 +494,7 @@ function sort(array &$array, int $flags = SORT_REGULAR) {}
  * @param array &$array <p>
  * The input array.
  * </p>
- * @param int $flags <p>
+ * @param _SortFlagsArgSet $flags <p>
  * You may modify the behavior of the sort using the optional
  * parameter sort_flags, for details see
  * sort.
@@ -640,7 +644,7 @@ function array_walk_recursive(object|array &$array, callable $callback, mixed $a
  * Please see the {@see Array} section of the manual for a detailed explanation of how arrays are implemented and used in PHP.</p>
  * @link https://php.net/manual/en/function.count.php
  * @param array|Countable $value The array or the object.
- * @param int $mode [optional] If the optional mode parameter is set to
+ * @param COUNT_NORMAL|COUNT_RECURSIVE $mode [optional] If the optional mode parameter is set to
  * COUNT_RECURSIVE (or 1), count
  * will recursively count the array. This is particularly useful for
  * counting all the elements of a multidimensional array. count does not detect infinite recursion.

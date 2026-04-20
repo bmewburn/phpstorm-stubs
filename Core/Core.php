@@ -9,6 +9,11 @@ use __IDE\StubsElementAvailable;
 use __IDE\Pure;
 
 /**
+ * @type-alias _ErrorLevelsArgSet = E_ALL | E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_STRICT | E_RECOVERABLE_ERROR | E_DEPRECATED | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR | E_USER_WARNING | E_USER_NOTICE | E_USER_DEPRECATED
+ * @type-alias _UserErrorLevelsArgSet = E_USER_NOTICE | E_USER_WARNING | E_USER_ERROR | E_USER_DEPRECATED
+ */
+
+/**
  * Gets the version of the current Zend engine
  * @link https://php.net/manual/en/function.zend-version.php
  * @return string the Zend Engine version number, as a string.
@@ -203,7 +208,7 @@ function each(&$array): array {}
 /**
  * Sets which PHP errors are reported
  * @link https://php.net/manual/en/function.error-reporting.php
- * @param int|null $error_level [optional] <p>
+ * @param _ErrorLevelsArgSet|null $error_level [optional] <p>
  * The new error_reporting
  * level. It takes on either a bitmask, or named constants. Using named
  * constants is strongly encouraged to ensure compatibility for future
@@ -627,7 +632,7 @@ function get_class_methods(object|string $object_or_class): array {}
  * characters in length. Any additional characters beyond 1024 will be
  * truncated.
  * </p>
- * @param int $error_level [optional] <p>
+ * @param _UserErrorLevelsArgSet $error_level [optional] <p>
  * The designated error type for this error. It only works with the E_USER
  * family of constants, and will default to <b>E_USER_NOTICE</b>.
  * </p>
@@ -641,7 +646,7 @@ function trigger_error(string $message, int $error_level = E_USER_NOTICE) {}
  * Alias of <b>trigger_error</b>
  * @link https://php.net/manual/en/function.user-error.php
  * @param string $message
- * @param int $error_level [optional]
+ * @param _UserErrorLevelsArgSet $error_level [optional]
  * @return bool This function returns false if wrong <i>error_type</i> is
  * specified, true otherwise.
  */
@@ -839,7 +844,7 @@ function get_loaded_extensions(bool $zend_extensions = false): array {}
 /**
  * Find out whether an extension is loaded
  * @link https://php.net/manual/en/function.extension-loaded.php
- * @param string $extension <p>
+ * @param 'amqp'|'apache'|'apc'|'apd'|'bbcode'|'bcmath'|'bcompiler'|'bz2'|'cairo'|'calendar'|'chdb'|'classkit'|'com'|'crack'|'ctype'|'cubrid'|'curl'|'cyrus'|'dba'|'dbase'|'dbplus'|'dbx'|'dio'|'dom'|'dotnet'|'eio'|'enchant'|'ev'|'event'|'exif'|'expect'|'fam'|'fbsql'|'fdf'|'fileinfo'|'filepro'|'filter'|'fribidi'|'ftp'|'gearman'|'gender'|'geoip'|'gettext'|'gmagick'|'gmp'|'gnupg'|'gupnp'|'haru'|'htscanner'|'pecl_http'|'hyperwave'|'hwapi'|'interbase'|'ibm_db2'|'iconv'|'id3'|'informix'|'iisfunc'|'gd'|'imagick'|'imap'|'include'|'ingres'|'inotify'|'intl'|'java'|'json'|'judy'|'kadm5'|'ktaglib'|'lapack'|'ldap'|'libevent'|'libxml'|'lua'|'lzf'|'mailparse'|'maxdb'|'mbstring'|'mcrypt'|'mcve'|'memcache'|'memcached'|'memtrack'|'mhash'|'ming'|'mnogosearch'|'mongo'|'mqseries'|'msession'|'msql'|'mssql'|'mysql'|'mysqli'|'mysqlnd'|'mysqlnd_memcache'|'mysqlnd_ms'|'mysqlnd_mux'|'mysqlnd_qc'|'mysqlnd_uh'|'ncurses'|'net_gopher'|'newt'|'notes'|'nsapi'|'oauth'|'oci8'|'oggvorbis'|'openal'|'openssl'|'ovrimos'|'paradox'|'parsekit'|'pcntl'|'pcre'|'pdflib'|'pdo'|'pdo_4d'|'pdo_cubrid'|'pdo_dblib'|'pdo_firebird'|'pdo_ibm'|'pdo_informix'|'pdo_mysql'|'pdo_oci'|'pdo_odbc'|'pdo_pgsql'|'pdo_sqlite'|'pdo_sqlsrv'|'phar'|'posix'|'printer'|'proctitle'|'ps'|'pspell'|'pthreads'|'qtdom'|'quickhash'|'radius'|'rar'|'readline'|'recode'|'rpmreader'|'rrd'|'runkit'|'sam'|'sca'|'scream'|'sca_sdo'|'sysvmsg'|'session'|'session_pgsql'|'shmop'|'simplexml'|'snmp'|'soap'|'sockets'|'solr'|'sphinx'|'spl_types'|'spplus'|'sqlite'|'sqlite3'|'sqlsrv'|'ssdeep'|'ssh2'|'stats'|'stomp'|'svm'|'svn'|'swf'|'swish'|'sybase'|'taint'|'tcpwrap'|'tidy'|'tokenizer'|'tokyo_tyrant'|'trader'|'odbc'|'v8js'|'varnish'|'vpopmail'|'w32api'|'wddx'|'weakref'|'win32ps'|'win32service'|'wincache'|'xattr'|'xdiff'|'xhprof'|'xml'|'xmlreader'|'xmlrpc'|'xmlwriter'|'xsl'|'xslt'|'yaf'|'yaml'|'yaz'|'zip'|'zlib' $extension <p>
  * The extension name.
  * </p>
  * <p>
@@ -948,7 +953,7 @@ function get_defined_constants(bool $categorize = false): array {}
 /**
  * Generates a backtrace
  * @link https://php.net/manual/en/function.debug-backtrace.php
- * @param int $options [optional] <p>
+ * @param DEBUG_BACKTRACE_PROVIDE_OBJECT|DEBUG_BACKTRACE_IGNORE_ARGS $options [optional] <p>
  * As of 5.3.6, this parameter is a bitmask for the following options:</p>
  * <b>debug_backtrace</b> options
  * <table>
@@ -1049,7 +1054,7 @@ function debug_backtrace(int $options = DEBUG_BACKTRACE_PROVIDE_OBJECT, int $lim
 /**
  * Prints a backtrace
  * @link https://php.net/manual/en/function.debug-print-backtrace.php
- * @param int $options [optional] <p>
+ * @param DEBUG_BACKTRACE_IGNORE_ARGS $options [optional] <p>
  * As of 5.3.6, this parameter is a bitmask for the following options:
  * <b>debug_print_backtrace</b> options
  * <table>

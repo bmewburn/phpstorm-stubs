@@ -157,7 +157,7 @@ function jddayofweek(int $julian_day, int $mode = CAL_DOW_DAYNO): string|int {}
  * Returns a month name
  * @link https://php.net/manual/en/function.jdmonthname.php
  * @param int $julian_day
- * @param int $mode
+ * @param CAL_MONTH_GREGORIAN_SHORT|CAL_MONTH_GREGORIAN_LONG|CAL_MONTH_JULIAN_SHORT|CAL_MONTH_JULIAN_LONG|CAL_MONTH_JEWISH|CAL_MONTH_FRENCH $mode
  * @return string The month name for the given Julian Day and <i>calendar</i>.
  */
 function jdmonthname(int $julian_day, int $mode): string {}

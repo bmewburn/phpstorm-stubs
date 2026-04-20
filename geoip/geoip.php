@@ -7,7 +7,7 @@ use __IDE\Pure;
  * (PECL geoip &gt;= 0.2.0)<br/>
  * Get GeoIP Database information
  * @link https://php.net/manual/en/function.geoip-database-info.php
- * @param int $database [optional] <p>
+ * @param GEOIP_COUNTRY_EDITION|GEOIP_REGION_EDITION_REV0|GEOIP_CITY_EDITION_REV0|GEOIP_ORG_EDITION|GEOIP_ISP_EDITION|GEOIP_CITY_EDITION_REV1|GEOIP_REGION_EDITION_REV1|GEOIP_PROXY_EDITION|GEOIP_ASNUM_EDITION|GEOIP_NETSPEED_EDITION|GEOIP_DOMAIN_EDITION $database [optional] <p>
  * The database type as an integer. You can use the
  * various constants defined with
  * this extension (ie: GEOIP_*_EDITION).

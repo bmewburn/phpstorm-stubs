@@ -46,7 +46,7 @@ class V8Js
      * A time limit (milliseconds) and/or memory limit (bytes) can be provided to restrict execution. These options will throw a V8JsTimeLimitException or V8JsMemoryLimitException.
      * @param string $script
      * @param string $identifier
-     * @param int $flags
+     * @param \V8Js::FLAG_NONE|\V8Js::FLAG_FORCE_ARRAY|\V8Js::FLAG_PROPAGATE_PHP_EXCEPTIONS $flags
      * @param int $time_limit in milliseconds
      * @param int $memory_limit in bytes
      * @return mixed
@@ -65,7 +65,7 @@ class V8Js
      * Executes a precompiled script in object's context.
      * A time limit (milliseconds) and/or memory limit (bytes) can be provided to restrict execution. These options will throw a V8JsTimeLimitException or V8JsMemoryLimitException.
      * @param resource $script
-     * @param int $flags
+     * @param \V8Js::FLAG_NONE|\V8Js::FLAG_FORCE_ARRAY|\V8Js::FLAG_PROPAGATE_PHP_EXCEPTIONS $flags
      * @param int $time_limit
      * @param int $memory_limit
      */

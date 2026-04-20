@@ -7,6 +7,10 @@ use __IDE\LanguageLevelTypeAware;
 use __IDE\StubsElementAvailable;
 
 /**
+ * @type-alias _PgResultTypesArgSet = PGSQL_ASSOC | PGSQL_NUM | PGSQL_BOTH
+ */
+
+/**
  * Open a PostgreSQL connection
  * @link https://php.net/manual/en/function.pg-connect.php
  * @param string $connection_string <p>
@@ -642,7 +646,7 @@ function pg_fetch_assoc(#[LanguageLevelTypeAware(['8.1' => 'PgSql\Result'], defa
  * Row number in result to fetch. Rows are numbered from 0 upwards. If
  * omitted or <b>NULL</b>, the next row is fetched.
  * </p>
- * @param int $mode [optional] <p>
+ * @param _PgResultTypesArgSet $mode [optional] <p>
  * An optional parameter that controls
  * how the returned array is indexed.
  * <i>result_type</i> is a constant and can take the
@@ -707,7 +711,7 @@ function pg_fetch_object(
  * <b>pg_query_params</b> or <b>pg_execute</b>
  * (among others).
  * </p>
- * @param int $mode [optional] <p>
+ * @param _PgResultTypesArgSet $mode [optional] <p>
  * An optional parameter that controls
  * how the returned array is indexed.
  * <i>result_type</i> is a constant and can take the
@@ -1781,7 +1785,7 @@ function pg_delete(
  * An array whose keys are field names in the table <i>table_name</i>,
  * and whose values are the conditions that a row must meet to be retrieved.
  * </p>
- * @param int $flags [optional] <p>
+ * @param PGSQL_CONV_FORCE_NULL|PGSQL_DML_NO_CONV|PGSQL_DML_EXEC|PGSQL_DML_ASYNC|PGSQL_DML_STRING $flags [optional] <p>
  * Any number of <b>PGSQL_CONV_FORCE_NULL</b>,
  * <b>PGSQL_DML_NO_CONV</b>,
  * <b>PGSQL_DML_EXEC</b>,
@@ -1789,7 +1793,7 @@ function pg_delete(
  * <b>PGSQL_DML_STRING</b> combined. If <b>PGSQL_DML_STRING</b> is part of the
  * <i>options</i> then query string is returned.
  * </p>
- * @param int $mode [optional] <p>
+ * @param _PgResultTypesArgSet $mode [optional] <p>
  * An optional parameter that controls
  * how the returned array is indexed.
  * <i>result_type</i> is a constant and can take the

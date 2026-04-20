@@ -2210,7 +2210,7 @@ function image2wbmp($image, $filename = null, $threshold = null) {}
  * Set the alpha blending flag to use the bundled libgd layering effects
  * @link https://php.net/manual/en/function.imagelayereffect.php
  * @param resource|GdImage $image
- * @param int $effect <p>
+ * @param IMG_EFFECT_REPLACE|IMG_EFFECT_ALPHABLEND|IMG_EFFECT_NORMAL|IMG_EFFECT_OVERLAY|IMG_EFFECT_MULTIPLY $effect <p>
  * One of the following constants:
  * IMG_EFFECT_REPLACE
  * Use pixel replacement (equivalent of passing true to
@@ -3073,7 +3073,7 @@ function imagecrop(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] 
  * @param resource|GdImage $image <p>
  * An image resource, returned by one of the image creation functions, such as {@link https://secure.php.net/manual/en/function.imagecreatetruecolor.php imagecreatetruecolor()}.
  * </p>
- * @param int $mode [optional] <p>
+ * @param IMG_CROP_BLACK|IMG_CROP_DEFAULT|IMG_CROP_SIDES|IMG_CROP_THRESHOLD|IMG_CROP_TRANSPARENT|IMG_CROP_WHITE $mode [optional] <p>
  * One of <b>IMG_CROP_*</b> constants.
  * </p>
  * @param float $threshold [optional] <p>

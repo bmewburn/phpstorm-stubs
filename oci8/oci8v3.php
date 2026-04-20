@@ -53,7 +53,7 @@ class OCILob
      * (PHP 5, PECL OCI8 &gt;= 1.1.0)<br/>
      * Flushes/writes buffer of the LOB to the server
      * @link https://php.net/manual/en/oci-lob.flush.php
-     * @param int $flag [optional] <p>
+     * @param OCI_LOB_BUFFER_FREE $flag [optional] <p>
      * By default, resources are not freed, but using flag
      * <b>OCI_LOB_BUFFER_FREE</b> you can do it explicitly.
      * Be sure you know what you're doing - next read/write operation to the

@@ -39,7 +39,7 @@ function odbc_autocommit($odbc, ?bool $enable = false): int|bool {}
  * ODBC_BINMODE_RETURN. Handling of binary long
  * columns is also affected by <b>odbc_longreadlen</b>.
  * </p>
- * @param int $mode <p>
+ * @param ODBC_BINMODE_PASSTHRU|ODBC_BINMODE_RETURN|ODBC_BINMODE_CONVERT $mode <p>
  * Possible values for <i>mode</i> are:
  * <b>ODBC_BINMODE_PASSTHRU</b>: Passthru BINARY data
  * </p>

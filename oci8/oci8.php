@@ -57,7 +57,7 @@ class OCI_Lob
      * (PHP 5, PECL OCI8 &gt;= 1.1.0)<br/>
      * Flushes/writes buffer of the LOB to the server
      * @link https://php.net/manual/en/oci-lob.flush.php
-     * @param int $flag [optional] <p>
+     * @param OCI_LOB_BUFFER_FREE $flag [optional] <p>
      * By default, resources are not freed, but using flag
      * <b>OCI_LOB_BUFFER_FREE</b> you can do it explicitly.
      * Be sure you know what you're doing - next read/write operation to the
@@ -622,7 +622,7 @@ function oci_field_type_raw($statement, $field) {}
  * @param resource $statement <p>
  * A valid OCI statement identifier.
  * </p>
- * @param int $mode [optional] <p>
+ * @param OCI_COMMIT_ON_SUCCESS|OCI_DESCRIBE_ONLY|OCI_NO_AUTO_COMMIT $mode [optional] <p>
  * An optional second parameter can be one of the following constants:
  * <table>
  * <tr valign="top">

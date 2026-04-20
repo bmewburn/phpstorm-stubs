@@ -518,7 +518,7 @@ class ZMQSocket
      * If <b>ZMQ::MODE_NOBLOCK</b> is used and the operation would block bool false shall be returned.
      * @link https://secure.php.net/manual/en/zmqsocket.recv.php
      * @see ZMQSocket::setSockOpt()
-     * @param int $mode Pass mode flags to receive multipart messages or non-blocking operation. See ZMQ::MODE_* constants.
+     * @param \ZMQ::MODE_DONTWAIT|\ZMQ::MODE_SNDMORE|\ZMQ::MODE_NOBLOCK $mode Pass mode flags to receive multipart messages or non-blocking operation. See ZMQ::MODE_* constants.
      * @return string|false <p>Returns the message. Throws ZMQSocketException in error. If <b>ZMQ::MODE_NOBLOCK</b> is used and the operation would block boolean false shall be returned.</p>
      * @throws ZMQSocketException if receiving fails.
      */

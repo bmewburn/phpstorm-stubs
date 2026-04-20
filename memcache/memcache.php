@@ -162,7 +162,7 @@ class MemcachePool
      * @link https://php.net/manual/en/memcache.add.php
      * @param string $key The key that will be associated with the item.
      * @param mixed $var The variable to store. Strings and integers are stored as is, other types are stored serialized.
-     * @param int $flag [optional] <p>
+     * @param MEMCACHE_COMPRESSED $flag [optional] <p>
      * Use <b>MEMCACHE_COMPRESSED</b> to store the item
      * compressed (uses zlib).
      * </p>
@@ -182,7 +182,7 @@ class MemcachePool
      * @link https://php.net/manual/en/memcache.set.php
      * @param string $key The key that will be associated with the item.
      * @param mixed $var The variable to store. Strings and integers are stored as is, other types are stored serialized.
-     * @param int $flag [optional] Use MEMCACHE_COMPRESSED to store the item compressed (uses zlib).
+     * @param MEMCACHE_COMPRESSED $flag [optional] Use MEMCACHE_COMPRESSED to store the item compressed (uses zlib).
      * @param int $expire [optional] Expiration time of the item. If it's equal to zero, the item will never expire. You can also use Unix timestamp or a number of seconds starting from current time, but in the latter case the number of seconds may not exceed 2592000 (30 days).
      * @return bool Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
@@ -194,7 +194,7 @@ class MemcachePool
      * @link https://php.net/manual/en/memcache.replace.php
      * @param string $key <p>The key that will be associated with the item.</p>
      * @param mixed $var <p>The variable to store. Strings and integers are stored as is, other types are stored serialized.</p>
-     * @param int $flag [optional] <p>Use <b>MEMCACHE_COMPRESSED</b> to store the item compressed (uses zlib).</p>
+     * @param MEMCACHE_COMPRESSED $flag [optional] <p>Use <b>MEMCACHE_COMPRESSED</b> to store the item compressed (uses zlib).</p>
      * @param int $expire [optional] <p>Expiration time of the item. If it's equal to zero, the item will never expire. You can also use Unix timestamp or a number of seconds starting from current time, but in the latter case the number of seconds may not exceed 2592000 (30 days).</p>
      * @return bool Returns TRUE on success or FALSE on failure.
      */

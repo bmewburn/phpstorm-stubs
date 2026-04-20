@@ -682,7 +682,7 @@ class SoapServer
     /**
      * Sets SoapServer persistence mode
      * @link https://php.net/manual/en/soapserver.setpersistence.php
-     * @param int $mode <p>
+     * @param SOAP_PERSISTENCE_REQUEST|SOAP_PERSISTENCE_SESSION $mode <p>
      * One of the SOAP_PERSISTENCE_XXX constants.
      * </p>
      * <p>

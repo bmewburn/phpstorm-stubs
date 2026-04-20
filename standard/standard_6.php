@@ -312,7 +312,7 @@ function stream_filter_remove($stream_filter): bool {}
  * the socket.
  * </p>
  * </p>
- * @param int $flags [optional] <p>
+ * @param STREAM_CLIENT_CONNECT|STREAM_CLIENT_ASYNC_CONNECT|STREAM_CLIENT_PERSISTENT $flags [optional] <p>
  * Bitmask field which may be set to any combination of connection flags.
  * Currently the select of connection flags is limited to
  * STREAM_CLIENT_CONNECT (default),
@@ -368,7 +368,7 @@ function stream_socket_client(string $address, &$error_code, &$error_message, ?f
  * See errno description.
  * </p>
  * @param-out string $error_message
- * @param int $flags [optional] <p>
+ * @param STREAM_SERVER_BIND|STREAM_SERVER_LISTEN $flags [optional] <p>
  * A bitmask field which may be set to any combination of socket creation
  * flags.
  * </p>
@@ -426,7 +426,7 @@ function stream_socket_get_name($socket, bool $remote): string|false {}
  * @param int $length <p>
  * The number of bytes to receive from the socket.
  * </p>
- * @param int $flags <p>
+ * @param STREAM_OOB|STREAM_PEEK $flags <p>
  * The value of flags can be any combination
  * of the following:
  * <table>
@@ -465,7 +465,7 @@ function stream_socket_recvfrom($socket, int $length, int $flags = 0, &$address)
  * @param string $data <p>
  * The data to be sent.
  * </p>
- * @param int $flags <p>
+ * @param STREAM_OOB $flags <p>
  * The value of flags can be any combination
  * of the following:
  * <table>
@@ -517,7 +517,7 @@ function stream_socket_enable_crypto($stream, bool $enable, ?int $crypto_method,
  * An open stream (opened with stream_socket_client,
  * for example)
  * </p>
- * @param int $mode <p>
+ * @param STREAM_SHUT_RD|STREAM_SHUT_WR|STREAM_SHUT_RDWR $mode <p>
  * One of the following constants: STREAM_SHUT_RD
  * (disable further receptions), STREAM_SHUT_WR
  * (disable further transmissions) or
@@ -932,7 +932,7 @@ function stream_get_line($stream, int $length, string $ending = ''): string|fals
  * @param string $class <p>
  * The classname which implements the protocol.
  * </p>
- * @param int $flags <p>
+ * @param STREAM_IS_URL $flags <p>
  * Should be set to STREAM_IS_URL if
  * protocol is a URL protocol. Default is 0, local
  * stream.
@@ -956,7 +956,7 @@ function stream_wrapper_register(string $protocol, string $class, int $flags = 0
  * @param string $class <p>
  * The classname which implements the protocol.
  * </p>
- * @param int $flags [optional] <p>
+ * @param STREAM_IS_URL $flags [optional] <p>
  * Should be set to STREAM_IS_URL if
  * protocol is a URL protocol. Default is 0, local
  * stream.
@@ -1192,7 +1192,7 @@ function realpath(string $path): string|false {}
  * frontend search expression input may be way more convenient for
  * non-programming users.
  * </p>
- * @param int $flags <p>
+ * @param FNM_NOESCAPE|FNM_PATHNAME|FNM_PERIOD|FNM_CASEFOLD $flags <p>
  * The value of flags can be any combination of
  * the following flags, joined with the
  * binary OR (|) operator.

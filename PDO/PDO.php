@@ -1034,7 +1034,7 @@ namespace {
          * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
          * Set an attribute
          * @link https://php.net/manual/en/pdo.setattribute.php
-         * @param int $attribute
+         * @param \PDO::ATTR_CASE|\PDO::ATTR_ERRMODE|\PDO::ATTR_ORACLE_NULLS|\PDO::ATTR_STRINGIFY_FETCHES|\PDO::ATTR_STATEMENT_CLASS|\PDO::ATTR_TIMEOUT|\PDO::ATTR_AUTOCOMMIT|\PDO::ATTR_EMULATE_PREPARES|\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY|\PDO::ATTR_DEFAULT_FETCH_MODE $attribute
          * @param mixed $value
          * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
          * @throws PDOException On error if PDO::ERRMODE_EXCEPTION option is true.
@@ -1087,7 +1087,7 @@ namespace {
          * <p>
          * Data inside the query should be properly escaped.
          * </p>
-         * @param int $fetchMode <p>
+         * @param \PDO::ATTR_FETCH_CATALOG_NAMES|\PDO::ATTR_FETCH_TABLE_NAMES|\PDO::ATTR_DEFAULT_FETCH_MODE|\PDO::ATTR_STRINGIFY_FETCHES $fetchMode <p>
          * The fetch mode must be one of the PDO::FETCH_* constants.
          * </p>
          * @param mixed $arg3 <p>
@@ -1115,7 +1115,7 @@ namespace {
          * <p>
          * Data inside the query should be properly escaped.
          * </p>
-         * @param int|null $fetchMode <p>
+         * @param \PDO::ATTR_FETCH_CATALOG_NAMES|\PDO::ATTR_FETCH_TABLE_NAMES|\PDO::ATTR_DEFAULT_FETCH_MODE|\PDO::ATTR_STRINGIFY_FETCHES|null $fetchMode <p>
          * The fetch mode must be one of the PDO::FETCH_* constants.
          * </p>
          * @param mixed ...$fetch_mode_args <p>
@@ -1548,7 +1548,7 @@ namespace {
          * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
          * Fetches the next row from a result set
          * @link https://php.net/manual/en/pdostatement.fetch.php
-         * @param int $mode [optional] <p>
+         * @param \PDO::FETCH_ASSOC|\PDO::FETCH_BOTH|\PDO::FETCH_BOUND|\PDO::FETCH_CLASS|\PDO::FETCH_INTO|\PDO::FETCH_LAZY|\PDO::FETCH_NAMED|\PDO::FETCH_NUM|\PDO::FETCH_OBJ|\PDO::FETCH_PROPS_LATE $mode [optional] <p>
          * Controls how the next row will be returned to the caller. This value
          * must be one of the PDO::FETCH_* constants,
          * defaulting to value of PDO::ATTR_DEFAULT_FETCH_MODE
@@ -1558,7 +1558,7 @@ namespace {
          * PDO::FETCH_ASSOC: returns an array indexed by column
          * name as returned in your result set
          * </p>
-         * @param int $cursorOrientation [optional] <p>
+         * @param \PDO::FETCH_ORI_NEXT|\PDO::FETCH_ORI_PRIOR|\PDO::FETCH_ORI_FIRST|\PDO::FETCH_ORI_LAST|\PDO::FETCH_ORI_ABS|\PDO::FETCH_ORI_REL $cursorOrientation [optional] <p>
          * For a PDOStatement object representing a scrollable cursor, this
          * value determines which row will be returned to the caller. This value
          * must be one of the PDO::FETCH_ORI_* constants,
@@ -1634,7 +1634,7 @@ namespace {
          * Name of the PHP variable to which the column will be bound.
          * </p>
          * @param-out mixed $var
-         * @param int $type [optional] <p>
+         * @param \PDO::PARAM_NULL|\PDO::PARAM_INT|\PDO::PARAM_STR|\PDO::PARAM_LOB|\PDO::PARAM_STMT|\PDO::PARAM_BOOL|\PDO::PARAM_STR_NATL|\PDO::PARAM_STR_CHAR|\PDO::ATTR_DEFAULT_STR_PARAM|\PDO::PARAM_INPUT_OUTPUT|\PDO::PARAM_EVT_ALLOC|\PDO::PARAM_EVT_FREE|\PDO::PARAM_EVT_EXEC_PRE|\PDO::PARAM_EVT_EXEC_POST|\PDO::PARAM_EVT_FETCH_PRE|\PDO::PARAM_EVT_FETCH_POST|\PDO::PARAM_EVT_NORMALIZE $type [optional] <p>
          * Data type of the parameter, specified by the PDO::PARAM_* constants.
          * </p>
          * @param int $maxLength [optional] <p>
@@ -1951,7 +1951,7 @@ namespace {
          * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
          * Set the default fetch mode for this statement
          * @link https://php.net/manual/en/pdostatement.setfetchmode.php
-         * @param int $mode <p>
+         * @param \PDO::ATTR_FETCH_CATALOG_NAMES|\PDO::ATTR_FETCH_TABLE_NAMES|\PDO::ATTR_DEFAULT_FETCH_MODE|\PDO::ATTR_STRINGIFY_FETCHES $mode <p>
          * The fetch mode must be one of the PDO::FETCH_* constants.
          * </p>
          * @param mixed ...$args <p> Constructor arguments. </p>

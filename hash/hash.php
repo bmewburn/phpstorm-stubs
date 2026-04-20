@@ -7,6 +7,10 @@ use __IDE\StubsElementAvailable;
 use __IDE\Pure;
 
 /**
+ * @type-alias _HashAlgoArgSet = 'md2' | 'md4' | 'md5' | 'sha1' | 'sha224' | 'sha256' | 'sha384' | 'sha512/224' | 'sha512/256' | 'sha512' | 'sha3-224' | 'sha3-256' | 'sha3-384' | 'sha3-512' | 'ripemd128' | 'ripemd160' | 'ripemd256' | 'ripemd320' | 'whirlpool' | 'tiger128,3' | 'tiger160,3' | 'tiger192,3' | 'tiger128,4' | 'tiger160,4' | 'tiger192,4' | 'snefru' | 'snefru256' | 'gost' | 'gost-crypto' | 'haval128,3' | 'haval160,3' | 'haval192,3' | 'haval224,3' | 'haval256,3' | 'haval128,4' | 'haval160,4' | 'haval192,4' | 'haval224,4' | 'haval256,4' | 'haval128,5' | 'haval160,5' | 'haval192,5' | 'haval224,5' | 'haval256,5'
+ */
+
+/**
  * (PHP 5 &gt;= 5.1.2, PECL hash &gt;= 1.1)<br/>
  * Generate a hash value (message digest)
  * @link https://php.net/manual/en/function.hash.php
@@ -63,7 +67,7 @@ function hash_file(string $algo, string $filename, bool $binary = false, #[Stubs
  * (PHP 5 &gt;= 5.1.2, PECL hash &gt;= 1.1)<br/>
  * Generate a keyed hash value using the HMAC method
  * @link https://php.net/manual/en/function.hash-hmac.php
- * @param string $algo <p>
+ * @param _HashAlgoArgSet $algo <p>
  * Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..) See <b>hash_algos</b> for a list of supported algorithms.<br/>
  * Since 7.2.0 usage of non-cryptographic hash functions (adler32, crc32, crc32b, fnv132, fnv1a32, fnv164, fnv1a64, joaat) was disabled.
  * </p>
@@ -88,7 +92,7 @@ function hash_hmac(string $algo, string $data, string $key, bool $binary = false
  * (PHP 5 &gt;= 5.1.2, PECL hash &gt;= 1.1)<br/>
  * Generate a keyed hash value using the HMAC method and the contents of a given file
  * @link https://php.net/manual/en/function.hash-hmac-file.php
- * @param string $algo <p>
+ * @param _HashAlgoArgSet $algo <p>
  * Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..) See <b>hash_algos</b> for a list of supported algorithms.<br/>
  * Since 7.2.0 usage of non-cryptographic hash functions (adler32, crc32, crc32b, fnv132, fnv1a32, fnv164, fnv1a64, joaat) was disabled.
  * </p>
@@ -113,7 +117,7 @@ function hash_hmac_file(string $algo, string $filename, string $key, bool $binar
  * (PHP 5 &gt;= 5.1.2, PECL hash &gt;= 1.1)<br/>
  * Initialize an incremental hashing context
  * @link https://php.net/manual/en/function.hash-init.php
- * @param string $algo <p>
+ * @param _HashAlgoArgSet $algo <p>
  * Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..). For a list of supported algorithms see <b>hash_algos</b>.<br/>
  * Since 7.2.0 usage of non-cryptographic hash functions (adler32, crc32, crc32b, fnv132, fnv1a32, fnv164, fnv1a64, joaat) was disabled.
  * </p>
@@ -260,7 +264,7 @@ function hash_hmac_algos(): array {}
 /**
  * Generate a PBKDF2 key derivation of a supplied password
  * @link https://php.net/manual/en/function.hash-pbkdf2.php
- * @param string $algo <p>
+ * @param _HashAlgoArgSet $algo <p>
  * Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..) See <b>hash_algos</b> for a list of supported algorithms.<br/>
  * Since 7.2.0 usage of non-cryptographic hash functions (adler32, crc32, crc32b, fnv132, fnv1a32, fnv164, fnv1a64, joaat) was disabled.
  * </p>

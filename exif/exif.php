@@ -11,7 +11,7 @@ use __IDE\Deprecated;
  * Since 7.2.0 this can either be a path to the file (stream wrappers are also supported as usual)
  * or a stream resource.
  * </p>
- * @param string|null $required_sections [optional] <p>
+ * @param 'FILE'|'COMPUTED'|'ANY_TAG'|'IFD0'|'THUMBNAIL'|'COMMENT'|'EXIF'|null $required_sections [optional] <p>
  * Is a comma separated list of sections that need to be present in file
  * to produce a result array. If none of the requested
  * sections could be found the return value is <b>FALSE</b>.

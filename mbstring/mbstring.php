@@ -9,18 +9,22 @@ use __IDE\StubsElementAvailable;
 use __IDE\Pure;
 
 /**
+ * @type-alias _EncodingsArgSet = 'BASE64' | 'UUENCODE' | 'HTML-ENTITIES' | 'Quoted-Printable' | '7bit' | '8bit' | 'UCS-4' | 'UCS-4BE' | 'UCS-4LE' | 'UCS-2' | 'UCS-2BE' | 'UCS-2LE' | 'UTF-32' | 'UTF-32BE' | 'UTF-32LE' | 'UTF-16' | 'UTF-16BE' | 'UTF-16LE' | 'UTF-8' | 'UTF-7' | 'UTF7-IMAP' | 'ASCII' | 'EUC-JP' | 'SJIS' | 'eucJP-win' | 'EUC-JP-2004' | 'SJIS-Mobile#DOCOMO' | 'SJIS-Mobile#KDDI' | 'SJIS-Mobile#SOFTBANK' | 'SJIS-mac' | 'SJIS-2004' | 'UTF-8-Mobile#DOCOMO' | 'UTF-8-Mobile#KDDI-A' | 'UTF-8-Mobile#KDDI-B' | 'UTF-8-Mobile#SOFTBANK' | 'CP932' | 'CP51932' | 'JIS' | 'ISO-2022-JP' | 'ISO-2022-JP-MS' | 'GB18030' | 'Windows-1252' | 'Windows-1254' | 'ISO-8859-1' | 'ISO-8859-2' | 'ISO-8859-3' | 'ISO-8859-4' | 'ISO-8859-5' | 'ISO-8859-6' | 'ISO-8859-7' | 'ISO-8859-8' | 'ISO-8859-9' | 'ISO-8859-10' | 'ISO-8859-13' | 'ISO-8859-14' | 'ISO-8859-15' | 'ISO-8859-16' | 'EUC-CN' | 'CP936' | 'HZ' | 'EUC-TW' | 'BIG-5' | 'BIG5' | 'BIG5-HKSCS' | 'CP950' | 'EUC-KR' | 'UHC' | 'ISO-2022-KR' | 'Windows-1251' | 'CP866' | 'KOI8-R' | 'KOI8-U' | 'ArmSCII-8' | 'CP850' | 'ISO-2022-JP-2004' | 'ISO-2022-JP-MOBILE#KDDI' | 'CP50220' | 'CP50221' | 'CP50222' | 'HTML' | 'html' | 'qprint' | 'binary' | 'ISO-10646-UCS-4' | 'UCS4' | 'byte4be' | 'byte4le' | 'ISO-10646-UCS-2' | 'UCS2' | 'UNICODE' | 'byte2be' | 'byte2le' | 'utf32' | 'utf16' | 'utf8' | 'utf7' | 'mUTF-7' | 'ANSI_X3.4-1968' | 'iso-ir-6' | 'ANSI_X3.4-1986' | 'ISO_646.irv:1991' | 'US-ASCII' | 'ISO646-US' | 'us' | 'IBM367' | 'IBM-367' | 'cp367' | 'csASCII' | 'EUC' | 'EUC_JP' | 'eucJP' | 'x-euc-jp' | 'x-sjis' | 'SHIFT-JIS' | 'Shift_JIS' | 'eucJP-open' | 'eucJP-ms' | 'EUC_JP-2004' | 'SJIS-DOCOMO' | 'shift_jis-imode' | 'x-sjis-emoji-docomo' | 'SJIS-KDDI' | 'shift_jis-kddi' | 'x-sjis-emoji-kddi' | 'SJIS-SOFTBANK' | 'shift_jis-softbank' | 'x-sjis-emoji-softbank' | 'MacJapanese' | 'MacRoman' | 'x-Mac-Japanese' | 'SJIS2004' | 'Shift_JIS-2004' | 'UTF-8-DOCOMO' | 'UTF8-DOCOMO' | 'UTF-8-Mobile#KDDI' | 'UTF-8-KDDI' | 'UTF8-KDDI' | 'UTF-8-SOFTBANK' | 'UTF8-SOFTBANK' | 'MS932' | 'Windows-31J' | 'MS_Kanji' | 'SJIS-win' | 'SJIS-ms' | 'SJIS-open' | 'cp51932' | 'ISO2022JPMS' | 'gb-18030' | 'gb-18030-2000' | 'cp1252' | 'CP1254' | 'CP-1254' | 'WINDOWS-1254' | 'ISO8859-1' | 'latin1' | 'ISO8859-2' | 'latin2' | 'ISO8859-3' | 'latin3' | 'ISO8859-4' | 'latin4' | 'ISO8859-5' | 'cyrillic' | 'ISO8859-6' | 'arabic' | 'ISO8859-7' | 'greek' | 'ISO8859-8' | 'hebrew' | 'ISO8859-9' | 'latin5' | 'ISO8859-10' | 'latin6' | 'ISO8859-13' | 'ISO8859-14' | 'latin8' | 'ISO8859-15' | 'ISO8859-16' | 'CN-GB' | 'EUC_CN' | 'eucCN' | 'x-euc-cn' | 'gb2312' | 'CP-936' | 'GBK' | 'EUC_TW' | 'eucTW' | 'x-euc-tw' | 'CN-BIG5' | 'BIG-FIVE' | 'BIGFIVE' | 'EUC_KR' | 'eucKR' | 'x-euc-kr' | 'CP949' | 'CP1251' | 'CP-1251' | 'WINDOWS-1251' | 'CP-866' | 'IBM866' | 'IBM-866' | 'KOI8R' | 'KOI8U' | 'ArmSCII8' | 'ARMSCII-8' | 'ARMSCII8' | 'CP-850' | 'IBM850' | 'IBM-850' | 'ISO-2022-JP-KDDI' | 'cp50220raw' | 'cp50220-raw' | 'JIS-ms'
+ */
+
+/**
  * Perform case folding on a string
  * @link https://php.net/manual/en/function.mb-convert-case.php
  * @param string $string <p>
  * The string being converted.
  * </p>
- * @param int $mode <p>
+ * @param MB_CASE_UPPER|MB_CASE_LOWER|MB_CASE_TITLE|MB_CASE_FOLD|MB_CASE_UPPER_SIMPLE|MB_CASE_LOWER_SIMPLE|MB_CASE_TITLE_SIMPLE|MB_CASE_FOLD_SIMPLE $mode <p>
  * The mode of the conversion. It can be one of
  * MB_CASE_UPPER,
  * MB_CASE_LOWER, or
  * MB_CASE_TITLE.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string A case folded version of string converted in the
  * way specified by mode.
  */
@@ -33,7 +37,7 @@ function mb_convert_case(string $string, int $mode, ?string $encoding): string {
  * @param string $string <p>
  * The string being uppercased.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string str with all alphabetic characters converted to uppercase.
  */
 #[Pure]
@@ -45,7 +49,7 @@ function mb_strtoupper(string $string, ?string $encoding): string {}
  * @param string $string <p>
  * The string being lowercased.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string str with all alphabetic characters converted to lowercase.
  */
 #[Pure]
@@ -54,7 +58,7 @@ function mb_strtolower(string $string, ?string $encoding): string {}
 /**
  * Set/Get current language
  * @link https://php.net/manual/en/function.mb-language.php
- * @param string|null $language [optional] <p>
+ * @param 'Japanese'|'ja'|'English'|'en'|'uni'|null $language [optional] <p>
  * Used for encoding
  * e-mail messages. Valid languages are "Japanese",
  * "ja","English","en" and "uni"
@@ -78,7 +82,7 @@ function mb_language(?string $language): string|bool {}
 /**
  * Set/Get internal character encoding
  * @link https://php.net/manual/en/function.mb-internal-encoding.php
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * encoding is the character encoding name
  * used for the HTTP input character encoding conversion, HTTP output
  * character encoding conversion, and the default character encoding
@@ -110,7 +114,7 @@ function mb_http_input(?string $type): array|string|false {}
 /**
  * Set/Get HTTP output character encoding
  * @link https://php.net/manual/en/function.mb-http-output.php
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * If encoding is set,
  * mb_http_output sets the HTTP output character
  * encoding to encoding.
@@ -130,7 +134,7 @@ function mb_http_output(?string $encoding): string|bool {}
 /**
  * Set/Get character encoding detection order
  * @link https://php.net/manual/en/function.mb-detect-order.php
- * @param array|string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|array|null $encoding [optional] <p>
  * encoding_list is an array or
  * comma separated list of character encoding. ("auto" is expanded to
  * "ASCII, JIS, UTF-8, EUC-JP, SJIS")
@@ -237,7 +241,7 @@ function mb_output_handler(string $string, int $status): string {}
 /**
  * Get MIME charset string
  * @link https://php.net/manual/en/function.mb-preferred-mime-name.php
- * @param string $encoding <p>
+ * @param _EncodingsArgSet $encoding <p>
  * The encoding being checked.
  * </p>
  * @return string|false The MIME charset string for character encoding
@@ -252,7 +256,7 @@ function mb_preferred_mime_name(string $encoding): string|false {}
  * @param string $string <p>
  * The string being checked for length.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int|false the number of characters in
  * string str having character encoding
  * encoding. A multi-byte character is
@@ -274,7 +278,7 @@ function mb_strlen(string $string, #[LanguageLevelTypeAware(['8.0' => 'string|nu
  * @param int<0,max> $offset [optional] <p>
  * The search offset. If it is not specified, 0 is used.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int<0,max>|false the numeric position of
  * the first occurrence of needle in the
  * haystack string. If
@@ -296,7 +300,7 @@ function mb_strpos(string $haystack, string $needle, int $offset = 0, ?string $e
  * @param int $offset [optional] May be specified to begin searching an arbitrary number of characters into
  * the string. Negative values will stop searching at an arbitrary point
  * prior to the end of the string.
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int|false the numeric position of
  * the last occurrence of needle in the
  * haystack string. If
@@ -319,7 +323,7 @@ function mb_strrpos(string $haystack, string $needle, int $offset = 0, ?string $
  * The position in haystack
  * to start searching
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>
@@ -374,7 +378,7 @@ function mb_strripos(string $haystack, string $needle, int $offset = 0, ?string 
  * If set to false, it returns all of haystack
  * from the first occurrence of needle to the end,
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>
@@ -402,7 +406,7 @@ function mb_strstr(string $haystack, string $needle, bool $before_needle = false
  * If set to false, it returns all of haystack
  * from the last occurrence of needle to the end,
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>
@@ -430,7 +434,7 @@ function mb_strrchr(string $haystack, string $needle, bool $before_needle = fals
  * If set to false, it returns all of haystack
  * from the first occurrence of needle to the end,
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>
@@ -458,7 +462,7 @@ function mb_stristr(string $haystack, string $needle, bool $before_needle = fals
  * If set to false, it returns all of haystack
  * from the last occurrence of needle to the end,
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>
@@ -477,7 +481,7 @@ function mb_strrichr(string $haystack, string $needle, bool $before_needle = fal
  * @param string $needle <p>
  * The string being found.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int The number of times the
  * needle substring occurs in the
  * haystack string.
@@ -497,7 +501,7 @@ function mb_substr_count(string $haystack, string $needle, ?string $encoding): i
  * @param int|null $length [optional] <p>
  * The maximum length of the returned string.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string mb_substr returns the portion of
  * str specified by the
  * start and
@@ -518,7 +522,7 @@ function mb_substr(string $string, int $start, ?int $length, ?string $encoding):
  * @param int|null $length [optional] <p>
  * The string being decoded.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string mb_strcut returns the portion of
  * str specified by the
  * start and
@@ -533,7 +537,7 @@ function mb_strcut(string $string, int $start, ?int $length, ?string $encoding):
  * @param string $string <p>
  * The string being decoded.
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int The width of string str.
  */
 #[Pure]
@@ -569,10 +573,10 @@ function mb_strimwidth(string $string, int $start, int $width, string $trim_mark
  * @param string|array $string <p>
  * The string being encoded.
  * </p>
- * @param string $to_encoding <p>
+ * @param _EncodingsArgSet $to_encoding <p>
  * The type of encoding that str is being converted to.
  * </p>
- * @param string|string[]|null $from_encoding [optional] <p>
+ * @param _EncodingsArgSet|string[]|null $from_encoding [optional] <p>
  * Is specified by character code names before conversion. It is either
  * an array, or a comma separated enumerated list.
  * If from_encoding is not specified, the internal
@@ -593,7 +597,7 @@ function mb_convert_encoding(array|string $string, string $to_encoding, array|st
  * @param string $string <p>
  * The string being detected.
  * </p>
- * @param string|string[]|null $encodings [optional] <p>
+ * @param _EncodingsArgSet|string[]|null $encodings [optional] <p>
  * encoding_list is list of character
  * encoding. Encoding order may be specified by array or comma
  * separated list string.
@@ -623,7 +627,7 @@ function mb_list_encodings(): array {}
 
 /**
  * Get aliases of a known encoding type
- * @param string $encoding The encoding type being checked, for aliases.
+ * @param _EncodingsArgSet $encoding The encoding type being checked, for aliases.
  * @return string[]|false a numerically indexed array of encoding aliases on success, or FALSE on failure
  * @link https://php.net/manual/en/function.mb-encoding-aliases.php
  */
@@ -741,7 +745,7 @@ function mb_encoding_aliases(string $encoding) {}
  * </tr>
  * </table>
  * </p>
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string The converted string.
  */
 #[Pure]
@@ -833,7 +837,7 @@ function mb_convert_variables(
  * convmap is array specifies code area to
  * convert.
  * </p>
- * @param null|string $encoding
+ * @param _EncodingsArgSet|null $encoding
  * @param bool $hex [optional]
  * @return string The converted string.
  */
@@ -850,7 +854,7 @@ function mb_encode_numericentity(string $string, array $map, ?string $encoding =
  * convmap is an array that specifies
  * the code area to convert.
  * </p>
- * @param null|string $encoding
+ * @param _EncodingsArgSet|null $encoding
  * @param bool $is_hex [optional] <p>
  * this parameter is not used.
  * </p>
@@ -948,7 +952,7 @@ function mb_get_info(string $type = 'all') {}
  * The byte stream to check. If it is omitted, this function checks
  * all the input from the beginning of the request.
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * The expected encoding.
  * </p>
  * @return bool true on success or false on failure.
@@ -960,7 +964,7 @@ function mb_check_encoding(array|string|null $value = null, ?string $encoding): 
 /**
  * Returns current encoding for multibyte regex as string
  * @link https://php.net/manual/en/function.mb-regex-encoding.php
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return bool|string If encoding is set, then Returns TRUE on success
  * or FALSE on failure. In this case, the internal character encoding
  * is NOT changed. If encoding is omitted, then the current character
@@ -1376,7 +1380,7 @@ function mbereg_search_getpos() {}
  * Get a specific character.
  * @link https://www.php.net/manual/en/function.mb-chr.php
  * @param int $codepoint
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string|false specific character or FALSE on failure.
  * @since 7.2
  */
@@ -1387,7 +1391,7 @@ function mb_chr(int $codepoint, ?string $encoding): string|false {}
  * Get code point of character
  * @link https://www.php.net/manual/en/function.mb-ord.php
  * @param string $string
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return int|false code point of character or FALSE on failure.
  * @since 7.2
  */
@@ -1398,7 +1402,7 @@ function mb_ord(string $string, ?string $encoding): int|false {}
  * Scrub broken multibyte strings.
  * @link https://www.php.net/manual/en/function.mb-scrub.php
  * @param string $string
- * @param string|null $encoding [optional]
+ * @param _EncodingsArgSet|null $encoding [optional]
  * @return string|false
  * @since 7.2
  */
@@ -1422,7 +1426,7 @@ function mbereg_search_setpos($position) {}
  * @param int $length [optional] <p>
  * If specified, each element of the returned array will be composed of multiple characters instead of a single character.
  * </p>
- * @param string|null $encoding [optional] <p>
+ * @param _EncodingsArgSet|null $encoding [optional] <p>
  * Character encoding name to use.
  * If it is omitted, internal character encoding is used.
  * </p>

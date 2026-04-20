@@ -624,7 +624,7 @@ function socket_bind(Socket $socket, string $address, int $port = 0): bool {}
  * @param int $length <p>
  * Up to <i>len</i> bytes will be fetched from remote host.
  * </p>
- * @param int $flags <p>
+ * @param MSG_OOB|MSG_PEEK|MSG_WAITALL|MSG_DONTWAIT $flags <p>
  * The value of <i>flags</i> can be any combination of
  * the following flags, joined with the binary OR (|)
  * operator.
@@ -685,7 +685,7 @@ function socket_recv(Socket $socket, &$data, int $length, int $flags): int|false
  * The number of bytes that will be sent to the remote host from
  * <i>buf</i>.
  * </p>
- * @param int $flags <p>
+ * @param MSG_OOB|MSG_EOR|MSG_EOF|MSG_DONTROUTE $flags <p>
  * The value of <i>flags</i> can be any combination of
  * the following flags, joined with the binary OR (|)
  * operator.
@@ -754,7 +754,7 @@ function socket_sendmsg(
  * @param int $length <p>
  * Up to <i>len</i> bytes will be fetched from remote host.
  * </p>
- * @param int $flags <p>
+ * @param MSG_OOB|MSG_PEEK|MSG_WAITALL|MSG_DONTWAIT $flags <p>
  * The value of <i>flags</i> can be any combination of
  * the following flags, joined with the binary OR (|)
  * operator.
@@ -844,7 +844,7 @@ function socket_recvmsg(
  * <i>len</i> bytes from <i>buf</i> will be
  * sent.
  * </p>
- * @param int $flags <p>
+ * @param MSG_OOB|MSG_EOR|MSG_EOF|MSG_DONTROUTE $flags <p>
  * The value of <i>flags</i> can be any combination of
  * the following flags, joined with the binary OR (|)
  * operator.

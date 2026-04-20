@@ -20,7 +20,7 @@ namespace {
      * @param int|null $seed <p>
      * An optional seed value
      * </p>
-     * @param int $mode [optional] <p>
+     * @param MT_RAND_MT19937|MT_RAND_PHP $mode [optional] <p>
      * Use one of the following constants to specify the implementation of the algorithm to use.
      * </p>
      * @return void
@@ -39,7 +39,7 @@ namespace {
      * @param int|null $seed <p>
      * Optional seed value
      * </p>
-     * @param int $mode [optional] <p>
+     * @param MT_RAND_MT19937|MT_RAND_PHP $mode [optional] <p>
      * Use one of the following constants to specify the implementation of the algorithm to use.
      * </p>
      * @return void

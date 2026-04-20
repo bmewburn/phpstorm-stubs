@@ -7,6 +7,11 @@ use __IDE\LanguageLevelTypeAware;
 use __IDE\StubsElementAvailable;
 
 /**
+ * @type-alias _SessionCacheLimitersArgSet = 'public' | 'private_no_expire' | 'private' | 'nocache'
+ * @type-alias _SessionModuleNamesArgSet = 'files' | 'mm' | 'user'
+ */
+
+/**
  * Get and/or set the current session name.<br/>
  * Before 7.2.0 checked cookie status and since 7.2.0 checks both cookie and session status to avoid PHP crash.
  * @link https://php.net/manual/en/function.session-name.php
@@ -33,7 +38,7 @@ function session_name(#[LanguageLevelTypeAware(['8.0' => 'null|string'], default
  * Get and/or set the current session module.<br/>
  * Since 7.2.0 it is forbidden to set the module name to "user".
  * @link https://php.net/manual/en/function.session-module-name.php
- * @param string|null $module [optional] <p>
+ * @param _SessionModuleNamesArgSet|null $module [optional] <p>
  * If <i>module</i> is specified, that module will be
  * used instead.
  * </p>
@@ -271,7 +276,7 @@ function session_set_save_handler(SessionHandlerInterface $sessionhandler, bool 
 /**
  * Get and/or set the current cache limiter
  * @link https://php.net/manual/en/function.session-cache-limiter.php
- * @param string|null $value [optional] <p>
+ * @param _SessionCacheLimitersArgSet|null $value [optional] <p>
  * If <i>cache_limiter</i> is specified, the name of the
  * current cache limiter is changed to the new value.
  * </p>

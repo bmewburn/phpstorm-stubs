@@ -1215,7 +1215,7 @@ class DatePeriod implements IteratorAggregate
      * @param TDate $start
      * @param DateInterval $interval
      * @param TEnd $end
-     * @param int $options Can be set to DatePeriod::EXCLUDE_START_DATE.
+     * @param \DatePeriod::EXCLUDE_START_DATE|\DatePeriod::INCLUDE_END_DATE $options Can be set to DatePeriod::EXCLUDE_START_DATE.
      * @link https://php.net/manual/en/dateperiod.construct.php
      */
     public function __construct(DateTimeInterface $start, DateInterval $interval, DateTimeInterface $end, $options = 0) {}
@@ -1224,7 +1224,7 @@ class DatePeriod implements IteratorAggregate
      * @param TDate $start
      * @param DateInterval $interval
      * @param int $recurrences Number of recurrences
-     * @param int $options Can be set to DatePeriod::EXCLUDE_START_DATE.
+     * @param \DatePeriod::EXCLUDE_START_DATE|\DatePeriod::INCLUDE_END_DATE $options Can be set to DatePeriod::EXCLUDE_START_DATE.
      * @link https://php.net/manual/en/dateperiod.construct.php
      */
     public function __construct(DateTimeInterface $start, DateInterval $interval, $recurrences, $options = 0) {}

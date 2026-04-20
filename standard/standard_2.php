@@ -466,7 +466,7 @@ function fscanf($stream, string $format, #[TypeContract(exists: "int|false|null"
  * The URL to parse. Invalid characters are replaced by
  * _.
  * </p>
- * @param int $component [optional] <p>
+ * @param PHP_URL_SCHEME|PHP_URL_HOST|PHP_URL_PORT|PHP_URL_USER|PHP_URL_PASS|PHP_URL_PATH|PHP_URL_QUERY|PHP_URL_FRAGMENT $component [optional] <p>
  * Specify one of PHP_URL_SCHEME,
  * PHP_URL_HOST, PHP_URL_PORT,
  * PHP_URL_USER, PHP_URL_PASS,

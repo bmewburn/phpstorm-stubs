@@ -1039,7 +1039,7 @@ function file_get_contents(string $filename, bool $use_include_path = false, $co
  * dimension array. This is equivalent to
  * file_put_contents($filename, implode('', $array)).
  * </p>
- * @param int $flags [optional] <p>
+ * @param FILE_USE_INCLUDE_PATH|FILE_APPEND|LOCK_EX $flags [optional] <p>
  * The value of flags can be any combination of
  * the following flags (with some restrictions), joined with the binary OR
  * (|) operator.

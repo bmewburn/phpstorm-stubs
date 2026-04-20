@@ -441,7 +441,7 @@ function scandir(string $directory, int $sorting_order = 0, $context = null): ar
  * @param string $pattern <p>
  * The pattern. No tilde expansion or parameter substitution is done.
  * </p>
- * @param int $flags <p>
+ * @param GLOB_MARK|GLOB_NOSORT|GLOB_NOCHECK|GLOB_NOESCAPE|GLOB_BRACE|GLOB_ONLYDIR|GLOB_ERR $flags <p>
  * Valid flags:
  * GLOB_MARK - Adds a slash to each directory returned
  * GLOB_NOSORT - Return files as they appear in the directory (no sorting). When this flag is not used, the pathnames are sorted alphabetically
@@ -1097,7 +1097,7 @@ function ezmlm_hash(string $addr): int {}
  * @param string $prefix <p>
  * The string ident is added to each message.
  * </p>
- * @param int $flags <p>
+ * @param LOG_CONS|LOG_NDELAY|LOG_ODELAY|LOG_PERROR|LOG_PID $flags <p>
  * The option argument is used to indicate
  * what logging options will be used when generating a log message.
  * <table>
@@ -1139,7 +1139,7 @@ function ezmlm_hash(string $addr): int {}
  * immediately, write to the console and include the PID in each message,
  * you will use: LOG_CONS | LOG_NDELAY | LOG_PID
  * </p>
- * @param int $facility <p>
+ * @param LOG_USER|LOG_AUTH|LOG_AUTHPRIV|LOG_CRON|LOG_DAEMON|LOG_KERN|LOG_LOCAL0|LOG_LOCAL1|LOG_LOCAL2|LOG_LOCAL3|LOG_LOCAL4|LOG_LOCAL5|LOG_LOCAL6|LOG_LOCAL7|LOG_LPR|LOG_MAIL|LOG_NEWS|LOG_SYSLOG|LOG_UUCP $facility <p>
  * The facility argument is used to specify what
  * type of program is logging the message. This allows you to specify
  * (in your machine's syslog configuration) how messages coming from

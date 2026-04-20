@@ -445,7 +445,7 @@ final class SolrClient
      * (PECL solr &gt;= 0.9.2)<br/>
      * Changes the specified servlet type to a new value
      * @link https://php.net/manual/en/solrclient.setservlet.php
-     * @param int $type <p>
+     * @param \SolrClient::SEARCH_SERVLET_TYPE|\SolrClient::UPDATE_SERVLET_TYPE|\SolrClient::THREADS_SERVLET_TYPE|\SolrClient::PING_SERVLET_TYPE|\SolrClient::TERMS_SERVLET_TYPE $type <p>
      * One of the following :
      * </p>
      * <ul>

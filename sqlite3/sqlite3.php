@@ -62,7 +62,7 @@ class SQLite3
      * @param string $filename <p>
      * Path to the SQLite database, or :memory: to use in-memory database.
      * </p>
-     * @param int $flags <p>
+     * @param SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE|SQLITE3_OPEN_READONLY $flags <p>
      * Optional flags used to determine how to open the SQLite database. By
      * default, open uses SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE.
      * </p>
@@ -254,7 +254,7 @@ class SQLite3
      * this parameter is negative, then the SQL function may take
      * any number of arguments.
      * </p>
-     * @param int $flags
+     * @param SQLITE3_DETERMINISTIC $flags
      * <p>A bitwise conjunction of flags.
      * Currently, only <b>SQLITE3_DETERMINISTIC</b> is supported, which specifies that the function always returns
      * the same result given the same inputs within a single SQL statement.</p>
@@ -324,7 +324,7 @@ class SQLite3
      * @param string $column <p>The column name.</p>
      * @param int $rowid <p>The row ID.</p>
      * @param string $database [optional] <p>The symbolic name of the DB</p>
-     * @param int $flags [optional]
+     * @param SQLITE3_OPEN_READONLY|SQLITE3_OPEN_READWRITE $flags [optional]
      * <p>Either <b>SQLITE3_OPEN_READONLY</b> or <b>SQLITE3_OPEN_READWRITE</b> to open the stream for reading only, or for reading and writing, respectively.</p>
      * @return resource|false Returns a stream resource, or FALSE on failure.
      */
@@ -354,7 +354,7 @@ class SQLite3
      * @param string $filename <p>
      * Path to the SQLite database, or :memory: to use in-memory database.
      * </p>
-     * @param int $flags <p>
+     * @param SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE|SQLITE3_OPEN_READONLY $flags <p>
      * Optional flags used to determine how to open the SQLite database. By
      * default, open uses SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE.
      * </p>
@@ -603,7 +603,7 @@ class SQLite3Result
     /**
      * Fetches a result row as an associative or numerically indexed array or both
      * @link https://php.net/manual/en/sqlite3result.fetcharray.php
-     * @param int $mode [optional] <p>
+     * @param SQLITE3_ASSOC|SQLITE3_NUM|SQLITE3_BOTH $mode [optional] <p>
      * Controls how the next row will be returned to the caller. This value
      * must be one of either SQLITE3_ASSOC,
      * SQLITE3_NUM, or SQLITE3_BOTH.

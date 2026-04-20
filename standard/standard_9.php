@@ -222,7 +222,7 @@ function array_flip(array $array): array {}
  * @param TArray $array <p>
  * The array to work on
  * </p>
- * @param int $case <p>
+ * @param CASE_LOWER|CASE_UPPER $case <p>
  * Either CASE_UPPER or
  * CASE_LOWER (default)
  * </p>
@@ -255,7 +255,7 @@ function array_rand(array $array, int $num = 1): array|string|int {}
  * @param TArray $array <p>
  * The input array.
  * </p>
- * @param int $flags [optional] <p>
+ * @param SORT_REGULAR|SORT_NUMERIC|SORT_STRING|SORT_LOCALE_STRING $flags [optional] <p>
  * The optional second parameter sort_flags
  * may be used to modify the sorting behavior using these values:
  * </p>
@@ -740,7 +740,7 @@ function array_product(array $array): int|float {}
  * converting to
  * boolean) will be removed.
  * </p>
- * @param int $mode [optional] <p>
+ * @param ARRAY_FILTER_USE_KEY|ARRAY_FILTER_USE_BOTH $mode [optional] <p>
  * Flag determining what arguments are sent to <i>callback</i>:
  * </p><ul>
  * <li>

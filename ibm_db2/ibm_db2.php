@@ -117,7 +117,7 @@ function db2_pclose($connection): bool {}
  * A valid database connection resource variable as returned from
  * db2_connect or db2_pconnect.
  * </p>
- * @param int $value <p>
+ * @param DB2_AUTOCOMMIT_OFF|DB2_AUTOCOMMIT_ON $value <p>
  * One of the following constants:</p>
  * <p>
  * DB2_AUTOCOMMIT_OFF

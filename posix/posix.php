@@ -313,7 +313,7 @@ function posix_mkfifo(string $filename, int $permissions): bool {}
  * @param string $filename <p>
  * The file to create
  * </p>
- * @param int $flags <p>
+ * @param POSIX_S_IFREG|POSIX_S_IFCHR|POSIX_S_IFBLK|POSIX_S_IFIFO|POSIX_S_IFSOCK $flags <p>
  * This parameter is constructed by a bitwise OR between file type (one of
  * the following constants: <b>POSIX_S_IFREG</b>,
  * <b>POSIX_S_IFCHR</b>, <b>POSIX_S_IFBLK</b>,
@@ -337,7 +337,7 @@ function posix_mknod(string $filename, int $flags, int $major = 0, int $minor = 
  * @param string $filename <p>
  * The name of the file to be tested.
  * </p>
- * @param int $flags [optional] <p>
+ * @param POSIX_F_OK|POSIX_R_OK|POSIX_W_OK|POSIX_X_OK $flags [optional] <p>
  * A mask consisting of one or more of <b>POSIX_F_OK</b>,
  * <b>POSIX_R_OK</b>, <b>POSIX_W_OK</b> and
  * <b>POSIX_X_OK</b>.

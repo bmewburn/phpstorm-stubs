@@ -161,7 +161,7 @@ function event_base_free($event_base) {}
  * @link https://php.net/event_base_loop
  *
  * @param resource $event_base Valid event base resource.
- * @param int $flags [optional] Optional parameter, which can take any combination of EVLOOP_ONCE and EVLOOP_NONBLOCK.
+ * @param EVLOOP_ONCE|EVLOOP_NONBLOCK $flags [optional] Optional parameter, which can take any combination of EVLOOP_ONCE and EVLOOP_NONBLOCK.
  *
  * @return int <p>
  * Returns 0 if it exited normally,

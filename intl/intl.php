@@ -2645,7 +2645,7 @@ class Spoofchecker
      * (PHP &gt;= 5.4.0, PECL intl &gt;= 2.0.0)<br/>
      * Set the checks to run
      * @link https://php.net/manual/en/spoofchecker.setchecks.php
-     * @param int $checks <p>
+     * @param \Spoofchecker::SINGLE_SCRIPT_CONFUSABLE|\Spoofchecker::MIXED_SCRIPT_CONFUSABLE|\Spoofchecker::WHOLE_SCRIPT_CONFUSABLE|\Spoofchecker::ANY_CASE|\Spoofchecker::SINGLE_SCRIPT|\Spoofchecker::INVISIBLE|\Spoofchecker::CHAR_LIMIT $checks <p>
      * </p>
      * @return void
      */
@@ -2653,7 +2653,7 @@ class Spoofchecker
     public function setChecks(#[LanguageAware(['8.0' => 'int'], default: '')] $checks): void {}
 
     /**
-     * @param int $level
+     * @param \Spoofchecker::ASCII|\Spoofchecker::HIGHLY_RESTRICTIVE|\Spoofchecker::MODERATELY_RESTRICTIVE|\Spoofchecker::MINIMALLY_RESTRICTIVE|\Spoofchecker::UNRESTRICTIVE|\Spoofchecker::SINGLE_SCRIPT_RESTRICTIVE $level
      */
     #[TentativeType]
     public function setRestrictionLevel(#[LanguageAware(['8.0' => 'int'], default: '')] $level): void {}
@@ -5354,10 +5354,10 @@ function grapheme_extract(string $haystack, int $size, int $type = 0, int $offse
  * passed it will be converted into an ACE encoded "xn--" string.
  * It will not be the one you expected though!
  * </p>
- * @param int $flags [optional] <p>
+ * @param IDNA_ALLOW_UNASSIGNED|IDNA_CHECK_BIDI|IDNA_CHECK_CONTEXTJ|IDNA_DEFAULT|IDNA_NONTRANSITIONAL_TO_ASCII|IDNA_NONTRANSITIONAL_TO_UNICODE|IDNA_USE_STD3_RULES $flags [optional] <p>
  * Conversion options - combination of IDNA_* constants (except IDNA_ERROR_* constants).
  * </p>
- * @param int $variant [optional] <p>
+ * @param INTL_IDNA_VARIANT_UTS46|INTL_IDNA_VARIANT_2003 $variant [optional] <p>
  * Either INTL_IDNA_VARIANT_2003 for IDNA 2003 or INTL_IDNA_VARIANT_UTS46 for UTS #46.
  * </p>
  * @param array &$idna_info [optional] <p>
@@ -5381,10 +5381,10 @@ function idn_to_ascii(string $domain, int $flags = IDNA_DEFAULT, int $variant = 
  * Domain to convert in IDNA ASCII-compatible format.
  * The ASCII encoded domain name. Looks like "xn--..." if the it originally contained non-ASCII characters.
  * </p>
- * @param int $flags [optional] <p>
+ * @param IDNA_ALLOW_UNASSIGNED|IDNA_CHECK_BIDI|IDNA_CHECK_CONTEXTJ|IDNA_DEFAULT|IDNA_NONTRANSITIONAL_TO_ASCII|IDNA_NONTRANSITIONAL_TO_UNICODE|IDNA_USE_STD3_RULES $flags [optional] <p>
  * Conversion options - combination of IDNA_* constants (except IDNA_ERROR_* constants).
  * </p>
- * @param int $variant [optional] <p>
+ * @param INTL_IDNA_VARIANT_UTS46|INTL_IDNA_VARIANT_2003 $variant [optional] <p>
  * Either INTL_IDNA_VARIANT_2003 for IDNA 2003 or INTL_IDNA_VARIANT_UTS46 for UTS #46.
  * </p>
  * @param array &$idna_info [optional] <p>

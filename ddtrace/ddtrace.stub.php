@@ -3,6 +3,10 @@
 // phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
 
 namespace DDTrace {
+
+/**
+ * @type-alias _UserErrorLevelsArgSet = E_USER_NOTICE | E_USER_WARNING | E_USER_ERROR | E_USER_DEPRECATED
+ */
     /**
      * @var int
      */
@@ -740,7 +744,7 @@ namespace DDTrace\Testing {
      * Overrides PHP's default error handling.
      *
      * @param string $message Error message
-     * @param int $errorType Error Type. Supported error types are: E_ERROR, E_WARNING, E_PARSE, E_NOTICE, E_CORE_ERROR,
+     * @param _UserErrorLevelsArgSet $errorType Error Type. Supported error types are: E_ERROR, E_WARNING, E_PARSE, E_NOTICE, E_CORE_ERROR,
      * E_CORE_WARNING, E_COMPILE_ERROR, E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE, E_STRICT, E_RECOVERABLE_ERROR,
      * E_DEPRECATED, E_USER_DEPRECATED
      */

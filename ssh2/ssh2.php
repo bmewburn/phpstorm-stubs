@@ -206,7 +206,7 @@ function ssh2_methods_negotiated($session) {}
  * An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
  * </p>
- * @param int $flags [optional] <p>
+ * @param SSH2_FINGERPRINT_MD5|SSH2_FINGERPRINT_SHA1|SSH2_FINGERPRINT_HEX|SSH2_FINGERPRINT_RAW $flags [optional] <p>
  * flags may be either of
  * SSH2_FINGERPRINT_MD5 or
  * SSH2_FINGERPRINT_SHA1 logically ORed with

@@ -591,7 +591,7 @@ function cubrid_fetch_row($result, $type = null) {}
  * Fetch a result row as an associative array, a numeric array, or both
  * @link https://php.net/manual/en/function.cubrid-fetch-array.php
  * @param resource $result
- * @param int $type [optional] <p>
+ * @param CUBRID_NUM|CUBRID_ASSOC|CUBRID_BOTH $type [optional] <p>
  * The type of array that is to be fetched. It's a constant and can
  * take the following values: CUBRID_ASSOC, CUBRID_NUM, and CUBRID_BOTH.
  * </p>

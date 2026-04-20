@@ -7,6 +7,11 @@ use __IDE\StubsElementAvailable;
 use __IDE\TentativeType;
 
 /**
+ * @type-alias _MultipleIteratorFlagsArgSet = \MultipleIterator::MIT_NEED_ANY | \MultipleIterator::MIT_NEED_ALL | \MultipleIterator::MIT_KEYS_NUMERIC | \MultipleIterator::MIT_KEYS_ASSOC
+ * @type-alias _SplFileObjectFlagsArgSet = \SplFileObject::DROP_NEW_LINE | \SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::READ_CSV
+ */
+
+/**
  * The SplFileInfo class offers a high-level object oriented interface to
  * information for an individual file.
  * @link https://php.net/manual/en/class.splfileinfo.php
@@ -482,7 +487,7 @@ class FilesystemIterator extends DirectoryIterator
     /**
      * Sets handling flags
      * @link https://php.net/manual/en/filesystemiterator.setflags.php
-     * @param int $flags <p>
+     * @param \FilesystemIterator::CURRENT_MODE_MASK|\FilesystemIterator::CURRENT_AS_PATHNAME|\FilesystemIterator::CURRENT_AS_FILEINFO|\FilesystemIterator::CURRENT_AS_SELF|\FilesystemIterator::KEY_MODE_MASK|\FilesystemIterator::KEY_AS_PATHNAME|\FilesystemIterator::FOLLOW_SYMLINKS|\FilesystemIterator::KEY_AS_FILENAME|\FilesystemIterator::NEW_CURRENT_AND_KEY|\FilesystemIterator::SKIP_DOTS|\FilesystemIterator::UNIX_PATHS|\FilesystemIterator::OTHER_MODE_MASK $flags <p>
      * The handling flags to set.
      * See the FilesystemIterator constants.
      * </p>
@@ -784,7 +789,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
     /**
      * Portable file locking
      * @link https://php.net/manual/en/splfileobject.flock.php
-     * @param int $operation <p>
+     * @param LOCK_SH|LOCK_EX|LOCK_UN|LOCK_NB $operation <p>
      * <i>operation</i> is one of the following:
      * <b>LOCK_SH</b> to acquire a shared lock (reader).
      * </p>
@@ -963,7 +968,7 @@ class SplFileObject extends SplFileInfo implements RecursiveIterator, SeekableIt
     /**
      * Sets flags for the SplFileObject
      * @link https://php.net/manual/en/splfileobject.setflags.php
-     * @param int $flags <p>
+     * @param _SplFileObjectFlagsArgSet $flags <p>
      * Bit mask of the flags to set. See
      * SplFileObject constants
      * for the available flags.
@@ -1168,7 +1173,7 @@ class SplDoublyLinkedList implements Iterator, Countable, ArrayAccess, Serializa
     /**
      * Sets the mode of iteration
      * @link https://php.net/manual/en/spldoublylinkedlist.setiteratormode.php
-     * @param int $mode <p>
+     * @param \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP $mode <p>
      * There are two orthogonal sets of modes that can be set:
      * </p>
      * The direction of the iteration (either one or the other):
@@ -1351,7 +1356,7 @@ class SplQueue extends SplDoublyLinkedList
     /**
      * Sets the mode of iteration
      * @link https://php.net/manual/en/spldoublylinkedlist.setiteratormode.php
-     * @param int $mode <p>
+     * @param \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP $mode <p>
      * There are two orthogonal sets of modes that can be set:
      * </p>
      * The direction of the iteration (either one or the other):
@@ -1372,7 +1377,7 @@ class SplStack extends SplDoublyLinkedList
     /**
      * Sets the mode of iteration
      * @link https://php.net/manual/en/spldoublylinkedlist.setiteratormode.php
-     * @param int $mode <p>
+     * @param \SplDoublyLinkedList::IT_MODE_LIFO|\SplDoublyLinkedList::IT_MODE_FIFO|\SplDoublyLinkedList::IT_MODE_DELETE|\SplDoublyLinkedList::IT_MODE_KEEP $mode <p>
      * There are two orthogonal sets of modes that can be set:
      * </p>
      * The direction of the iteration (either one or the other):
@@ -1718,7 +1723,7 @@ class SplPriorityQueue implements Iterator, Countable
     /**
      * Sets the mode of extraction
      * @link https://php.net/manual/en/splpriorityqueue.setextractflags.php
-     * @param int $flags <p>
+     * @param \SplPriorityQueue::EXTR_DATA|\SplPriorityQueue::EXTR_PRIORITY|\SplPriorityQueue::EXTR_BOTH $flags <p>
      * Defines what is extracted by <b>SplPriorityQueue::current</b>,
      * <b>SplPriorityQueue::top</b> and
      * <b>SplPriorityQueue::extract</b>.
@@ -2375,7 +2380,7 @@ class MultipleIterator implements Iterator
     /**
      * Sets flags
      * @link https://php.net/manual/en/multipleiterator.setflags.php
-     * @param int $flags <p>
+     * @param _MultipleIteratorFlagsArgSet $flags <p>
      * The flags to set, according to the
      * Flag Constants
      * </p>

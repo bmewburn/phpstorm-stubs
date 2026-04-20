@@ -1367,7 +1367,7 @@ class Imagick implements Iterator, Countable
      * (No version information available, might only be in SVN)<br/>
      * Sets image alpha channel
      * @link https://php.net/manual/en/imagick.setimagealphachannel.php
-     * @param int $mode <p>
+     * @param \Imagick::ALPHACHANNEL_ACTIVATE|\Imagick::ALPHACHANNEL_BACKGROUND|\Imagick::ALPHACHANNEL_COPY|\Imagick::ALPHACHANNEL_DEACTIVATE|\Imagick::ALPHACHANNEL_EXTRACT|\Imagick::ALPHACHANNEL_FLATTEN|\Imagick::ALPHACHANNEL_OPAQUE|\Imagick::ALPHACHANNEL_REMOVE|\Imagick::ALPHACHANNEL_RESET|\Imagick::ALPHACHANNEL_SET|\Imagick::ALPHACHANNEL_SHAPE|\Imagick::ALPHACHANNEL_TRANSPARENT|\Imagick::ALPHACHANNEL_UNDEFINED $mode <p>
      * One of the <b>Imagick::ALPHACHANNEL_*</b> constants
      * </p>
      * @return bool <b>TRUE</b> on success.
@@ -2394,7 +2394,7 @@ class Imagick implements Iterator, Countable
      * Preferred image size and border size of each thumbnail
      * (e.g. 120x120+4+3&#x3E;).
      * </p>
-     * @param int $mode <p>
+     * @param \Imagick::MONTAGEMODE_FRAME|\Imagick::MONTAGEMODE_UNFRAME|\Imagick::MONTAGEMODE_CONCATENATE $mode <p>
      * Thumbnail framing mode, see Montage Mode constants.
      * </p>
      * @param string $frame <p>
