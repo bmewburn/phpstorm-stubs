@@ -20,7 +20,7 @@ use __IDE\Pure;
  * @param int $port <p>
  * The port number.
  * </p>
- * @param int &$error_code [optional] <p>
+ * @param int|null &$error_code [optional] <p>
  * If provided, holds the system level error number that occurred in the
  * system-level connect() call.
  * </p>
@@ -32,7 +32,7 @@ use __IDE\Pure;
  * problem initializing the socket.
  * </p>
  * @param-out int $error_code
- * @param string &$error_message [optional] <p>
+ * @param string|null &$error_message [optional] <p>
  * The error message as a string.
  * </p>
  * @param-out string $error_message
@@ -54,11 +54,11 @@ use __IDE\Pure;
  */
 function fsockopen(
     string $hostname,
-    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port = -1,
     #[StubsElementAvailable(from: '7.1')] int $port = -1,
-    &$error_code,
-    &$error_message,
-    ?float $timeout
+    &$error_code = null,
+    &$error_message = null,
+    ?float $timeout = null
 ) {}
 
 /**
@@ -67,20 +67,20 @@ function fsockopen(
  * @see fsockopen
  * @param string $hostname
  * @param int $port
- * @param int &$error_code [optional]
+ * @param int|null &$error_code [optional]
  * @param-out int $error_code
- * @param string &$error_message [optional]
+ * @param string|null &$error_message [optional]
  * @param-out string $error_message
  * @param float|null $timeout [optional]
  * @return resource|false
  */
 function pfsockopen(
     string $hostname,
-    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] int $port = -1,
     #[StubsElementAvailable(from: '7.1')] int $port = -1,
-    &$error_code,
-    &$error_message,
-    ?float $timeout
+    &$error_code = null,
+    &$error_message = null,
+    ?float $timeout = null
 ) {}
 
 /**
@@ -190,7 +190,7 @@ function pfsockopen(
 #[LanguageLevelTypeAware(["8.0" => "string"], default: "string|false")]
 function pack(
     string $format,
-    #[StubsElementAvailable(from: '5.3', to: '7.3')] $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.3')] $values = null,
     mixed ...$values
 ) {}
 
@@ -242,7 +242,7 @@ function unpack(
  * reload, and check for the value.
  */
 #[Pure(true)]
-function get_browser(?string $user_agent, bool $return_array = false): object|array|false {}
+function get_browser(?string $user_agent = null, bool $return_array = false): object|array|false {}
 
 /**
  * One-way string encryption (hashing)
@@ -312,7 +312,7 @@ function crypt(string $string, string $salt): string {}
  * '@' to the
  * front of the function name.
  */
-function opendir(string $directory, $context) {}
+function opendir(string $directory, $context = null) {}
 
 /**
  * Close directory handle
@@ -325,7 +325,7 @@ function opendir(string $directory, $context) {}
  * </p>
  * @return void
  */
-function closedir($dir_handle): void {}
+function closedir($dir_handle = null): void {}
 
 /**
  * Change directory
@@ -375,7 +375,7 @@ function getcwd(): string|false {}
  * </p>
  * @see https://bugs.php.net/bug.php?id=75485
  */
-function rewinddir($dir_handle): void {}
+function rewinddir($dir_handle = null): void {}
 
 /**
  * Read entry from directory handle
@@ -388,7 +388,7 @@ function rewinddir($dir_handle): void {}
  * </p>
  * @return string|false the filename on success or false on failure.
  */
-function readdir($dir_handle): string|false {}
+function readdir($dir_handle = null): string|false {}
 
 /**
  * Return an instance of the Directory class
@@ -936,7 +936,7 @@ function chmod(string $filename, int $permissions): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function touch(string $filename, ?int $mtime, ?int $atime): bool {}
+function touch(string $filename, ?int $mtime = null, ?int $atime = null): bool {}
 
 /**
  * Clears file status cache

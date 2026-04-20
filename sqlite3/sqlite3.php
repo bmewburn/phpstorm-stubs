@@ -79,8 +79,8 @@ class SQLite3
     #[TentativeType]
     public function open(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $filename,
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags,
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags = 6,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey = '',
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
     ): void {}
@@ -344,7 +344,7 @@ class SQLite3
      */
     #[TentativeType]
     public function enableExceptions(
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $enable,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $enable = false,
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'bool'], default: '')] $enable = false
     ): bool {}
 
@@ -369,8 +369,8 @@ class SQLite3
      */
     public function __construct(
         #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $filename,
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags,
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $flags = 6,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $encryptionKey = '',
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $flags = SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE,
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'string'], default: '')] $encryptionKey = ''
     ) {}
@@ -388,7 +388,7 @@ class SQLite3
      */
     #[TentativeType]
     public function enableExtendedResultCodes(
-        #[StubsElementAvailable(from: '7.4', to: '7.4')] bool $enable,
+        #[StubsElementAvailable(from: '7.4', to: '7.4')] bool $enable = true,
         #[StubsElementAvailable(from: '8.0')] bool $enable = true
     ): bool {}
 

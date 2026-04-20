@@ -229,7 +229,7 @@ function var_export(mixed $value, bool $return = false): ?string {}
  */
 function debug_zval_dump(
     #[StubsElementAvailable(from: '8.0')] mixed $value,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $values = null,
     mixed ...$values
 ): void {}
 
@@ -454,7 +454,7 @@ function ini_get(string $option): string|false {}
  */
 #[Pure(true)]
 #[ArrayShape(["global_value" => "string", "local_value" => "string", "access" => "int"])]
-function ini_get_all(?string $extension, #[StubsElementAvailable(from: '7.0')] bool $details = true): array|false {}
+function ini_get_all(?string $extension = null, #[StubsElementAvailable(from: '7.0')] bool $details = true): array|false {}
 
 /**
  * Sets the value of a configuration option
@@ -835,7 +835,7 @@ function connection_status(): int {}
  * </p>
  * @return int the previous setting, as an integer.
  */
-function ignore_user_abort(?bool $enable): int {}
+function ignore_user_abort(?bool $enable = null): int {}
 
 /**
  * Parse a configuration file
@@ -1022,7 +1022,7 @@ function checkdnsrr(string $hostname, string $type = 'MX'): bool {}
  * @param-out array $weights
  * @return bool
  */
-function dns_get_mx(string $hostname, &$hosts, &$weights): bool {}
+function dns_get_mx(string $hostname, &$hosts, &$weights = null): bool {}
 
 /**
  * Get MX records corresponding to a given Internet host name
@@ -1043,7 +1043,7 @@ function dns_get_mx(string $hostname, &$hosts, &$weights): bool {}
  * @return bool true if any records are found; returns false if no records
  * were found or if an error occurred.
  */
-function getmxrr(string $hostname, &$hosts, &$weights): bool {}
+function getmxrr(string $hostname, &$hosts, &$weights = null): bool {}
 
 /**
  * Fetch DNS Resource Records associated with a hostname
@@ -1253,4 +1253,4 @@ function getmxrr(string $hostname, &$hosts, &$weights): bool {}
  * </tr>
  * </table>
  */
-function dns_get_record(string $hostname, int $type = DNS_ANY, &$authoritative_name_servers, &$additional_records, bool $raw = false): array|false {}
+function dns_get_record(string $hostname, int $type = DNS_ANY, &$authoritative_name_servers = null, &$additional_records = null, bool $raw = false): array|false {}

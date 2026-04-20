@@ -523,7 +523,7 @@ class AMQPChannel
      *
      * @return void
      */
-    public function setConfirmCallback(callable $ack_callback = null, callable $nack_callback = null) {}
+    public function setConfirmCallback(?callable $ack_callback = null, ?callable $nack_callback = null) {}
 
     /**
      * Wait until all messages published since the last call have been either ack'd or nack'd by the broker.
@@ -556,7 +556,7 @@ class AMQPChannel
      *
      * @return void
      */
-    public function setReturnCallback(callable $return_callback = null) {}
+    public function setReturnCallback(?callable $return_callback = null) {}
 
     /**
      * Start wait loop for basic.return AMQP server methods
@@ -1495,7 +1495,7 @@ class AMQPQueue
      * @return void
      */
     public function consume(
-        callable $callback = null,
+        ?callable $callback = null,
         $flags = null,
         $consumerTag = null
     ) {}

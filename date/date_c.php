@@ -74,6 +74,7 @@ interface DateTimeInterface
     /**
      * @since 7.2
      */
+    #[\JetBrains\PhpStorm\Deprecated(since: '8.5')]
     public const RFC7231 = 'D, d M Y H:i:s \G\M\T';
 
     /**
@@ -988,8 +989,8 @@ class DateTimeZone
      */
     #[TentativeType]
     public function getTransitions(
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampBegin,
-        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampEnd,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampBegin = PHP_INT_MIN,
+        #[StubsElementAvailable(from: '5.3', to: '5.6')] $timestampEnd = 2147483647,
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampBegin = PHP_INT_MIN,
         #[StubsElementAvailable(from: '7.0')] #[LanguageLevelTypeAware(['8.0' => 'int'], default: '')] $timestampEnd = PHP_INT_MAX
     ): array|false {}

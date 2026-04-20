@@ -2166,7 +2166,7 @@ function curl_setopt_array(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], def
  * @return void
  * @since 5.5
  */
-#[Deprecated(since: '8.5')]
+#[Deprecated('Deprecated: it has no effect', since: '8.5')]
 function curl_share_close(#[LanguageLevelTypeAware(['8.0' => 'CurlShareHandle'], default: 'resource')] $share_handle): void {}
 
 /**
@@ -2556,7 +2556,7 @@ function curl_exec(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: 'r
  * </ul>
  */
 #[Pure(true)]
-function curl_getinfo(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: 'resource')] $handle, ?int $option): mixed {}
+function curl_getinfo(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: 'resource')] $handle, ?int $option = null): mixed {}
 
 /**
  * Return a string containing the last error for the current session
@@ -2612,7 +2612,7 @@ function curl_file_create(string $filename, ?string $mime_type = null, ?string $
  * @param CurlHandle|resource $handle
  * @return void
  */
-#[Deprecated(since: '8.5')]
+#[Deprecated('Deprecated: it has no effect', since: '8.5')]
 function curl_close(#[LanguageLevelTypeAware(['8.0' => 'CurlHandle'], default: 'resource')] $handle): void {}
 
 /**

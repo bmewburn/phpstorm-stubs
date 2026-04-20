@@ -51,7 +51,7 @@ class SQLiteDatabase
      * {@see sqlite_unbuffered_query()} instead.
      * </p>
      */
-    public function query($query, $result_type, &$error_message) {}
+    public function query($query, $result_type = SQLITE_BOTH, &$error_message) {}
 
     /**
      * (PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
@@ -110,7 +110,7 @@ class SQLiteDatabase
      * {@link https://php.net/manual/en/sqlite.configuration.php#ini.sqlite.assoc-case sqlite.assoc_case} configuration
      * option.</p>
      */
-    public function arrayQuery($query, $result_type, $decode_binary) {}
+    public function arrayQuery($query, $result_type = SQLITE_BOTH, $decode_binary = true) {}
 
     /**
      * (PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.1)
@@ -121,7 +121,7 @@ class SQLiteDatabase
      * @param bool $decode_binary [optional]
      * @return array
      */
-    public function singleQuery($query, $first_row_only, $decode_binary) {}
+    public function singleQuery($query, $first_row_only = true, $decode_binary = true) {}
 
     /**
      * (PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
@@ -281,7 +281,7 @@ final class SQLiteResult implements Iterator, Countable
      * @param bool $decode_binary [optional]
      * @return object
      */
-    public function fetchObject($class_name, $ctor_params, $decode_binary = true) {}
+    public function fetchObject($class_name = 'stdClass', $ctor_params = [], $decode_binary = true) {}
 
     /**
      * (PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.1)
@@ -305,7 +305,7 @@ final class SQLiteResult implements Iterator, Countable
      * You should normally leave this value at its default, unless you are interoperating with databases created by other sqlite capable applications.</p>
      * @return object
      */
-    public function fetchAll($result_type, $decode_binary = true) {}
+    public function fetchAll($result_type = SQLITE_BOTH, $decode_binary = true) {}
 
     /**
      * (PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
@@ -476,7 +476,7 @@ final class SQLiteUnbuffered
      * @param int $result_type [optional]
      * @param bool $decode_binary [optional]
      */
-    public function fetch($result_type, $decode_binary) {}
+    public function fetch($result_type = SQLITE_BOTH, $decode_binary = true) {}
 
     /**
      * @link https://www.php.net/manual/en/function.sqlite-fetch-object.php
@@ -484,24 +484,24 @@ final class SQLiteUnbuffered
      * @param array $ctor_params [optional]
      * @param bool $decode_binary [optional]
      */
-    public function fetchObject($class_name, $ctor_params, $decode_binary) {}
+    public function fetchObject($class_name = 'stdClass', $ctor_params = [], $decode_binary = true) {}
 
     /**
      * @param bool $decode_binary [optional]
      */
-    public function fetchSingle($decode_binary) {}
+    public function fetchSingle($decode_binary = true) {}
 
     /**
      * @param int $result_type [optional]
      * @param bool $decode_binary [optional]
      */
-    public function fetchAll($result_type, $decode_binary) {}
+    public function fetchAll($result_type = SQLITE_BOTH, $decode_binary = true) {}
 
     /**
      * @param $index_or_name
      * @param $decode_binary [optional]
      */
-    public function column($index_or_name, $decode_binary) {}
+    public function column($index_or_name, $decode_binary = true) {}
 
     public function numFields() {}
 
@@ -514,7 +514,7 @@ final class SQLiteUnbuffered
      * @param int $result_type [optional]
      * @param bool $decode_binary [optional]
      */
-    public function current($result_type, $decode_binary) {}
+    public function current($result_type = SQLITE_BOTH, $decode_binary = true) {}
 
     public function next() {}
 

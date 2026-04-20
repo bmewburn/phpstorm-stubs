@@ -807,7 +807,7 @@ function putenv(string $assignment): bool {}
 function getopt(
     string $short_options,
     array $long_options = [],
-    #[StubsElementAvailable(from: '7.1')] &$rest_index
+    #[StubsElementAvailable(from: '7.1')] &$rest_index = null
 ): array|false {}
 
 /**
@@ -1109,4 +1109,4 @@ function import_request_variables(string $types, $prefix = null): bool {}
  * </p>
  * @return bool true on success or false on failure.
  */
-function error_log(string $message, int $message_type = 0, ?string $destination, ?string $additional_headers): bool {}
+function error_log(string $message, int $message_type = 0, ?string $destination = null, ?string $additional_headers = null): bool {}

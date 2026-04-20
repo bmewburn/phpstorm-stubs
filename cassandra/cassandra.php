@@ -6198,7 +6198,7 @@ namespace Cassandra\Exception {
          * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/class.DomainException/#method-__construct
          */
         #[Pure]
-        public function __construct($message, $code, $previous) {}
+        public function __construct($message = '', $code = 0, $previous = null) {}
 
         /**
          * @return mixed
@@ -6288,7 +6288,7 @@ namespace Cassandra\Exception {
          * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/class.InvalidArgumentException/#method-__construct
          */
         #[Pure]
-        public function __construct($message, $code, $previous) {}
+        public function __construct($message = '', $code = 0, $previous = null) {}
 
         /**
          * @return mixed
@@ -6348,7 +6348,7 @@ namespace Cassandra\Exception {
          * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/class.RangeException/#method-__construct
          */
         #[Pure]
-        public function __construct($message, $code, $previous) {}
+        public function __construct($message = '', $code = 0, $previous = null) {}
 
         /**
          * @return mixed
@@ -6407,7 +6407,7 @@ namespace Cassandra\Exception {
          * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/class.LogicException/#method-__construct
          */
         #[Pure]
-        public function __construct($message, $code, $previous) {}
+        public function __construct($message = '', $code = 0, $previous = null) {}
 
         /**
          * @return mixed
@@ -6681,7 +6681,7 @@ namespace Cassandra\Exception {
          * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/class.RuntimeException/#method-__construct
          */
         #[Pure]
-        public function __construct($message, $code, $previous) {}
+        public function __construct($message = '', $code = 0, $previous = null) {}
 
         /**
          * @return mixed

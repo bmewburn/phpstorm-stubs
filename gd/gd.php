@@ -1163,7 +1163,7 @@ function imagegd2(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $
  * @param resource|GdImage $image
  * @return bool true on success or false on failure.
  */
-#[Deprecated(since: '8.5')]
+#[Deprecated('Deprecated: it has no effect', since: '8.5')]
 #[LanguageLevelTypeAware(['8.5' => 'true'], default: 'bool')]
 function imagedestroy(#[LanguageLevelTypeAware(['8.0' => 'GdImage'], default: '')] $image) {}
 
@@ -1222,7 +1222,7 @@ function imagefilledpolygon(
     GdImage $image,
     array $points,
     #[Deprecated(since: "8.1")] int $num_points_or_color,
-    ?int $color
+    ?int $color = null
 ): bool {}
 
 /**
@@ -1243,7 +1243,7 @@ function imagefilledpolygon(
 function imagefilledpolygon(
     GdImage $image,
     array $points,
-    ?int $color
+    ?int $color = null
 ): bool {}
 
 /**
@@ -1439,7 +1439,7 @@ function imagepolygon(
     GdImage $image,
     array $points,
     int $num_points_or_color,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color = null,
     #[StubsElementAvailable(from: '8.0')] ?int $color = null
 ): bool {}
 
@@ -2354,7 +2354,7 @@ function imageopenpolygon(
     GdImage $image,
     array $points,
     #[Deprecated(since: "8.1")] int $num_points_or_color,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] ?int $color = null,
     #[StubsElementAvailable(from: '8.0')] ?int $color = null
 ): bool {}
 

@@ -571,7 +571,7 @@ function htmlentities(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?s
  * @return string the decoded string.
  */
 #[Pure]
-function html_entity_decode(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?string $encoding): string {}
+function html_entity_decode(string $string, int $flags = ENT_QUOTES|ENT_SUBSTITUTE, ?string $encoding = null): string {}
 
 /**
  * Convert special HTML entities back to characters
@@ -956,7 +956,7 @@ function iptcembed(string $iptc_data, string $filename, int $spool = 0): string|
  * </p>
  */
 #[ArrayShape([0 => "int", 1 => "int", 2 => "int", 3 => "string", "bits" => "int", "channels" => "int", "mime" => "string"])]
-function getimagesize(string $filename, &$image_info): array|false {}
+function getimagesize(string $filename, &$image_info = null): array|false {}
 
 /**
  * Get Mime-Type for image-type returned by getimagesize, exif_read_data, exif_thumbnail, exif_imagetype
@@ -1158,7 +1158,7 @@ function phpinfo(#[ExpectedValues(flags: [INFO_GENERAL, INFO_CREDITS, INFO_CONFI
  * the extension isn't enabled.
  */
 #[Pure]
-function phpversion(?string $extension): string|false {}
+function phpversion(?string $extension = null): string|false {}
 
 /**
  * Prints out the credits for PHP
@@ -1365,7 +1365,7 @@ function strnatcasecmp(string $string1, string $string2): int {}
  * @return int<0,max> This functions returns an integer.
  */
 #[Pure]
-function substr_count(string $haystack, string $needle, int $offset = 0, ?int $length): int {}
+function substr_count(string $haystack, string $needle, int $offset = 0, ?int $length = null): int {}
 
 /**
  * Finds the length of the initial segment of a string consisting
@@ -1418,7 +1418,7 @@ function substr_count(string $haystack, string $needle, int $offset = 0, ?int $l
  * which consists entirely of characters in str2.
  */
 #[Pure]
-function strspn(string $string, string $characters, int $offset = 0, ?int $length): int {}
+function strspn(string $string, string $characters, int $offset = 0, ?int $length = null): int {}
 
 /**
  * Find length of initial segment not matching mask
@@ -1438,7 +1438,7 @@ function strspn(string $string, string $characters, int $offset = 0, ?int $lengt
  * @return int the length of the segment as an integer.
  */
 #[Pure]
-function strcspn(string $string, string $characters, int $offset = 0, ?int $length): int {}
+function strcspn(string $string, string $characters, int $offset = 0, ?int $length = null): int {}
 
 /**
  * Tokenize string
@@ -1458,6 +1458,6 @@ function strcspn(string $string, string $characters, int $offset = 0, ?int $leng
  */
 function strtok(
     string $string,
-    #[StubsElementAvailable(from: '5.3', to: '7.0')] $token,
+    #[StubsElementAvailable(from: '5.3', to: '7.0')] $token = null,
     #[StubsElementAvailable(from: '7.1')] ?string $token = null
 ): string|false {}

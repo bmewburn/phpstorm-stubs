@@ -1028,7 +1028,7 @@ class Relay
      * @return mixed
      */
     #[Attributes\RedisCommand, Attributes\ValkeyCommand]
-    public function fcall_ro(string $name, array $keys = [], array $argv = [], callable $handler = null): mixed {}
+    public function fcall_ro(string $name, array $keys = [], array $argv = [], ?callable $handler = null): mixed {}
 
     /**
      * Calls `FUNCTION` sub-command.
@@ -1051,7 +1051,7 @@ class Relay
      * @return bool
      */
     #[Attributes\Local]
-    public static function flushMemory(?string $endpointId = null, int $db = null): bool {}
+    public static function flushMemory(?string $endpointId = null, ?int $db = null): bool {}
 
     /**
      * Retrieve the timestamp of the last *user initiated* flush of the in-memory cache.
@@ -1066,7 +1066,7 @@ class Relay
      * @return float|false
      */
     #[Attributes\Local]
-    public static function lastMemoryFlush(?string $endpointId = null, int $db = null): float|false {}
+    public static function lastMemoryFlush(?string $endpointId = null, ?int $db = null): float|false {}
 
     /**
      * Run a search query on an index, and perform aggregate
@@ -1396,7 +1396,7 @@ class Relay
      * @return Relay|bool|string
      */
     #[Attributes\RedisCommand, Attributes\ValkeyCommand]
-    public function ping(string $arg = null): Relay|bool|string {}
+    public function ping(?string $arg = null): Relay|bool|string {}
 
     /**
      * Returns the number of milliseoconds since Relay has seen activity from the server.
@@ -1832,7 +1832,7 @@ class Relay
      * @return Relay|int|false
      */
     #[Attributes\RedisCommand, Attributes\ValkeyCommand]
-    public function bitpos(mixed $key, int $bit, int $start = null, int $end = null, bool $bybit = false): Relay|int|false {}
+    public function bitpos(mixed $key, int $bit, ?int $start = null, ?int $end = null, bool $bybit = false): Relay|int|false {}
 
     /**
      * Sets or clears the bit at offset in the string value stored at key.
@@ -3780,8 +3780,8 @@ class Relay
     public function xgroup(
         string $operation,
         mixed $key = null,
-        string $group = null,
-        string $id_or_consumer = null,
+        ?string $group = null,
+        ?string $id_or_consumer = null,
         bool $mkstream = false,
         int $entries_read = -2
     ): mixed {}

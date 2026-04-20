@@ -773,7 +773,7 @@ class mysqli
     /**
      * Get result from async query
      * @link https://php.net/manual/en/mysqli.reap-async-query.php
-     * @return mysqli_result|false mysqli_result in success, false otherwise.
+     * @return mysqli_result|bool false on failure, mysqli_result for queries which produce a result set, true otherwise
      */
     #[TentativeType]
     public function reap_async_query(): mysqli_result|bool {}
@@ -1471,7 +1471,7 @@ class mysqli_stmt
      * @param mysqli $mysql
      * @param string $query [optional]
      */
-    public function __construct($mysql, $query) {}
+    public function __construct($mysql, $query = null) {}
 
     /**
      * Used to get the current value of a statement attribute
@@ -1785,7 +1785,7 @@ function mysqli_autocommit(mysqli $mysql, bool $enable): bool {}
  * @return bool true on success or false on failure.
  * @since 5.5
  */
-function mysqli_begin_transaction(mysqli $mysql, int $flags = 0, ?string $name): bool {}
+function mysqli_begin_transaction(mysqli $mysql, int $flags = 0, ?string $name = null): bool {}
 
 /**
  * Changes the user of the specified database connection
@@ -1938,7 +1938,7 @@ function mysqli_stmt_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.
  * as there are bound parameters in the SQL statement being executed. Each value is treated as a string.
  * @return bool
  */
-#[Deprecated(since: '8.5')]
+#[Deprecated('use mysqli_stmt_execute() instead', since: '8.5')]
 function mysqli_execute(mysqli_stmt $statement, #[StubsElementAvailable('8.1')] ?array $params = null): bool {}
 
 /**
@@ -2172,7 +2172,7 @@ function mysqli_get_charset(mysqli $mysql): ?object {}
  */
 #[LanguageLevelTypeAware(['8.0' => 'string'], default: 'string|null')]
 function mysqli_get_client_info(
-    #[StubsElementAvailable(from: '5.3', to: '7.1')] mysqli $mysql,
+    #[StubsElementAvailable(from: '5.3', to: '7.1')] mysqli $mysql = null,
     #[StubsElementAvailable(from: '8.0')] ?mysqli $mysql = null
 ) {}
 
@@ -2474,7 +2474,7 @@ function mysqli_query(
  * @param int $flags
  * @return bool
  */
-function mysqli_real_connect(mysqli $mysql, ?string $hostname, ?string $username, ?string $password, ?string $database, ?int $port, ?string $socket, int $flags = 0): bool {}
+function mysqli_real_connect(mysqli $mysql, ?string $hostname = null, ?string $username = null, ?string $password = null, ?string $database = null, ?int $port = null, ?string $socket = null, int $flags = 0): bool {}
 
 /**
  * Escapes special characters in a string for use in an SQL statement, taking into account the current charset of the connection
@@ -2505,7 +2505,7 @@ function mysqli_real_query(
  * @link https://php.net/manual/en/mysqli.reap-async-query.php
  * @see mysqli_poll()
  * @param mysqli $mysql A link identifier returned by mysqli_connect() or mysqli_init()
- * @return mysqli_result|bool mysqli_result in success, FALSE otherwise.
+ * @return mysqli_result|bool false on failure, mysqli_result for queries which produce a result set, true otherwise
  */
 function mysqli_reap_async_query(mysqli $mysql): mysqli_result|bool {}
 
@@ -2527,7 +2527,7 @@ function mysqli_release_savepoint(mysqli $mysql, string $name): bool {}
  * @param string|null $name [optional] If provided then ROLLBACKname is executed
  * @return bool
  */
-function mysqli_rollback(mysqli $mysql, int $flags = 0, ?string $name): bool {}
+function mysqli_rollback(mysqli $mysql, int $flags = 0, ?string $name = null): bool {}
 
 /**
  * Set a named transaction savepoint
@@ -2670,7 +2670,7 @@ function mysqli_stmt_send_long_data(mysqli_stmt $statement, int $param_num, stri
 function mysqli_stmt_bind_param(
     mysqli_stmt $statement,
     string $types,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars = null,
     mixed &...$vars
 ): bool {}
 
@@ -2683,7 +2683,7 @@ function mysqli_stmt_bind_param(
  */
 function mysqli_stmt_bind_result(
     mysqli_stmt $statement,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed &$vars = null,
     mixed &...$vars
 ): bool {}
 

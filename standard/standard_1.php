@@ -177,7 +177,7 @@ function hebrev(string $string, int $max_chars_per_line = 0): string {}
  * @removed 8.0
  */
 #[Deprecated(replacement: 'nl2br(hebrev(%parameter0%))', since: '7.4')]
-function hebrevc(string $hebrew_text, $max_chars_per_line): string {}
+function hebrevc(string $hebrew_text, $max_chars_per_line = 0): string {}
 
 /**
  * Inserts HTML line breaks before all newlines in a string
@@ -388,7 +388,7 @@ function str_shuffle(string $string): string {}
  * format chosen.
  */
 #[Pure]
-function str_word_count(string $string, int $format = 0, ?string $characters): array|int {}
+function str_word_count(string $string, int $format = 0, ?string $characters = null): array|int {}
 
 /**
  * Convert a string to an array
@@ -463,7 +463,7 @@ function strpbrk(
  * false.
  */
 #[Pure]
-function substr_compare(string $haystack, string $needle, int $offset, ?int $length, bool $case_insensitive = false): int {}
+function substr_compare(string $haystack, string $needle, int $offset, ?int $length = null, bool $case_insensitive = false): int {}
 
 /**
  * Locale based string comparison
@@ -576,7 +576,7 @@ function money_format(string $format, float $number): ?string {}
  */
 #[Pure]
 #[LanguageLevelTypeAware(["8.0" => "string"], default: "string|false")]
-function substr(string $string, int $offset, ?int $length) {}
+function substr(string $string, int $offset, ?int $length = null) {}
 
 /**
  * Replace text within a portion of a string
@@ -815,7 +815,7 @@ function rtrim(string $string, string $characters = " \n\r\t\v\0"): string {}
  * @param-out int $count
  * @return TSubject This function returns a string or an array with the replaced values.
  */
-function str_replace(array|string $search, array|string $replace, array|string $subject, &$count): array|string {}
+function str_replace(array|string $search, array|string $replace, array|string $subject, &$count = null): array|string {}
 
 /**
  * Case-insensitive version of <function>str_replace</function>.
@@ -840,7 +840,7 @@ function str_replace(array|string $search, array|string $replace, array|string $
  * @param-out int $count
  * @return string|string[] a string or an array of replacements.
  */
-function str_ireplace(array|string $search, array|string $replace, array|string $subject, &$count): array|string {}
+function str_ireplace(array|string $search, array|string $replace, array|string $subject, &$count = null): array|string {}
 
 /**
  * Repeat a string
@@ -987,7 +987,7 @@ function strip_tags(string $string, #[LanguageLevelTypeAware(["7.4" => "string[]
  * @param-out float $percent
  * @return int the number of matching chars in both strings.
  */
-function similar_text(string $string1, string $string2, &$percent): int {}
+function similar_text(string $string1, string $string2, &$percent = null): int {}
 
 /**
  * Split a string by a string
@@ -1037,7 +1037,7 @@ function explode(string $separator, string $string, int $limit = PHP_INT_MAX) {}
  * elements in the same order, with the glue string between each element.
  */
 #[Pure]
-function implode(array|string $separator = "", ?array $array): string {}
+function implode(array|string $separator = "", ?array $array = null): string {}
 
 /**
  * Alias:
@@ -1055,7 +1055,7 @@ function implode(array|string $separator = "", ?array $array): string {}
  * elements in the same order, with the glue string between each element.
  */
 #[Pure]
-function join(array|string $separator = "", ?array $array): string {}
+function join(array|string $separator = "", ?array $array = null): string {}
 
 /**
  * Set locale information
@@ -1129,7 +1129,7 @@ function join(array|string $separator = "", ?array $array): string {}
 function setlocale(
     #[ExpectedValues([LC_ALL,  LC_COLLATE,  LC_CTYPE,  LC_MONETARY,  LC_NUMERIC,  LC_TIME,  LC_MESSAGES])] int $category,
     #[StubsElementAvailable(from: '8.0')] $locales,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] $rest,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] $rest = null,
     ...$rest
 ): string|false {}
 

@@ -83,7 +83,7 @@ function header_register_callback(callable $callback): bool {}
 /**
  * Get the size of an image from a string.
  * @param string $string The image data, as a string.
- * @param array &$image_info [optional] This optional parameter allows you to extract<br>
+ * @param array|null &$image_info [optional] This optional parameter allows you to extract<br>
  * some extended information from the image file. Currently, this will <br>
  * return the different JPG APP markers as an associative array. <br>
  * Some programs use these APP markers to embed text information in images. <br>
@@ -102,7 +102,7 @@ function header_register_callback(callable $callback): bool {}
  * @since 5.4
  */
 #[ArrayShape([0 => 'int', 1 => 'int', 2 => 'int', 3 => 'string', 'bits' => 'int', 'channels' => 'int', 'mime' => 'string'])]
-function getimagesizefromstring(string $string, &$image_info): array|false {}
+function getimagesizefromstring(string $string, &$image_info = null): array|false {}
 
 /**
  * Set the stream chunk size.
@@ -761,7 +761,7 @@ function key(object|array $array): string|int|null {}
 #[Pure]
 function min(
     #[StubsElementAvailable(from: '8.0')] mixed $value,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values = null,
     mixed ...$values
 ): mixed {}
 
@@ -776,7 +776,7 @@ function min(
 #[Pure]
 function max(
     #[StubsElementAvailable(from: '8.0')] mixed $value,
-    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values,
+    #[StubsElementAvailable(from: '5.3', to: '7.4')] mixed $values = null,
     mixed ...$values
 ): mixed {}
 
@@ -891,7 +891,7 @@ function extract(
  * @return array the output array with all the variables added to it.
  */
 #[Pure]
-function compact(#[StubsElementAvailable(from: '8.0')] $var_name, #[StubsElementAvailable(from: '5.3', to: '7.4')] $var_names, ...$var_names): array {}
+function compact(#[StubsElementAvailable(from: '8.0')] $var_name, #[StubsElementAvailable(from: '5.3', to: '7.4')] $var_names = null, ...$var_names): array {}
 
 /**
  * Fill an array with values
