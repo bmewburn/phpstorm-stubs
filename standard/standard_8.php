@@ -837,33 +837,39 @@ function in_array(mixed $needle, array $haystack, bool $strict = false): bool {}
 function array_search(mixed $needle, array $haystack, bool $strict = false): string|int|false {}
 
 /**
- * Import variables into the current symbol table from an array
+ * Import variables into the current symbol table from an array.
+ * Checks each key to see whether it has a valid variable name. 
+ * It also checks for collisions with existing variables in the symbol table.
  * @link https://php.net/manual/en/function.extract.php
- * @param array &$array <p>
- * Note that prefix is only required if
- * extract_type is EXTR_PREFIX_SAME,
- * EXTR_PREFIX_ALL, EXTR_PREFIX_INVALID
- * or EXTR_PREFIX_IF_EXISTS. If
- * the prefixed result is not a valid variable name, it is not
- * imported into the symbol table. Prefixes are automatically separated from
- * the array key by an underscore character.
+ * @param array $array <p>
+ * An associative array. This function treats keys as variable names and values as variable values. 
+ * For each key/value pair it will create a variable in the current symbol table, subject to <code>$flags</code> and <code>$prefix</code> parameters.
+ * You must use an associative array; a numerically indexed array will not produce results unless you use <code>EXTR_PREFIX_ALL</code> or <code>EXTR_PREFIX_INVALID</code>.
  * </p>
  * @param int $flags <p>
- * The way invalid/numeric keys and collisions are treated is determined
- * by the extract_type. It can be one of the
- * following values:
- * EXTR_OVERWRITE
- * If there is a collision, overwrite the existing variable.</p>
- * @param string $prefix <p>Only overwrite the variable if it already exists in the
- * current symbol table, otherwise do nothing. This is useful
- * for defining a list of valid variables and then extracting
- * only those variables you have defined out of
- * $_REQUEST, for example.</p>
+ * The way invalid/numeric keys and collisions are treated is determined by the extraction flags. It can be one of the following values:</p>
+ * <ul>
+ * <li><code>EXTR_OVERWRITE</code> (default): On collision, overwrite the existing variable.</li>
+ * <li><code>EXTR_SKIP</code>: On collision, don't overwrite the existing variable.</li>
+ * <li><code>EXTR_PREFIX_SAME</code>: On collision, prefix the variable name with <code>prefix</code>.</li>
+ * <li><code>EXTR_PREFIX_ALL</code>: Prefix all variable names with <code>prefix</code>.</li>
+ * <li><code>EXTR_PREFIX_INVALID</code>: Prefix invalid/numeric variable names with <code>prefix</code>.</li>
+ * <li><code>EXTR_IF_EXISTS</code>: Only overwrite the variable if it already exists in the current symbol table, otherwise do nothing. This is useful for defining a list of valid variables and then extracting only those variables you have defined out of <code>$_REQUEST</code>, for example.</li>
+ * <li><code>EXTR_PREFIX_IF_EXISTS</code>: Only create prefixed variable names if the non-prefixed version of the same variable exists in the current symbol table.</li>
+ * <li><code>EXTR_REFS</code>: Extracts variables as references. This effectively means that the values of the imported variables are still referencing the values of the <code>$array</code> parameter. You can use this flag on its own or combine it with any other flag by OR'ing the <code>$flags</code>.</li>
+ * </ul>
+ * <p>If flags is not specified, it is assumed to be <code>EXTR_OVERWRITE</code>.</p>
+ * @param string $prefix <p>
+ * Note that <code>$prefix</code> is only required if <code>$flags</code> is 
+ * <code>EXTR_PREFIX_SAME</code>, <code>EXTR_PREFIX_ALL</code>, <code>EXTR_PREFIX_INVALID</code> or <code>EXTR_PREFIX_IF_EXISTS</code>. 
+ * If the prefixed result is not a valid variable name, it is not imported into the symbol table. 
+ * Prefixes are automatically separated from the array key by an underscore character.
+ * </p>
  * @return int the number of variables successfully imported into the symbol
  * table.
  */
 function extract(
-    array &$array,
+    array $array,
     #[ExpectedValues(flags: [
                EXTR_OVERWRITE,
                EXTR_SKIP,
